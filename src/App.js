@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout';
 import Area from './pages/Area/Area';
+import AreaOfPolygonCal from './pages/Area/AreaOfPolygonCal';
 import Chemistry from './pages/chemistry/Chemistry';
 import Currency from './pages/Currency/Currency';
 import Engineering from './pages/Engineering/Engineering';
@@ -39,7 +40,8 @@ function App() {
           <Route path="/Health" element={<Health/>}/>  
           <Route path="/Weather" element={<Weather/>}/>  
           <Route path="/Financial" element={<Financial/>}/>  
-          <Route path="/Unit" element={<Unit/>}/>           
+          <Route path="/Unit" element={<Unit/>}/>     
+          <Route path="/polygonCalculator" element={<AreaOfPolygonCal/>}/>           
         </Route>
       </Routes>
       </BrowserRouter>

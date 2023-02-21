@@ -3,13 +3,11 @@ import NewCalculator from '../../components/NewCalculator'
 import ResentBlog from './ResentBlog'
 import { Container } from 'react-bootstrap'
 import Categories from './Categories'
-import AnimatedText from '../../components/AnimatedText'
 import PopolarCalculator from './PopolarCalculator'
 
 function Home() {
   return (
     <div>
-       <AnimatedText/>
       <Container className='home-page'>
         <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
           <NewCalculator title="curl Calculator" title1="Substitute Calculator" title2="Remainder Theorem Calculator" title3="law of sines Calculator " title5="syenthetic division calculator  " />

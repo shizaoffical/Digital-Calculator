@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #F58648;
+    --main-color: #414141;
+    --linear-gradiant: #202020;
+    --light-bg-color: #F8F9FA;
+    --light-primary-color: #ECA028;
+    --dark-primary-color: #F58648;
+    --language-color: #8E8983;
+   --heading-color:#EFF1F3;
+  }
+
+.area-div{
+    border: 5px solid var(--heading-color);
+}

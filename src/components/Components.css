@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #F7941D;
+  --primary-color: #F58648;
   --main-color: #414141;
   --linear-gradiant: #202020;
   --light-bg-color: #F8F9FA;
-  --light-primary-color: #F8B644;
-  --dark-primary-color: #F69C26;
+  --light-primary-color: #ECA028;
+  --dark-primary-color: #F58648;
   --language-color: #8E8983;
  --heading-color:#EFF1F3;
 }
@@ -84,7 +84,7 @@ body {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   margin: 0 !important;
-  background: linear-gradient(to top, var(--primary-color), var(--light-primary-color));
+  background: linear-gradient(to top, var(--primary-color), var(--dark-primary-color));
   padding: 0.4rem 0 0.4rem 1rem;
   font-weight: 700;
   font-size: 18px;
@@ -105,7 +105,7 @@ body {
 .new-calculator-list:hover {
   border-left: 4px solid var(--primary-color);
   border-right: 4px solid var(--primary-color);
-  background-color: var(--light-bg-color);
+  /* background-color: var(--light-bg-color); */
 }
 .new-calculator-list  a{
   color: #5B5046;
@@ -210,7 +210,7 @@ body {
   margin: 1.4rem 0 0.8rem 0;
   background-color:var(--heading-color);
   border-left: 0.2rem solid var(--dark-primary-color);
-  transition:  1s;
+  transition:  0.2s;
 }
 .heading:hover{
   border-left: 0.7rem solid var(--dark-primary-color);
@@ -255,10 +255,10 @@ body {
   border:1px solid  rgba(128, 128, 128, 0.271);
   padding: 0.5rem  ;
   text-transform: capitalize;
-  transition: 1s;
+  transition: 0.3s ease-in;
 }
 .CalculatorName:hover{
-  background-color: var(--light-bg-color);
+  /* background-color: var(--light-bg-color); */
   border-left:0.5rem solid var(--dark-primary-color) ;
   border-right: 0.5rem solid var(--dark-primary-color);
 }
