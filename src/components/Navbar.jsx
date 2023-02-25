@@ -54,7 +54,7 @@ const Navbar = () => {
               <li className="nav-item"><Link className="nav-link active" aria-current="page" to="/Area">Area</Link></li>
             </ul>
             <form className="d-flex" role="search">
-              <i className="fa-solid fa-magnifying-glass " onClick={() => setShow(true)} style={{ color: "#F7941D", fontSize: "1.6rem" }}></i>
+              <i className="fa-solid fa-magnifying-glass " onClick={() => setShow(true)} style={{ color: "#F58648", fontSize: "1.6rem" }}></i>
             </form>
           </div>
         </div>

@@ -1,15 +1,7 @@
-:root{
-    --primary-color:#F7941D;
-    --main-color:#414141;
-    --linear-gradiant:#202020;
-    --light-bg-color:#F8F9FA;
-    --light-primary-color:#F8B644;
-    --dark-primary-color:#F69C26;
-    --language-color:#8E8983;
-}
+
 
 .footer{
-    background: linear-gradient(to top, var(--linear-gradiant), var(--main-color));
+    background:  var(--main-color);
     color: white;   
 }
 .footer-col{

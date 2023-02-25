@@ -35,7 +35,7 @@ function Categories() {
          <CategoryCard image={Image10} title="Weather" path="/Weather"/>
          <CategoryCard image={Image11} title="Unit" path="/Unit"/>
          <CategoryCard image={Image12} title="Love" path="/Love"/>
-         <CategoryCard image={Image13} title="Area" path="/Area"/>
+         <CategoryCard image={Image13} title="Area" path="/area"/>
          <CategoryCard image={Image14} title="Financial" path="/Financial"/>
     </div>
     </>

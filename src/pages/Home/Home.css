@@ -1,17 +1,5 @@
  
- :root{
-    --primary-color:#F7941D;
-    --main-color:#414141;
-    --linear-gradiant:#202020;
-    --light-bg-color:#F8F9FA;
-    --light-primary-color:#ECA028;
-    --dark-primary-color:#F58648  ;
-    --language-color:#8E8983;
   
-}
-body{
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-}
  /* tool main */
  .right-tool{
     border: 0.1px solid rgba(128, 128, 128, 0.33);

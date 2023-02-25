@@ -1,17 +1,30 @@
 :root{
     --primary-color:#F7941D;
-    --main-color:#414141;
-    --linear-gradiant:#202020;
+    --main-color:#19293A;
     --light-bg-color:#F8F9FA;
     --light-primary-color:#ECA028;
     --dark-primary-color:#F58648;
     --language-color:#8E8983;
   
 }
-body{
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-}
 
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: 400;
+}
+p,span{
+    font-weight: 200;
+}
+a{
+    text-decoration: none;
+}
+input{
+    outline: none;
+}
 @media (max-width : 550px) {
 
     .home-page-right-content{

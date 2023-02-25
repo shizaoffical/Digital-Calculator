@@ -1,14 +1,38 @@
-:root {
-    --primary-color: #F58648;
-    --main-color: #414141;
-    --linear-gradiant: #202020;
-    --light-bg-color: #F8F9FA;
-    --light-primary-color: #ECA028;
-    --dark-primary-color: #F58648;
-    --language-color: #8E8983;
-   --heading-color:#EFF1F3;
-  }
 
-.area-div{
-    border: 5px solid var(--heading-color);
+
+.polygon-calculator-div {
+    padding: 1rem 0;
+    border: 5px solid var(--heading-color); 
+    background-color: var(--light-bg-color);
+}
+.polygon-calculator-text-div{
+    padding:1rem 0;
+}
+.polygon-calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.polygon-calculator-btn{
+    border: none;
+    margin-top: 10px;
+    padding:5px 17px ;
+    margin-left: 10px;
+    background-color: var(--dark-primary-color);
+    color: white;
+
+    border-radius: 4px;
+}
+.polygon-claculator-value-btn{
+    border: none;
+    background-color:var(--main-color);
+    color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 4rem;
+    padding: auto 10px;
+}
+.formula-backside{
+    background-color: var(--heading-color);
+    padding: 1rem 10px;
 }

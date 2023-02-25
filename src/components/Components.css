@@ -1,27 +1,13 @@
-:root {
-  --primary-color: #F58648;
-  --main-color: #414141;
-  --linear-gradiant: #202020;
-  --light-bg-color: #F8F9FA;
-  --light-primary-color: #ECA028;
-  --dark-primary-color: #F58648;
-  --language-color: #8E8983;
- --heading-color:#EFF1F3;
-}
-
-body {
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-}
 
 /* ************************   navbar *********************** */
 .navbar {
-  background: linear-gradient(to top, var(--linear-gradiant), var(--main-color));
+  background:  var(--main-color);
 }
 
 .nav-search-btn-div {
   height: 6rem;
   width: 100%;
-  background-color: var(--linear-gradiant);
+  background-color: var(--main-gradiant);
   display: flex;
   align-items: center;
   animation: serch 1s linear;
@@ -251,21 +237,14 @@ body {
  color: #000;
 }
 /* ***************************** Calculator Name   ******************************** */
-.CalculatorName{
+.calculator-name{
   border:1px solid  rgba(128, 128, 128, 0.271);
   padding: 0.5rem  ;
   text-transform: capitalize;
   transition: 0.3s ease-in;
 }
-.CalculatorName:hover{
-  /* background-color: var(--light-bg-color); */
+.calculator-name:hover{
+  color: var(--dark-primary-color);
   border-left:0.5rem solid var(--dark-primary-color) ;
   border-right: 0.5rem solid var(--dark-primary-color);
-}
-.CalculatorName a{
-  text-decoration: none;
-  color: var(--main-color);
-}
-.CalculatorName a:hover{
-  color: var(--dark-primary-color);
 }

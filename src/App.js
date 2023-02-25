@@ -5,6 +5,7 @@ import './App.css';
 import Layout from './components/Layout';
 import Area from './pages/Area/Area';
 import AreaOfPolygonCal from './pages/Area/AreaOfPolygonCal';
+import Barrel from './pages/Area/Barrel';
 import Chemistry from './pages/chemistry/Chemistry';
 import Currency from './pages/Currency/Currency';
 import Engineering from './pages/Engineering/Engineering';
@@ -28,7 +29,9 @@ function App() {
         <Route path='/' element={   <Layout/>}>
           <Route index element={<Home/>}/>
           <Route path='/Math' element={<Math/>}/>
-          <Route path="/Area" element={<Area />}/>
+          <Route path="/area" element={<Area />}/>
+          <Route path="/area/polygoncalculator" element={<AreaOfPolygonCal/>}/> 
+          <Route path="/Area/Barrel" element={<Barrel/>}/> 
           <Route path="/Chemistry" element={<Chemistry />}/>
           <Route path="/Currency" element={<Currency/>}/> 
           <Route path="/Engineering" element={<Engineering/>}/> 
@@ -41,7 +44,8 @@ function App() {
           <Route path="/Weather" element={<Weather/>}/>  
           <Route path="/Financial" element={<Financial/>}/>  
           <Route path="/Unit" element={<Unit/>}/>     
-          <Route path="/polygonCalculator" element={<AreaOfPolygonCal/>}/>           
+         
+
         </Route>
       </Routes>
       </BrowserRouter>
