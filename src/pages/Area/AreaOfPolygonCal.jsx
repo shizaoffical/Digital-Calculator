@@ -47,8 +47,6 @@ function AreaOfPolygonCal() {
 
     return (
         <div>
-
-            <div>
                 <Container className='home-page '>
                     <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
                         <NewCalculator title="Area of polygon calculate"
@@ -71,25 +69,25 @@ function AreaOfPolygonCal() {
                                         <label > Length:<br /> <input type="number" value={sideLength}
                                             onChange={(event) => setSideLength(parseFloat(event.target.value))} /></label></Col>
                                 </Row>
-                                <Row className='mt-2 ' style={{ alignItems: "center" }}>
+                                <Row className='mt-2 ' style={{ alignItems: "center", textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12} >
                                         <dt>   Area of polygon <br />[using length of a side]:</dt>
                                     </Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn' >{area} </button>
+                                        <button className='polygon-claculator-value-btn' >{area.toString().substring(0, 5)} </button>
                                     </Col>
                                 </Row>
-                                <Row className='mt-2' style={{ alignItems: "center" }}>
+                                <Row className='mt-2' style={{ alignItems: "center", textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12} >
                                         <dt > Area of polygon<br />[using apothem and length of a side]:</dt> </Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn'>{area}</button></Col>
+                                        <button className='polygon-claculator-value-btn'>{area.toString().substring(0, 5)}</button></Col>
                                 </Row>
-                                <Row className='mt-2' style={{ alignItems: "center" }}>
+                                <Row className='mt-2' style={{ alignItems: "center",textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12} >
                                         <dt>Perimeter of polygon:</dt></Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn'>{perimeter}</button></Col>
+                                        <button className='polygon-claculator-value-btn'>{perimeter.toString().substring(0, 5)}</button></Col>
                                 </Row>
                                 <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
                                     <Col md={6} sm={12} xs={12} > Radius<br />
@@ -99,17 +97,17 @@ function AreaOfPolygonCal() {
                                         <input type="number" value={secondnumberOfSides}
                                             onChange={(event) => setsecondnumberOfSides(parseInt(event.target.value))} /></Col>
                                 </Row>
-                                <Row className='mt-2' style={{ alignItems: "center" }}>
+                                <Row className='mt-2' style={{ alignItems: "center",textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12}>
                                         <dt > Area of polygon<br />[using radius (circumstance)]:</dt></Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12}>
-                                        <button className='polygon-claculator-value-btn'>{radius}</button></Col>
+                                        <button className='polygon-claculator-value-btn'>{radius.toString().substring(0, 5)}</button></Col>
                                 </Row>
-                                <Row className='mt-2' style={{ alignItems: "center" }}>
+                                <Row className='mt-2' style={{ alignItems: "center", textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12}>
                                         <dt >Area of polygon <br />[using apothem (Radius)]:</dt></Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn'>{apothem}</button></Col>
+                                        <button className='polygon-claculator-value-btn'>{apothem.toString().substring(0, 5)}</button></Col>
                                 </Row>
                                 {/* <Row><Col>radius: </Col></Row> */}
 
@@ -200,7 +198,7 @@ function AreaOfPolygonCal() {
                                     where A = side / (2 * Tan (π / N))<br />
                                     where,<br />
 
-                                    N = Number of sides, A = Apothem, R = Radius, P = Perimeter
+                                    N = Number of sides, A = Apothem, R = Radius, P = Perimeter<br/>
                                     <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
                                 </div>
                                 : null}
@@ -210,7 +208,6 @@ function AreaOfPolygonCal() {
                         <p>A polygon is made up of several coplanar line segments that are linked end to end to form a closed shape. The polygon includes shapes like triangles, rectangles, and pentagons.</p>
                     </div>
                 </Container>
-            </div >
         </div >
     )
 }

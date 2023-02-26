@@ -28,7 +28,6 @@
     background-color:var(--main-color);
     color: white;
     border-radius: 5px;
-    overflow: hidden;
     width: 4rem;
     padding: auto 10px;
 }

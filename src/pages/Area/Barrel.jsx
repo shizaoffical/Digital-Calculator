@@ -34,8 +34,8 @@ function Barrel() {
                             title3="scienthic division Calculator" title4="curl Calculator" />
                     </div>
                     <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                        <h2 className='text-center fw-bold'>Area of polygon calculate</h2>
-                        <p>Use the area of a polygon calculator to determine the area by entering the length, radius, and number of sides in the appropriate input fields, then pressing the calculate button.
+                        <h2 className='text-center fw-bold'>Barrel calculate</h2>
+                        <p>To calculate the volume of the barrel using the barrel calculator, enter the top, middle, bottom radius, and height in the corresponding boxes and click calculate.
                         </p>
                         <div className='polygon-calculator-div '>
                             <div className="polygon-calculator px-2">
@@ -65,7 +65,7 @@ function Barrel() {
                                 </Row>
                                 <center className='d-flex justify-content-center py-3'>
                                     <dt className='pe-2'>Volume: </dt>
-                                    <button className='polygon-claculator-value-btn'>{volume}</button>
+                                    <button className='polygon-claculator-value-btn'>{volume.toString().substring(0,5)}</button>
                                 </center>
 
                                 <div className='text-center'>

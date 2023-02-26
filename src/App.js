@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Area from './pages/Area/Area';
 import AreaOfPolygonCal from './pages/Area/AreaOfPolygonCal';
 import Barrel from './pages/Area/Barrel';
+import Circle from './pages/Area/Circle';
 import Chemistry from './pages/chemistry/Chemistry';
 import Currency from './pages/Currency/Currency';
 import Engineering from './pages/Engineering/Engineering';
@@ -31,7 +32,8 @@ function App() {
           <Route path='/Math' element={<Math/>}/>
           <Route path="/area" element={<Area />}/>
           <Route path="/area/polygoncalculator" element={<AreaOfPolygonCal/>}/> 
-          <Route path="/Area/Barrel" element={<Barrel/>}/> 
+          <Route path="/area/barrel" element={<Barrel/>}/> 
+          <Route path="/area/circle" element={<Circle/>}/> 
           <Route path="/Chemistry" element={<Chemistry />}/>
           <Route path="/Currency" element={<Currency/>}/> 
           <Route path="/Engineering" element={<Engineering/>}/> 

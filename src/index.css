@@ -18,3 +18,14 @@ p,span{
     --language-color: #8E8983;
    --heading-color:#EFF1F3;
   }
+  input{
+    width: 40%;
+    border: 1px solid var(--language-color);
+    padding: 0 3px;
+    box-shadow: 2px 2px 2px var(--language-color);
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -18,11 +18,12 @@ function Area() {
                 <p>An Area can be termed as a surface or size of a surface, especially an open, unoccupied piece of ground or any shape. The superficial contents of any figure; the surface included within any given lines; superficial extent; as, the area of a square or a triangle.</p>
                 <Row className='mb-2'>
                 <Col sm={6} xs={12}><CalculatorName CalculatorName="Area of Polygon Calculator"  path="/area/polygoncalculator" /></Col> 
-                <Col sm={6} xs={12}><CalculatorName CalculatorName="Barrel" path="/Area/Barrel"/></Col> 
+                <Col sm={6} xs={12}><CalculatorName CalculatorName="Barrel" path="/area/barrel"/></Col> 
             </Row>
             <Row className='mb-2'>
+            <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Circle" path="/area/circle"/></Col>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Cone"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Circle"/></Col>
+              
             </Row>
             <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Cube"/></Col>
