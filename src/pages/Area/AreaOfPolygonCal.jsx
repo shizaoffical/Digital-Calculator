@@ -18,14 +18,15 @@ function AreaOfPolygonCal() {
     const [perimeter, setPerimeter] = useState(0);
 
     function calculatePolygon() {
-        const perimeter = numberOfSides * sideLength;
+        const perimeter = numberOfSides * sideLength; 
+        setPerimeter(perimeter);
         const apothem = sideLength / (2 * Math.tan(Math.PI / numberOfSides));
-        const area = (1 / 2) * apothem * numberOfSides * sideLength;
         setApothem(apothem);
+        const area = (1 / 2) * apothem * numberOfSides * sideLength;
+        setArea(area);
         const radius = 0.5 * Math.sin(2 * Math.PI / secondnumberOfSides);
         setRadius(radius)
-        setArea(area);
-        setPerimeter(perimeter);
+      
     }
     function reset() {
         setNumberOfSides(5);
@@ -74,20 +75,20 @@ function AreaOfPolygonCal() {
                                         <dt>   Area of polygon <br />[using length of a side]:</dt>
                                     </Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn' >{area.toString().substring(0, 5)} </button>
+                                        <button className='formula-value-btn' >{area.toString().substring(0, 5)} </button>
                                     </Col>
                                 </Row>
                                 <Row className='mt-2' style={{ alignItems: "center", textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12} >
                                         <dt > Area of polygon<br />[using apothem and length of a side]:</dt> </Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn'>{area.toString().substring(0, 5)}</button></Col>
+                                        <button className='formula-value-btn'>{area.toString().substring(0, 5)}</button></Col>
                                 </Row>
                                 <Row className='mt-2' style={{ alignItems: "center",textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12} >
                                         <dt>Perimeter of polygon:</dt></Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn'>{perimeter.toString().substring(0, 5)}</button></Col>
+                                        <button className='formula-value-btn'>{perimeter.toString().substring(0, 5)}</button></Col>
                                 </Row>
                                 <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
                                     <Col md={6} sm={12} xs={12} > Radius<br />
@@ -101,13 +102,13 @@ function AreaOfPolygonCal() {
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12}>
                                         <dt > Area of polygon<br />[using radius (circumstance)]:</dt></Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12}>
-                                        <button className='polygon-claculator-value-btn'>{radius.toString().substring(0, 5)}</button></Col>
+                                        <button className='formula-value-btn'>{radius.toString().substring(0, 5)}</button></Col>
                                 </Row>
                                 <Row className='mt-2' style={{ alignItems: "center", textAlign:"center" }}>
                                     <Col lg={8} xl={8} md={7} sm={12} xs={12}>
                                         <dt >Area of polygon <br />[using apothem (Radius)]:</dt></Col>
                                     <Col lg={4} xl={4} md={5} sm={12} xs={12} >
-                                        <button className='polygon-claculator-value-btn'>{apothem.toString().substring(0, 5)}</button></Col>
+                                        <button className='formula-value-btn'>{apothem.toString().substring(0, 5)}</button></Col>
                                 </Row>
                                 {/* <Row><Col>radius: </Col></Row> */}
 

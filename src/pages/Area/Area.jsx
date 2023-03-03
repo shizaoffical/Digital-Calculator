@@ -14,7 +14,7 @@ function Area() {
                     title1="Square Calculator" title2="Triangle Calculator"/>
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                <h2 className='text-center fw-bold'>Area</h2>
+                <h2 className='text-center fw-bold'>Cube Calculator</h2>
                 <p>An Area can be termed as a surface or size of a surface, especially an open, unoccupied piece of ground or any shape. The superficial contents of any figure; the surface included within any given lines; superficial extent; as, the area of a square or a triangle.</p>
                 <Row className='mb-2'>
                 <Col sm={6} xs={12}><CalculatorName CalculatorName="Area of Polygon Calculator"  path="/area/polygoncalculator" /></Col> 
@@ -22,35 +22,35 @@ function Area() {
             </Row>
             <Row className='mb-2'>
             <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Circle" path="/area/circle"/></Col>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Cone"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Cone" path="/area/cone"/></Col>
               
             </Row>
             <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Cube"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Cylinder"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Cube" path="/area/cube"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Cylinder" path="/area/cylinder"/></Col>
             </Row> 
             <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Ellipse"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Hemisphere"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Ellipse" path="/area/elipse"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Hemisphere" path="/area/hemisphere"/></Col>
             </Row>
              <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Kite"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Area of Polygon Calculator"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Kite" path="/area/kite"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Area of Parallelogram Calculator"/></Col>
             </Row> <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Rectangular popular conversation"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Rectangular popular conversation" path="/area/rectangular"/></Col>
                 <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Rhombus"/></Col>
             </Row>
              <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Square"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Sphere"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Square" path="/area/square"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Sphere" path="/area/sphere"/></Col>
             </Row>
              <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Triangle"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Triangle" path="/area/triangle"/></Col>
                 <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Trapezium"/></Col>
             </Row>
             <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="pyramid"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="volume of hemisphere calculator"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="volume of hemisphere calculator" path="/area/volumeOfHemisphere"/></Col>
             </Row>
                 </div>
             </Container>

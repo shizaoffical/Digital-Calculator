@@ -248,3 +248,12 @@
   border-left:0.5rem solid var(--dark-primary-color) ;
   border-right: 0.5rem solid var(--dark-primary-color);
 }
+
+/* **********************  loding ********************** */
+.loding{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+ align-items: center;
+}

@@ -23,15 +23,27 @@
 
     border-radius: 4px;
 }
-.polygon-claculator-value-btn{
+.formula-value-btn{
     border: none;
     background-color:var(--main-color);
     color: white;
+    width: 5rem;
     border-radius: 5px;
-    width: 4rem;
-    padding: auto 10px;
 }
 .formula-backside{
     background-color: var(--heading-color);
     padding: 1rem 10px;
+}
+.bg-menu{
+    border: "2px solid red";
+    text-align: center;
+    background-color: var(--light-bg-color);
+}
+.value-dropdown{
+    border: 2px solid red !important;
+   font-weight: 400;
+}
+.dropdown-select{
+    border: 1px solid black;
+    outline: none !important;
 }
