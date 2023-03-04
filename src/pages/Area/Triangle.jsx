@@ -8,22 +8,73 @@ function Triangle() {
 
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    const [selectCondition, setSelectCondition] = useState('Area-of-triangle');
+    // area  triangle
     const [length, setLength] = useState(8);
     const [breadth, setBreadth] = useState(10);
     const [areaOfCalculator, setAreaOfCalculator] = useState(0);
-    const [selectCondition, setSelectCondition] = useState("")
+    // perimetertriangle
+    const [sidea, setSidea] = useState(10);
+    const [sideb, setSideb] = useState(15);
+    const [sidec, setSidec] = useState(14);
+    const [perimeterOfTriangle, setPerimeterOfTriangle] = useState(0);
+    // equilateneral triangle
+    const [equilateralTriangle, setEquilateralTriangle] = useState(16);
+    const [areaOfEquilateralTriangle, setAreaOfEquilateralTriangle] = useState(0);
+    // SAS triangle
+    const [SASlength, setSASLength] = useState(12);
+    const [SASBreath, setSASBreath] = useState(11);
+    const [SASangleC, setSASangleC] = useState(10);
+    const [SAStriangle, setSAStriangle] = useState(0);
 
+    // area of triangle 
     const calculate = () => {
         const areaOfCalculator = length * breadth / 2;
         setAreaOfCalculator(areaOfCalculator)
     }
-  
+    function reset() {
+        setLength(0);
+        setBreadth(0)
+        setAreaOfCalculator("");
+    }
+    // perimeter of triangle 
+    const perimeter = () => {
+        const perimeter = sidea + sideb + sidec;
+        setPerimeterOfTriangle(perimeter);
+    }
+    function perimeterReset() {
+        setSidea(0);
+        setSideb(0);
+        setSidec(0);
+        setPerimeterOfTriangle("")
+    }
+    //   area of equilant triangle
+    const areaofequatri = () => {
+        const value = Math.sqrt(3) / 4 * equilateralTriangle * equilateralTriangle;
+        setAreaOfEquilateralTriangle(value);
+
+    }
+    function equilateralTriangleReset() {
+        setEquilateralTriangle(0);
+        setAreaOfEquilateralTriangle(0);
+    }
+    // SAS Triangle
+    const SASangletriangle = () => {
+        const SASAngletriangle = SASlength * SASBreath * Math.sin(SASangleC) / 2;
+        setSAStriangle(SASAngletriangle);
+    }
+    function SAStriangleReset() {
+        setSASLength(0);
+        setSASBreath(0);
+        setSASangleC(0);
+        setSAStriangle("");
+    }
+
+    // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
     }
-    function reset() {
-        setLength(0);
-    }
+
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -43,77 +94,242 @@ function Triangle() {
                 <p>Enter the radius into the sphere calculator's calculate field to compute the sphere's volume and surface area.
                 </p>
                 <div className='polygon-calculator-div '>
-                   
+
 
                     <Row className='text-center my-3'>
-                            <Col md={12} sm={12} xs={12} >
-                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >
-                                    <option value="" className='value-dropdown'>Area of triangle</option>
-                                    <option value='' className='value-dropdown'
-                                     >Perimeter of trianglex</option>
-                                    <option value="" className='value-dropdown'>Area of an equilateral triangle</option>
-                                    <option value="" className='value-dropdown' >Area of an triangle SAS</option>
-                                </select>
-                            </Col>
-                        </Row>
-                       
-                        <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                        <Col md={12} sm={12} xs={12} >
+                            <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >
+                                <option value="Area-of-triangle" className='value-dropdown'>Area of triangle</option>
+                                <option value='Perimeter of triangle' className='value-dropdown' >Perimeter of trianglex</option>
+                                <option value="Area of an equilateral triangle" className='value-dropdown'>Area of an equilateral triangle</option>
+                                <option value="Area of an triangle SAS" className='value-dropdown' >Area of an triangle SAS</option>
+                            </select>
+                        </Col>
+                    </Row>
+
+                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
-                       
+                        {/* ////////////////////////////////////   Area-of-triangle  /////////////////////////////// */}
 
 
-                        <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                            <Col md={12} sm={12} xs={12} >
-                                <label> Length(l) :
-                                    <input type="number" value={length} className='ms-3' onChange={(e) => setLength(e.target.value)} />
-                                </label></Col>
-                        </Row>
-                        <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                            <Col md={12} sm={12} xs={12} >
-                                <label> Breadth(b) :
-                                    <input type="number" className='ms-3' value={breadth}
-                                        onChange={(e) => setBreadth(e.target.value)} />
-                                </label></Col>
-                        </Row>
-                        <h5 className='text-center py-2'>Result</h5>
+                        {
+                            selectCondition === "Area-of-triangle" && <>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Length(l) :
+                                            <input type="number" value={length} className='ms-3' onChange={(e) => setLength(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Breadth(b) :
+                                            <input type="number" className='ms-3' value={breadth}
+                                                onChange={(e) => setBreadth(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <h5 className='text-center py-2'>Result</h5>
 
-                        <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                            <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
-                            <Col md={6} sm={12} xs={12}>
-                                <button className='formula-value-btn'>{areaOfCalculator.toString().substring(0, 6)}</button></Col>
-                        </Row>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                                    <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
+                                    <Col md={6} sm={12} xs={12}>
+                                        <button className='formula-value-btn'>{areaOfCalculator.toString().substring(0, 6)}</button></Col>
+                                </Row>
+                                <div className='text-center'>
+                                    <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
+                                    <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+
+                                </div>
+                            </>
+
+                        }
+
+                        {/* ////////////////////////////////  Perimeter of triangle ////////////////////////////// */}
+
+                        {
+                            selectCondition === "Perimeter of triangle" && <>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> side(a) :
+                                            <input type="number" value={sidea} className='ms-3'
+                                                onChange={(e) => setSidea(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Side(b) :
+                                            <input type="number" className='ms-3' value={sideb}
+                                                onChange={(e) => setSideb(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Side(c):
+                                            <input type="number" className='ms-3' value={sidec}
+                                                onChange={(e) => setSidec(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <h5 className='text-center py-2'>Result</h5>
+
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                                    <Col md={6} sm={12} xs={12}><dt>Perimeter of triangle : </dt></Col>
+                                    <Col md={6} sm={12} xs={12}>
+                                        <button className='formula-value-btn'>
+                                            {perimeterOfTriangle.toString().substring(0, 6)}</button></Col>
+                                </Row>
+                                <div className='text-center'>
+                                    <button className="polygon-calculator-btn" onClick={perimeter}>Calculate</button>
+                                    <button className="polygon-calculator-btn" onClick={perimeterReset} >Reset</button>
+
+                                </div>
+                            </>
+
+                        }
+
+                        {/* //////////////////////////////// equilateral triangle //////////////////////////*/}
+                        {
+                            selectCondition === "Area of an equilateral triangle" && <>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> length (a) :
+                                            <input type="number" value={equilateralTriangle} className='ms-3'
+                                                onChange={(e) => setEquilateralTriangle(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <h5 className='text-center py-2'>Result</h5>
+
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                                    <Col md={6} sm={12} xs={12}><dt> Area of an equilateral triangle : </dt></Col>
+                                    <Col md={6} sm={12} xs={12}>
+                                        <button className='formula-value-btn'>
+                                            {areaOfEquilateralTriangle.toString().substring(0, 6)}</button></Col>
+                                </Row>
+                                <div className='text-center'>
+                                    <button className="polygon-calculator-btn" onClick={areaofequatri}>Calculate</button>
+                                    <button className="polygon-calculator-btn" onClick={equilateralTriangleReset} >Reset</button>
+
+                                </div>
+                            </>
+
+                        }
+                        {/*////////////////////////////////////////// area of triangle sas /////////////////////////////*/}
+
+                        {
+                            selectCondition === "Area of an triangle SAS" && <>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Length(l) :
+                                            <input type="number" value={SASlength} className='ms-3'
+                                                onChange={(e) => setSASLength(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Breadth(b) :
+                                            <input type="number" className='ms-3' value={SASBreath}
+                                                onChange={(e) => setSASBreath(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={12} sm={12} xs={12} >
+                                        <label> Angle(c) :
+                                            <input type="number" className='ms-3' value={SASangleC}
+                                                onChange={(e) => setSASangleC(e.target.value)} />
+                                        </label></Col>
+                                </Row>
+                                <h5 className='text-center py-2'>Result</h5>
+
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                                    <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
+                                    <Col md={6} sm={12} xs={12}>
+                                        <button className='formula-value-btn'>
+                                            {SAStriangle.toString().substring(0, 6)}</button></Col>
+                                </Row>
+                                <div className='text-center'>
+                                    <button className="polygon-calculator-btn" onClick={SASangletriangle}>Calculate</button>
+                                    <button className="polygon-calculator-btn" onClick={SAStriangleReset} >Reset</button>
+
+                                </div>
+                            </>
+
+                        }
+
                     </div>
-                    <div className='text-center'>
-                        <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                        <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
 
-                    </div>
+
                     <center>
                         <button type='button'
                             style={{ border: "none", textDecoration: "underline", background: "none", color: "#F58648" }} className="my-3" onClick={() => settextShow(!textShow)}>{textShow === true ? "Hide Steps" : "Show Steps"}</button>
                     </center>
-                    <div>{
-                        textShow &&
-                        <Example heading="Sphere Calculator Example"
-                            title={<>Find the volume and curved surface area of a Sphere (tsa of sphere) with the given radius 2.<br />
-                                How to find the volume of a sphere?</>}
-                            step1="Solution : " step1heading=" Find the volume of a sphere.e"
-                            step1value="Volume = (4/3) πr³ = (4/3) * 3.14 * 4³ = 1.33 * 3.14 * 27 = 33.40 "
-                            step2="Solution : " step2heading=" Find the curved surface area (CSA)."
-                            step2value="Curved Surface Area (CSA) = 4πr² = 4 * 3.14 * 2² = 12.56 * 4= 50.24 " />
-                    }</div>
+                    <div>
+                        {
+
+                            textShow &&
+                            <>
+                                {selectCondition === "Area-of-triangle" &&
+                                    <Example heading="Area of triangle"
+                                    title="Step by step solution"
+                                        step1="Data " step1heading=" length = 8, breadth = 10, Area = ?"
+                                        step2="Formula: " step2heading=" Area of triangle = length x breadth / 2"
+                                        step2value={<>Now putting values in the above equation:<br />
+                                        Area of triangle = 8 x 10 / 2 <br/>
+                                        Area of triangle = 80 / 2</>} 
+                                          step4=" Area of triangle= 40 "
+                                        />
+                                }
+                                {selectCondition === "Perimeter of triangle" &&
+                                    <Example heading="Perimeter of triangle"   title="Step by step solution"
+                                        step1="Data " step1heading=" Side a = 10, Side b = 15, Side c = 14 , Perimeter = ?"
+                                        step2="Formula " step2heading="Perimeter of a triangle = Side a + Side b + Side c."
+                                        step3="Solution " step3heading={<>Now putting values in the above equation:<br />
+                                       Perimeter of a triangle = 10 + 15 + 14 <br/></>}
+                                       step4="Perimeter of a Triangle = 39 " 
+
+                                        />
+                                }
+                                {selectCondition === "Area of an equilateral triangle" &&
+                                    <Example heading="Area of an equilateral triangle   "
+                                        title="Step by step solution"
+                                        step1="Data " step1heading="length (a) = 16, Area = ?"
+                                        step2="Formula: " step2heading=" Area of Equilateral triangle = √3 / 4  x a2."
+                                        step3="Solution: " step3heading={<>Now putting values in the above equation:<br />
+                                      Area of Equilateral triangle = √3 / 4 x (16)2 <br/>
+                                      Area of Equilateral triangle = √3 / 4 x 256<br/>
+                                      Area of Equilateral triangle = 0.4330 x 256</>
+                                     } step4="Area of Equilateral triangle = 110.85"
+                                        />
+                                }
+                                {selectCondition === "Area of an triangle SAS" &&
+                                    <Example heading="Area of an triangle SAS"
+                                    title="Step by step solution"
+                                        step1="Data : " step1heading="length = 12, breadth = 11, angle = 10, Area = ?"
+                                        step2="Formula: " step2heading=" Area of triangle = ab sin(C) / 2"
+                                        step3="Solution: " step3heading={<>Now putting values in the above equation:<br />
+                                      Area of triangle = (12)(11) x sin(10) /2 <br/>
+                                      Area of triangle = (132) x -0.5440 /2<br/>
+                                      Area of triangle = -71.8080 /2</>
+                                     } step4="Area of triangle = -35.904"
+                                         />
+                                }
+                            </>
+
+
+                        }</div>
 
                 </div>
-                
+
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
                     <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
                     {show ?
                         <div className='formula-backside'>
-                            <dt> Volume of Sphere <span>= (4/3) πr³</span> </dt>
-                            <dt>Curved Surface Area (CSA) of Sphere <span> = 4πr²</span></dt>
+                            <dt> Area of triangle: <span>[ l×b /2 ]</span> </dt>
+                            <dt>Perimeter of Triangle: <span>  [ (a + b + c) ]</span></dt>
+                            <dt>Area of Equilateral Triangle: <span> [ (Sqrt (3)/4)×(length(a))² ]</span></dt>
+                            <dt>Area of Triangle SAS (2sides & opposite angle):
+                                <span> [(l) *(b) *sin(c) /2]</span></dt>
                             <dt>Where,</dt>
-                            <span> r = radius, π = 3.14</span><br />
+                            <span>l = length<br />b =breadth</span><br />
+                            <span> a,b, and c = sides of the triangle</span><br />
                             <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
                         </div>
                         : null}
