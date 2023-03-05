@@ -34,6 +34,8 @@ import Physics from './pages/Physics/Physics';
 import Sports from './pages/Sports/Sports';
 import Unit from './pages/Unit/Unit';
 import Weather from './pages/weather/Weather';
+import Rhombus from "./pages/Area/Rhombus"
+import Trapezium from './pages/Area/Trapezium';
 
 
 function App() {
@@ -60,8 +62,9 @@ function App() {
             <Route path="/area/square" element={<Square />} />
             <Route path="/area/volumeOfHemisphere" element={<VolumeOfHemisphere />} />
             <Route path="/area/triangle" element={<Triangle />} />
-            <Route path="/area/P]parallogram" element={<Parallogram />} />
-
+            <Route path="/area/parallogram" element={<Parallogram />} />
+            <Route path="/area/rhombus" element={<Rhombus/>} />
+            <Route path="/area/trapezium" element={<Trapezium/>} />
 
             <Route path="/Chemistry" element={<Chemistry />} />
             <Route path="/Currency" element={<Currency />} />

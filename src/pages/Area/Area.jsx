@@ -36,10 +36,10 @@ function Area() {
              <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Kite" path="/area/kite"/></Col>
                 <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Area of Parallelogram Calculator" 
-                path="/area/P]parallogram"/></Col>
+                path="/area/parallogram"/></Col>
             </Row> <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Rectangular popular conversation" path="/area/rectangular"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Rhombus"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Rhombus" path="/area/rhombus"/></Col>
             </Row>
              <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Square" path="/area/square"/></Col>
@@ -47,7 +47,7 @@ function Area() {
             </Row>
              <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Triangle" path="/area/triangle"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Trapezium"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Trapezium" path="/area/trapezium"/></Col>
             </Row>
             <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="pyramid"/></Col>

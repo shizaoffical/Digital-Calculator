@@ -67,7 +67,7 @@ function Parallogram() {
                         <Col md={12} sm={12} xs={12} >
                             <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >
                                 <option value="Area of Rectangular" className='value-dropdown'>Area of Rectangular</option>
-                                <option value='Perimeter OF Rectangular' className='value-dropdown' >Perimeter OF Rectangulat</option>
+                                <option value='Perimeter OF Rectangular' className='value-dropdown' >Perimeter of Rectangular</option>
                             </select>
                         </Col>
                     </Row>
@@ -163,7 +163,7 @@ function Parallogram() {
                                         step1="Data" step1heading="b = 16, h = 18, P = ?"
                                         step2="Formula " step2heading="Perimeter (P) = 2 (b + h)."
                                         step3="Solution: " step3heading={<>Now we have to put values in above formula:<br />P = 2 (12 + 15)<br />
-                                            <br />P = 2 (27)</>}
+                                            P = 2 (27)</>}
                                         step4="P = 54 m " />
                                 }
 
