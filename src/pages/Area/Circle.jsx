@@ -4,6 +4,7 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import logo from "../../images/header-logo.png";
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Circle() {
     const [show, setShow]= useState(false);
@@ -49,7 +50,7 @@ function Circle() {
                     <p>Fill out the necessary input boxes and press the calculate button to use the circle calculator.
                     </p>
                     <div className='polygon-calculator-div '>
-                        <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                        <ButtonA onClick={handlePrint} text="Print"/>
                         <div className="polygon-calculator px-2" ref={componentsRef}>   
                          <Row style={{ alignItems: "center", textAlign: "center" }}>
                                 <Col md={12} sm={12} xs={12} >
@@ -73,8 +74,8 @@ function Circle() {
                             </Row>
                         </div>
                         <div className='text-center'>
-                            <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                            <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                            <ButtonA onClick={calculate} text="Calaulate"/>
+                            <ButtonA onClick={reset} text="Reset"/>
                         </div>
                         <center>
                             <button type='button'
@@ -92,14 +93,14 @@ function Circle() {
 
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
-                        <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                        <ButtonA onClick={() => setShow(true)} text="Formula"/>
                         {show ?
                             <div className='formula-backside'>
                                <dt className='Fw-bold'>Area of Circle </dt>= πr²<br/>
                                <dt>Circumference of Circle </dt>= 2πr = πd<br/>
                                <dt>Area of Sector</dt>= πr² (θ/360) = ½ *arc * (angle in degree)<br/>
                                <dt> where,</dt>r = radius <br/>π = 3.14<br/>
-                                <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                                <ButtonA onClick={() => setShow(false)} text="Close Formula"/> 
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}

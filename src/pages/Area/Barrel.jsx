@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import ButtonA from '../../components/ButtonA';
+import { useReactToPrint } from 'react-to-print';
+import logo from "../../images/header-logo.png";
 import NewCalculator from '../../components/NewCalculator'
 
 function Barrel() {
@@ -11,11 +14,11 @@ function Barrel() {
     const [volume, setVolume] = useState(0);
 
     const calculateVolume = () => {
-            const tr = parseFloat(topRadius);
-            const mr = parseFloat(middleRadius);
-            const h = parseFloat(height);
-            const v = (Math.PI * h) * (tr * tr + 2 * mr * mr) / 3;
-            setVolume(v); 
+        const tr = parseFloat(topRadius);
+        const mr = parseFloat(middleRadius);
+        const h = parseFloat(height);
+        const v = (Math.PI * h) * (tr * tr + 2 * mr * mr) / 3;
+        setVolume(v);
     };
     function reset() {
         setMiddleRadius(15);
@@ -23,6 +26,14 @@ function Barrel() {
         setTopRadius(22);
         setVolume(0);
     }
+
+
+    const componentsRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentsRef.current,
+        documentTitle:<div> <img src={logo} alt="" /></div>,
+        onAfterPrint: () => alert("print success"),
+    })
     return (
         <div>
 
@@ -38,43 +49,39 @@ function Barrel() {
                         <p>To calculate the volume of the barrel using the barrel calculator, enter the top, middle, bottom radius, and height in the corresponding boxes and click calculate.
                         </p>
                         <div className='polygon-calculator-div '>
-                            <div className="polygon-calculator px-2">
-                                <Row className='text-center'>
-                                    <span className='text-center'>Formula:</span>
-                                    <st>Volume = π H (r2 + 2R2) / 3
-                                    </st>
-
-                                </Row>
-                                <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
-                                    <Col md={6} sm={12} xs={12} >top radius (R) :
-                                    </Col>
-                                    <Col md={6} sm={12} xs={12} >
-                                        <input type="number" value={topRadius} onChange={(e) => setTopRadius(e.target.value)} />
-                                    </Col>
-                                </Row> <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
-                                    <Col md={6} sm={12} xs={12} >middle radius (r): </Col>
-                                    <Col md={6} sm={12} xs={12} >
-                                        <input type="number" value={middleRadius} onChange={(e) => setMiddleRadius(e.target.value)} />
-                                    </Col>
-                                </Row>
-                                <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
-                                    <Col md={6} sm={12} xs={12} >Height (H):</Col>
-                                    <Col md={6} sm={12} xs={12} >
-                                        <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
-                                    </Col>
-                                </Row>
+                                <ButtonA onClick={handlePrint}text="Print"/>
+                                <div className="polygon-calculator px-2" ref={componentsRef}>
+                                    <Row className='text-center'>
+                                        <span className='text-center'>Formula:</span>
+                                        <st>Volume = π H (r2 + 2R2) / 3</st>
+                                    </Row>
+                                    <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
+                                        <Col md={6} sm={12} xs={12} >top radius (R) :
+                                        </Col>
+                                        <Col md={6} sm={12} xs={12} >
+                                            <input type="number" value={topRadius} onChange={(e) => setTopRadius(e.target.value)} />
+                                        </Col>
+                                    </Row> <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
+                                        <Col md={6} sm={12} xs={12} >middle radius (r): </Col>
+                                        <Col md={6} sm={12} xs={12} >
+                                            <input type="number" value={middleRadius} onChange={(e) => setMiddleRadius(e.target.value)} />
+                                        </Col>
+                                    </Row>
+                                    <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
+                                        <Col md={6} sm={12} xs={12} >Height (H):</Col>
+                                        <Col md={6} sm={12} xs={12} >
+                                            <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
+                                        </Col>
+                                    </Row>
+                              
                                 <center className='d-flex justify-content-center py-3'>
                                     <dt className='pe-2'>Volume: </dt>
-                                    <button className='polygon-claculator-value-btn'>{volume.toString().substring(0,5)}</button>
-                                </center>
-
+                                    <button className='formula-value-btn'>{volume.toString().substring(0, 5)}</button>
+                                </center>  </div>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={calculateVolume}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                                    <ButtonA onClick={calculateVolume} text="Calculate"/>
+                                    <ButtonA onClick={reset} text="Reset"/>
                                 </div>
-                            </div>
-
-                            {/* steps */}
                             <center>
                                 <button type='button'
                                     style={{ border: "none", textDecoration: "underline", background: "none", color: "#F58648" }} className="my-3" onClick={() => settextShow(!textShow)}>{textShow === true ? "Hide Steps" : "Show Steps"}</button>
@@ -101,9 +108,7 @@ function Barrel() {
                         </div>
                         {/* formula */}
                         <div className='polygon-calculator-text-div'>
-                            <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}
-
-                                onDoubleClick={() => setShow(false)} >Formula</button>
+                            <ButtonA onClick={() => setShow(true)} text="Formula"/>
                             {show ?
                                 <div className='formula-backside'>
                                     <span className='fw-bold' > Formula for Volume of Barrel:</span><br />
@@ -111,7 +116,7 @@ function Barrel() {
                                     Where,<br />
                                     h = Height of the Barrel<br />
                                     r1, r2 = Radii of the Barrel<br />
-                                    <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                                    <ButtonA onClick={() => setShow(false)} text="Close Formula"/>
                                 </div>
                                 : null}
                             <p>The barrel is roughly cylindrical in shape except that it is bulged outwards in the middle. The barrel calculator calculates the volume of a barrel. The volume of a Barrel can be calculated by the given height and radii.</p>

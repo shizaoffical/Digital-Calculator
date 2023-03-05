@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Triangle() {
 
@@ -107,7 +108,7 @@ function Triangle() {
                         </Col>
                     </Row>
 
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
                         {/* ////////////////////////////////////   Area-of-triangle  /////////////////////////////// */}
 
@@ -135,8 +136,8 @@ function Triangle() {
                                         <button className='formula-value-btn'>{areaOfCalculator.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                                    <ButtonA onClick={calculate} text="Calculate"/>
+                                    <ButtonA onClick={reset} text="Reset"/>
 
                                 </div>
                             </>
@@ -177,8 +178,8 @@ function Triangle() {
                                             {perimeterOfTriangle.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={perimeter}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={perimeterReset} >Reset</button>
+                                    <ButtonA onClick={perimeter} text="Calculate"/>
+                                    <ButtonA onClick={perimeterReset} text="Reset"/>
 
                                 </div>
                             </>
@@ -204,8 +205,8 @@ function Triangle() {
                                             {areaOfEquilateralTriangle.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={areaofequatri}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={equilateralTriangleReset} >Reset</button>
+                                    <ButtonA onClick={areaofequatri} text="Calculate"/>
+                                    <ButtonA onClick={equilateralTriangleReset}  text="Reset"/>
 
                                 </div>
                             </>
@@ -245,8 +246,8 @@ function Triangle() {
                                             {SAStriangle.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={SASangletriangle}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={SAStriangleReset} >Reset</button>
+                                    <ButtonA onClick={SASangletriangle} text="Calculate"/>
+                                    <ButtonA onClick={SAStriangleReset} text="Reset"/>
 
                                 </div>
                             </>
@@ -319,7 +320,7 @@ function Triangle() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
                             <dt> Area of triangle: <span>[ l×b /2 ]</span> </dt>
@@ -330,7 +331,7 @@ function Triangle() {
                             <dt>Where,</dt>
                             <span>l = length<br />b =breadth</span><br />
                             <span> a,b, and c = sides of the triangle</span><br />
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/> 
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Rectangular() {
 
@@ -45,7 +46,7 @@ function Rectangular() {
                 <p>The rectangular coordinates are converted to polar coordinates using the Rectangular to Polar Conversion Calculator, and vice versa. For the specified rectangle values, it determines and shows the equivalent polar value.
                 </p>
                 <div className='polygon-calculator-div '>
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
@@ -71,8 +72,8 @@ function Rectangular() {
                         </Row>
                     </div>
                     <div className='text-center'>
-                        <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                        <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                        <ButtonA onClick={calculate} text="Calculate"/>
+                        <ButtonA onClick={reset} text="Reset"/>
 
                     </div>
                     <center>
@@ -92,7 +93,7 @@ function Rectangular() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
                             <dt>   R = sqrt(x * x + y * y) , angle = atan(y/x)</dt>
@@ -103,7 +104,7 @@ function Rectangular() {
                             <span> r - the distance from the origin to the point.</span><br />
                             <span> q - the angle measured from the positive x axis to the point.</span><br />
                             <span> t - angle (in degrees)</span><br />
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula" />
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

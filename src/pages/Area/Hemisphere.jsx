@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Hemisphere() {
 
@@ -46,9 +47,8 @@ function Hemisphere() {
     <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
         <h2 className='text-center fw-bold'>Hemisphere calculate</h2>
         <div className='polygon-calculator-div '>
-            <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+            <ButtonA onClick={handlePrint} text="Print"/>
             <div className="polygon-calculator px-2" ref={componentsRef}>
-
                 <Row style={{ alignItems: "center", textAlign: "center" }}>
                     <Col md={12} sm={12} xs={12} >
                         <label>Enter the  radius:<input type="number" className='ms-3' value={radius}
@@ -72,8 +72,8 @@ function Hemisphere() {
                 </Row>
             </div>
             <div className='text-center'>
-                <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                <ButtonA onClick={calculate}text="Calculate"/>
+                <ButtonA onClick={reset} text="Reset"/>
             </div>
             <center>
                 <button type='button'
@@ -96,7 +96,7 @@ function Hemisphere() {
 
         {/* ***************   formula ********** */}
         <div className='polygon-calculator-text-div'>
-            <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+            <ButtonA onClick={() => setShow(true)} text="Formula"/>
             {show ?
                 <div className='formula-backside'>
                     <dt>Volume of Hemisphere  <span>= (2/3)πr³</span></dt>
@@ -104,7 +104,7 @@ function Hemisphere() {
                     <dt>Total Surface Area(TSA) of Hemisphere  <span>= 3πr²</span></dt>
                     <dt>where,</dt>
                     r = radius, π = 3.14
-                    <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                    <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                 </div>
                 : null}
             {/* ***************   formula end and example start ********** */}

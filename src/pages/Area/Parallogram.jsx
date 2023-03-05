@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 function Parallogram() {
 
 
@@ -71,11 +72,9 @@ function Parallogram() {
                         </Col>
                     </Row>
 
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
                         {/* ////////////////////////////////////   Area of Kite  /////////////////////////////// */}
-
-
                         {
                             selectCondition === "Area of Rectangular" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
@@ -100,8 +99,8 @@ function Parallogram() {
                                         <button className='formula-value-btn'>{rectangularArea.toString().substring(0,6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={RectangularArea}>Calculate</button>
-                                    <button className="polygon-calculator-btn"  onClick={RectangularAreaReset}>Reset</button>
+                                    <ButtonA onClick={RectangularArea} text="Calculate"/>
+                                    <ButtonA  onClick={RectangularAreaReset} text="Reset"/>
 
                                 </div>
                             </>
@@ -135,8 +134,8 @@ function Parallogram() {
                                         </button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={perimeterRectangular}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={perimeterRectangularReset} >Reset</button>
+                                    <ButtonA onClick={perimeterRectangular} text="Calculate"/>
+                                    <ButtonA onClick={perimeterRectangularReset} text="Reset"/>
 
                                 </div>
                             </>
@@ -176,7 +175,7 @@ function Parallogram() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
 
@@ -187,7 +186,7 @@ function Parallogram() {
                             <dt>Perimeter of Parallelogram  <span>= 2(b) + 2(h)  </span></dt>
                             <dt>where,</dt>
                             <span>b = breadth, h = height</span><br />
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula" />
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

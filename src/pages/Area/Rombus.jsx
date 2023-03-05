@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Rombus() {
 
@@ -90,7 +91,7 @@ function Rombus() {
                 </Col>
             </Row>
 
-            <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+            <ButtonA onClick={handlePrint} text="Print"/>
             <div className="polygon-calculator px-2" ref={componentsRef}>
                 {/* ////////////////////////////////////   Area-of-triangle  /////////////////////////////// */}
 
@@ -127,8 +128,8 @@ function Rombus() {
                                 <button className='formula-value-btn'>{EllipsePerimeter.toString().substring(0,6)}</button></Col>
                         </Row>
                         <div className='text-center'>
-                            <button className="polygon-calculator-btn" onClick={Ellipse} >Calculate</button>
-                            <button className="polygon-calculator-btn" onClick={EllipseReset} >Reset</button>
+                            <ButtonA onClick={Ellipse} text="Calculate"/>
+                            <ButtonA onClick={EllipseReset} text="Reset"/>
 
                         </div>
                     </>
@@ -169,8 +170,8 @@ function Rombus() {
                                     {VolumeOfEllipse.toString().substring(0,6)}</button></Col>
                         </Row>
                         <div className='text-center'>
-                            <button className="polygon-calculator-btn" onClick={Volume}>Calculate</button>
-                            <button className="polygon-calculator-btn" onClick={VolumeReset}>Reset</button>
+                            <ButtonA onClick={Volume} text="Calculate"/>
+                            <ButtonA onClick={VolumeReset} text="Reset"/>
 
                         </div>
                     </>
@@ -218,7 +219,7 @@ function Rombus() {
 
         {/* ***************   formula ********** */}
         <div className='polygon-calculator-text-div'>
-            <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+            <ButtonA onClick={() => setShow(true)} text="Formula"/>
             {show ?
                 <div className='formula-backside'>
                     <dt> Area of Ellipse <span>= πr1r2</span> </dt>
@@ -226,7 +227,7 @@ function Rombus() {
                     <dt>Perimeter of Ellipse <span> = 2πSqrt ((r1² + r2²) / 2)</span></dt>
                     <dt>Where,</dt>
                     <span> r1, r2 and r3 = radii</span><br />
-                    <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                    <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                 </div>
                 : null}
             {/* ***************   formula end and example start ********** */}

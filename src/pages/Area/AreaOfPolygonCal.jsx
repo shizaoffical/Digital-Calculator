@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
+import ButtonA from '../../components/ButtonA';
 
 
 
@@ -59,7 +60,7 @@ function AreaOfPolygonCal() {
                         <p>Use the area of a polygon calculator to determine the area by entering the length, radius, and number of sides in the appropriate input fields, then pressing the calculate button.
                         </p>
                         <div className='polygon-calculator-div '>
-                            <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                            <ButtonA onClick={handlePrint} text="Print"/>
                             <div className="polygon-calculator px-2" ref={componentsRef}>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }}>
@@ -114,8 +115,8 @@ function AreaOfPolygonCal() {
 
                             </div>
                             <div className='text-center'>
-                                <button className="polygon-calculator-btn" onClick={calculatePolygon}>Calculate</button>
-                                <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                                <ButtonA onClick={calculatePolygon} text="Calculate"/>
+                                <ButtonA onClick={reset} text="Reset"/>
                             </div>
                             <center>
                                 <button type='button'
@@ -183,7 +184,7 @@ function AreaOfPolygonCal() {
 
                         {/* ***************   formula ********** */}
                         <div className='polygon-calculator-text-div'>
-                            <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                            <ButtonA onClick={() => setShow(true)} text="Formula" />
                             {show ?
                                 <div className='formula-backside'>
                                     <span className='fw-bold' style={{ textDecoration: "underline" }}>  Using length of a side :</span> <br />
@@ -200,7 +201,7 @@ function AreaOfPolygonCal() {
                                     where,<br />
 
                                     N = Number of sides, A = Apothem, R = Radius, P = Perimeter<br/>
-                                    <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                                    <ButtonA onClick={() => setShow(false)} text="Close  Formula"/> 
                                 </div>
                                 : null}
                             {/* ***************   formula end and example start ********** */}

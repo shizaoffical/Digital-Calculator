@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Cylinder() {
 
@@ -49,7 +50,7 @@ function Cylinder() {
                 <p>Input the length and press calculate button to find the cube
                 </p>
                 <div className='polygon-calculator-div '>
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
@@ -80,8 +81,8 @@ function Cylinder() {
                         </Row>
                     </div>
                     <div className='text-center'>
-                        <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                        <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                        <ButtonA onClick={calculate}text="Calculate"/>
+                        <ButtonA onClick={reset} text="Reset"/>
 
                     </div>
                     <center>
@@ -100,7 +101,7 @@ function Cylinder() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
                             <dt>Volume of Cylinder = πr²h</dt>
@@ -109,7 +110,7 @@ function Cylinder() {
                             <dt>where,</dt><br />
                             a = side<br />
                             r = radius, h = height,π = 3.14
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Cone() {
     const [show, setShow]= useState(false);
@@ -54,7 +55,7 @@ function Cone() {
                 <p>A cone is a single-vertex, three-dimensional geometric shape having a circular base. The perpendicular height is the line that runs from the centre of the base to the apex.
                 </p>
                 <div className='polygon-calculator-div '>
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }}>
@@ -90,8 +91,8 @@ function Cone() {
                         </Row>
                     </div>
                     <div className='text-center'>
-                        <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                        <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                        <ButtonA onClick={calculate}text="Calculate"/>
+                        <ButtonA onClick={reset} text="Reset"/>
                     </div>
                     <center>
                         <button type='button'
@@ -109,7 +110,7 @@ function Cone() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
                             <dt className='Fw-bold'>Slant height of Cone (l) = </dt>Sqrt(r² + h²)<br />
@@ -118,7 +119,7 @@ function Cone() {
                             <dt>Total Surface Area (TSA) of Cone =,</dt>πr(l + r)<br />
                             <dt>where,</dt><br />
                             r = radius, l = slant height, h = height, π = 3.14<br />
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

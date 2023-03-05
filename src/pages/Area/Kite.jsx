@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Kite() {
     const [show, setShow] = useState(false);
@@ -87,7 +88,7 @@ function Kite() {
                         </Col>
                     </Row>
 
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
                         {/* ////////////////////////////////////   Area of Kite  /////////////////////////////// */}
 
@@ -115,8 +116,8 @@ function Kite() {
                                         <button className='formula-value-btn'>{areaOfKite.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={AreaOfKite}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={AreaOfKiteReset} >Reset</button>
+                                    <ButtonA onClick={AreaOfKite}text="Calculate"/>
+                                    <ButtonA onClick={AreaOfKiteReset} text="Reset"/>
 
                                 </div>
                             </>
@@ -157,8 +158,8 @@ function Kite() {
                                             {KiteTrignometery.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={AreaKiteTrignometery}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={AreaKiteTrignometeryReset} >Reset</button>
+                                    <ButtonA onClick={AreaKiteTrignometery} text="Calculate"/>
+                                    <ButtonA  onClick={AreaKiteTrignometeryReset} text="Reset"/>
 
                                 </div>
                             </>
@@ -191,8 +192,8 @@ function Kite() {
                                             {KitePerimeter.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <button className="polygon-calculator-btn" onClick={KiteofPerimeter}>Calculate</button>
-                                    <button className="polygon-calculator-btn" onClick={kitePerimeterReset} >Reset</button>
+                                    <ButtonA onClick={KiteofPerimeter} text="Calculate"/>
+                                    <ButtonA onClick={kitePerimeterReset}  text="Reset"/>
 
                                 </div>
                             </>}</div>
@@ -218,7 +219,7 @@ function Kite() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
 
@@ -228,7 +229,7 @@ function Kite() {
                             <dt>Where,</dt>
                             <span>l = length<br />b =breadth</span><br />
                             <span>a = length, b = breadth, d1, d2 are diagonals</span><br />
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

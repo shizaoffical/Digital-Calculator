@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
+import ButtonA from '../../components/ButtonA';
 
 function Sphere() {
     const [show, setShow] = useState(false);
@@ -43,7 +44,7 @@ function Sphere() {
                 <p>Enter the radius into the sphere calculator's calculate field to compute the sphere's volume and surface area.
                 </p>
                 <div className='polygon-calculator-div '>
-                    <button className='  polygon-calculator-btn' onClick={handlePrint}>Print</button>
+                    <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
@@ -65,8 +66,8 @@ function Sphere() {
                         </Row>
                     </div>
                     <div className='text-center'>
-                        <button className="polygon-calculator-btn" onClick={calculate}>Calculate</button>
-                        <button className="polygon-calculator-btn" onClick={reset} >Reset</button>
+                        <ButtonA onClick={calculate} text="Calculate"/>
+                        <ButtonA onClick={reset}  text="Reset"/>
 
                     </div>
                     <center>
@@ -88,14 +89,14 @@ function Sphere() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <button className="polygon-calculator-btn mb-2" onClick={() => setShow(true)}>Formula</button>
+                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
                     {show ?
                         <div className='formula-backside'>
                             <dt> Volume of Sphere <span>= (4/3) πr³</span> </dt>
                             <dt>Curved Surface Area (CSA) of Sphere <span> = 4πr²</span></dt>
                             <dt>Where,</dt>
                             <span> r = radius, π = 3.14</span><br />
-                            <button className="polygon-calculator-btn" onClick={() => setShow(false)} > Close  Formula</button>
+                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}
