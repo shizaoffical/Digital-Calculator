@@ -5,35 +5,18 @@ import logo from "../images/header-logo.png"
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  // const location = useLocation();
-  // const [searchText, setSearchText] = useState("");
-  // const [matchResult, setMatchResult] = useState("/Love");
-  
-  //   const handleSearch = (event) => {
-  //     event.preventDefault();
-  //     const matches = location.pathname.match(searchText);
-  //     if (matches) {
-  //       setMatchResult(matches);
-  //     } else {
-  //       setMatchResult(null);
-  //     }
-  //   }
+ 
   
   return (
 
     <div>
       {show ?
         <div className=' nav-search-btn-div me-auto'  >
-          <form className='sumbit container nav-search-btn d-flex w-100 align-items-center ' 
-          // onSubmit={handleSearch}
-          >
-            {/* <i class="fa-solid fa-magnifying-glass" style={{ color: "#F7941D", fontSize: "1.6rem" }}></i> */}
-            <input type="text" className='w-100 px-2 ' style={{ outline: "none", border: "none", backgroundColor: "none" }}
-            // value={searchText} onChange={(event) => setSearchText(event.target.value)} 
-            />
+          <form className='sumbit container nav-search-btn d-flex w-100 align-items-center ' >
+            <input type="text" className='w-100 px-2 ' style={{ outline: "none", border: "none", backgroundColor: "none" }}/>
 
-            <i className="fa-solid fa-xmark pe-3" onClick={() => setShow(false)}
-              style={{ border: "none", fontSize: "1.6rem", color: "white", backgroundColor: "none " }}> </i>
+            <i className="fa-solid fa-xmark pe-3 nav-search-close-icon" onClick={() => setShow(false)}
+              style={{  fontSize: "1.6rem", color: "white", backgroundColor: "none " , }}> </i>
           </form>
         </div>
         : null}
@@ -60,13 +43,6 @@ const Navbar = () => {
         </div>
 
       </nav>
-      {/* {matchResult && (
-        <div>
-          <p>Match found:</p>
-          <p>{matchResult}</p>
-          Add your own implementation here
-        </div>
-      )} */}
     </div>
   )
 }

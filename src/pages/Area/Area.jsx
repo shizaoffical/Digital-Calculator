@@ -35,7 +35,8 @@ function Area() {
             </Row>
              <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Kite" path="/area/kite"/></Col>
-                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Area of Parallelogram Calculator"/></Col>
+                <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Area of Parallelogram Calculator" 
+                path="/area/P]parallogram"/></Col>
             </Row> <Row className='mb-2'>
                 <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="Rectangular popular conversation" path="/area/rectangular"/></Col>
                 <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Rhombus"/></Col>

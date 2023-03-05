@@ -7,7 +7,7 @@
 .nav-search-btn-div {
   height: 6rem;
   width: 100%;
-  background-color: var(--main-gradiant);
+  background-color:var(--main-color);
   display: flex;
   align-items: center;
   animation: serch 1s linear;
@@ -45,7 +45,7 @@
 
 .nav-search-btn {
   padding: 0.8rem 0;
-  border-bottom: 2px solid var(--primary-color);
+  border-left: 2px solid var(--primary-color);
 }
 
 .nav-search-btn input {

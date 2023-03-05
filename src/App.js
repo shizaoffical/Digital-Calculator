@@ -14,6 +14,7 @@ import Cylinder from './pages/Area/Cylinder';
 import Elipse from './pages/Area/Elipse';
 import Hemisphere from './pages/Area/Hemisphere';
 import Kite from './pages/Area/Kite';
+import Parallogram from './pages/Area/Parallogram';
 import Rectangular from './pages/Area/Rectangular';
 import Sphere from './pages/Area/Sphere';
 import Square from './pages/Area/Square';
@@ -59,6 +60,8 @@ function App() {
             <Route path="/area/square" element={<Square />} />
             <Route path="/area/volumeOfHemisphere" element={<VolumeOfHemisphere />} />
             <Route path="/area/triangle" element={<Triangle />} />
+            <Route path="/area/P]parallogram" element={<Parallogram />} />
+
 
             <Route path="/Chemistry" element={<Chemistry />} />
             <Route path="/Currency" element={<Currency />} />

@@ -188,7 +188,7 @@ function Elipse() {
                             textShow &&
                             <>
                                 {selectCondition === "Ellipse (Ares & Perimeter)" &&
-                                    <Example heading="Ellipse (Ares & Perimeter)"
+                                    <Example heading="Ellipse (Area & Perimeter)"
                                         title="Step by step solution"
                                         step1="Data " step1heading="r1 = 10, r2 = 14, A = ? , P = ?"
                                         step2="Formula: " step2heading={<>Area = π x r1 x r2 --- (1)<br />
