@@ -36,6 +36,7 @@ import Unit from './pages/Unit/Unit';
 import Weather from './pages/weather/Weather';
 import Rhombus from "./pages/Area/Rhombus"
 import Trapezium from './pages/Area/Trapezium';
+import Pyramid from './pages/Area/Pyramid';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
             <Route path="/area/parallogram" element={<Parallogram />} />
             <Route path="/area/rhombus" element={<Rhombus/>} />
             <Route path="/area/trapezium" element={<Trapezium/>} />
+            <Route path="/area/pyramid" element={<Pyramid/>} />
 
             <Route path="/Chemistry" element={<Chemistry />} />
             <Route path="/Currency" element={<Currency />} />

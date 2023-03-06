@@ -50,7 +50,7 @@ function Area() {
                 <Col  sm={6} xs={12}> <CalculatorName CalculatorName="Trapezium" path="/area/trapezium"/></Col>
             </Row>
             <Row className='mb-2'>
-                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="pyramid"/></Col>
+                <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="pyramid" path="/area/pyramid"/></Col>
                 <Col  sm={6} xs={12}> <CalculatorName CalculatorName="volume of hemisphere calculator" path="/area/volumeOfHemisphere"/></Col>
             </Row>
                 </div>
