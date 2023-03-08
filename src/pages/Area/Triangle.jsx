@@ -320,7 +320,7 @@ function Triangle() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             <dt> Area of triangle: <span>[ l×b /2 ]</span> </dt>
@@ -331,7 +331,6 @@ function Triangle() {
                             <dt>Where,</dt>
                             <span>l = length<br />b =breadth</span><br />
                             <span> a,b, and c = sides of the triangle</span><br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/> 
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

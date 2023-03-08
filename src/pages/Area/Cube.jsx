@@ -93,7 +93,7 @@ function Cube() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             <dt>Volume of Cube = a³</dt>
@@ -101,7 +101,6 @@ function Cube() {
                             <dt>Diagonal of Cube = Sqrt (3)*a</dt>
                             <dt>where,</dt>
                             a = side
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/> 
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

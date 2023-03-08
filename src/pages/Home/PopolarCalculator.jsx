@@ -23,7 +23,7 @@ function PopolarCalculator() {
             <Headings PopularCalculatorName="Sports" path="/Sports"/>
             <Headings PopularCalculatorName="Chemistry" path="/Chemistry"/>
             <Headings PopularCalculatorName="Engineering" path="/Engineering"/>
-            <Headings PopularCalculatorName="Physics" path="/Physics"/>
+            <Headings PopularCalculatorName="Physics" path="/physics"/>
             <Headings PopularCalculatorName="Units" path="/Units"/>
             <Headings PopularCalculatorName="Math" path="/Math"/>
             <Headings PopularCalculatorName="Weather" path="/Weather"/>

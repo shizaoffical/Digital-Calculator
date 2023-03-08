@@ -115,6 +115,7 @@ function Rhombus() {
 
                         {
                             selectCondition === "Area of Rombus(Base Time Height Method)" && <>
+                               <div className='text-center'>  <dt>Formula</dt> A  = b * h</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> Base (b): <input type="number" className='ms-3 ' value={base}
@@ -147,6 +148,7 @@ function Rhombus() {
                         {/* ////////////////////////////////  Area of Rombus(Diagonal Method) ////////////////////////////// */}
 
                         {selectCondition === "Area of Rombus(Diagonal Method)" && <>
+                        <div className='text-center'>  <dt>Formula</dt>Area(D)  = p*q / 2</div>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                 <Col md={12} sm={12} xs={12} >
                                     <label> Diagonal length (p):
@@ -179,6 +181,7 @@ function Rhombus() {
 
                         {/* /////////////////////////////// Area of Rombus Using Trigonometry/////////////////////////////////////// */}
                         {selectCondition === "Area of Rombus Using Trigonometry" && <>
+                        <div className='text-center'> <dt>Formula</dt> Area(T) = length² * Sin(angle)</div>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                 <Col md={12} sm={12} xs={12} >
                                     <label> Lenght(l):
@@ -209,6 +212,7 @@ function Rhombus() {
                         </>}
                         {/* ///////////////////////////////////Perimeter of Rhombus//////////////////////////////// */}
                         {selectCondition === "Perimeter of Rhombus" && <>
+                        <div className='text-center'> <dt>Formula</dt> P  = 4 * (length)</div>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                 <Col md={12} sm={12} xs={12} >
                                     <label> Length(l):
@@ -278,7 +282,7 @@ function Rhombus() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula" />
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             <dt> The formula of the area of the rhombus:</dt>
@@ -292,7 +296,6 @@ function Rhombus() {
                             <dt>Perimeter of Rhombus<span> = 4(a) </span></dt>
                             <dt>Where,</dt>
                             <span> a = side b = height, d1 and d2 diagonals</span><br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula" />
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

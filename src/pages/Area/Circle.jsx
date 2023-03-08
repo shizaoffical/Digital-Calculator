@@ -93,14 +93,13 @@ function Circle() {
 
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
-                        <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                    <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                         {show ?
                             <div className='formula-backside'>
                                <dt className='Fw-bold'>Area of Circle </dt>= πr²<br/>
                                <dt>Circumference of Circle </dt>= 2πr = πd<br/>
                                <dt>Area of Sector</dt>= πr² (θ/360) = ½ *arc * (angle in degree)<br/>
                                <dt> where,</dt>r = radius <br/>π = 3.14<br/>
-                                <ButtonA onClick={() => setShow(false)} text="Close Formula"/> 
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}

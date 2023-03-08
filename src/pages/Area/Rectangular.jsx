@@ -93,7 +93,7 @@ function Rectangular() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             <dt>   R = sqrt(x * x + y * y) , angle = atan(y/x)</dt>
@@ -104,7 +104,6 @@ function Rectangular() {
                             <span> r - the distance from the origin to the point.</span><br />
                             <span> q - the angle measured from the positive x axis to the point.</span><br />
                             <span> t - angle (in degrees)</span><br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula" />
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

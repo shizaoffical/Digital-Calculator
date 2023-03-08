@@ -96,7 +96,8 @@ function Elipse() {
 
                         {
                             selectCondition === "Ellipse (Ares & Perimeter)" && <>
-                                <div className='text-center'>
+                                <div className='text-center'> 
+                                <dt>Formula</dt>
                                     Area = [ π×r1×r2 ]<br />
                                     Perimeter = [ 2×π×Sqrt((r1² + r2²)/2) ]
                                 </div>
@@ -138,6 +139,8 @@ function Elipse() {
 
                         {
                             selectCondition === "Ellipse Volume" && <>
+                            <div className='text-center'>  <dt>Formula</dt> Volume = [ (4/3)×π×r1×r2×r3 ]</div>
+                                
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> Radius(r1):
@@ -208,7 +211,7 @@ function Elipse() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             <dt> Area of Ellipse <span>= πr1r2</span> </dt>
@@ -216,7 +219,6 @@ function Elipse() {
                             <dt>Perimeter of Ellipse <span> = 2πSqrt ((r1² + r2²) / 2)</span></dt>
                             <dt>Where,</dt>
                             <span> r1, r2 and r3 = radii</span><br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

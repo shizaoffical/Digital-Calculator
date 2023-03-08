@@ -175,7 +175,7 @@ function Parallogram() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
 
@@ -186,7 +186,6 @@ function Parallogram() {
                             <dt>Perimeter of Parallelogram  <span>= 2(b) + 2(h)  </span></dt>
                             <dt>where,</dt>
                             <span>b = breadth, h = height</span><br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula" />
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

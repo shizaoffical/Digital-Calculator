@@ -82,11 +82,10 @@ function VolumeOfHemisphere() {
 
         {/* ***************   formula ********** */}
         <div className='polygon-calculator-text-div'>
-            <ButtonA onClick={() => setShow(true)} text="Formula"/>
+        <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
             {show ?
                 <div className='formula-backside'>
                     <dt> Volume of a Cylinder = (PI * r2 * h) + (( 4 / 3 ) * PI * r3) </dt>
-                    <ButtonA onClick={() => setShow(false)} text=" Close  Formula"/>
                 </div>
                 : null}
             {/* ***************   formula end and example start ********** */}

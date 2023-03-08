@@ -95,6 +95,7 @@ function Kite() {
 
                         {
                             selectCondition === "Area of Kite" && <>
+                            <div className='text-center'>  <dt>Formula</dt> A = p* q / 2</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> Diagonal Length(p) :
@@ -128,6 +129,7 @@ function Kite() {
 
                         {
                             selectCondition === "Area of Kite Using Tripographt" && <>
+                            <div className='text-center'>  <dt>Formula</dt> T = a * b * Sin(c)</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> side(a) :
@@ -169,6 +171,7 @@ function Kite() {
                         {/* //////////////////////////////// Perimeter of Kite//////////////////////////*/}
                         {
                             selectCondition === "Perimeter of Kite" && <>
+                            <div className='text-center'>  <dt>Formula</dt> P  = 2(a + b)</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> length (a) :
@@ -219,7 +222,7 @@ function Kite() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
 
@@ -229,7 +232,6 @@ function Kite() {
                             <dt>Where,</dt>
                             <span>l = length<br />b =breadth</span><br />
                             <span>a = length, b = breadth, d1, d2 are diagonals</span><br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

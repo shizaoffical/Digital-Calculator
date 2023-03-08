@@ -184,7 +184,7 @@ function AreaOfPolygonCal() {
 
                         {/* ***************   formula ********** */}
                         <div className='polygon-calculator-text-div'>
-                            <ButtonA onClick={() => setShow(true)} text="Formula" />
+                        <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                             {show ?
                                 <div className='formula-backside'>
                                     <span className='fw-bold' style={{ textDecoration: "underline" }}>  Using length of a side :</span> <br />
@@ -201,7 +201,6 @@ function AreaOfPolygonCal() {
                                     where,<br />
 
                                     N = Number of sides, A = Apothem, R = Radius, P = Perimeter<br/>
-                                    <ButtonA onClick={() => setShow(false)} text="Close  Formula"/> 
                                 </div>
                                 : null}
                             {/* ***************   formula end and example start ********** */}

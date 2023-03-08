@@ -487,7 +487,7 @@ function Pyramid() {
 
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(true)} text="Formula" />
+                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             The pyramid area calculator automatically utilizes the relevant formula and calculates the area, volume, base, and other terms accordingly.<br />
@@ -533,7 +533,6 @@ function Pyramid() {
                             sl= slant height<br />
                             abh area of base * height<br />
                             A pyramid is a polyhedron with one face as a base, a polygon, and all the other faces triangles meeting at a common polygon vertex as the apex. It is a structure where the upper surfaces are triangular and converge on one point.<br />
-                            <ButtonA onClick={() => setShow(false)} text="Close  Formula" />
                         </div>
                         : null}
                     {/* ***************   formula end and example start ********** */}

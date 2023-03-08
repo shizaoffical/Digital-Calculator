@@ -17,11 +17,14 @@ function Physics() {
         <p>Physics is a natural science that examines matter and its motion as well as ideas like energy and force. Temperature is also determined. Calculate the temperature and kinetic energy using an advanced online physics calculator.</p>
         <dt className='text-center mb-3'>Fluid Mechanics</dt>
         <Row className='mb-2'>
-        <Col sm={6} xs={12}><CalculatorName CalculatorName="bernoulli numbers"/></Col> 
-        <Col sm={6} xs={12}><CalculatorName CalculatorName="brake horsepower"/></Col> 
+        <Col sm={6} xs={12}><CalculatorName CalculatorName="Bernoulli Numbers"  
+        path="/physics/fluid-machine/bernoulli-numbers"/></Col> 
+        <Col sm={6} xs={12}><CalculatorName CalculatorName="brake horsepower" 
+        path="/physics/fluid-machine/break-horse-power" /></Col> 
     </Row>
     <Row className='mb-2'>
-        <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="broad crested weir"/></Col>
+        <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="broad crested weir" 
+        path="/physics/fluid-machine/broad-crusted-weir"/></Col>
         <Col  sm={6} xs={12}> <CalculatorName CalculatorName="euler numbers"/></Col>
     </Row>
     <Row className='mb-2'>

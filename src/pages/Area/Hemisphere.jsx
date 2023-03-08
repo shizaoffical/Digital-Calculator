@@ -96,7 +96,7 @@ function Hemisphere() {
 
         {/* ***************   formula ********** */}
         <div className='polygon-calculator-text-div'>
-            <ButtonA onClick={() => setShow(true)} text="Formula"/>
+        <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
             {show ?
                 <div className='formula-backside'>
                     <dt>Volume of Hemisphere  <span>= (2/3)πr³</span></dt>
@@ -104,7 +104,6 @@ function Hemisphere() {
                     <dt>Total Surface Area(TSA) of Hemisphere  <span>= 3πr²</span></dt>
                     <dt>where,</dt>
                     r = radius, π = 3.14
-                    <ButtonA onClick={() => setShow(false)} text="Close  Formula"/>
                 </div>
                 : null}
             {/* ***************   formula end and example start ********** */}

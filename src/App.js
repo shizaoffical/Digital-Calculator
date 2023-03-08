@@ -37,6 +37,9 @@ import Weather from './pages/weather/Weather';
 import Rhombus from "./pages/Area/Rhombus"
 import Trapezium from './pages/Area/Trapezium';
 import Pyramid from './pages/Area/Pyramid';
+import BernoullliNumbers from './pages/Physics/fluidMechanics/BernoullliNumbers';
+import BroadCrustedWeir from './pages/Physics/fluidMechanics/BroadCrustedWeir';
+import BreakHorsePower from "./pages/Physics/fluidMechanics/BreakHorsePower";
 
 
 function App() {
@@ -75,7 +78,13 @@ function App() {
             <Route path="/Fun" element={<Fun />} />
             <Route path="/Love" element={<Love />} />
             <Route path="/Graphics" element={<Graphics />} />
-            <Route path="/Physics" element={<Physics />} />
+
+            <Route path="/physics" element={<Physics />} />
+            <Route path="/physics/fluid-machine/bernoulli-numbers" element={<BernoullliNumbers />} />
+            <Route path="/physics/fluid-machine/break-horse-power" element={<BreakHorsePower/>} />
+            <Route path="/physics/fluid-machine/broad-crusted-weir" element={<BroadCrustedWeir />} />
+
+
             <Route path="/Health" element={<Health />} />
             <Route path="/Weather" element={<Weather />} />
             <Route path="/Financial" element={<Financial />} />

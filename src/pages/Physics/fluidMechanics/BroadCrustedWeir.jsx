@@ -1,68 +1,28 @@
 import React, { useRef, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import NewCalculator from '../../components/NewCalculator'
+import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
-import Example from '../../components/Example';
-import ButtonA from '../../components/ButtonA';
+import Example from '../../../components/Example';
+import ButtonA from '../../../components/ButtonA';
 
-function Trapezium() {
-
-
-    const [show, setShow] = useState(false);
-    const [textShow, settextShow] = useState(false);
-    const [selectCondition, setSelectCondition] = useState('Area of Trapezium');
-    // Area of Trapezium
-    const [Psidea, setPsidea] = useState(4);
-    const [Psideb, setPsideb] = useState(6);
-    const [PsideDistance, setPsideDistance] = useState(12);
-    const [AreaTrapezium, setAreaTrapezium] = useState(0);
-    // Perimeter OF Tapezium 
-    const [A, setA] = useState(3);
-    const [B, setB] = useState(4);
-    const [C, setC] = useState(5);
-    const [D, setD] = useState(6);
-    const [PerimeterTrapezium, setPerimeterTrapezium] = useState(0)
-
-    // Area of Trapezium
-    const areaTrapezium = () => {
-        const TrapeziumArea = 1 / 2 * (Psidea + Psideb) * PsideDistance;
-        setAreaTrapezium(TrapeziumArea)
-    }
-    function areaTrapeziumReset() {
-        setPsidea(0);
-        setPsideb(0);
-        setPsideDistance(0);
-        setAreaTrapezium("")
-    }
-
-    const perimeterTrapezium = () => {
-        const perimeter = A + B + C + D;
-        setPerimeterTrapezium(perimeter);
-    }
-    function perimeterTrapeziumReset() {
-        setA(0);
-        setB(0);
-        setC(0);
-        setD(0);
-        setPerimeterTrapezium("")
-    }
-    // handle change
-    const handleSelectChange = (event) => {
-        setSelectCondition(event.target.value);
-    }
-
-    const componentsRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentsRef.current,
-        documentTitle: 'calculator',
-        onafterprint: () => alert("print success"),
-    })
+function BroadCrustedWeir() {
+  const [show, setShow] = useState(false);
+  const [textShow, settextShow] = useState(false);
+  const [selectCondition, setSelectCondition] = useState('Area of Trapezium');
 
 
+  const handleSelectChange = (event) => {
+    setSelectCondition(event.target.value);
+}
 
-
-    return (
-        <div>     <Container className='home-page '>
+  const componentsRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentsRef.current,
+    documentTitle: 'calculator',
+    onafterprint: () => alert("print success"),
+  })
+  return (
+    <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
                 <NewCalculator title="Area of polygon calculate"
                     title1="remainder theorem Calculator" title2="law of science Calculator"
@@ -91,22 +51,22 @@ function Trapezium() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> Parallel side 1 (a):
-                                            <input type="number" className='ms-3' value={Psidea}
-                                                onChange={(e) => setPsidea(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                />
                                         </label></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label>Parallel side 1 (b):
-                                            <input type="number" className='ms-3' value={Psideb}
-                                                onChange={(e) => setPsideb(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                />
                                         </label></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label>Distance between parallel sides: (h):
-                                            <input type="number" className='ms-3' value={PsideDistance}
-                                                onChange={(e) => setPsideDistance(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                 />
                                         </label></Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
@@ -114,11 +74,11 @@ function Trapezium() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area of Trapezium: </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{AreaTrapezium.toString().substring(0, 6)}</button></Col>
+                                        <button className='formula-value-btn'></button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <ButtonA text="Calculate" onClick={areaTrapezium} />
-                                    <ButtonA text="Reset" onClick={areaTrapeziumReset} />
+                                    <ButtonA text="Calculate"  />
+                                    <ButtonA text="Reset"  />
 
                                 </div>
                             </>
@@ -136,28 +96,28 @@ function Trapezium() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> a:
-                                            <input type="number" className='ms-3' value={A}
-                                                onChange={(e) => setA(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                 />
                                         </label></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label>b:
-                                            <input type="number" className='ms-3' value={B}
-                                                onChange={(e) => setB(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                 />
                                         </label></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> c:
-                                            <input type="number" className='ms-3' value={C}
-                                                onChange={(e) => setC(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                />
                                         </label></Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={12} sm={12} xs={12} >
                                         <label> d:
-                                            <input type="number" className='ms-3' value={D}
-                                                onChange={(e) => setD(e.target.value)} />
+                                            <input type="number" className='ms-3' 
+                                                />
                                         </label></Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
@@ -166,11 +126,11 @@ function Trapezium() {
                                     <Col md={6} sm={12} xs={12}><dt> Perimeter of Trapezium: </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <button className='formula-value-btn'>
-                                            {parseFloat(PerimeterTrapezium).toString().substring(0, 6)}</button></Col>
+                                            </button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <ButtonA text="Calculate" onClick={perimeterTrapezium} />
-                                    <ButtonA text="Reset" onClick={perimeterTrapeziumReset} />
+                                    <ButtonA text="Calculate"  />
+                                    <ButtonA text="Reset"  />
 
                                 </div>
                             </>
@@ -229,8 +189,7 @@ function Trapezium() {
             </div>
         </Container >
         </div >
-
-    )
+  )
 }
 
-export default Trapezium
+export default BroadCrustedWeir

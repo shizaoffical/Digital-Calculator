@@ -108,7 +108,7 @@ function Barrel() {
                         </div>
                         {/* formula */}
                         <div className='polygon-calculator-text-div'>
-                            <ButtonA onClick={() => setShow(true)} text="Formula"/>
+                        <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                             {show ?
                                 <div className='formula-backside'>
                                     <span className='fw-bold' > Formula for Volume of Barrel:</span><br />
@@ -116,7 +116,6 @@ function Barrel() {
                                     Where,<br />
                                     h = Height of the Barrel<br />
                                     r1, r2 = Radii of the Barrel<br />
-                                    <ButtonA onClick={() => setShow(false)} text="Close Formula"/>
                                 </div>
                                 : null}
                             <p>The barrel is roughly cylindrical in shape except that it is bulged outwards in the middle. The barrel calculator calculates the volume of a barrel. The volume of a Barrel can be calculated by the given height and radii.</p>

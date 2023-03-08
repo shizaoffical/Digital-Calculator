@@ -99,14 +99,13 @@ function Square() {
 
         {/* ***************   formula ********** */}
         <div className='polygon-calculator-text-div'>
-            <ButtonA onClick={() => setShow(true)} text="Formula"/>
+        <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
             {show ?
                 <div className='formula-backside'>
                     <dt> Area of square :<span>[(side)<sup>2</sup>]</span> </dt>
                     <dt>Perimeter of square: <span>  [4(side)]</span></dt>
                     <dt>Where,</dt>
                     <span>Diagonal of square: [(side) (sqrt(2))]</span><br />
-                    <ButtonA onClick={() => setShow(false)} text="Close  Formula"/> 
                 </div>
                 : null}
             {/* ***************   formula end and example start ********** */}
