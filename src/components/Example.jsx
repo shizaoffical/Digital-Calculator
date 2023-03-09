@@ -4,7 +4,7 @@ function Example(props) {
     return (
         <div>
             <div className='text-center'>
-                <h4 className='fw-bold'>{props.heading}</h4><br />{ props.title}<br />
+                <h4 className='fw-bold'>{props.heading}</h4><br />{props.title}<br />
                 {props.step1 && <div className='my-2'><span className='fw-bold ' style={{ color: "#F58648" }}>{props.step1} </span>{props.step1heading}<br />
                     {props.step1value}<br /> </div>}
                 {props.step2 && <div className='my-2'>

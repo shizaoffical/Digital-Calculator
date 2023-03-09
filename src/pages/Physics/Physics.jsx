@@ -25,7 +25,8 @@ function Physics() {
     <Row className='mb-2'>
         <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="broad crested weir" 
         path="/physics/fluid-machine/broad-crusted-weir"/></Col>
-        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="euler numbers"/></Col>
+        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="euler numbers"
+        path="/physics/fluid-machine/euler-numbers"/></Col>
     </Row>
     <Row className='mb-2'>
         <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="flow rate"/></Col>

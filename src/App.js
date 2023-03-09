@@ -40,6 +40,7 @@ import Pyramid from './pages/Area/Pyramid';
 import BernoullliNumbers from './pages/Physics/fluidMechanics/BernoullliNumbers';
 import BroadCrustedWeir from './pages/Physics/fluidMechanics/BroadCrustedWeir';
 import BreakHorsePower from "./pages/Physics/fluidMechanics/BreakHorsePower";
+import EulerNumbers from './pages/Physics/fluidMechanics/EulerNumbers';
 
 
 function App() {
@@ -83,6 +84,8 @@ function App() {
             <Route path="/physics/fluid-machine/bernoulli-numbers" element={<BernoullliNumbers />} />
             <Route path="/physics/fluid-machine/break-horse-power" element={<BreakHorsePower/>} />
             <Route path="/physics/fluid-machine/broad-crusted-weir" element={<BroadCrustedWeir />} />
+            <Route path="/physics/fluid-machine/euler-numbers" element={<EulerNumbers />} />
+
 
 
             <Route path="/Health" element={<Health />} />
