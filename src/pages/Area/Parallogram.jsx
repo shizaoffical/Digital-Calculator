@@ -78,18 +78,22 @@ function Parallogram() {
                         {
                             selectCondition === "Area of Rectangular" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base (b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base (b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={base} 
                                             onChange={(e) => setBase(e.target.value)}/>
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Height (h) : 
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Height (h) : </label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={height}
                                           onChange={(e) => setHeight(e.target.value)}/>
-                                        </label></Col>
+                                    
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -112,18 +116,22 @@ function Parallogram() {
                         {
                             selectCondition === "Perimeter OF Rectangular" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> side(a) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> side(a) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={side1}
                                             onChange={(e) => setSide1(e.target.value)}/>
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Side(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Side(b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={side2}
                                             onChange={(e) => setSide2(e.target.value)}/>
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 

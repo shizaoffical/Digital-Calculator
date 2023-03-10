@@ -89,25 +89,28 @@ function Trapezium() {
                             selectCondition === "Area of Trapezium" && <>
                                 <div className='text-center'> <dt>Formula</dt> Area  = ½ × (a + b) × h</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Parallel side 1 (a):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Parallel side 1 (a):</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={Psidea}
                                                 onChange={(e) => setPsidea(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>Parallel side 1 (b):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>Parallel side 1 (b):</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={Psideb}
                                                 onChange={(e) => setPsideb(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>Distance between parallel sides: (h):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>Distance between parallel sides: (h):</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={PsideDistance}
                                                 onChange={(e) => setPsideDistance(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -134,31 +137,36 @@ function Trapezium() {
                                 <dt className='text-center'> Enter the length of a side</dt>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> a:
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> a: </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={A}
                                                 onChange={(e) => setA(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>b:
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>b:</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={B}
                                                 onChange={(e) => setB(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> c:
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> c:</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={C}
                                                 onChange={(e) => setC(e.target.value)} />
-                                        </label></Col>
-                                </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> d:
+                                        </Col>
+                                </Row>
+                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> d:</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={D}
                                                 onChange={(e) => setD(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 

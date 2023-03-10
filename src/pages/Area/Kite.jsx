@@ -97,17 +97,19 @@ function Kite() {
                             selectCondition === "Area of Kite" && <>
                             <div className='text-center'>  <dt>Formula</dt> A = p* q / 2</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Diagonal Length(p) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Diagonal Length(p) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" value={p} className='ms-3' onChange={(e) => setP(e.target.value)} />
-                                        </label></Col>
+                                            </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Diagonal Length(q) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Diagonal Length(q) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={q}
                                                 onChange={(e) => setQ(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -131,25 +133,28 @@ function Kite() {
                             selectCondition === "Area of Kite Using Tripographt" && <>
                             <div className='text-center'>  <dt>Formula</dt> T = a * b * Sin(c)</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> side(a) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> side(a) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" value={lengtha} className='ms-3'
                                                 onChange={(e) => setlengtha(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Side(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Side(b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={lengthb}
                                                 onChange={(e) => setlengthb(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Side(c):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Side(c):  </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={angle}
                                                 onChange={(e) => setAnglec(e.target.value)} />
-                                        </label></Col>
+                                      </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -173,18 +178,21 @@ function Kite() {
                             selectCondition === "Perimeter of Kite" && <>
                             <div className='text-center'>  <dt>Formula</dt> P  = 2(a + b)</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> length (a) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> length (a) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" value={p} className='ms-3'
                                                 onChange={(e) => setP(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> length (a) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> length (a) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" value={q} className='ms-3'
                                                 onChange={(e) => setQ(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 

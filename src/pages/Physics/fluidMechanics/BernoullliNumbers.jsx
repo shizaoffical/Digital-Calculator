@@ -44,9 +44,12 @@ function BernoullliNumbers() {
                         <div className='text-center my-2'> <dt>Formula</dt>B(n) ≈ 4 * (n / π e)2n * √ n π</div>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }}>
-                            <Col md={12} sm={12} xs={12} >
-                                <label>Large Number (n) :<input type="number" className='ms-3' value={n}
-                                onChange={(e) => setn(e.target.value)} /> </label></Col>
+                            <Col md={6} sm={12} xs={12} >
+                                <label>Large Number (n) :</label></Col>
+                            <Col md={6} sm={12} xs={12} >
+                                    <input type="number" className='ms-3' value={n}
+                                onChange={(e) => setn(e.target.value)} />
+                                </Col> 
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

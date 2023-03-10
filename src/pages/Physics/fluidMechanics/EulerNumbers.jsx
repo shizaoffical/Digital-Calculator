@@ -114,25 +114,28 @@ function EulerNumbers() {
                                 selectCondition === "Euler Number" && <>
                                     
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label> Pressure Change (Δp):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label> Pressure Change (Δp):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={PC}
                                                 onChange={(e) => setPC(e.target.value) } />p
-                                            </label></Col>
+                                                </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Density (ρ):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Density (ρ):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={D}
                                                 onChange={(e) => setD(e.target.value)}/>kg/m3
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Character Velocity (V):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Character Velocity (V):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={CV}
                                                onChange={(e) => setCV(e.target.value)}  />m/s
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <h5 className='text-center py-2'>Result</h5>
 
@@ -154,25 +157,28 @@ function EulerNumbers() {
                                 selectCondition === "Pressure Change" && <>
                                     
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label> Density (p)     
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label> Density (p) : </label></Col>   
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={D}
                                                 onChange={(e) => setD(e.target.value)} />kg/m3
-                                            </label></Col>
+                                            </Col> 
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Characteristic Velocity (V):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Characteristic Velocity (V):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={CV}
                                                 onChange={(e) => setCV(e.target.value)} />m/s
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Euler Number (Eu):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Euler Number (Eu):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3' value={EN}
                                                 onChange={(e) => setEN(e.target.value)} />
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <h5 className='text-center py-2'>Result</h5>
 
@@ -192,25 +198,29 @@ function EulerNumbers() {
                                 selectCondition === "Density" && <>
                                     
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label> Pressure Change (Δp):   
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label> Pressure Change (Δp): </label></Col> 
+                                        <Col md={6} sm={12} xs={12} >
+
                                                 <input type="number" className='ms-3 me-2' value={PC}
                                                 onChange={(e) => setPC(e.target.value)} />p
-                                            </label></Col>
+                                            </Col> 
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Characteristic Velocity (V):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Characteristic Velocity (V):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={CV}
                                                 onChange={(e) => setCV(e.target.value)} />m/s
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Euler Number (Eu):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Euler Number (Eu):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3' value={EN}
                                                 onChange={(e) => setEN(e.target.value)} />
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <h5 className='text-center py-2'>Result</h5>
 
@@ -231,25 +241,28 @@ function EulerNumbers() {
                                 selectCondition === "Character Velocity" && <>
                                    
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label> Pressure Change (Δp):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label> Pressure Change (Δp):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={PC}
                                                 onChange={(e) => setPC(e.target.value)} />p
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Density (ρ):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Density (ρ):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3 me-2' value={D}
                                                 onChange={(e) =>  setD(e.target.value)} />kg/m3
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                        <Col md={12} sm={12} xs={12} >
-                                            <label>Euler Number (Eu):
+                                        <Col md={6} sm={12} xs={12} >
+                                            <label>Euler Number (Eu):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                                 <input type="number" className='ms-3' value={EN}
                                                onChange={(e) => setEN(e.target.value)}  />
-                                            </label></Col>
+                                            </Col>
                                     </Row>
                                     <h5 className='text-center py-2'>Result</h5>
 

@@ -50,14 +50,20 @@ function Rectangular() {
                     <div className="polygon-calculator px-2" ref={componentsRef}>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
-                            <Col md={12} sm={12} xs={12} >
-                                <label> x :<input type="number" className='ms-3' value={x}
-                                onChange={(e) => setX(e.target.value)}/> </label></Col>
+                            <Col md={6} sm={12} xs={12} >
+                                <label> x :</label></Col>
+                            <Col md={6} sm={12} xs={12} >
+                                    <input type="number" className='ms-3' value={x}
+                                onChange={(e) => setX(e.target.value)}/> 
+                                </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }}>
-                            <Col md={12} sm={12} xs={12} >
-                                <label> y :<input type="number" className='ms-3' value={y}
-                               onChange={(e) => setY(e.target.value)} /> </label></Col>
+                            <Col md={6} sm={12} xs={12} >
+                                <label> y :</label></Col>
+                            <Col md={6} sm={12} xs={12} >
+                                    <input type="number" className='ms-3' value={y}
+                               onChange={(e) => setY(e.target.value)} />
+                               </Col> 
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

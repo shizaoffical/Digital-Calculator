@@ -85,18 +85,20 @@ function FlowRate() {
                             {selectCondition === "Flow Rate" && <>
                             <div className='text-center'> <dt>Formula</dt> <span>Q = A * V</span></div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Flow Velocity (V):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Flow Velocity (V):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3 me-2' value={V}
                                                 onChange={(e) => setV(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>Flow Area (A):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>Flow Area (A):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3 me-2' value={A}
                                                 onChange={(e) => setA(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -116,18 +118,21 @@ function FlowRate() {
                             {selectCondition === "Flow Area" && <>
                             <div className='text-center'> <dt>Formula</dt> <span>A = Q / V</span></div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Flow Velocity (V):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Flow Velocity (V):</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3 me-2' value={V}
                                                 onChange={(e) => setV(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>Flow Rate (R):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>Flow Rate (R):  </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3 me-2' value={R}
                                                 onChange={(e) => setR(e.target.value)} />
-                                        </label></Col>
+                                      </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -146,18 +151,20 @@ function FlowRate() {
                             {selectCondition === "Flow Velocity" && <>
                             <div className='text-center'> <dt>Formula</dt> <span>V = Q / A</span></div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Flow Area (A):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Flow Area (A): </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3 me-2' value={A}
                                                 onChange={(e) => setA(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>Flow Rate(R):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>Flow Rate(R):</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3 me-2' value={R}
                                                 onChange={(e) => setR(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 

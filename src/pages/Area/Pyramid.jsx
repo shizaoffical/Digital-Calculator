@@ -156,25 +156,30 @@ function Pyramid() {
                             selectCondition === "Volume" && <>
                                 <dt className='text-center'>Formula <span>V = (l * w * h) / 3</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Length(l) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Length(l) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={length}
                                                 onChange={(e) => setlength(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Width(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Width(b) :   </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={width}
                                                 onChange={(e) => setwidth(e.target.value)} />
-                                        </label></Col>
+                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Pyramid Height(h) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Pyramid Height(h) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={Height}
                                                 onChange={(e) => setHeight(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -195,25 +200,28 @@ function Pyramid() {
                             selectCondition === "Base Length" && <>
                                 <dt className='text-center'>Formula <span>l = 3 * v/(h * w)</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Width (w) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Width (w) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={width}
                                                 onChange={(e) => setwidth(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> pyrimed Height (h) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> pyrimed Height (h) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={Height}
                                                 onChange={(e) => setHeight(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> volume (v) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> volume (v) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={volume}
                                                 onChange={(e) => setVolume(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -235,25 +243,28 @@ function Pyramid() {
                             selectCondition === "Base Width" && <>
                                 <dt className='text-center'>Formula <span>W = 3 * v/(h * l)</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Length(l) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Length(l) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={length}
                                                 onChange={(e) => setlength(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> pyrimed Height (h) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> pyrimed Height (h) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={Height}
                                                 onChange={(e) => setHeight(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> volume (v) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> volume (v) : </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={volume}
                                                 onChange={(e) => setVolume(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -271,25 +282,28 @@ function Pyramid() {
                             selectCondition === "Pyramid Height" && <>
                                 <dt className='text-center'>Formula <span>h = 3 * v/(l * w)</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Length(l) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Length(l) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={length}
                                                 onChange={(e) => setlength(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Width (w) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Width (w) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={width}
                                                 onChange={(e) => setwidth(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> volume (v) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> volume (v) : </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={volume}
                                                 onChange={(e) => setVolume(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -307,25 +321,29 @@ function Pyramid() {
                             selectCondition === "Surface Area" && <>
                              <dt className='text-center'>Formula <span>A = l * w + l * √ (w / 2)² + (h)² + w * √ (l / 2)² + (h)²</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Length(l) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Length(l) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={length}
                                                 onChange={(e) => setlength(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Width(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Width(b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={width}
                                                 onChange={(e) => setwidth(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Pyramid Height(h) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Pyramid Height(h) :</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={Height}
                                                 onChange={(e) => setHeight(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -343,25 +361,30 @@ function Pyramid() {
                             selectCondition === "Lateral Surface Area" && <>
                             <dt className='text-center'>Formula <span>A = l * √ (w / 2) ² + (h)² + w * √ (l / 2)² + (h)²</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Length(l) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Length(l) :</label></Col>
+                                        <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={length}
                                                 onChange={(e) => setlength(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Width(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Width(b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={width}
                                                 onChange={(e) => setwidth(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Pyramid Height(h) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Pyramid Height(h) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={Height}
                                                 onChange={(e) => setHeight(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -379,18 +402,20 @@ function Pyramid() {
                             selectCondition === "Base Surface Area" && <>
                              <dt className='text-center'>Formula <span>l * w</span></dt>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Length(l) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Length(l) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3'value={length}
                                             onChange={(e) => setlength(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base Width(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base Width(b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3'value={width}
                                             onChange={(e) => setwidth(e.target.value)}/>
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 

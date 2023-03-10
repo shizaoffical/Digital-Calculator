@@ -117,17 +117,22 @@ function Rhombus() {
                             selectCondition === "Area of Rombus(Base Time Height Method)" && <>
                                <div className='text-center'>  <dt>Formula</dt> A  = b * h</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Base (b): <input type="number" className='ms-3 ' value={base}
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Base (b):  </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
+                                            <input type="number" className='ms-3 ' value={base}
                                             onChange={(e) => setBase(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Height (h):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Height (h): </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={height}
                                                 onChange={(e) => setHeight(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -150,18 +155,21 @@ function Rhombus() {
                         {selectCondition === "Area of Rombus(Diagonal Method)" && <>
                         <div className='text-center'>  <dt>Formula</dt>Area(D)  = p*q / 2</div>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                <Col md={12} sm={12} xs={12} >
-                                    <label> Diagonal length (p):
+                                <Col md={6} sm={12} xs={12} >
+                                    <label> Diagonal length (p):</label></Col>
+                                <Col md={6} sm={12} xs={12} >
+
                                         <input type="number" className='ms-3' value={base}
                                             onChange={(e) => setBase(e.target.value)} />
-                                    </label></Col>
+                                    </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                <Col md={12} sm={12} xs={12} >
-                                    <label>Diagonal length: (q):
+                                <Col md={6} sm={12} xs={12} >
+                                    <label>Diagonal length: (q):</label></Col>
+                                <Col md={6} sm={12} xs={12} >
                                         <input type="number" className='ms-3' value={height}
                                             onChange={(e) => setHeight(e.target.value)} />
-                                    </label></Col>
+                                    </Col>
                             </Row>
                             <h5 className='text-center py-2'>Result</h5>
 
@@ -183,18 +191,20 @@ function Rhombus() {
                         {selectCondition === "Area of Rombus Using Trigonometry" && <>
                         <div className='text-center'> <dt>Formula</dt> Area(T) = length² * Sin(angle)</div>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                <Col md={12} sm={12} xs={12} >
-                                    <label> Lenght(l):
+                                <Col md={6} sm={12} xs={12} >
+                                    <label> Lenght(l):</label></Col>
+                                <Col md={6} sm={12} xs={12} >
                                         <input type="number" className='ms-3' value={length}
                                         onChange={(e) => setLength(e.target.value)}/>
-                                    </label></Col>
+                                    </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                <Col md={12} sm={12} xs={12} >
-                                    <label> Angle(a):
+                                <Col md={6} sm={12} xs={12} >
+                                    <label> Angle(a):</label></Col>
+                                <Col md={6} sm={12} xs={12} >
                                         <input type="number" className='ms-3' value={angle}
                                         onChange={(e) => setAngle(e.target.value)} />
-                                    </label></Col>
+                                    </Col>
                             </Row>
                             <h5 className='text-center py-2'>Result</h5>
 
@@ -214,11 +224,12 @@ function Rhombus() {
                         {selectCondition === "Perimeter of Rhombus" && <>
                         <div className='text-center'> <dt>Formula</dt> P  = 4 * (length)</div>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                <Col md={12} sm={12} xs={12} >
-                                    <label> Length(l):
+                                <Col md={6} sm={12} xs={12} >
+                                    <label> Length(l):</label></Col>
+                                <Col md={6} sm={12} xs={12} >
                                         <input type="number" className='ms-3'value={length}
                                         onChange={(e) => setLength(e.target.value)} />
-                                    </label></Col>
+                                    </Col>
                             </Row>
                             <h5 className='text-center py-2'>Result</h5>
 

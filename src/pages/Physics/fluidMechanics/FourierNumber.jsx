@@ -21,50 +21,50 @@ function FourierNumber() {
   const [FOvalue, setFOvalue] = useState(0);
   const [TDvalue, setTDvalue] = useState(0);
   const [CTvalue, setCTvalue] = useState(0);
-// FOcalculator
-  const FOcalculator =() => {
-  const fo =(A * T ) /( L *  L) 
-  setFOvalue(fo);
-  } 
-function FOcalculatorReset(){
-  setFOvalue(0);
-  setA(0);
-  setL(0);
-  setT(0);
-}
-// TDcalculator
-  const TDcalculator =() => {
-   const a = FO * (L *L) / T;
-   setTDvalue(a);
-  } 
-function TDcalculatorReset(){
-  setTDvalue(0);
-  setFO(0);
-  setL(0);
-  setT(0);
-}
-// CTcalculator
-const CTcalculator =() => {
-const t = FO * (L*L) / A;
-setCTvalue(t);
-} 
-function CTcalculatorReset(){
-  setCTvalue(0);
-  setA(0);
-  setL(0);
-  setFO(0);
-}
-// CTcalculator
-const CLcalculator =() => {
-  const  l = Math.sqrt((A * T ) / FO)
-  setCLvalue(l);
-} 
-function CLcalculatorReset(){
-  setCLvalue(0);
-  setA(0);
-  setT(0);
-  setFO(0);
-}
+  // FOcalculator
+  const FOcalculator = () => {
+    const fo = (A * T) / (L * L)
+    setFOvalue(fo);
+  }
+  function FOcalculatorReset() {
+    setFOvalue(0);
+    setA(0);
+    setL(0);
+    setT(0);
+  }
+  // TDcalculator
+  const TDcalculator = () => {
+    const a = FO * (L * L) / T;
+    setTDvalue(a);
+  }
+  function TDcalculatorReset() {
+    setTDvalue(0);
+    setFO(0);
+    setL(0);
+    setT(0);
+  }
+  // CTcalculator
+  const CTcalculator = () => {
+    const t = FO * (L * L) / A;
+    setCTvalue(t);
+  }
+  function CTcalculatorReset() {
+    setCTvalue(0);
+    setA(0);
+    setL(0);
+    setFO(0);
+  }
+  // CTcalculator
+  const CLcalculator = () => {
+    const l = Math.sqrt((A * T) / FO)
+    setCLvalue(l);
+  }
+  function CLcalculatorReset() {
+    setCLvalue(0);
+    setA(0);
+    setT(0);
+    setFO(0);
+  }
   // handle change
   const handleSelectChange = (event) => {
     setSelectCondition(event.target.value);
@@ -104,30 +104,34 @@ function CLcalculatorReset(){
 
             <ButtonA onClick={handlePrint} text="Print" />
             <div className="polygon-calculator px-2" ref={componentsRef}>
-             
-               {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
-               {selectCondition === "Fourier Number(Fo)" && <>
+
+              {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
+              {selectCondition === "Fourier Number(Fo)" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>FO = at / L²</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Thermal Diffusivity(a):
-                      <input type="number" className='ms-3 me-2' value={A}
-                        onChange={(e) => setA(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Thermal Diffusivity(a):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={A}
+                      onChange={(e) => setA(e.target.value)} />
+                  </Col>
+
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Character Time(t):
-                      <input type="number" className='ms-3 me-2' value={T}
-                        onChange={(e) => setT(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Character Time(t):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={T}
+                      onChange={(e) => setT(e.target.value)} />
+                  </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Character Length(l):
-                      <input type="number" className='ms-3 me-2' value={L}
-                        onChange={(e) => setL(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Character Length(l):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={L}
+                      onChange={(e) => setL(e.target.value)} /></Col>
+
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -145,29 +149,31 @@ function CLcalculatorReset(){
 
 
 
-  {/* ////////////////////////////////////  Thermal Diffusivity(a) /////////////////////////////// */}
-  {selectCondition === "Thermal Diffusivity(a)" && <>
+              {/* ////////////////////////////////////  Thermal Diffusivity(a) /////////////////////////////// */}
+              {selectCondition === "Thermal Diffusivity(a)" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>a = Fo * L² / t</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Fourier Number (Fo):
-                      <input type="number" className='ms-3 me-2' value={FO}
-                        onChange={(e) => setFO(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Fourier Number (Fo):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={FO}
+                      onChange={(e) => setFO(e.target.value)} /></Col>
+
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Character Time(t):
-                      <input type="number" className='ms-3 me-2' value={T}
-                        onChange={(e) => setT(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Character Time(t):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={T}
+                      onChange={(e) => setT(e.target.value)} /></Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Character Length(l):
-                      <input type="number" className='ms-3 me-2' value={L}
-                        onChange={(e) => setL(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Character Length(l):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={L}
+                      onChange={(e) => setL(e.target.value)} />
+                  </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -179,32 +185,34 @@ function CLcalculatorReset(){
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={TDcalculator} />
                   <ButtonA text="Reset" onClick={TDcalculatorReset} />
-
                 </div>
               </>}
-  {/* ////////////////////////////////////  Character Time(t) /////////////////////////////// */}
-  {selectCondition === "Character Time(t)" && <>
+              {/* ////////////////////////////////////  Character Time(t) /////////////////////////////// */}
+              {selectCondition === "Character Time(t)" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>t = Fo * L² / a</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Thermal Diffusivity(a):
-                      <input type="number" className='ms-3 me-2' value={A}
-                        onChange={(e) => setA(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Thermal Diffusivity(a): </label></Col>
+                  <Col md={6} sm={12} xs={12}>
+                    <input type="number" className='ms-3 me-2' value={A}
+                      onChange={(e) => setA(e.target.value)} /></Col>
+
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Fourier Number (Fo):
-                      <input type="number" className='ms-3 me-2' value={FO}
-                        onChange={(e) => setFO(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Fourier Number (Fo):</label></Col>
+                  <Col md={6} sm={12} xs={12}>
+                    <input type="number" className='ms-3 me-2' value={FO}
+                      onChange={(e) => setFO(e.target.value)} />
+                  </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Character Length(l):
-                      <input type="number" className='ms-3 me-2' value={L}
-                        onChange={(e) => setL(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Character Length(l):</label></Col>
+                  <Col md={6} sm={12} xs={12}>
+                    <input type="number" className='ms-3 me-2' value={L}
+                      onChange={(e) => setL(e.target.value)} /></Col>
+
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -219,29 +227,32 @@ function CLcalculatorReset(){
 
                 </div>
               </>}
-  {/* ////////////////////////////////////  CHARACTER LENGTH /////////////////////////////// */}
-  {selectCondition === "Character Length(l)" && <>
+              {/* ////////////////////////////////////  CHARACTER LENGTH /////////////////////////////// */}
+              {selectCondition === "Character Length(l)" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>L = (αt / Fo) * (αt / Fo)</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Thermal Diffusivity(a):
-                      <input type="number" className='ms-3 me-2' value={A}
-                        onChange={(e) => setA(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Thermal Diffusivity(a):</label></Col>
+                  <Col md={6} sm={12} xs={12}>
+                    <input type="number" className='ms-3 me-2' value={A}
+                      onChange={(e) => setA(e.target.value)} /></Col>
+
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Character Time(t):
-                      <input type="number" className='ms-3 me-2' value={T}
-                        onChange={(e) => setT(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Character Time(t):</label></Col>
+                  <Col md={6} sm={12} xs={12}>
+                    <input type="number" className='ms-3 me-2' value={T}
+                      onChange={(e) => setT(e.target.value)} /></Col>
+
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Fourier Number (Fo):
-                      <input type="number" className='ms-3 me-2' value={FO}
-                        onChange={(e) => setFO(e.target.value)} />
-                    </label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Fourier Number (Fo):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
+                    <input type="number" className='ms-3 me-2' value={FO}
+                      onChange={(e) => setFO(e.target.value)} />
+                  </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -273,8 +284,8 @@ function CLcalculatorReset(){
                       title="step by step solution"
                       step1="Solution:" step1heading="Fo = ? , L = 3 , α = 5 , t = 6.5"
                       step2="Formula" step2heading="Fo = at / L²"
-                      step3="Steps: Putting values" step3heading={<> 
-                       = 5 x 6.5 / (3)²<br/>= 32.5 / 9<br/>= 3.611</>}/>
+                      step3="Steps: Putting values" step3heading={<>
+                        = 5 x 6.5 / (3)²<br />= 32.5 / 9<br />= 3.611</>} />
                   }
                   {selectCondition === "Thermal Diffusivity(a)" &&
                     <Example heading="Thermal Diffusivity(a)"
@@ -282,7 +293,7 @@ function CLcalculatorReset(){
                       step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
                       step2="Formula" step2heading="a = fo * L² / a"
                       step3="Steps: Putting values" step3heading={<>
-                       =3.611 x (3)² / 5 <br/> 3.611 x 9 / 5 <br/>= 32.499 / 6.5 <br/>=65</>} />
+                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} />
                   }
                   {selectCondition === "Character Time(t)" &&
                     <Example heading="Character Time(t)"
@@ -290,7 +301,7 @@ function CLcalculatorReset(){
                       step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
                       step2="Formula" step2heading="a = fo * L² / a"
                       step3="Steps: Putting values" step3heading={<>
-                       =3.611 x (3)² / 5 <br/> 3.611 x 9 / 5 <br/>= 32.499 / 6.5 <br/>=65</>} />
+                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} />
                   }
                   {selectCondition === "Character Length(l)" &&
                     <Example heading="Character Length(l)"
@@ -298,7 +309,7 @@ function CLcalculatorReset(){
                       step1="Solution:" step1heading="Fo = 3.611 , L = ? , α = 5 , t = 6.5"
                       step2="Formula" step2heading="L =αt / Fo"
                       step3="Steps: Putting values" step3heading={<>
-                       =(5 * 6.5 / 11 ) <br/> (32.5 / 3.611 ) <br/>=  9.0002769315979<br/>=3</>}/> 
+                        =(5 * 6.5 / 11 ) <br /> (32.5 / 3.611 ) <br />=  9.0002769315979<br />=3</>} />
                   }
 
                 </>

@@ -111,25 +111,28 @@ function BreakHorsePower() {
               selectCondition === "Flow Rate or Discharge" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>(((3960*wh*pe)/(th*100))*100)/100</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Total Head (th):
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Total Head (th):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={TH}
                         onChange={(e) => setTH(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Pump Efficiency (pe):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Pump Efficiency (pe): </label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={PE}
                         onChange={(e) => setPE(e.target.value)} />
-                    </label></Col>
+                   </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Water Horsepower (wh):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Water Horsepower (wh):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={WH}
                         onChange={(e) => setWH(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -151,25 +154,28 @@ function BreakHorsePower() {
               selectCondition === "Work Horsepower" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>(((100*frd*th)/(3960*pe))*100)/100</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Total Head (th):
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Total Head (th):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={TH}
                         onChange={(e) => setTH(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Pump Efficiency (pe):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Pump Efficiency (pe): </label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={PE}
                         onChange={(e) => setPE(e.target.value)} />
-                    </label></Col>
+                   </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Flow Rate or Discharge (frd):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Flow Rate or Discharge (frd):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={FRD}
                         onChange={(e) => setFRD(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -189,25 +195,28 @@ function BreakHorsePower() {
               selectCondition === "Total Head" && <>
                 <div className=' text-center'> <dt>Formula</dt> <span>(((3960*wh*pe)/(frd*100))*100)/100</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Water Horsepower:
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Water Horsepower:</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={WH}
                         onChange={(e) => setWH(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Pump Efficiency (pe):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Pump Efficiency (pe):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={PE}
                         onChange={(e) => setPE(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Flow Rate or Discharge (frd):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Flow Rate or Discharge (frd):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={FRD}
                         onChange={(e) => setFRD(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 
@@ -228,25 +237,28 @@ function BreakHorsePower() {
               selectCondition === "Pump Efficiency" && <>
                 <div className=' text-center'> <dt>Formula</dt> <span>(((3960*wh*pe)/(frd*100))*100)/100</span></div>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label> Water Horsepower:
+                  <Col md={6} sm={12} xs={12} >
+                    <label> Water Horsepower:</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={WH}
                         onChange={(e) => setWH(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Total Head (th):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Total Head (th):  </label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={TH}
                         onChange={(e) => setTH(e.target.value)} />
-                    </label></Col>
+                  </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                  <Col md={12} sm={12} xs={12} >
-                    <label>Flow Rate or Discharge (frd):
+                  <Col md={6} sm={12} xs={12} >
+                    <label>Flow Rate or Discharge (frd):</label></Col>
+                  <Col md={6} sm={12} xs={12} >
                       <input type="number" className='ms-3' value={FRD}
                         onChange={(e) => setFRD(e.target.value)} />
-                    </label></Col>
+                    </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
 

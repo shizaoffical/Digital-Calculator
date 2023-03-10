@@ -45,32 +45,37 @@ function wfrvalueReset() {
 
                         <div className='text-center my-2'> <dt>Formula</dt> Area  = ½ × (a + b) × h</div>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                            <Col md={12} sm={12} xs={12} >
-                                <label> Width of the Weir
+                            <Col md={6} sm={12} xs={12} >
+                                <label> Width of the Weir:</label></Col>
+                            <Col md={6} sm={12} xs={12} >
+
                                     <input type="number" className='ms-3 me-2' value={width}
                                         onChange={(e) => setWidth(e.target.value)} />m
-                                </label></Col>
+                                </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                            <Col md={12} sm={12} xs={12} >
-                                <label>Head 1 on the Weir (h1):
+                            <Col md={6} sm={12} xs={12} >
+                                <label>Head 1 on the Weir (h1):</label></Col>
+                            <Col md={6} sm={12} xs={12} >
                                     <input type="number" className='ms-3 me-2 ' value={HA}
                                         onChange={(e) => setHA(e.target.value)} />m
-                                </label></Col>
+                                </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                            <Col md={12} sm={12} xs={12} >
-                                <label>Head 2 on the Weir (h2):
+                            <Col md={6} sm={12} xs={12} >
+                                <label>Head 2 on the Weir (h2): </label></Col>
+                            <Col md={6} sm={12} xs={12} >
                                     <input type="number" className='ms-3 me-2' value={HB}
                                         onChange={(e) => setHB(e.target.value)} />m
-                                </label></Col>
+                               </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                            <Col md={12} sm={12} xs={12} >
-                                <label> Discharge Constant (Cd):
+                            <Col md={6} sm={12} xs={12} >
+                                <label> Discharge Constant (Cd):</label></Col>
+                            <Col md={6} sm={12} xs={12} >
                                     <input type="number" className='ms-3' value={CD}
                                         onChange={(e) => setCD(e.target.value)} />
-                                </label></Col>
+                                </Col>
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>
 

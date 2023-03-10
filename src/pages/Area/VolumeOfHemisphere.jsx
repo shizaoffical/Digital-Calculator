@@ -44,14 +44,20 @@ function VolumeOfHemisphere() {
             <div className="polygon-calculator px-2" ref={componentsRef}>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
-                    <Col md={12} sm={12} xs={12} >
-                        <label> Enter the radius <input type="number" className='ms-3' value={radius}
-                          onChange={(e) => setRadius(e.target.value)}  /> </label></Col>
+                    <Col md={6} sm={12} xs={12} >
+                        <label> Enter the radius :</label></Col>
+                    <Col md={6} sm={12} xs={12} >
+                            <input type="number" className='ms-3' value={radius}
+                          onChange={(e) => setRadius(e.target.value)}  /> 
+                          </Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
-                    <Col md={12} sm={12} xs={12} >
-                        <label> Enter the length <input type="number" className='ms-3' value={length}
-                          onChange={(e) => setLength(e.target.value)}  /> </label></Col>
+                    <Col md={6} sm={12} xs={12} >
+                        <label> Enter the length :</label></Col>
+                    <Col md={6} sm={12} xs={12} >
+                            <input type="number" className='ms-3' value={length}
+                          onChange={(e) => setLength(e.target.value)}  /> 
+                          </Col>
                 </Row>
                 <h5 className='text-center py-2'>Result</h5>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

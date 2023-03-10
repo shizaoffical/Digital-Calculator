@@ -102,17 +102,22 @@ function Elipse() {
                                     Perimeter = [ 2×π×Sqrt((r1² + r2²)/2) ]
                                 </div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Length(l) : <input type="number" className='ms-3 ' value={r1}
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Length(l) : </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+                                        
+                                            <input type="number" className='ms-3 ' value={r1}
                                             onChange={(e) => setR1(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Breadth(b) :
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Breadth(b) :</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
+
                                             <input type="number" className='ms-3' value={r2}
                                                 onChange={(e) => setR2(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
@@ -142,25 +147,28 @@ function Elipse() {
                             <div className='text-center'>  <dt>Formula</dt> Volume = [ (4/3)×π×r1×r2×r3 ]</div>
                                 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Radius(r1):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Radius(r1):</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={r1}
                                                 onChange={(e) => setR1(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label>Radius(r2):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label>Radius(r2):</label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={r2}
                                                 onChange={(e) => setR2(e.target.value)} />
-                                        </label></Col>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
-                                    <Col md={12} sm={12} xs={12} >
-                                        <label> Radius(r3):
+                                    <Col md={6} sm={12} xs={12} >
+                                        <label> Radius(r3): </label></Col>
+                                    <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={r3}
                                                 onChange={(e) => setR3(e.target.value)} />
-                                        </label></Col>
+                                       </Col>
                                 </Row>
                                 <h5 className='text-center py-2'>Result</h5>
 
