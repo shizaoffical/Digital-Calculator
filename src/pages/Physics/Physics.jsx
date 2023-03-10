@@ -29,8 +29,10 @@ function Physics() {
         path="/physics/fluid-machine/euler-numbers"/></Col>
     </Row>
     <Row className='mb-2'>
-        <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="flow rate"/></Col>
-        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="froude number"/></Col>
+        <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="flow rate"
+        path="/physics/fluid-machine/flow-rate"/></Col>
+        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="froude number"
+        path="/physics/fluid-machine/fourier-number"/></Col>
     </Row> 
     <Row className='mb-2'>
         <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="hydralic radius"/></Col>

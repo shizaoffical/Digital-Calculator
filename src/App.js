@@ -41,6 +41,8 @@ import BernoullliNumbers from './pages/Physics/fluidMechanics/BernoullliNumbers'
 import BroadCrustedWeir from './pages/Physics/fluidMechanics/BroadCrustedWeir';
 import BreakHorsePower from "./pages/Physics/fluidMechanics/BreakHorsePower";
 import EulerNumbers from './pages/Physics/fluidMechanics/EulerNumbers';
+import FlowRate from './pages/Physics/fluidMechanics/FlowRate';
+import FourierNumber from './pages/Physics/fluidMechanics/FourierNumber';
 
 
 function App() {
@@ -85,7 +87,8 @@ function App() {
             <Route path="/physics/fluid-machine/break-horse-power" element={<BreakHorsePower/>} />
             <Route path="/physics/fluid-machine/broad-crusted-weir" element={<BroadCrustedWeir />} />
             <Route path="/physics/fluid-machine/euler-numbers" element={<EulerNumbers />} />
-
+            <Route path="/physics/fluid-machine/flow-rate" element={<FlowRate />} />
+            <Route path="/physics/fluid-machine/fourier-number" element={<FourierNumber/>} />
 
 
             <Route path="/Health" element={<Health />} />

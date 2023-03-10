@@ -12,10 +12,10 @@ function EulerNumbers() {
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Euler Number');
     // main states 
-    const [EN, setEN] = useState(10);
-    const [PC, setPC] = useState(10);
-    const [D, setD] = useState(10);
-    const [CV, setCV] = useState(10);
+    const [EN, setEN] = useState(2);
+    const [PC, setPC] = useState(2);
+    const [D, setD] = useState(5);
+    const [CV, setCV] = useState(23);
     // states
     const [ENvalue, setENvalue] = useState(0);
     const [Dvalue, setDvalue] = useState(0);
