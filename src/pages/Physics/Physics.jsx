@@ -31,12 +31,14 @@ function Physics() {
     <Row className='mb-2'>
         <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="flow rate"
         path="/physics/fluid-machine/flow-rate"/></Col>
-        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="froude number"
+        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="fourier number"
         path="/physics/fluid-machine/fourier-number"/></Col>
     </Row> 
     <Row className='mb-2'>
-        <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="hydralic radius"/></Col>
-        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="kusdsen numbers"/></Col>
+        <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="hydralic radius" 
+        path="/physics/fluid-machine/hydraulic-radius"/></Col>
+        <Col  sm={6} xs={12}> <CalculatorName CalculatorName="kusdsen numbers"
+        path="/physics/fluid-machine/knudsen-number"/></Col>
     </Row>
      <Row className='mb-2'>
         <Col  sm={6} xs={12}>  <CalculatorName CalculatorName="levis  numbers"/></Col>

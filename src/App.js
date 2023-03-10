@@ -43,6 +43,8 @@ import BreakHorsePower from "./pages/Physics/fluidMechanics/BreakHorsePower";
 import EulerNumbers from './pages/Physics/fluidMechanics/EulerNumbers';
 import FlowRate from './pages/Physics/fluidMechanics/FlowRate';
 import FourierNumber from './pages/Physics/fluidMechanics/FourierNumber';
+import HydraulicRadius from './pages/Physics/fluidMechanics/HydraulicRadius';
+import KnudsenNumber from './pages/Physics/fluidMechanics/KnudsenNumber';
 
 
 function App() {
@@ -89,6 +91,9 @@ function App() {
             <Route path="/physics/fluid-machine/euler-numbers" element={<EulerNumbers />} />
             <Route path="/physics/fluid-machine/flow-rate" element={<FlowRate />} />
             <Route path="/physics/fluid-machine/fourier-number" element={<FourierNumber/>} />
+            <Route path="/physics/fluid-machine/hydraulic-radius" element={<HydraulicRadius/>} />
+            <Route path="/physics/fluid-machine/knudsen-number" element={<KnudsenNumber/>} />
+
 
 
             <Route path="/Health" element={<Health />} />

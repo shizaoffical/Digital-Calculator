@@ -9,6 +9,7 @@ import ButtonA from '../../components/ButtonA';
 function Circle() {
     const [show, setShow]= useState(false);
     const [textShow, settextShow] = useState(false);
+    // const [print, setPrint] = useState(false);
       const [radius, setRadius] = useState(12.5);
       const [diameter, setDiameter] = useState(0);
       const [circumference, setCircumference] = useState(0)
@@ -35,6 +36,15 @@ function Circle() {
         documentTitle:<div> <img src={logo} alt="" /></div>,
         onAfterPrint: () => alert("print success"),
     })
+    // const printb = () => {
+    //     setPrint(true)
+    // }
+    // function printbtn(){
+    //     handlePrint();
+    //     printb();
+    
+    // }
+    
 
     return (
        
@@ -51,7 +61,9 @@ function Circle() {
                     </p>
                     <div className='polygon-calculator-div '>
                         <ButtonA onClick={handlePrint} text="Print"/>
-                        <div className="polygon-calculator px-2" ref={componentsRef}>   
+                        <div className="polygon-calculator px-2" ref={componentsRef}>  
+                        {/* {print && <img src={logo} alt="" /> } */}
+                        
                          <Row style={{ alignItems: "center", textAlign: "center" }}>
                                 <Col md={12} sm={12} xs={12} >
                                     <label>  Number of Sides:<br /><input type="number" value={radius}
