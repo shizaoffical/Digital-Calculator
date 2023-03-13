@@ -281,9 +281,7 @@ function BreakHorsePower() {
               className="my-3" onClick={() => settextShow(!textShow)}>{textShow === true ? "Hide Steps" : "Show Steps"}</button>
           </center>
           <div>
-            {
-              textShow &&
-              <>
+            {textShow &&<>
                 {selectCondition === "Flow Rate or Discharge" &&
                   <Example heading="Flow Rate or Discharge"
                     title="step by step solution"
@@ -311,11 +309,7 @@ function BreakHorsePower() {
                   step1="Data : " step1heading="wh = 10 , frd = 10 , th = 10 , pe = ?"
                   step2="Formula" step2heading="pe = (((100*frd*th)/(3960*wh))*100)/100 "
                   step3="360"  />
-              } 
-
-              </>
-
-            }</div>
+              }  </> }</div>
 
         </div>
 

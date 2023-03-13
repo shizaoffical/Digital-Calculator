@@ -22,6 +22,12 @@ p,span{
 a{
     text-decoration: none;
 }
+select{
+    text-transform: capitalize !important;
+}
+option{
+    text-transform: capitalize !important;
+}
 input{
     outline: none;
 }

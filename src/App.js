@@ -45,6 +45,14 @@ import FlowRate from './pages/Physics/fluidMechanics/FlowRate';
 import FourierNumber from './pages/Physics/fluidMechanics/FourierNumber';
 import HydraulicRadius from './pages/Physics/fluidMechanics/HydraulicRadius';
 import KnudsenNumber from './pages/Physics/fluidMechanics/KnudsenNumber';
+import FroudeNumber from './pages/Physics/fluidMechanics/FroudeNumber';
+import LevisNumber from './pages/Physics/fluidMechanics/LevisNumber';
+import MeanDepth from './pages/Physics/fluidMechanics/MeanDepth';
+import NussletNumber from './pages/Physics/fluidMechanics/NussletNumber';
+import MachNumber from './pages/Physics/fluidMechanics/MachNumber';
+import Extra from './pages/Physics/fluidMechanics/Extra';
+import Popup from './components/Popup';
+
 
 
 function App() {
@@ -91,8 +99,15 @@ function App() {
             <Route path="/physics/fluid-machine/euler-numbers" element={<EulerNumbers />} />
             <Route path="/physics/fluid-machine/flow-rate" element={<FlowRate />} />
             <Route path="/physics/fluid-machine/fourier-number" element={<FourierNumber/>} />
+            <Route path="/physics/fluid-machine/froude-number" element={<FroudeNumber/>} />
             <Route path="/physics/fluid-machine/hydraulic-radius" element={<HydraulicRadius/>} />
             <Route path="/physics/fluid-machine/knudsen-number" element={<KnudsenNumber/>} />
+            <Route path="/physics/fluid-machine/levis-number" element={<LevisNumber/>} />
+            <Route path="/physics/fluid-machine/mean-depth" element={<MeanDepth/>} />
+            <Route path="/physics/fluid-machine/nusslet-number" element={<NussletNumber/>} />
+            <Route path="/physics/fluid-machine/mach-number" element={<MachNumber/>} />
+            <Route path="/physics/fluid-machine/extra" element={<Extra/>} />
+
 
 
 
@@ -104,6 +119,8 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+
+      <Popup/>
     </div>
   )
 }

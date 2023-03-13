@@ -5,49 +5,43 @@ import { useReactToPrint } from 'react-to-print';
 import logo from "../../images/header-logo.png";
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 
 function Circle() {
-    const [show, setShow]= useState(false);
+    const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-    // const [print, setPrint] = useState(false);
-      const [radius, setRadius] = useState(12.5);
-      const [diameter, setDiameter] = useState(0);
-      const [circumference, setCircumference] = useState(0)
-      const [area, setArea] =useState(0);
+    // states
+    const [resetCount, setResetCount] = useState(0);
+    const [showPopup, setShowPopup] = useState(false);
 
-      const calculate = () => {
+    const [radius, setRadius] = useState(12.5);
+    const [diameter, setDiameter] = useState(0);
+    const [circumference, setCircumference] = useState(0)
+    const [area, setArea] = useState(0);
+
+    const calculate = () => {
         const r = parseFloat(radius);
-        setDiameter(2* r);
-        setCircumference(2* Math.PI *r);
-        setArea(Math.PI* r*r);
-           
-      }
-     
-    function reset() {
-        setDiameter(0);
-        setCircumference(0);
-        setArea(0)
-        setRadius(12.5);
+        setDiameter(2 * r);
+        setCircumference(2 * Math.PI * r);
+        setArea(Math.PI * r * r);
 
     }
+
+    const handleResetClick = () => {
+        setResetCount(0);
+        if (resetCount === 0) {
+          setShowPopup(true);
+        }
+      };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
-        documentTitle:<div> <img src={logo} alt="" /></div>,
+        documentTitle: <div> <img src={logo} alt="" /></div>,
         onAfterPrint: () => alert("print success"),
     })
-    // const printb = () => {
-    //     setPrint(true)
-    // }
-    // function printbtn(){
-    //     handlePrint();
-    //     printb();
-    
-    // }
-    
-
+ 
     return (
-       
+
         <div>
             <Container className='home-page '>
                 <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -60,34 +54,36 @@ function Circle() {
                     <p>Fill out the necessary input boxes and press the calculate button to use the circle calculator.
                     </p>
                     <div className='polygon-calculator-div '>
-                        <ButtonA onClick={handlePrint} text="Print"/>
-                        <div className="polygon-calculator px-2" ref={componentsRef}>  
-                        {/* {print && <img src={logo} alt="" /> } */}
-                        
-                         <Row style={{ alignItems: "center", textAlign: "center" }}>
+                        <ButtonA onClick={handlePrint} text="Print" />
+                        <div className="polygon-calculator px-2" ref={componentsRef}>
+                            {/* {print && <img src={logo} alt="" /> } */}
+
+                            <Row style={{ alignItems: "center", textAlign: "center" }}>
                                 <Col md={12} sm={12} xs={12} >
                                     <label>  Number of Sides:<br /><input type="number" value={radius}
                                         onChange={(event) => setRadius(event.target.value)} /> </label></Col>
                             </Row>
-                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2"> 
+                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Areaof Circle</dt></Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{area.toString().substring(0,5)}</button></Col>
+                                    <button className='formula-value-btn'>{area.toString().substring(0, 5)}</button></Col>
                             </Row>
-                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2"> 
+                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}> <dt>Diameter of Circle</dt> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{diameter.toString().substring(0,5)}</button></Col>
+                                    <button className='formula-value-btn'>{diameter.toString().substring(0, 5)}</button></Col>
                             </Row>
-                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2"> 
+                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>circumference of Circle</dt> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{circumference.toString().substring(0,5)}</button></Col>
+                                    <button className='formula-value-btn'>{circumference.toString().substring(0, 5)}</button></Col>
                             </Row>
                         </div>
                         <div className='text-center'>
-                            <ButtonA onClick={calculate} text="Calaulate"/>
-                            <ButtonA onClick={reset} text="Reset"/>
+                            <ButtonA onClick={calculate} text="Calaulate" />
+                            <ButtonA onClick={handleResetClick} text="Reset" />
+                            {showPopup && <Popup />}
+
                         </div>
                         <center>
                             <button type='button'
@@ -96,22 +92,22 @@ function Circle() {
                         {
                             textShow &&
                             <Example heading="Circle Example" title="Find the area, diameter and circumference of a circle with the given radius 4."
-                            step1="Step 1 : " step1heading=": Find the area" step1value=" Area = πr² = 3.14 * 4² = 3.14 * 16 = 50.24" 
-                            step2="Step 2 : " step2heading="Find the diameter" step2value="  Diameter = 2r = 2 *4 = 8"
-                            step3="Step 3 : " step3heading="Find the circumference." step3value=" Circumference = πd = 3.14 *8 = 25.12  "/> 
+                                step1="Step 1 : " step1heading=": Find the area" step1value=" Area = πr² = 3.14 * 4² = 3.14 * 16 = 50.24"
+                                step2="Step 2 : " step2heading="Find the diameter" step2value="  Diameter = 2r = 2 *4 = 8"
+                                step3="Step 3 : " step3heading="Find the circumference." step3value=" Circumference = πd = 3.14 *8 = 25.12  " />
                         }
 
                     </div>
 
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
-                    <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
+                        <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                         {show ?
                             <div className='formula-backside'>
-                               <dt className='Fw-bold'>Area of Circle </dt>= πr²<br/>
-                               <dt>Circumference of Circle </dt>= 2πr = πd<br/>
-                               <dt>Area of Sector</dt>= πr² (θ/360) = ½ *arc * (angle in degree)<br/>
-                               <dt> where,</dt>r = radius <br/>π = 3.14<br/>
+                                <dt className='Fw-bold'>Area of Circle </dt>= πr²<br />
+                                <dt>Circumference of Circle </dt>= 2πr = πd<br />
+                                <dt>Area of Sector</dt>= πr² (θ/360) = ½ *arc * (angle in degree)<br />
+                                <dt> where,</dt>r = radius <br />π = 3.14<br />
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}
@@ -120,7 +116,7 @@ function Circle() {
                 </div>
             </Container>
         </div >
-                        
+
     )
 }
 

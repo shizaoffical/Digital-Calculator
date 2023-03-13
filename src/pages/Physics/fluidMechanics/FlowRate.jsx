@@ -189,7 +189,7 @@ function FlowRate() {
                             {
                                 textShow &&
                                 <Example heading="Flow Rate or Discharge"
-                                    title={<>Calculate the Flow Rate for the given details..<br />
+                                    title={<>Calculate the Flow Rate for the given details.<br />
                                         Flow Area (A) = 25 m2<br />Flow Velocity (v) = 15 m/s<br /></>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="Q = A*v"
                                     step1value="Q = 25 /15"
