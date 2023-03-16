@@ -55,14 +55,17 @@ function Physics() {
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="nussselt  numbers" 
                         path="/physics/fluid-machine/nusslet-number"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="poiseuille's equation" 
-                        path="/physics/fluid-machine/extra"/></Col>
+                        path="/physics/fluid-machine/poiseuille-equation"/></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="prandtl  number" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="peclet  numbers" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="prandtl  number"
+                        path="/physics/fluid-machine/prandtl-number" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="peclet  numbers" 
+                        path="/physics/fluid-machine/peclel-number"/></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="pump efficency" /> </Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="pump efficency" 
+                        path="/physics/fluid-machine/pump-efficiency"/> </Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="reynolda number" /></Col>
                     </Row>
                     <Row className='mb-2'>

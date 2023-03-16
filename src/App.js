@@ -50,12 +50,13 @@ import LevisNumber from './pages/Physics/fluidMechanics/LevisNumber';
 import MeanDepth from './pages/Physics/fluidMechanics/MeanDepth';
 import NussletNumber from './pages/Physics/fluidMechanics/NussletNumber';
 import MachNumber from './pages/Physics/fluidMechanics/MachNumber';
-import Extra from './pages/Physics/fluidMechanics/Extra';
-import Popup from './components/Popup';
-
-
+import PoiseuilleEquation from './pages/Physics/fluidMechanics/PoiseuilleEquation';
+import PrandantNumber from './pages/Physics/fluidMechanics/PrandantNumber';
+import PecletNumber from './pages/Physics/fluidMechanics/PecletNumber';
+import PumpEfficiency from './pages/Physics/fluidMechanics/PumpEfficiency';
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -106,9 +107,10 @@ function App() {
             <Route path="/physics/fluid-machine/mean-depth" element={<MeanDepth/>} />
             <Route path="/physics/fluid-machine/nusslet-number" element={<NussletNumber/>} />
             <Route path="/physics/fluid-machine/mach-number" element={<MachNumber/>} />
-            <Route path="/physics/fluid-machine/extra" element={<Extra/>} />
-
-
+            <Route path="/physics/fluid-machine/poiseuille-equation" element={<PoiseuilleEquation/>} />
+            <Route path="/physics/fluid-machine/prandtl-number" element={<PrandantNumber/>} />
+            <Route path="/physics/fluid-machine/peclel-number" element={<PecletNumber/>} />
+            <Route path="/physics/fluid-machine/pump-efficiency" element={<PumpEfficiency/>} />
 
 
             <Route path="/Health" element={<Health />} />
@@ -119,8 +121,6 @@ function App() {
 
         </Routes>
       </BrowserRouter>
-
-      <Popup/>
     </div>
   )
 }

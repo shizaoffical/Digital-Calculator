@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ButtonA from './ButtonA';
 
 function Popup() {
-    const [showPopup, setShowPopup] = useState(false);
+    const [showPopup, setShowPopup] = useState(true);
     const togglePopup = () => {
         setShowPopup(!showPopup);
     };
@@ -10,9 +10,6 @@ function Popup() {
 
     return (
         <>
-
-            <button onClick={togglePopup}>Open Popup</button>
-
             {showPopup && (
                 <div className="popupContainer">
                     <div className="popup">

@@ -11,16 +11,30 @@ function PoiseuilleEquation() {
     const [show, setShow]= useState(false);
     const [textShow, settextShow] = useState(false);
     // main states
-    const [V, setV] = useState(16);
-    const [M, setM] = useState(20);
-    const [P, setP] = useState(12);
+    const [pressure, setPressure] = useState('');
+    const [radius, setRadius] = useState('');
+    const [viscosity, setViscosity] = useState('');
+    const [flowRate, setFlowRate] = useState('');
+  
+    function calculateFlowRate(e) {
+      e.preventDefault();
+      const flowRate = ((Math.PI * Math.pow(radius, 4)) / (8 * viscosity)) * pressure;
+      setFlowRate(flowRate.toFixed(2));
+    }
+  
      
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
-        documentTitle:<div> <img src={logo} alt="" /></div>,
+        documentTitle:"hello",
         onAfterPrint: () => alert("print success"),
     })
+    function reset(){
+        setPressure('');
+        setPressure('');
+        setFlowRate('');
+        setViscosity('');
+    }
 
     return (
         <div>     <Container className='home-page '>
@@ -39,26 +53,26 @@ function PoiseuilleEquation() {
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                             <Col md={6} sm={12} xs={12} >
-                                <label> Convection Heat Transfer Coefficient (h):</label></Col>
+                                <label> Pressure Difference Between The Two Ends:</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={H}
-                                    onChange={(e) => setH(e.target.value)} />
+                                <input type="number" className='ms-3' value={pressure}
+                                 onChange={(e) => setPressure(e.target.value)}/>
                             </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                             <Col md={6} sm={12} xs={12} >
-                                <label>Characteristic Length (L): </label></Col>
+                                <label>Internal Radius of the Tube:</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={L}
-                                    onChange={(e) => setL(e.target.value)} />
+                                <input type="number" className='ms-3' value={radius} 
+                                onChange={(e) => setRadius(e.target.value)} />
                             </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                             <Col md={6} sm={12} xs={12} >
-                                <label>Thermal Conductivity of the Fluid (k):</label></Col>
+                                <label>Absolute Viscosity: </label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={K}
-                                    onChange={(e) => setK(e.target.value)} />
+                                <input type="number" className='ms-3' value={viscosity} 
+                                onChange={(e) => setViscosity(e.target.value)} />
                             </Col>
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>
@@ -66,11 +80,11 @@ function PoiseuilleEquation() {
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>Nusselt Number</dt></Col>
                             <Col md={6} sm={12} xs={12}>
-                                <button className='formula-value-btn'>{NUvalue.toString().substring(0, 6)}</button></Col>
+                                <button className='formula-value-btn'>{flowRate.toString().substring(0, 6)}</button></Col>
                         </Row>
                     </div>
                     <div className='text-center'>
-                        <ButtonA onClick={calculate} text="Calculate" />
+                        <ButtonA onClick={calculateFlowRate} text="Calculate" />
                         <ButtonA onClick={reset} text="Reset" />
                     </div>
                     <center>

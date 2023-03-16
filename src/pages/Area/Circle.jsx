@@ -11,26 +11,34 @@ function Circle() {
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     // states
-    const [resetCount, setResetCount] = useState(0);
+    // const [resetCount] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
 
-    const [radius, setRadius] = useState(12.5);
+    const [radius, setRadius] = useState("");
     const [diameter, setDiameter] = useState(0);
     const [circumference, setCircumference] = useState(0)
     const [area, setArea] = useState(0);
 
     const calculate = () => {
-        const r = parseFloat(radius);
+        if(radius === 0 && ""){
+            setShowPopup(true);
+        }
+        else{
+           const r = parseFloat(radius);
         setDiameter(2 * r);
         setCircumference(2 * Math.PI * r);
-        setArea(Math.PI * r * r);
-
+        setArea(Math.PI * r * r); 
+        }
+        
     }
 
     const handleResetClick = () => {
-        setResetCount(0);
-        if (resetCount === 0) {
+        if (calculate === 0) {
           setShowPopup(true);
+          console.log("hello");
+        }
+        else{
+            console.log("abc");
         }
       };
     const componentsRef = useRef();
@@ -61,7 +69,7 @@ function Circle() {
                             <Row style={{ alignItems: "center", textAlign: "center" }}>
                                 <Col md={12} sm={12} xs={12} >
                                     <label>  Number of Sides:<br /><input type="number" value={radius}
-                                        onChange={(event) => setRadius(event.target.value)} /> </label></Col>
+                                        onChange={(event) => setRadius(event.target.value)} placeholder="23"/> </label></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Areaof Circle</dt></Col>
