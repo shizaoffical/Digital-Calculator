@@ -71,15 +71,19 @@ function Physics() {
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="rectangular weir flow rate" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="sherwood number" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="sherwood number"
+                        path="/physics/fluid-machine/sherWood-number" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="specific gas constant " /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="specific volume" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="specific gas constant " 
+                        path="/physics/fluid-machine/specific-gas-constant"/></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="specific volume" 
+                        path="/physics/fluid-machine/specific-volume"/></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="stokes law" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="schmidt  number" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="schmidt  number" 
+                        path="/physics/fluid-machine/schmidt"/></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="voltage across industance" /></Col>

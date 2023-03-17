@@ -23,11 +23,9 @@ function Circle() {
             setDiameter(2 * r);
             setCircumference(2 * Math.PI * r);
             setArea(Math.PI * r * r); 
-            console.log("code");
         }
         else{
             setShowPopup(true);
-           console.log('pop')
         }   
     }
     const handleResetClick = () => {
@@ -36,11 +34,9 @@ function Circle() {
             setCircumference(0);
             setDiameter(0)
             setArea(0)
-         console.log("hello")
         }
         else{
             setShowPopup(true);
-           console.log("popup");
         }
       };
     const componentsRef = useRef();
@@ -91,7 +87,6 @@ function Circle() {
                         </div>
                         <div className='text-center'>
                             <ButtonA onClick={calculate} text="Calaulate" />
-                            {showPopup && <Popup />}
                             <ButtonA onClick={handleResetClick} text="Reset" />
                             {showPopup && <Popup />}
 

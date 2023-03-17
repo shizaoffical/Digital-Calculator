@@ -55,6 +55,10 @@ import PrandantNumber from './pages/Physics/fluidMechanics/PrandantNumber';
 import PecletNumber from './pages/Physics/fluidMechanics/PecletNumber';
 import PumpEfficiency from './pages/Physics/fluidMechanics/PumpEfficiency';
 import Renold from './pages/Physics/fluidMechanics/Renold';
+import Schmidt from './pages/Physics/fluidMechanics/Schmidt';
+import SherWoodNumber from './pages/Physics/fluidMechanics/SherWoodNumber';
+import SpecificGasConstant from './pages/Physics/fluidMechanics/SpecificGasConstant';
+import SpecificVolume from './pages/Physics/fluidMechanics/SpecificVolume';
 
 function App() {
 
@@ -113,6 +117,10 @@ function App() {
             <Route path="/physics/fluid-machine/peclel-number" element={<PecletNumber/>} />
             <Route path="/physics/fluid-machine/pump-efficiency" element={<PumpEfficiency/>} />
             <Route path="/physics/fluid-machine/renold" element={<Renold/>} />
+            <Route path="/physics/fluid-machine/schmidt" element={<Schmidt/>} />
+            <Route path="/physics/fluid-machine/sherWood-number" element={<SherWoodNumber/>} />
+            <Route path="/physics/fluid-machine/specific-gas-constant" element={<SpecificGasConstant/>} />
+            <Route path="/physics/fluid-machine/specific-volume" element={<SpecificVolume/>} />
 
 
             <Route path="/Health" element={<Health />} />
