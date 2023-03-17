@@ -137,7 +137,6 @@ function EulerNumbers() {
                                                onChange={(e) => setCV(e.target.value)}  />m/s
                                             </Col>
                                     </Row>
-                                    <h5 className='text-center py-2'>Result</h5>
 
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Euler Number</dt></Col>
@@ -150,9 +149,7 @@ function EulerNumbers() {
 
                                     </div>
                                 </>}
-
-
-                            {/* //////////////////////////////////// Pressure Change  /////////////////////////////// */}
+            {/* //////////////////////////////////// Pressure Change  /////////////////////////////// */}
                             {
                                 selectCondition === "Pressure Change" && <>
                                     
@@ -180,8 +177,6 @@ function EulerNumbers() {
                                                 onChange={(e) => setEN(e.target.value)} />
                                             </Col>
                                     </Row>
-                                    <h5 className='text-center py-2'>Result</h5>
-
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Pressure Change</dt></Col>
                                         <Col md={6} sm={12} xs={12}>
@@ -222,7 +217,6 @@ function EulerNumbers() {
                                                 onChange={(e) => setEN(e.target.value)} />
                                             </Col>
                                     </Row>
-                                    <h5 className='text-center py-2'>Result</h5>
 
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Density</dt></Col>
@@ -234,8 +228,7 @@ function EulerNumbers() {
                                         <ButtonA text="Reset" onClick={DcalculatorReset} />
 
                                     </div>
-                                </>}
-                                   
+                                </>}    
                             {/* ////////////////////////////////////Character Velocity /////////////////////////////// */}
                             {
                                 selectCondition === "Character Velocity" && <>
@@ -264,8 +257,6 @@ function EulerNumbers() {
                                                onChange={(e) => setEN(e.target.value)}  />
                                             </Col>
                                     </Row>
-                                    <h5 className='text-center py-2'>Result</h5>
-
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Character Velocity</dt></Col>
                                         <Col md={6} sm={12} xs={12}>

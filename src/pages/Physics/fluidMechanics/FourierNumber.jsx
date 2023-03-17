@@ -133,7 +133,6 @@ function FourierNumber() {
                       onChange={(e) => setL(e.target.value)} /></Col>
 
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Fourier Number(Fo)</dt></Col>
@@ -146,9 +145,6 @@ function FourierNumber() {
 
                 </div>
               </>}
-
-
-
               {/* ////////////////////////////////////  Thermal Diffusivity(a) /////////////////////////////// */}
               {selectCondition === "Thermal Diffusivity(a)" && <>
                 <div className='text-center'> <dt>Formula</dt> <span>a = Fo * L² / t</span></div>
@@ -175,8 +171,6 @@ function FourierNumber() {
                       onChange={(e) => setL(e.target.value)} />
                   </Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
-
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Thermal Diffusivity(a)</dt></Col>
                   <Col md={6} sm={12} xs={12}>
@@ -206,7 +200,7 @@ function FourierNumber() {
                       onChange={(e) => setFO(e.target.value)} />
                   </Col>
                 </Row>
-                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                <Row style={{ alignItems: "center", textAlign: "center" }}className="my-2 " >
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Length(l):</label></Col>
                   <Col md={6} sm={12} xs={12}>
@@ -214,7 +208,6 @@ function FourierNumber() {
                       onChange={(e) => setL(e.target.value)} /></Col>
 
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Character Time(t)</dt></Col>
@@ -246,7 +239,7 @@ function FourierNumber() {
                       onChange={(e) => setT(e.target.value)} /></Col>
 
                 </Row>
-                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12} >
                     <label>Fourier Number (Fo):</label></Col>
                   <Col md={6} sm={12} xs={12} >
@@ -254,7 +247,6 @@ function FourierNumber() {
                       onChange={(e) => setFO(e.target.value)} />
                   </Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Character Length(l)</dt></Col>

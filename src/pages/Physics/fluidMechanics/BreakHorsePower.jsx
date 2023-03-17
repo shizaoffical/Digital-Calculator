@@ -134,7 +134,6 @@ function BreakHorsePower() {
                         onChange={(e) => setWH(e.target.value)} />
                     </Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Flow Rate or Discharge</dt></Col>
@@ -177,8 +176,6 @@ function BreakHorsePower() {
                         onChange={(e) => setFRD(e.target.value)} />
                     </Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
-
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Water Horsepower</dt></Col>
                   <Col md={6} sm={12} xs={12}>
@@ -218,7 +215,6 @@ function BreakHorsePower() {
                         onChange={(e) => setFRD(e.target.value)} />
                     </Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Total Head</dt></Col>
@@ -260,7 +256,6 @@ function BreakHorsePower() {
                         onChange={(e) => setFRD(e.target.value)} />
                     </Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
 
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                   <Col md={6} sm={12} xs={12}><dt>Pump Efficiency</dt></Col>

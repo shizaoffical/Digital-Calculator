@@ -41,7 +41,6 @@ function Rectangular() {
                                 <label>  Height:<input type="number" className='ms-3' value={height}
                                     onChange={(e) => setHeight(e.target.value)} /> </label></Col>
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
                         
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>Total Surface Area(TSA) of Cone:</dt>[ πr(l+r) ]</Col>

@@ -104,7 +104,6 @@ function Schmidt() {
 
                                 </Col>
                             </Row>
-                            <h5 className='text-center py-2'>Result</h5>
 
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>schmidt Number</dt></Col>
@@ -136,8 +135,6 @@ function Schmidt() {
 
                                 </Col>
                             </Row>
-                            <h5 className='text-center py-2'>Result</h5>
-
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>kinematics viscosity</dt></Col>
                                 <Col md={6} sm={12} xs={12}>
@@ -168,7 +165,6 @@ function Schmidt() {
 
                                 </Col>
                             </Row>
-                            <h5 className='text-center py-2'>Result</h5>
 
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Mass Diffusivity</dt></Col>

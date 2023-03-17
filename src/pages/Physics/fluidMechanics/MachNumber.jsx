@@ -105,7 +105,6 @@ function MachNumber() {
                                             onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Mach Number (M):</dt></Col>
@@ -138,7 +137,6 @@ function MachNumber() {
                                             onChange={(e) => setM(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Speed of Sound (a):</dt></Col>
@@ -168,7 +166,6 @@ function MachNumber() {
                                             onChange={(e) => setM(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Object Speed (v):</dt></Col>

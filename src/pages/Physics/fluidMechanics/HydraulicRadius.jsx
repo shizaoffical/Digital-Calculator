@@ -98,7 +98,7 @@ const WPcalculator =() => {
                                         onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Wetted Perimeter (Pw):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -106,8 +106,6 @@ const WPcalculator =() => {
                                         onChange={(e) => setWP(e.target.value)}/>
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Hydraulic Radius (Rh)</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
@@ -130,7 +128,7 @@ const WPcalculator =() => {
                                         onChange={(e) => setHR(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} >
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Wetted Perimeter (Pw):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -138,7 +136,6 @@ const WPcalculator =() => {
                                         onChange={(e) => setWP(e.target.value)}/>
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area Of Section Flow</dt></Col>
@@ -162,7 +159,7 @@ const WPcalculator =() => {
                                         onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Hydraulic Radius (Rh):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -170,7 +167,6 @@ const WPcalculator =() => {
                                         onChange={(e) => setHR(e.target.value)}/>
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Wetted Perimeter</dt></Col>

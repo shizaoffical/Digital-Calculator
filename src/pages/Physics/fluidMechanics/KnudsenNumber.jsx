@@ -98,7 +98,7 @@ function KnudsenNumber() {
                                             onChange={(e) => setRPL(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Knudsen Number (Kn):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -106,7 +106,6 @@ function KnudsenNumber() {
                                             onChange={(e) => setKN(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Mean Free Path (λ)</dt></Col>
@@ -129,7 +128,7 @@ function KnudsenNumber() {
                                             onChange={(e) => setFP(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Knudsen Number (Kn):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -137,7 +136,6 @@ function KnudsenNumber() {
                                             onChange={(e) => setKN(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Representative Physical Length Scale (L)</dt></Col>
@@ -160,7 +158,7 @@ function KnudsenNumber() {
                                             onChange={(e) => setFP(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2" >
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Representative Physical Length Scale (L):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -168,8 +166,6 @@ function KnudsenNumber() {
                                             onChange={(e) => setRPL(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Knudsen Number (Kn)</dt></Col>
                                     <Col md={6} sm={12} xs={12}>

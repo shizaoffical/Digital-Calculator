@@ -187,7 +187,6 @@ function PecletNumber() {
                                             onChange={(e) => setK(e.target.value)} />W/m-K
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>peclet number</dt></Col>
@@ -239,7 +238,6 @@ function PecletNumber() {
                                             onChange={(e) => setK(e.target.value)} />W/m-K
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Velocity :</dt></Col>
@@ -291,7 +289,6 @@ function PecletNumber() {
                                             onChange={(e) => setK(e.target.value)} />W/m-K
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Density :</dt></Col>
@@ -343,7 +340,6 @@ function PecletNumber() {
                                             onChange={(e) => setK(e.target.value)} />W/m-K
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Heat Capacity (Cp):</dt></Col>
@@ -395,7 +391,6 @@ function PecletNumber() {
                                             onChange={(e) => setK(e.target.value)} />W/m-K
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Characteristic Length (D):</dt></Col>
@@ -447,7 +442,6 @@ function PecletNumber() {
                                             onChange={(e) => setK(e.target.value)} />m
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Thermal Conductivity (k):</dt></Col>

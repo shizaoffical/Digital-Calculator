@@ -81,13 +81,16 @@ function Physics() {
                         path="/physics/fluid-machine/specific-volume"/></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="stokes law" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="stokes law"
+                        path="/physics/fluid-machine/stock-law" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="schmidt  number" 
                         path="/physics/fluid-machine/schmidt"/></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="voltage across industance" /></Col>
-                        <Col sm={6} xs={12}><CalculatorName CalculatorName="water horsepower" /> </Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="voltage across industance"
+                        path="/physics/fluid-machine/voltage-across-industry" /></Col>
+                        <Col sm={6} xs={12}><CalculatorName CalculatorName="water horsepower" 
+                        path="/physics/fluid-machine/water-horoscope"/> </Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="weber number" /> </Col>

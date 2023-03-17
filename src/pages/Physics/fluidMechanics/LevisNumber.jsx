@@ -104,7 +104,6 @@ function LevisNumber() {
                                             onChange={(e) => setDC(e.target.value)} />m/s2
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Lewis Number (Le)</dt></Col>
@@ -136,7 +135,6 @@ function LevisNumber() {
                                             onChange={(e) => setLE(e.target.value)} /> gpm
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Thermal Diffusivity (a):</dt></Col>
@@ -167,8 +165,6 @@ function LevisNumber() {
                                             onChange={(e) => setLE(e.target.value)} />gpm
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Mass Diffusivity (Dc)</dt></Col>
                                     <Col md={6} sm={12} xs={12}>

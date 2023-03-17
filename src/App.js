@@ -59,6 +59,9 @@ import Schmidt from './pages/Physics/fluidMechanics/Schmidt';
 import SherWoodNumber from './pages/Physics/fluidMechanics/SherWoodNumber';
 import SpecificGasConstant from './pages/Physics/fluidMechanics/SpecificGasConstant';
 import SpecificVolume from './pages/Physics/fluidMechanics/SpecificVolume';
+import StockLaw from './pages/Physics/fluidMechanics/StockLaw';
+import VoltageAcrossIndustry from './pages/Physics/fluidMechanics/VoltageAcrossIndustry';
+import WaterHoroscope from './pages/Physics/fluidMechanics/WaterHoroscope';
 
 function App() {
 
@@ -121,6 +124,9 @@ function App() {
             <Route path="/physics/fluid-machine/sherWood-number" element={<SherWoodNumber/>} />
             <Route path="/physics/fluid-machine/specific-gas-constant" element={<SpecificGasConstant/>} />
             <Route path="/physics/fluid-machine/specific-volume" element={<SpecificVolume/>} />
+            <Route path="/physics/fluid-machine/stock-law" element={<StockLaw/>} />
+            <Route path="/physics/fluid-machine/voltage-across-industry" element={<VoltageAcrossIndustry/>} />
+            <Route path="/physics/fluid-machine/water-horoscope" element={<WaterHoroscope/>} />
 
 
             <Route path="/Health" element={<Health />} />

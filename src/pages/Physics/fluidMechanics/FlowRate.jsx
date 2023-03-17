@@ -100,7 +100,6 @@ function FlowRate() {
                                                 onChange={(e) => setA(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Flow Rate</dt></Col>
@@ -134,7 +133,6 @@ function FlowRate() {
                                                 onChange={(e) => setR(e.target.value)} />
                                       </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Flow Area</dt></Col>
@@ -166,7 +164,6 @@ function FlowRate() {
                                                 onChange={(e) => setR(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Flow Velocity</dt></Col>

@@ -105,7 +105,6 @@ function PumpEfficiency() {
                                             onChange={(e) => setBH(e.target.value)} />HP
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Pump Effiency</dt></Col>
@@ -136,7 +135,6 @@ function PumpEfficiency() {
                                             onChange={(e) => setBH(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Water Horoscope :</dt></Col>
@@ -166,7 +164,6 @@ function PumpEfficiency() {
                                             onChange={(e) => setWH(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Brake Hoeoscope : </dt></Col>

@@ -112,7 +112,7 @@ function FroudeNumber() {
                                                 onChange={(e) => setG(e.target.value)} />m/s2
                                         </Col>
                                     </Row>
-                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Mean Depth (hm):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
@@ -120,7 +120,6 @@ function FroudeNumber() {
                                                 onChange={(e) => setHM(e.target.value)} />ft
                                         </Col>
                                     </Row>
-                                    <h3 className='text-center my-1'>Result</h3>
 
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-1">
                                         <Col md={6} sm={12} xs={12}><dt>Frounder Number</dt></Col>
@@ -152,7 +151,7 @@ function FroudeNumber() {
                                                 onChange={(e) => setHM(e.target.value)} />
                                         </Col>
                                     </Row>
-                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Froude Number (F):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
@@ -160,7 +159,6 @@ function FroudeNumber() {
                                                 onChange={(e) => setF(e.target.value)} />m
                                         </Col>
                                     </Row>
-                                    <h3 className='text-center my-1'>Result</h3>
 
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-1">
                                         <Col md={6} sm={12} xs={12}><dt>Flow Velocity (V)</dt></Col>
@@ -191,7 +189,7 @@ function FroudeNumber() {
                                             onChange={(e) => setG(e.target.value)} />m/s2
                                         </Col>
                                     </Row>
-                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Froude Number (F):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
@@ -199,7 +197,6 @@ function FroudeNumber() {
                                            onChange={(e) => setF(e.target.value) }  />ft
                                         </Col>
                                     </Row>
-                                    <h3 className='text-center my-1'>Result</h3>
 
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-1">
                                         <Col md={6} sm={12} xs={12}><dt>Mean Depth (hm)</dt></Col>
@@ -230,7 +227,7 @@ function FroudeNumber() {
                                             onChange={(e) => setHM(e.target.value) } />ft
                                         </Col>
                                     </Row>
-                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Froude Number (F):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
@@ -238,7 +235,6 @@ function FroudeNumber() {
                                              onChange={(e) => setF(e.target.value)} />m
                                         </Col>
                                     </Row>
-                                    <h3 className='text-center my-1'>Result</h3>
 
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-1">
                                         <Col md={6} sm={12} xs={12}><dt>Acceleration of Gravity (g)</dt></Col>

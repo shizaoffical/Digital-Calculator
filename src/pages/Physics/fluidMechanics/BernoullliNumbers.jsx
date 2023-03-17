@@ -43,7 +43,7 @@ function BernoullliNumbers() {
                     <div className="polygon-calculator px-2" ref={componentsRef}>
                         <div className='text-center my-2'> <dt>Formula</dt>B(n) ≈ 4 * (n / π e)2n * √ n π</div>
 
-                        <Row style={{ alignItems: "center", textAlign: "center" }}>
+                        <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                             <Col md={6} sm={12} xs={12} >
                                 <label>Large Number (n) :</label></Col>
                             <Col md={6} sm={12} xs={12} >
@@ -51,7 +51,6 @@ function BernoullliNumbers() {
                                 onChange={(e) => setn(e.target.value)} />
                                 </Col> 
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>B(n) = </dt></Col>
                             <Col md={6} sm={12} xs={12}>

@@ -106,7 +106,6 @@ function MeanDepth() {
                                             onChange={(e) => setT(e.target.value)} />m/s2
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Mean Depth</dt></Col>
@@ -138,7 +137,6 @@ function MeanDepth() {
                                             onChange={(e) => setHM(e.target.value)} /> m
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area of Section Flow</dt></Col>
@@ -169,7 +167,6 @@ function MeanDepth() {
                                             onChange={(e) => setHM(e.target.value)} />m
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>top water surfacw width</dt></Col>

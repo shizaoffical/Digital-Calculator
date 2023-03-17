@@ -78,7 +78,6 @@ function SpecificGasConstant() {
                                             onChange={(e) => setMV(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Specific Gas Constant</dt></Col>
@@ -103,7 +102,6 @@ function SpecificGasConstant() {
                                             onChange={(e) => setS(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Molecular Weight</dt></Col>

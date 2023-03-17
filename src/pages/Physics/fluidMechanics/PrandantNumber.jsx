@@ -106,7 +106,6 @@ function PrandantNumber() {
                                             onChange={(e) => setA(e.target.value)} />m2/s
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Prandtl Number (Pr)</dt></Col>
@@ -137,7 +136,6 @@ function PrandantNumber() {
                                             onChange={(e) => setPR(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Kinematic Viscosity (v)</dt></Col>
@@ -167,7 +165,6 @@ function PrandantNumber() {
                                             onChange={(e) => setPR(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Thermal Diffusivity (a)</dt></Col>

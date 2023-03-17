@@ -75,8 +75,6 @@ function PoiseuilleEquation() {
                                 onChange={(e) => setViscosity(e.target.value)} />
                             </Col>
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
-
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>Nusselt Number</dt></Col>
                             <Col md={6} sm={12} xs={12}>

@@ -162,7 +162,6 @@ function Renold() {
                                             onChange={(e) => setCL(e.target.value)} />m
                                     </Col>
                                 </Row> 
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Renolds Number</dt></Col>
@@ -207,7 +206,6 @@ function Renold() {
                                             onChange={(e) => setVS(e.target.value)} />Ns/m2
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Velocity :</dt></Col>
@@ -252,7 +250,6 @@ function Renold() {
                                             onChange={(e) => setVS(e.target.value)} />Ns/m2
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Density :</dt></Col>
@@ -298,7 +295,6 @@ function Renold() {
                                             onChange={(e) => setVS(e.target.value)} />Ns/m2
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Characteristic Length (D):</dt></Col>
@@ -344,7 +340,6 @@ function Renold() {
                                             onChange={(e) => setCL(e.target.value)} />Ns/m2
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Characteristic Length (D):</dt></Col>
