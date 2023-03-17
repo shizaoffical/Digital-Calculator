@@ -66,7 +66,8 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="pump efficency" 
                         path="/physics/fluid-machine/pump-efficiency"/> </Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="reynolda number" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="reynolds number" 
+                        path="/physics/fluid-machine/renold"/></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="rectangular weir flow rate" /></Col>

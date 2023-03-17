@@ -13,32 +13,34 @@ function Circle() {
     // states
     // const [resetCount] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
-
-    const [radius, setRadius] = useState("");
+    const [radius, setRadius] = useState(null);
     const [diameter, setDiameter] = useState(0);
     const [circumference, setCircumference] = useState(0)
     const [area, setArea] = useState(0);
-
     const calculate = () => {
-        if(radius === 0 && ""){
+        if(radius!==null){
+            const r = parseFloat(radius);
+            setDiameter(2 * r);
+            setCircumference(2 * Math.PI * r);
+            setArea(Math.PI * r * r); 
+            console.log("code");
+        }
+        else{
             setShowPopup(true);
-        }
-        else{
-           const r = parseFloat(radius);
-        setDiameter(2 * r);
-        setCircumference(2 * Math.PI * r);
-        setArea(Math.PI * r * r); 
-        }
-        
+           console.log('pop')
+        }   
     }
-
     const handleResetClick = () => {
-        if (calculate === 0) {
-          setShowPopup(true);
-          console.log("hello");
+        if (circumference && diameter && area !==  0) {
+            setRadius(null)
+            setCircumference(0);
+            setDiameter(0)
+            setArea(0)
+         console.log("hello")
         }
         else{
-            console.log("abc");
+            setShowPopup(true);
+           console.log("popup");
         }
       };
     const componentsRef = useRef();
@@ -69,7 +71,7 @@ function Circle() {
                             <Row style={{ alignItems: "center", textAlign: "center" }}>
                                 <Col md={12} sm={12} xs={12} >
                                     <label>  Number of Sides:<br /><input type="number" value={radius}
-                                        onChange={(event) => setRadius(event.target.value)} placeholder="23"/> </label></Col>
+                                        onChange={(event) => setRadius(event.target.value)} /> </label></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Areaof Circle</dt></Col>
@@ -89,6 +91,7 @@ function Circle() {
                         </div>
                         <div className='text-center'>
                             <ButtonA onClick={calculate} text="Calaulate" />
+                            {showPopup && <Popup />}
                             <ButtonA onClick={handleResetClick} text="Reset" />
                             {showPopup && <Popup />}
 

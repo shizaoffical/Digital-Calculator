@@ -54,6 +54,7 @@ import PoiseuilleEquation from './pages/Physics/fluidMechanics/PoiseuilleEquatio
 import PrandantNumber from './pages/Physics/fluidMechanics/PrandantNumber';
 import PecletNumber from './pages/Physics/fluidMechanics/PecletNumber';
 import PumpEfficiency from './pages/Physics/fluidMechanics/PumpEfficiency';
+import Renold from './pages/Physics/fluidMechanics/Renold';
 
 function App() {
 
@@ -111,6 +112,7 @@ function App() {
             <Route path="/physics/fluid-machine/prandtl-number" element={<PrandantNumber/>} />
             <Route path="/physics/fluid-machine/peclel-number" element={<PecletNumber/>} />
             <Route path="/physics/fluid-machine/pump-efficiency" element={<PumpEfficiency/>} />
+            <Route path="/physics/fluid-machine/renold" element={<Renold/>} />
 
 
             <Route path="/Health" element={<Health />} />
