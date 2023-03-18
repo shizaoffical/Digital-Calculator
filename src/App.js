@@ -62,13 +62,17 @@ import SpecificVolume from './pages/Physics/fluidMechanics/SpecificVolume';
 import StockLaw from './pages/Physics/fluidMechanics/StockLaw';
 import VoltageAcrossIndustry from './pages/Physics/fluidMechanics/VoltageAcrossIndustry';
 import WaterHoroscope from './pages/Physics/fluidMechanics/WaterHoroscope';
+import WeberNumber from './pages/Physics/fluidMechanics/WeberNumber';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
   return (
     <div className="App">
       <BrowserRouter>
+      <ScrollToTop/>
         <Routes>
+        
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='/Math' element={<Math />} />
@@ -127,6 +131,7 @@ function App() {
             <Route path="/physics/fluid-machine/stock-law" element={<StockLaw/>} />
             <Route path="/physics/fluid-machine/voltage-across-industry" element={<VoltageAcrossIndustry/>} />
             <Route path="/physics/fluid-machine/water-horoscope" element={<WaterHoroscope/>} />
+            <Route path="/physics/fluid-machine/weber-number" element={<WeberNumber/>} />
 
 
             <Route path="/Health" element={<Health />} />

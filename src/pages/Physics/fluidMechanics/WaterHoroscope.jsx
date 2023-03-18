@@ -229,4 +229,4 @@ function WaterHoroscope() {
     )
 }
 
-export default WaterHoroscope
+export default WaterHoroscope;

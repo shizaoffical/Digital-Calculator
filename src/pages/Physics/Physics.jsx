@@ -70,9 +70,10 @@ function Physics() {
                         path="/physics/fluid-machine/renold"/></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="rectangular weir flow rate" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="sherwood number"
-                        path="/physics/fluid-machine/sherWood-number" /></Col>
+                        path="/physics/fluid-machine/sherWood-number" /> </Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="schmidt  number" 
+                        path="/physics/fluid-machine/schmidt"/></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="specific gas constant " 
@@ -83,18 +84,14 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="stokes law"
                         path="/physics/fluid-machine/stock-law" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="schmidt  number" 
-                        path="/physics/fluid-machine/schmidt"/></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="voltage across industance"
+                        path="/physics/fluid-machine/voltage-across-industry" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="voltage across industance"
-                        path="/physics/fluid-machine/voltage-across-industry" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="weber number"
+                        path="/physics/fluid-machine/weber-number" /></Col>
                         <Col sm={6} xs={12}><CalculatorName CalculatorName="water horsepower" 
                         path="/physics/fluid-machine/water-horoscope"/> </Col>
-                    </Row>
-                    <Row className='mb-2'>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="weber number" /> </Col>
-                        <Col sm={6} xs={12}> </Col>
                     </Row>
                     <dt className='text-center py-3'>Electromagnetism</dt>
                     <Row className='mb-2'>
