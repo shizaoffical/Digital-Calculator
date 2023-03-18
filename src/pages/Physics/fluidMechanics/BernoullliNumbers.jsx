@@ -4,16 +4,18 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
+import { Link } from 'react-router-dom';
+import Reference from '../../../components/Reference';
 
 function BernoullliNumbers() {
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [n , setn] = useState(10);
-    const [BN, setBN]= useState(0);
+    const [n, setn] = useState(10);
+    const [BN, setBN] = useState(0);
 
     const calculate = () => {
-        const value =4*(n / (3.14 * 2.71828)) * (2 * n) * Math.sqrt(n*3.14);
-        setBN(value); 
+        const value = 4 * (n / (3.14 * 2.71828)) * (2 * n) * Math.sqrt(n * 3.14);
+        setBN(value);
     }
 
     function reset() {
@@ -47,14 +49,14 @@ function BernoullliNumbers() {
                             <Col md={6} sm={12} xs={12} >
                                 <label>Large Number (n) :</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={n}
-                                onChange={(e) => setn(e.target.value)} />
-                                </Col> 
+                                <input type="number" className='ms-3' value={n}
+                                    onChange={(e) => setn(e.target.value)} />
+                            </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>B(n) = </dt></Col>
                             <Col md={6} sm={12} xs={12}>
-                                <button className='formula-value-btn'>{BN.toString().substring(0,6)}</button></Col>
+                                <button className='formula-value-btn'>{BN.toString().substring(0, 6)}</button></Col>
                         </Row>
                     </div>
                     <div className='text-center'>
@@ -67,16 +69,21 @@ function BernoullliNumbers() {
                     </center>
                     {
                         textShow &&
-                        <Example heading="Example" title={<>Calculate the Bernoulli Number B(n) for the given details.<br/>
-                        Large Number (n): 5</>}
-                            step1={<>Solution : <br/>Apply Formula:</>} 
-                            step1heading={<>B(n)≈ 4 * (n / π e)2n * √ n π<br/>B(n)≈ 4*(5/3.14*2.718281828459)2*5√5*3.14</>} 
-                            step2={<>B(n)≈ 0.07505444661992206<br/>If you need further explanation watch this video below:
-                            </>}/>
+                        <Example heading="Example" title={<>Calculate the Bernoulli Number B(n) for the given details.<br />
+                            Large Number (n): 5</>}
+                            step1={<>Solution : <br />Apply Formula:</>}
+                            step1heading={<>B(n)≈ 4 * (n / π e)2n * √ n π<br />B(n)≈ 4*(5/3.14*2.718281828459)2*5√5*3.14</>}
+                            step2={<>B(n)≈ 0.07505444661992206<br />If you need further explanation watch this video below:
+                            </>} />
                     }</div>
+
+                <div className='mt-2'>
+                    The numbers known as Bernoulli Numbers are crucial in number theory and analysis because they appear in the series expansions of trigonometric functions. The Bernoulli Numbers are expressed using both contemporary language and classic literature. The symbol Bn is used to represent Bernoulli Numbers in modern usage, while B*n is used in older literature.<br />
+                    The equivalent Bernoulli value B(n) for the supplied numeric value is calculated using this sophisticated online calculator for Bernoulli numbers, which is utilised in topology, number theory, and mathematical analysis.
+                </div>
                 {/* ***************   formula ********** */}
                 <div className='polygon-calculator-text-div'>
-                <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
+                    <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                     {show ?
                         <div className='formula-backside'>
                             <dt className='Fw-bold'>B(n)≈ 4 * (n / π e)2n * √ n π</dt><br />
@@ -87,8 +94,10 @@ function BernoullliNumbers() {
                         : null}
                     {/* ***************   formula end and example start ********** */}
                 </div>
-                The numbers known as Bernoulli Numbers are crucial in number theory and analysis because they appear in the series expansions of trigonometric functions. The Bernoulli Numbers are expressed using both contemporary language and classic literature. The symbol Bn is used to represent Bernoulli Numbers in modern usage, while B*n is used in older literature.<br/>
-                The equivalent Bernoulli value B(n) for the supplied numeric value is calculated using this sophisticated online calculator for Bernoulli numbers, which is utilised in topology, number theory, and mathematical analysis.
+                <Reference  
+                    step1={<>If you need further explanation watch this video below:<Link className='Reference-link' 
+                    to="https://www.youtube.com/watch?v=O8vB1eInP_8&t=9s"
+                        target="_blank">Click here</Link> </>}/>
             </div>
         </Container>
         </div >

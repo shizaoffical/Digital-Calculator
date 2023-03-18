@@ -293,3 +293,16 @@
 .popup p {
   margin-bottom: 20px;
 }
+/* reference */
+.referenec-bg-color{
+  font-size: 14px;
+  background-color:var(--heading-color)
+}.Reference-link{
+  color: var(--dark-primary-color);
+  padding: 0 5px;
+}
+.Reference-link:hover{
+  color: var(--dark-primary-color);
+  
+}
+

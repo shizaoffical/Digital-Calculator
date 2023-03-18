@@ -4,6 +4,8 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
+import Reference from '../../../components/Reference';
+import { Link } from 'react-router-dom';
 
 function SpecificGasConstant() {
     const [show, setShow] = useState(false);
@@ -151,6 +153,11 @@ function SpecificGasConstant() {
                             : null}
                         {/* ***************   formula end and example start ********** */}
                     </div>
+                    <Reference
+                        step1={<>Specific Gas Constant - an overview | <Link className='Reference-link'
+                            to="https://www.sciencedirect.com/topics/engineering/specific-gas-constant"
+                            target="_blank">ScienceDirect.Topics.</Link> </>}
+                        />
                 </div>
             </Container >
         </div >

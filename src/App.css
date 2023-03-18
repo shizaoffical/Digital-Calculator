@@ -40,7 +40,7 @@ input{
     background-color:white;
 }
 ::-webkit-scrollbar-thumb{
-background-color:#19293A;
+background-color:var(--dark-primary-color);
 border-radius: 10px;
 }
 @media (max-width : 550px) {

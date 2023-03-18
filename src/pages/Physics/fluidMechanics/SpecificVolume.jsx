@@ -4,6 +4,8 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
+import Reference from '../../../components/Reference';
+import { Link } from 'react-router-dom';
 
 function SpecificVolume() {
     const [show, setShow] = useState(false);
@@ -145,6 +147,14 @@ function SpecificVolume() {
                             : null}
                         {/* ***************   formula end and example start ********** */}
                     </div>
+                    <Reference
+                        step1={<><Link className='Reference-link'
+                            to="https://www.thoughtco.com/specific-volume-definition-and-examples-4175807"
+                            target="_blank">Specific Volume</Link> What It Means And How to Calculate It. </>}
+                            step2={<>Specific Volume, by<Link className='Reference-link'
+                            to="https://www.grc.nasa.gov/www/k-12/airplane/specvol.html"
+                            target="_blank">grc.nasa.gov</Link>  </>}
+                        />
                 </div>
             </Container >
         </div >

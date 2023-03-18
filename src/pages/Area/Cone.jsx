@@ -4,6 +4,8 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Reference from '../../components/Reference';
+import { Link } from 'react-router-dom';
 
 function Cone() {
     const [show, setShow]= useState(false);
@@ -123,7 +125,11 @@ function Cone() {
                         : null}
                     {/* ***************   formula end and example start ********** */}
                 </div>
-
+          <Reference 
+          step1={<><Link className='Reference-link' to="https://www.ducksters.com/kidsmath/finding_the_volume_surface_area_of_a_cone.php"
+          target="_blank">Kids Math:</Link> Finding the Volume and Surface Area of a Cone.</>}
+          step2={<>What is<Link className='Reference-link' to="https://www.splashlearn.com/math-vocabulary/geometry/cone"
+          target="_blank">Cone?</Link>Defination Facts and Example</>}/>
             </div>
         </Container>
         </div >

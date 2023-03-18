@@ -4,6 +4,8 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
+import Reference from '../../../components/Reference';
+import { Link } from 'react-router-dom';
 
 function NussletNumber() {
 
@@ -23,7 +25,7 @@ function NussletNumber() {
     const [Kvalue, setKvalue] = useState(0)
     // NU VALUE
     const NUcalculator = () => {
-        const nu = (H * L ) / K;
+        const nu = (H * L) / K;
         setNUvalue(nu);
     }
     function NUcalculatorReset() {
@@ -34,7 +36,7 @@ function NussletNumber() {
     }
     // hvalue
     const Hcalculator = () => {
-        const H = (NU * K ) / L;
+        const H = (NU * K) / L;
         setHvalue(H);
     }
     function HcalculatorReset() {
@@ -45,7 +47,7 @@ function NussletNumber() {
     }
     // Lvalue
     const Lcalculator = () => {
-        const L =  (NU * K) /H 
+        const L = (NU * K) / H
         setLvalue(L);
     }
     function LcalculatorReset() {
@@ -56,7 +58,7 @@ function NussletNumber() {
     }
     //pecalculator
     const Kcalculator = () => {
-        const K = (H  * L) / NU;
+        const K = (H * L) / NU;
         setKvalue(K);
     }
     function KcalculatorReset() {
@@ -103,7 +105,7 @@ function NussletNumber() {
                                         Convection Heat Transfer Coefficient</option>
                                     <option value='Characteristic Length' className='value-dropdown' >Characteristic Length </option>
                                     <option value='Thermal Conductivity of the Fluid (k)' className='value-dropdown' >
-                                    Thermal Conductivity of the Fluid (k) </option>
+                                        Thermal Conductivity of the Fluid (k) </option>
                                 </select>
                             </Col>
                         </Row>
@@ -250,7 +252,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <input type="number" className='ms-3' value={L}
                                                 onChange={(e) => setL(e.target.value)} />
-                                        </Col> 
+                                        </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
@@ -286,16 +288,16 @@ function NussletNumber() {
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = 70 , L = 32 , k = 5.65 , Nu = ?"
                                         step2="Formula" step2heading="nu = h * l / k"
-                                        step3="Putting Vales" step3heading=" 70 * 32 / 5.65" 
-                                        step4="396.46"/>
+                                        step3="Putting Vales" step3heading=" 70 * 32 / 5.65"
+                                        step4="396.46" />
                                 }
                                 {selectCondition === "Convection Heat Transfer Coefficient" &&
                                     <Example heading="Convection Heat Transfer Coefficient"
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = ? , L = 32 , k = 5.65 , Nu = 396.4600"
                                         step2="Formula" step2heading="h = Nu * k * L"
-                                        step3="Putting Value" step3heading="396.4600 * 5.65 * 32" 
-                                        step4="71679.968"/>
+                                        step3="Putting Value" step3heading="396.4600 * 5.65 * 32"
+                                        step4="71679.968" />
                                 }
                                 {selectCondition === "Characteristic Length" &&
                                     <Example heading="Characteristic Length"
@@ -303,14 +305,14 @@ function NussletNumber() {
                                         step1="Data : " step1heading="h = 71679.9680 , L = ? , k = 5.65 , Nu = 396.4600"
                                         step2="Formula" step2heading="nu * k / h"
                                         step3="Putting value" step3heading="396.4600 * 5.65 / 71679.9680"
-                                        step4="0.0312"/>
+                                        step4="0.0312" />
                                 }
                                 {selectCondition === "Thermal Conductivity of Fluidy" &&
                                     <Example heading="Thermal Conductivity of Fluid"
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = 71679.9680 , L = 0.0312 , k = ? , Nu = 396.4600"
                                         step2="Formula" step2heading="e = h * l / nu"
-                                        step3="Putting value"   step3hrading="71679.9680 * 0.0312 /  396.4600" 
+                                        step3="Putting value" step3hrading="71679.9680 * 0.0312 /  396.4600"
                                         step4="5.641" />
                                 }  </>}</div>
 
@@ -339,6 +341,16 @@ function NussletNumber() {
                             : null}
                         {/* ***************   formula end and example start ********** */}
                     </div>
+                    <Reference
+                        step1={<>Nusselt Number - an overview | Topics. <Link className='Reference-link'
+                            to="https://www.sciencedirect.com/topics/chemical-engineering/nusselt-number"
+                            target="_blank">Sciencedirect.com.</Link> </>}
+                        step2={<><Link className='Reference-link'
+                            to="https://www.engineersedge.com/heat_transfer/nusselt_number_13856.htm"
+                            target="_blank">Nusselt Number</Link> for Forced Convection | Engineers Edge | Engineersedge.com</>}
+                        step3={<>The Nusselt Number.<Link className='Reference-link'
+                            to="https://pages.jh.edu/virtlab/heat/nusselt/nusselt.htm"
+                            target="_blank">p.eduages.jh</Link> </>} />
                 </div>
             </Container >
         </div >
