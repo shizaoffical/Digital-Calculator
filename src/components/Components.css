@@ -2,6 +2,8 @@
 /* ************************   navbar *********************** */
 .navbar {
   background:  var(--main-color);
+  position: sticky !important;
+  z-index: 1;
 }
 
 .nav-search-btn-div {
@@ -23,7 +25,6 @@
     height: 6rem;
   }
 }
-
 .nav-link {
   position: relative;
 }
@@ -51,6 +52,7 @@
 .nav-search-btn input {
   font-size: 22px;
   color: white;
+  box-shadow: none !important;
   background-color: transparent !important;
 }
 

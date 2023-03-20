@@ -95,7 +95,8 @@ function Physics() {
                     </Row>
                     <dt className='text-center py-3'>Electromagnetism</dt>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="AC to DC  calculator" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="AC to DC  calculator" 
+                         path="/physics/fluid-machine/AC-to-DC"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="antenna array" /></Col>
                     </Row> <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="antenna gain" /></Col>

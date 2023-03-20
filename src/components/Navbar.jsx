@@ -20,7 +20,7 @@ const Navbar = () => {
           </form>
         </div>
         : null}
-      <nav className=" navbar navbar-expand-lg navbar-dark ">
+      <nav className=" navbar navbar-expand-lg navbar-dark position-sticky" sticky="top" >
         <div className="container">
           <Link className="navbar-brand" to="/"><img src={logo} alt="" /> Digital Calculator</Link>
           {/* search btn */}
