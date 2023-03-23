@@ -24,7 +24,7 @@ function PumpEfficiency() {
     // functionality
     const PEcalculator = () => {
         const PE = WH / BH;
-        setPEvalue(PE);
+        setPEvalue(PE.toPrecision(6));
     }
     function PEcalculatorReset() {
         setPEvalue(0);
@@ -33,7 +33,7 @@ function PumpEfficiency() {
     }
     const WHcalculator = () => {
         const WH = PE * BH;
-        setWHvalue(WH);
+        setWHvalue(WH.toPrecision(6));
     }
     function WHcalculatorReset() {
         setWHvalue(0);
@@ -42,7 +42,7 @@ function PumpEfficiency() {
     }
     const BHcalculator = () => {
         const BH = WH / PE;
-        setBHvalue(BH);
+        setBHvalue(BH.toPrecision(6));
     }
     function BHcalculatorReset() {
         setBHvalue(0);

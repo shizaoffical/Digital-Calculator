@@ -25,7 +25,7 @@ function EulerNumbers() {
     // ENcalculator 
  const ENcalculator =() => {
     const encalculate = PC / (D *(CV*CV));
-    setENvalue(encalculate);
+    setENvalue(encalculate.toPrecision(6));
  }
  function ENcalculatorReset() {
     setENvalue(0);
@@ -37,7 +37,7 @@ function EulerNumbers() {
     // PCcalculator 
     const PCcalculator =() => {
         const pccalculate = EN / (D *(CV*CV)) ;
-        setPCvalue(pccalculate);
+        setPCvalue(pccalculate.toPrecision(6));
         console.log("helo")
      }
      function PCcalculatorReset() {
@@ -49,7 +49,7 @@ function EulerNumbers() {
        // PCcalculator 
     const Dcalculator =() => {
         const Dcalculate = PC / (EN *(CV*CV));
-        setDvalue(Dcalculate);
+        setDvalue(Dcalculate.toPrecision(6));
      }
      function DcalculatorReset() {
         setDvalue("");
@@ -61,7 +61,7 @@ function EulerNumbers() {
        // PCcalculator 
     const CVcalculator =() => {
         const cvcalculate =Math.sqrt(PC / (EN*CV)) ;
-        setCVvalue(cvcalculate);
+        setCVvalue(cvcalculate.toPrecision(6));
      }
      function CVcalculatorReset() {
         setCVvalue("");

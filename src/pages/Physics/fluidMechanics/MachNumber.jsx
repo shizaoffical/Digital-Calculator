@@ -24,7 +24,7 @@ function MachNumber() {
     // flowrate
      const Mcalculator = () => {
         const m =  V / A;
-        setMvalue(m);
+        setMvalue(m.toPrecision(6));
      }
      function McalculatorReset() {
         setV(0);
@@ -33,7 +33,7 @@ function MachNumber() {
      }
     const Acalculator = ()=> {
         const a = V / M;
-        setAvalue(a);
+        setAvalue(a.toPrecision(6));
     }
     function AcalculatorReset() {
         setV(0);
@@ -42,7 +42,7 @@ function MachNumber() {
      }
      const Vcalculator = ()=> {
         const v = M * A;
-        setVvalue(v);
+        setVvalue(v.toPrecision(6));
     }
     function VcalculatorReset() {
         setM(0);

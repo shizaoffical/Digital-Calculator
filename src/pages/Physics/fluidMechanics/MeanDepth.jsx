@@ -23,7 +23,7 @@ function MeanDepth() {
     // functionality
     const HMcalculator = () => {
         const HM = A / T;
-        setHMvalue(HM);
+        setHMvalue(HM.toPrecision(6));
     }
     function HMcalculatorReset() {
         setHMvalue(0);
@@ -32,7 +32,7 @@ function MeanDepth() {
     }
     const Acalculator = () => {
         const a = HM * T;
-        setAvalue(a);
+        setAvalue(a.toPrecision(6));
     }
     function AcalculatorReset() {
         setAvalue(0);
@@ -41,7 +41,7 @@ function MeanDepth() {
     }
     const Tcalculator = () => {
         const dc = A / HM;
-        setTvalue(dc);
+        setTvalue(dc.toPrecision(6));
     }
     function TcalculatorReset() {
         setTvalue(0);

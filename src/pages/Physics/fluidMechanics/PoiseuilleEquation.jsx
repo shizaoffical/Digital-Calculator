@@ -19,7 +19,7 @@ function PoiseuilleEquation() {
     function calculateFlowRate(e) {
       e.preventDefault();
       const flowRate = ((Math.PI * Math.pow(radius, 4)) / (8 * viscosity)) * pressure;
-      setFlowRate(flowRate.toFixed(2));
+      setFlowRate(flowRate.toFixed(2).toPrecision(6));
     }
   
      

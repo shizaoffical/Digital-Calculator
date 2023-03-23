@@ -28,7 +28,7 @@ function Renold() {
     // REYNOLD NUMBER
     const RNcalculator = () => {
         const RN = Math.round(((D*V*CL)/VS)*100)/100;
-        setRNvalue(RN);
+        setRNvalue(RN.toPrecision(6));
     }
     function RNcalculatorReset() {
         setRNvalue(0);
@@ -40,7 +40,7 @@ function Renold() {
     // VELOCITY
     const Vcalculator = () => {
         const V = Math.round(((RN*VS)/(D*CL))*100)/100;
-        setVvalue(V);
+        setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
         setVvalue(0);
@@ -52,7 +52,7 @@ function Renold() {
     // DENSITY
     const Dcalculator = () => {
         const D = Math.round(((RN*VS)/(V*CL))*100)/100;
-        setDvalue(D);
+        setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
         setDvalue(0);
@@ -64,7 +64,7 @@ function Renold() {
     // VISCIOCITY
     const VScalculator = () => {
         const VS = (((D*V*CL)/RN)*100)/100;
-        setVSvalue(VS);
+        setVSvalue(VS.toPrecision(6));
     }
     function VScalculatorReset() {
         setVSvalue(0);

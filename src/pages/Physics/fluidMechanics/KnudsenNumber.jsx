@@ -22,7 +22,7 @@ function KnudsenNumber() {
 
     const PRLcalculator = () => {
         const prl = FP / KN;
-        setPRLvalue(prl);
+        setPRLvalue(prl.toPrecision(6));
     }
     function PRLcalculatorReset() {
         setPRLvalue(0);
@@ -32,7 +32,7 @@ function KnudsenNumber() {
     // fpvalue
     const FPcalculator = () => {
         const fp = KN * RPL;
-        setFPvalue(fp);
+        setFPvalue(fp.toPrecision(6));
     }
     function FPcalculatorReset() {
         setFPvalue(0);
@@ -42,7 +42,7 @@ function KnudsenNumber() {
     // fpvalue
     const KNcalculator = () => {
         const kn = FP / RPL;
-        setKNvalue(kn);
+        setKNvalue(kn.toPrecision(6));
     }
     function KNcalculatorReset() {
         setKNvalue(0);

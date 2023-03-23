@@ -23,7 +23,7 @@ function FroudeNumber() {
     // FNcalculator
     const FNcalculator = () => {
         const FN = V / Math.sqrt(G * HM);
-        setFNvalue(FN);
+        setFNvalue(FN.toPrecision(6));
     }
     function FNcalculatorReset() {
         setFNvalue(0)
@@ -31,7 +31,7 @@ function FroudeNumber() {
     // FNcalculator
     const Vcalculator = () => {
         const V = F * (Math.sqrt(G * HM));
-        setVvalue(V);
+        setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
         setVvalue(0)
@@ -39,7 +39,7 @@ function FroudeNumber() {
      // FNcalculator
      const MDcalculator = () => {
         const MD= (V * V)/ (G * (F* F));
-        setMDvalue(MD);
+        setMDvalue(MD.toPrecision(6));
     }
     function MDcalculatorReset() {
         setMDvalue(0)
@@ -47,7 +47,7 @@ function FroudeNumber() {
      // FNcalculator
      const AGcalculator = () => {
         const AG= (V * V)/ (HM * (F* F));
-        setAGvalue(AG);
+        setAGvalue(AG.toPrecision(6));
     }
     function AGcalculatorReset() {
         setAGvalue(0)

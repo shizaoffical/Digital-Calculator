@@ -15,7 +15,7 @@ function VoltageAcrossIndustry() {
    const [VAI, setVAI] = useState(0);
     const calculate = () => {
         const VAI = CC * TM / IND;
-        setVAI(VAI);
+        setVAI(VAI.toPrecision(6));
     }
 
  function Reset() {

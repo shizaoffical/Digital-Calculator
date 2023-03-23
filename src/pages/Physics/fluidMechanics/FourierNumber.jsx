@@ -24,7 +24,7 @@ function FourierNumber() {
   // FOcalculator
   const FOcalculator = () => {
     const fo = (A * T) / (L * L)
-    setFOvalue(fo);
+    setFOvalue(fo.toPrecision(6));
   }
   function FOcalculatorReset() {
     setFOvalue(0);
@@ -35,7 +35,7 @@ function FourierNumber() {
   // TDcalculator
   const TDcalculator = () => {
     const a = FO * (L * L) / T;
-    setTDvalue(a);
+    setTDvalue(a.toPrecision(6));
   }
   function TDcalculatorReset() {
     setTDvalue(0);
@@ -46,7 +46,7 @@ function FourierNumber() {
   // CTcalculator
   const CTcalculator = () => {
     const t = FO * (L * L) / A;
-    setCTvalue(t);
+    setCTvalue(t.toPrecision(6));
   }
   function CTcalculatorReset() {
     setCTvalue(0);
@@ -57,7 +57,7 @@ function FourierNumber() {
   // CTcalculator
   const CLcalculator = () => {
     const l = Math.sqrt((A * T) / FO)
-    setCLvalue(l);
+    setCLvalue(l.toPrecision(6));
   }
   function CLcalculatorReset() {
     setCLvalue(0);

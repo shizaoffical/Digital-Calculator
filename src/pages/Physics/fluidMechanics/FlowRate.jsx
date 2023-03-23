@@ -22,7 +22,7 @@ function FlowRate() {
     // flowrate
     const flowRate = () => {
         const flowrate = Math.round(A * V)
-        setFR(flowrate);
+        setFR(flowrate.toPrecision(6));
     }
     function flowRateReset() {
         setFR("")
@@ -31,7 +31,7 @@ function FlowRate() {
     // flowrate
     const flowArea = () => {
         const flowarea = Math.round(R / V)
-        setFA(flowarea);
+        setFA(flowarea.toPrecision(6));
     }
     function flowAreaReset() {
         setFA("")
@@ -40,7 +40,7 @@ function FlowRate() {
     // flowrate
     const flowVelocity = () => {
         const flowvelocity = Math.round(R / A)
-        setFV(flowvelocity);
+        setFV(flowvelocity.toPrecision(6));
     }
     function flowVelocityReset() {
         setFV("")

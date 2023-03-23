@@ -21,7 +21,7 @@ function SpecificGasConstant() {
     // ScalculatorReset
     const Scalculator = () => {
         const S = R / MV;
-        setSvalue(S);
+        setSvalue(S.toPrecision(6));
     }
     function ScalculatorReset() {
         setSvalue(0)
@@ -29,7 +29,7 @@ function SpecificGasConstant() {
     // MVcalculatorReset
     const MVcalculator = () => {
            const MV = R /S ;
-           setMVvalue(MV);
+           setMVvalue(MV.toPrecision(6));
     }
     function MVcalculatorReset() {
       setMVvalue(0);

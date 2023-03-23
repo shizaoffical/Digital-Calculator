@@ -15,7 +15,7 @@ function BernoullliNumbers() {
 
     const calculate = () => {
         const value = 4 * (n / (3.14 * 2.71828)) * (2 * n) * Math.sqrt(n * 3.14);
-        setBN(value);
+        setBN(value.toPrecision(6));
     }
 
     function reset() {

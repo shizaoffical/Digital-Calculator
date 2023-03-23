@@ -17,7 +17,7 @@ function BroadCrustedWeir() {
     const [WFR, setWRF] = useState(0);
     const wfrvalue = () => {
         const value = CD * width * HB * (((2*(9.81))*(HA - HB)) * 1 / 2)
-        setWRF(value);
+        setWRF(value.toPrecision(6));
         console.log("hello")
     }
 function wfrvalueReset() {

@@ -20,7 +20,7 @@ function WaterHoroscope() {
     // ScalculatorReset
     const WHPcalculator = () => {
         const WH = Q * H / 3960;
-        setWHPvalue(WH);
+        setWHPvalue(WH.toPrecision(6));
     }
     function WHPcalculatorReset() {
         setWHPvalue(0)
@@ -28,7 +28,7 @@ function WaterHoroscope() {
     // HcalculatorReset
     const Hcalculator = () => {
         const H = 3960 * WHP /Q;
-        setHvalue(H);
+        setHvalue(H.toPrecision(6));
     }
     function HcalculatorReset() {
         setHvalue(0);
@@ -36,7 +36,7 @@ function WaterHoroscope() {
      // QcalculatorReset
      const Qcalculator = () => {
         const Q = 3960 * WHP /H;
-        setQvalue(Q);
+        setQvalue(Q.toPrecision(6));
     }
     function QcalculatorReset() {
         setQvalue(0);

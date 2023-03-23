@@ -20,7 +20,7 @@ function SpecificVolume() {
     // VcalculatorReset
     const Vcalculator=() => {
         const V = 1 / D;
-        setVvalue(V);
+        setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
         setVvalue(0)
@@ -28,7 +28,7 @@ function SpecificVolume() {
     // DcalculatorReset
     const Dcalculator=() => {
         const D= 1 / V;
-        setDvalue(D);
+        setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
         setDvalue(0)

@@ -27,7 +27,7 @@ function WeberNumber() {
     // functionality
     const WNcalculator = () => {
         const WN =Math.round(((D*V*V*CL)/ST)*100)/100;
-        setWNvalue(WN);
+        setWNvalue(WN.toPrecision(6));
     }
     function WNcalculatorReset() {
         setWNvalue(0);
@@ -39,7 +39,7 @@ function WeberNumber() {
     // VELOCITY
     const Vcalculator = () => {
         const V = Math.round((Math.sqrt((WN*ST)/(D*CL)))*100)/100;
-        setVvalue(V);
+        setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
         setVvalue(0);
@@ -51,7 +51,7 @@ function WeberNumber() {
     // DENSITY
     const Dcalculator = () => {
         const D = Math.round(((WN*ST)/(V*V*CL))*100)/100;
-        setDvalue(D);
+        setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
         setDvalue(0);
@@ -64,7 +64,7 @@ function WeberNumber() {
     // DENSITY
     const STcalculator = () => {
         const ST =Math.round(((D*V*V*CL)/WN)*100)/100;
-        setSTvalue(ST);
+        setSTvalue(ST.toPrecision(6));
     }
     function STcalculatorReset() {
         setSTvalue("");
@@ -76,7 +76,7 @@ function WeberNumber() {
     // CHARACTER LENGTH
     const CLcalculator = () => {
         const CL = Math.round(((WN*ST)/(D*V*V))*100)/100;
-        setCLvalue(CL);
+        setCLvalue(CL.toPrecision(6));
     }
     function CLcalculatorReset() {
         setCLvalue("");

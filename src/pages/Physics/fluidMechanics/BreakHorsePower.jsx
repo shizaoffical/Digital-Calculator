@@ -23,7 +23,7 @@ function BreakHorsePower() {
   // frdvalue functionalty
   const frdcalculator = () => {
     const Frdvalue = Math.round(((3960 * WH * PE) / (TH * 100)) * 100) / 100
-    setfrdvalue(Frdvalue);
+    setfrdvalue(Frdvalue.toPrecision(6));
   }
   function frdcalculatorReset() {
     setTH(0);
@@ -34,7 +34,7 @@ function BreakHorsePower() {
   // whvalue
   const whcalculator = () => {
     const whvalue = Math.round(((100 * FRD * TH) / ( 3960* PE)) * 100) / 100
-    setwhvalue(whvalue);
+    setwhvalue(whvalue.toPrecision(6));
   }
    function whcalculatorReset() {
     setTH(0);
@@ -45,7 +45,7 @@ function BreakHorsePower() {
   // thvalue
   const thcalculator = () => {
     const thvalue = Math.round(((3960 * WH * PE) / ( FRD*  100)) * 100) / 100
-    setthvalue(thvalue);
+    setthvalue(thvalue.toPrecision(6));
   }
    function thcalculatorReset() {
     setWH(0);
@@ -56,7 +56,7 @@ function BreakHorsePower() {
   //pecalculator
    const pecalculator = () => {
     const pevalue = Math.round(((100 * FRD * TH) / (3960*  WH)) * 100) / 100 
-    setpevalue(pevalue);
+    setpevalue(pevalue.toPrecision(6));
   }  
   function pecalculatorReset() {
     setWH(0);

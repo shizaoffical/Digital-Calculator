@@ -25,7 +25,7 @@ function SherWoodNumber() {
 //   SHcalculator
 const SHcalculator =() => {
      const SH = (((TC*CL)/DC)*100)/100;
-     setSHvalue(SH);
+     setSHvalue(SH.toPrecision(6));
 }
 function SHcalculatorReset() {
  setSHvalue(0)
@@ -33,7 +33,7 @@ function SHcalculatorReset() {
 // TCcalculator
 const TCcalculator =() => {
     const TC =(((SH*DC)/DC)*100)/100;
-    setTCvalue(TC);
+    setTCvalue(TC.toPrecision(6));
 }
 function TCcalculatorReset(){
     setTCvalue();
@@ -41,7 +41,7 @@ function TCcalculatorReset(){
 // CLcalculator
 const CLcalculator =() => {
     const CL =(((SH*DC)/TC)*100)/100;
-    setCLvalue(CL);
+    setCLvalue(CL.toPrecision(6));
 }
 function CLcalculatorReset(){
  setCLvalue(0)    
@@ -49,7 +49,7 @@ function CLcalculatorReset(){
 // DCcalculatorReset
 const DCcalculator = () => {
   const DC = (((TC*CL)/SH)*100)/100;
-  setDCvalue(DC);
+  setDCvalue(DC.toPrecision(6));
 }
 function DCcalculatorReset() {
   setDCvalue(0)

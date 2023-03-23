@@ -21,7 +21,7 @@ const [WPvalue,setWPvalue] = useState(0);
 //   HRvalue functionalty
 const HRcalculator =() => {
   const hr = A / WP;
-  setHRvalue(hr);
+  setHRvalue(hr.toPrecision(6));
 }
 function HRcalculatorReset() {
  setA(0)
@@ -31,7 +31,7 @@ function HRcalculatorReset() {
 //   avalue functionalty
 const Acalculator =() => {
     const a = HR * WP;
-    setAvalue(a);
+    setAvalue(a.toPrecision(6));
   }
   function AcalculatorReset() {
    setHR(0)
@@ -41,7 +41,7 @@ const Acalculator =() => {
   //   HRvalue functionalty
 const WPcalculator =() => {
     const wp = A / HR;
-    setWPvalue(wp);
+    setWPvalue(wp.toPrecision(6));
   }
   function WPcalculatorReset() {
    setA(0)

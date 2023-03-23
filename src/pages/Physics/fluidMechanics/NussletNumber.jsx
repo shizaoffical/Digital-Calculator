@@ -26,7 +26,7 @@ function NussletNumber() {
     // NU VALUE
     const NUcalculator = () => {
         const nu = (H * L) / K;
-        setNUvalue(nu);
+        setNUvalue(nu.toPrecision(6));
     }
     function NUcalculatorReset() {
         setH(0);
@@ -37,7 +37,7 @@ function NussletNumber() {
     // hvalue
     const Hcalculator = () => {
         const H = (NU * K) / L;
-        setHvalue(H);
+        setHvalue(H.toPrecision(6));
     }
     function HcalculatorReset() {
         setK(0);
@@ -48,7 +48,7 @@ function NussletNumber() {
     // Lvalue
     const Lcalculator = () => {
         const L = (NU * K) / H
-        setLvalue(L);
+        setLvalue(L.toPrecision(6));
     }
     function LcalculatorReset() {
         setH(0);
@@ -59,7 +59,7 @@ function NussletNumber() {
     //pecalculator
     const Kcalculator = () => {
         const K = (H * L) / NU;
-        setKvalue(K);
+        setKvalue(K.toPrecision(6));
     }
     function KcalculatorReset() {
         setL(0);

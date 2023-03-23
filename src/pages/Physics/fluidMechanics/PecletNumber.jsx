@@ -29,7 +29,7 @@ function PecletNumber() {
     // functionality
     const PNcalculator = () => {
         const PN = V * D * HC * CL / K;
-        setPNvalue(PN);
+        setPNvalue(PN.toPrecision(6));
     }
     function PNcalculatorReset() {
         setPNvalue(0);
@@ -42,7 +42,7 @@ function PecletNumber() {
     // VELOCITY
     const Vcalculator = () => {
         const V = PN * K / D * HC / CL;
-        setVvalue(V);
+        setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
         setVvalue(0);
@@ -55,7 +55,7 @@ function PecletNumber() {
      // DENSITY
      const Dcalculator = () => {
         const D= PN *K / V * HC* CL ;
-        setDvalue(D);
+        setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
         setDvalue(0);
@@ -69,7 +69,7 @@ function PecletNumber() {
      // DENSITY
      const HCcalculator = () => {
         const HC= PN *K / V *D * CL ;
-        setHCvalue(HC);
+        setHCvalue(HC.toPrecision(6));
     }
     function HCcalculatorReset() {
         setHCvalue("");
@@ -82,7 +82,7 @@ function PecletNumber() {
       // CHARACTER LENGTH
       const CLcalculator = () => {
         const CL= PN *K / V *D * HC;
-        setCLvalue(CL);
+        setCLvalue(CL.toPrecision(6));
     }
     function CLcalculatorReset() {
         setCLvalue("");
@@ -95,7 +95,7 @@ function PecletNumber() {
       // CHARACTER LENGTH
       const kcalculator = () => {
         const K=V *D * HC * CL / PN;
-        setKvalue(K);
+        setKvalue(K.toPrecision(6));
     }
     function kcalculatorReset() {
         setKvalue("");

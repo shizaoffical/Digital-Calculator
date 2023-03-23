@@ -29,7 +29,7 @@ function StockLaw() {
     // sv VALUE
     const SVcalculator = () => {
         const SV = Math.round(((AG*PA*PA*(PD-DM))/(18*VM))*100)/100;
-        setSVvalue(SV);
+        setSVvalue(SV.toPrecision(6));
     }
     function SVcalculatorReset() {
         setSVvalue(0)
@@ -37,7 +37,7 @@ function StockLaw() {
      // AG VALUE
      const AGcalculator = () => {
         const AG = Math.round(((18*VM*SV)/(PA*PA*(PD-DM)))*100)/100;
-        setAGvalue(AG);
+        setAGvalue(AG.toPrecision(6));
     }
     function AGcalculatorReset() {
         setAGvalue(0)
@@ -45,7 +45,7 @@ function StockLaw() {
        // PA VALUE
        const PAcalculator = () => {
         const PA = Math.round((Math.sqrt((18*VM*SV)/(AG*(PD-DM))))*100)/100;
-        setAGvalue(PA);
+        setAGvalue(PA.toPrecision(6));
     }
     function PAcalculatorReset() {
         setPAvalue(0)
@@ -53,7 +53,7 @@ function StockLaw() {
        // DM VALUE
        const DMcalculator = () => {
         const DM = Math.round((PD-((18*VM*SV)/(AG*PA*PA)))*100)/100;
-        setDMvalue(DM);
+        setDMvalue(DM.toPrecision(6));
     }
     function DMcalculatorReset() {
         setDMvalue(0)
@@ -61,7 +61,7 @@ function StockLaw() {
       // PD VALUE
       const PDcalculator = () => {
         const PD =Math.round((((18*VM*SV)/(AG*PA*PA))+(DM))*100)/100;
-        setPDvalue(PD);
+        setPDvalue(PD.toPrecision(6));
     }
     function PDcalculatorReset() {
         setPDvalue(0)
@@ -69,7 +69,7 @@ function StockLaw() {
      // VM VALUE
      const VMcalculator = () => {
         const VM =Math.round(((AG*PA*PA*(PD-DM))/(18*SV))*100)/100;
-        setVMvalue(VM);
+        setVMvalue(VM.toPrecision(6));
     }
     function VMcalculatorReset() {
         setVMvalue(0)

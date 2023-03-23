@@ -23,7 +23,7 @@ function Schmidt() {
     // SNcalculator
     const SNcalculator = () => {
          const SN = Math.round((KV / MD) * 100) / 100;
-         setSNvalue(SN);
+         setSNvalue(SN.toPrecision(6));
     }
     function SNcalculatorReset() {
             setKV(0);
@@ -32,7 +32,8 @@ function Schmidt() {
     }
     // KVcalculatorReset
     const KVcalculator = () => {  
-             const KV = Math.round((SN * MD) * 100) / 100; setKVvalue(KV); 
+             const KV = Math.round((SN * MD) * 100) / 100; 
+             setKVvalue(KV.toPrecision(6)); 
     }
     function KVcalculatorReset() {
        setKVvalue(0); 
@@ -42,7 +43,8 @@ function Schmidt() {
     }
     // MDcalculatorReset
     const MDcalculator = () => {
-         const MD = Math.round((KV / SN) * 100) / 100; setMDvalue(MD); 
+         const MD = Math.round((KV / SN) * 100) / 100;
+          setMDvalue(MD.toPrecision(6)); 
     }
     function MDcalculatorReset() {
         setKV(0); setMDvalue(0); setSN(0) 

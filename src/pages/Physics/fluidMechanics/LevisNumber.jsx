@@ -22,7 +22,7 @@ function LevisNumber() {
     // functionality
     const LEcalculator = () => {
         const LE = A / DC;
-        setLEvalue(LE);
+        setLEvalue(LE.toPrecision(6));
     }
     function LEcalculatorReset() {
         setLEvalue(0);
@@ -31,7 +31,7 @@ function LevisNumber() {
     }
     const Acalculator = () => {
         const a = LE* DC;
-        setAvalue(a);
+        setAvalue(a.toPrecision(6));
     }
     function AcalculatorReset() {
         setAvalue(0);
@@ -40,7 +40,7 @@ function LevisNumber() {
     }
     const DCcalculator = () => {
         const dc= A/LE;
-        setDCvalue(dc);
+        setDCvalue(dc.toPrecision(6));
     }
     function DCcalculatorReset() {
         setDCvalue(0);

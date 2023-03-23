@@ -23,7 +23,7 @@ function PrandantNumber() {
     // functionality
     const PRcalculator = () => {
         const PR = V/A ;
-        setPRvalue(PR);
+        setPRvalue(PR.toPrecision(6));
     }
     function PRcalculatorReset() {
         setPRvalue(0);
@@ -32,7 +32,7 @@ function PrandantNumber() {
     }
     const Acalculator = () => {
         const a = V/PR;
-        setAvalue(a);
+        setAvalue(a.toPrecision(6));
     }
     function AcalculatorReset() {
         setAvalue(0);
@@ -41,7 +41,7 @@ function PrandantNumber() {
     }
     const Vcalculator = () => {
         const V= PR*A;
-        setVvalue(V);
+        setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
         setVvalue(0);
