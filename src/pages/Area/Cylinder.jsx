@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Cylinder() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [radius, setRadius] = useState(5);
@@ -37,7 +37,13 @@ function Cylinder() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -91,11 +97,12 @@ function Cylinder() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading="Cylinder Example" title="Find the volume, curved surface and total surface area of a cylinder with the given radius 5 and height 10"
                             step1="Step 1 : " step1heading=": Find the curved surface area(CSA)." step1value="CSA = 2πrh = 2 * 3.14 * 5 * 10 = 785.00 "
                             step2="Step 2 : " step2heading="Find the volume" step2value="Volume = πr²h = 3.14 * 5² * 10 = 3.14 * 25 * 10 = 314.00"
                             step3="Step 3 : " step3heading="Find the total surface area (TSA)." step3value="TSA = 2πr (h + r) = 2 * 3.14 * 5(10 + 5) = 6.28 * 5(15) =6.28*75 = 471  " />
-                    }
+                  </div>  }
 
                 </div>
 

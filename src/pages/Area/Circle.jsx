@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,10 +8,10 @@ import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
 
 function Circle() {
+    
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-    // states
-    // const [resetCount] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
     const [radius, setRadius] = useState(null);
     const [diameter, setDiameter] = useState(0);
@@ -50,7 +50,13 @@ function Circle() {
         documentTitle: <div> <img src={logo} alt="" /></div>,
         onAfterPrint: () => alert("print success"),
     })
- 
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
 
         <div>
@@ -101,11 +107,12 @@ function Circle() {
                         </center>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading="Circle Example" title="Find the area, diameter and circumference of a circle with the given radius 4."
                                 step1="Step 1 : " step1heading=": Find the area" step1value=" Area = πr² = 3.14 * 4² = 3.14 * 16 = 50.24"
                                 step2="Step 2 : " step2heading="Find the diameter" step2value="  Diameter = 2r = 2 *4 = 8"
                                 step3="Step 3 : " step3heading="Find the circumference." step3value=" Circumference = πd = 3.14 *8 = 25.12  " />
-                        }
+                       </div> }
 
                     </div>
 

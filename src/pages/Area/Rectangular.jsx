@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Rectangular() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [x , setX] = useState(5);
@@ -34,6 +33,13 @@ function Rectangular() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -88,12 +94,13 @@ function Rectangular() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading=" Rectangular Polar Conversion Calculator"
                             title="Suppose we have a complex number expressed in rectangular form and we want to express it in polar form. (That is, we know a and b and we need r and θ.) We see that we can use the formulas:
                         Convert the complex number 5 + 2 i to polar form."
                             step1="Solution : " step1heading=":We have a = 5 and b = 2. We compute"
                             step1value="so the complex number in polar form must be 5.39 ∠ 21.8°. " />
-                    }
+                   </div> }
 
                 </div>
 

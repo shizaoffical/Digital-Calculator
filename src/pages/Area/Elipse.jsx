@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,12 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Elipse() {
-
-
-
-
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Ellipse (Ares & Perimeter)');
@@ -61,11 +56,13 @@ function Elipse() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
-
-
-
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -191,6 +188,7 @@ function Elipse() {
                     <div>
                         {textShow && <>
                             {selectCondition === "Ellipse (Ares & Perimeter)" &&
+                            <div ref={divRef}>
                                 <Example heading="Ellipse (Area & Perimeter)"
                                     title="Step by step solution"
                                     step1="Data " step1heading="r1 = 10, r2 = 14, A = ? , P = ?"
@@ -202,8 +200,10 @@ function Elipse() {
                                         Perimeter = (6.2836) x √(100) + (196) / 2</>}
                                     step4=" Perimeter = 88.367000 m "
                                 />
+                                </div>
                             }
                             {selectCondition === "Ellipse Volume" &&
+                            <div ref={divRef}>
                                 <Example heading="Ellipse Volume" title="Step by step solution"
                                     step1="Data " step1heading=" r1 = 10, r2 = 14, r3 = 18, V = ?"
                                     step2="Formula " step2heading="Volume = 4 / 3 x π x (r1) x (r2) x (r3)"
@@ -211,6 +211,7 @@ function Elipse() {
                                         Volume = 4 / 3 x (3.1418) x (10) x (14) x (18) <br />
                                         Volume = (1.333) x (3.1418) x (10) x (14) x (18)<br /></>}
                                     step4="Volume = 10550.400 m3" />
+                                </div>
                             }
                         </>}
                     </div>

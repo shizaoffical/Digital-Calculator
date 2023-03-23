@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Pyramid() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Volume');
@@ -115,6 +115,13 @@ function Pyramid() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -441,67 +448,73 @@ function Pyramid() {
                             textShow &&
                             <>
                                 {selectCondition === "Volume" &&
+                                <div ref={divRef}>
                                     <Example heading="Volume"
                                         title="Step by step solution"
                                         step1="Data " step1heading=" length = 4, Base = 12 , pyramid Length = 20, volume=?"
                                         step2="Formula : " step2heading="(l * b * h ) / 3  "
                                         step3="Value :  " step3heading="4 * 12 * 20 "
                                         step4="volume = 320"
-                                    />
+                                    /></div>
                                 }
                                 {selectCondition === "Base Length" &&
+                                <div ref={divRef}>
                                     <Example heading="Base Length"
                                         title="Step by step solution"
                                         step1="Data " step1heading=" width = 12 , Heigth = 20 , Volume = 3, Base Length = ?"
                                         step2="Formula: " step2heading="l = 3 * v / (h * w) "
                                         step3="Value " step3heading="3 * 3 / (20 * 12)"
                                         step4="volume = 0.0375"
-                                    />
+                                        /></div>
                                 }
                                 {selectCondition === "Base Width" &&
+                                <div ref={divRef}>
                                     <Example heading="Base Width" title="Step by step solution"
                                         step1="Data " step1heading=" length = 4 , Heigth = 12 , Volume = 20, Base Length = ?"
                                         step2="Formula: " step2heading="w = 3 * v / (h * l) "
                                         step3="Value " step3heading="3 * 3 / (20 * 4)"
                                         step4="volume = 0.1125"
-                                    />
+                                        /></div>
                                 }
                                 {selectCondition === "Pyramid Height" &&
+                                <div ref={divRef}>
                                     <Example heading="Pyramid Height "
                                         title="Step by step solution"
                                         step1="Data " step1heading=" length = 4 ,width = 12 , Volume = 20, Pyramid Height = ?"
                                         step2="Formula: " step2heading="w = 3 * v / (l * w) "
                                         step3="Value " step3heading="3 * 3 / (4 * 12)"
                                         step4="volume = 0.1125"
-                                    />
+                                        /></div>
                                 }
                                 {selectCondition === "Surface Area" &&
+                                <div ref={divRef}>
                                     <Example heading="Surface Area"
                                         title="Step by step solution"
                                         step1="Data : " step1heading="length = 4, width = 12, height = 20, Area = ?"
                                         step2="Formula: " step2heading=" A = l * w + l * √ (w / 2)² + (h)² + w * √ (l / 2)² + (h)²"
                                         step3="Solution: " step3heading="A = 4 * 12 + 4 * √ (12 / 2)² + (20)² + 12 * √ (4 / 2)² + (20)²"
                                          step4="Area of triangle = 896"
-                                    />
+                                         /></div>
                                 }
                                 {selectCondition === "Lateral Surface Area" &&
+                                <div ref={divRef}>
                                     <Example heading="Lateral Surface Area"
                                         title="Step by step solution"
                                         step1="Data : " step1heading="length = 4, width = 12, height = 20, Area = ?"
                                         step2="Formula: " step2heading=" A = l * √ (w / 2) ² + (h)² + w * √ (l / 2)² + (h)²"
                                         step3="Solution: " step3heading="A = 4 * √ (12 / 2)² + (20)² + 12 * √ (4 / 2)² + (20)² "
                                          step4="Area of triangle = 848"
-                                    />
+                                         /></div>
                                 }
                                 {selectCondition === "Base Surface Area" &&
+                                <div ref={divRef}>
                                     <Example heading="Base Surface Area"
                                         title="Step by step solution"
                                         step1="Data : " step1heading="length = 12, width = 12, Area = ?"
                                         step2="Formula: " step2heading=" l*w"
                                         step3="Solution: " step3heading="12 *4"
                                         step4="Area = 48"
-                                        
-                                    />
+                                        /></div>
                                 }
                             </>
 

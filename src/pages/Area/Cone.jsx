@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,6 +8,7 @@ import Reference from '../../components/Reference';
 import { Link } from 'react-router-dom';
 
 function Cone() {
+    const divRef = useRef(null);
     const [show, setShow]= useState(false);
     const [textShow, settextShow] = useState(false);
     const [height, setHeight] = useState(10);
@@ -45,6 +46,13 @@ function Cone() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -102,11 +110,12 @@ function Cone() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading="Cone Example" title=" Find the volume, curved surface, and total surface area of a cone with the given radius 3 and height 4."
                         step1="Step 1 : " step1heading=": Find the height" step1value="  Slant height (l) = Sqrt(r² + h²) = Sqrt(3² + 4²)= Sqrt(9 + 16) = Sqrt(25) = 5." 
                         step2="Step 2 : " step2heading="Find the volume" step2value=" Volume = (1/3)πr² h = (1/3) * 3.14 * 3² * 4 = 0.33 * 113.04 = 37.68."
                         step3="Step 3 : " step3heading="Find the curved surface area (CSA)" step3value=" Circumference = πd = 3.14 *8 = 25.12(3)  "/> 
-                    }
+                   </div> }
 
                 </div>
 

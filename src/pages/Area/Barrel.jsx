@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState ,useEffect} from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import ButtonA from '../../components/ButtonA';
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import logo from "../../images/header-logo.png";
 import NewCalculator from '../../components/NewCalculator'
 
 function Barrel() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [topRadius, setTopRadius] = useState(22);
@@ -34,6 +35,13 @@ function Barrel() {
         documentTitle:<div> <img src={logo} alt="" /></div>,
         onAfterPrint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
 
@@ -91,7 +99,7 @@ function Barrel() {
                             </center>
                             {
                                 textShow &&
-                                <div className='text-center'>
+                                <div className='text-center' ref={divRef}>
                                     <span className='fw-bold' >Step by step solution: </span><br />
                                     <span className='fw-bold' style={{ color: "#F58648" }}>Data </span>V = ? , R = 15 , r = 22, H = 18.<br />
                                     <span className='fw-bold' style={{ color: "#F58648" }}>Formula </span>Volume = π H (r2 + 2R2) / 3

@@ -1,12 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 function Parallogram() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Rectangular');
@@ -48,10 +47,14 @@ function Parallogram() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
-
-
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
                 <NewCalculator title="Area of polygon calculate"
@@ -158,14 +161,16 @@ function Parallogram() {
                             textShow &&
                             <>
                                 {selectCondition === "Area of Rectangular" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of Rectangular"
                                         title="step by step solution"
                                         step1="Data : " step1heading="b = 12, h = 15, A = ?"
                                         step2="Formula" step2heading="Area (A) = b x h"
                                         step3="Solution: " step3heading={<> Now we have to put values in above formula: <br />A = (12) x (15)</>}
                                         step4="A = 180 m2" />
-                                }
+                               </div> }
                                 {selectCondition === "Perimeter OF Rectangular" &&
+                                <div ref={divRef}>
                                     <Example heading="Perimeter OF Rectangular"
                                         title="step by step solution"
                                         step1="Data" step1heading="b = 16, h = 18, P = ?"
@@ -173,7 +178,7 @@ function Parallogram() {
                                         step3="Solution: " step3heading={<>Now we have to put values in above formula:<br />P = 2 (12 + 15)<br />
                                             P = 2 (27)</>}
                                         step4="P = 54 m " />
-                                }
+                               </div> }
 
                             </>
 

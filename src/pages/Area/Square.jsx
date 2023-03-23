@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,15 +6,13 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Square() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [length, setLength] = useState(45);
     const [areaOFSquare, setAreaOFSquare] = useState(0);
     const [perimeterOfSquare, setPerimeterOfSquare] = useState(0);
     const [diagonalOfSquare, setDiagonalOfSquare] = useState(0);
-
-
     const calculate = () => {
         const areaOFSquare = [(length) * length];
         setAreaOFSquare(areaOFSquare.toPrecision(6));
@@ -35,7 +33,13 @@ function Square() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
   return (
     <div>     <Container className='home-page '>
     <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -85,6 +89,7 @@ function Square() {
             </center>
             {
                 textShow &&
+                <div ref={divRef}>
                 <Example heading="Apply Formual"
                     title="Calculate the Area, Perimeter and Diagonal of a Square whose length is 10 cm."
                     step1="Step 1 : " step1heading=" Area of square: [(side)²]"
@@ -93,6 +98,7 @@ function Square() {
                     step2value="Perimeter of square: [4(side)]"
                     step3="Step 3 : " step3heading="Diagonal of square: [(side) (sqrt(2)) ]"
                     step3value="Diagonal of square=10 * sqrt(2) =10*1.41 = 14.1 " />
+                    </div>
             }
 
         </div>

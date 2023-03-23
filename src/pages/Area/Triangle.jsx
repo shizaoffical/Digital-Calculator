@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Triangle() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area-of-triangle');
@@ -82,7 +82,13 @@ function Triangle() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -277,6 +283,7 @@ function Triangle() {
                             textShow &&
                             <>
                                 {selectCondition === "Area-of-triangle" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of triangle"
                                     title="Step by step solution"
                                         step1="Data " step1heading=" length = 8, breadth = 10, Area = ?"
@@ -285,19 +292,21 @@ function Triangle() {
                                         Area of triangle = 8 x 10 / 2 <br/>
                                         Area of triangle = 80 / 2</>} 
                                           step4=" Area of triangle= 40 "
-                                        />
+                                        /></div>
                                 }
                                 {selectCondition === "Perimeter of triangle" &&
+                                <div ref={divRef}>
                                     <Example heading="Perimeter of triangle"   title="Step by step solution"
                                         step1="Data " step1heading=" Side a = 10, Side b = 15, Side c = 14 , Perimeter = ?"
                                         step2="Formula " step2heading="Perimeter of a triangle = Side a + Side b + Side c."
                                         step3="Solution " step3heading={<>Now putting values in the above equation:<br />
                                        Perimeter of a triangle = 10 + 15 + 14 <br/></>}
                                        step4="Perimeter of a Triangle = 39 " 
+                                       /></div>
 
-                                        />
                                 }
                                 {selectCondition === "Area of an equilateral triangle" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of an equilateral triangle   "
                                         title="Step by step solution"
                                         step1="Data " step1heading="length (a) = 16, Area = ?"
@@ -307,9 +316,11 @@ function Triangle() {
                                       Area of Equilateral triangle = √3 / 4 x 256<br/>
                                       Area of Equilateral triangle = 0.4330 x 256</>
                                      } step4="Area of Equilateral triangle = 110.85"
-                                        />
+                                     /></div>
+                                        
                                 }
                                 {selectCondition === "Area of an triangle SAS" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of an triangle SAS"
                                     title="Step by step solution"
                                         step1="Data : " step1heading="length = 12, breadth = 11, angle = 10, Area = ?"
@@ -319,7 +330,8 @@ function Triangle() {
                                       Area of triangle = (132) x -0.5440 /2<br/>
                                       Area of triangle = -71.8080 /2</>
                                      } step4="Area of triangle = -35.904"
-                                         />
+                                        /></div>
+                                         
                                 }
                             </>
 

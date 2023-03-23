@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
     import { Col, Container, Row } from 'react-bootstrap'
     import NewCalculator from '../../components/NewCalculator'
     import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,8 @@ import React, { useRef, useState } from 'react'
 import ButtonA from '../../components/ButtonA';
 
 function VolumeOfHemisphere() {
+    const divRef = useRef(null);
+
         const [show, setShow] = useState(false);
         const [textShow, settextShow] = useState(false);
         const [length, setLength] = useState(16);
@@ -27,7 +29,13 @@ function VolumeOfHemisphere() {
             documentTitle: 'calculator',
             onafterprint: () => alert("print success"),
         })
-
+        useEffect(() => {
+            if (textShow) {
+                divRef.current.scrollIntoView({ behavior: "smooth" });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }, [textShow]);
   return (
     <div>     <Container className='home-page '>
     <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -77,11 +85,12 @@ function VolumeOfHemisphere() {
             </center>
             {
                 textShow &&
+                <div ref={divRef}>
                 <Example heading="Volume Of Hemisphere"
                     title="Calculate the volume of a cylinder with hemispherical ends with the given radius 5 and length 20 cm respectively."
                     step1="Volume of cylinder " step1heading=" (PI * r2 * h) + (( 4 / 3 ) * PI * r3) = (3.14*52 *20) + ((4/3)* 3.14 *53)"
                     step1value="= (3.14*25*20)+((4/3)*3.14*125) = 1570+ 392.5 *4/3 = 1570+523.33 = 2093 "
-                     />
+                     /></div>
             }
 
         </div>

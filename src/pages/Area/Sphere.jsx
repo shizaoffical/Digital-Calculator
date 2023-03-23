@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Sphere() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [x, setX] = useState(5);
@@ -32,6 +33,13 @@ function Sphere() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -76,6 +84,7 @@ function Sphere() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading="Sphere Calculator Example"
                             title={<>Find the volume and curved surface area of a Sphere (tsa of sphere) with the given radius 2.<br />
                                 How to find the volume of a sphere?</>}
@@ -83,7 +92,7 @@ function Sphere() {
                             step1value="Volume = (4/3) πr³ = (4/3) * 3.14 * 4³ = 1.33 * 3.14 * 27 = 33.40 "
                             step2="Solution : " step2heading=" Find the curved surface area (CSA)."
                             step2value="Curved Surface Area (CSA) = 4πr² = 4 * 3.14 * 2² = 12.56 * 4= 50.24 " />
-                    }
+                   </div> }
 
                 </div>
 

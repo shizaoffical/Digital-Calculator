@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState ,useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Rhombus() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Rombus(Base Time Height Method)');
@@ -73,12 +72,13 @@ function Rhombus() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
-
-
-
-
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -259,32 +259,38 @@ function Rhombus() {
                             textShow &&
                             <>
                                 {selectCondition === "Area of Rombus(Base Time Height Method)" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of Rombus(Base Time Height Method)"
                                         title="Step by step solution"
                                         step1="Data " step1heading="Find the area of a rhombus with the given base 4 and height 5 using the Base Times Height Method."
                                         step2="Solution : " step2heading="Find the area "
                                         step3="Area" step3heading=" = b * h = 4*5 = 20."
 
-                                    />
+                                    /></div>
                                 }
                                 {selectCondition === "Area of Rombus(Diagonal Method)" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of Rombus(Diagonal Method)" title="Step by step solution"
                                         step1="Data " step1heading=" Find the area of a rhombus with the given diagonals 4,5 using the Diagonal Method."
                                         step2="Solution : " step2heading="Find the area "
-                                        step3="Area" step3heading=" = ½ * p * q = 0.5 * 4*5 = 20*0.5 = 10 " />
+                                        step3="Area" step3heading=" = ½ * p * q = 0.5 * 4*5 = 20*0.5 = 10 " 
+                                        /></div>
                                 }
                                 {selectCondition === "Area of Rombus Using Trigonometry" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of Rombus Using Trigonometry" title="Step by step solution"
                                         step1="Data " step1heading="Find the area of a rhombus with the given side 3 using Trigonometry Method."
                                         step2="Solution : " step2heading="Find the area "
                                         step3="Area" step3heading="= l² * Sin(a) = 3² * Sin(33) = 9* 1 = 9. "
-                                    />
+                                        /></div>
                                 }
                                 {selectCondition === "Perimeter of Rhombus" &&
+                                <div ref={divRef}>
                                     <Example heading="Perimeter of Rhombus" title="Step by step solution"
                                         step1="Data " step1heading=" Find the perimeter of a rhombus with the given side 3.."
                                         step2="Solution : " step2heading="Find the perimeter"
-                                        step3="Perimeter" step3heading="= 4(l) = 4 * 3 = 12. " />
+                                        step3="Perimeter" step3heading="= 4(l) = 4 * 3 = 12. " 
+                                        /></div>
                                 }
                             </>}
                     </div>

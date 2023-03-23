@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Hemisphere() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [radius ,setRadius] = useState(12);
@@ -36,7 +36,13 @@ function Hemisphere() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
   return (
     <div>     <Container className='home-page '>
     <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -81,6 +87,7 @@ function Hemisphere() {
             </center>
             {
                 textShow &&
+                <div ref={divRef}>
                 <Example heading="Hemisphere Example" 
                 title=" Find the volume, curved surface and total surface area of a hemisphere with the given radius 2."
                 step1="Step 1 : " step1heading=": Find the volume."
@@ -89,7 +96,7 @@ function Hemisphere() {
                 " step2value="Curved Surface Area(CSA) = 2πr² = 2 * 3.14 * 2² = 6.28 * 4= 25.12"
                 step3="Step 3 : " step3heading="Find the total surface area (CSA)."
                  step3value="Total Surface Area(TSA) = 3πr² = 3 * 3.14 * 2² = 9.42 * 4 = 37.68"/>
-
+</div>
             }
 
         </div>

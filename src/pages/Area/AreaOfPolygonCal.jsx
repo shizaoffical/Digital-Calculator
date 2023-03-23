@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -7,7 +7,7 @@ import ButtonA from '../../components/ButtonA';
 
 
 function AreaOfPolygonCal() {
-
+    const divRef = useRef(null);
     const [textShow, settextShow] = useState(false);
     const [show, setShow] = useState(false);
     const [numberOfSides, setNumberOfSides] = useState(5);
@@ -47,6 +47,13 @@ function AreaOfPolygonCal() {
         onafterprint: () => alert("print success"),
     })
 
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
                 <Container className='home-page '>
@@ -124,7 +131,7 @@ function AreaOfPolygonCal() {
                             </center>
                             {
                                 textShow &&
-                                <div className='text-center'> <h4 className='fw-bold'>Example</h4>
+                                <div className='text-center' ref={divRef}> <h4 className='fw-bold'>Example</h4>
                                     <span className='fw-bold' >Case 1: </span>
                                     Find the area and perimeter of a polygon with the length 3 and the number of sides is 4.<br />
                                     <span className='fw-bold' style={{ color: "#F58648" }}>step 1: </span>  Find the area.<br />

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Kite() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Kite');
@@ -65,7 +66,13 @@ function Kite() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -215,6 +222,7 @@ function Kite() {
                     <div>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading="Kite Calculator Example"
                                 title="(kite calc: find a, p=n/a, q=n/a)"
                                 step1="Step 1 :" step1heading="Find the area of a kite with the given diagonals 4,6 using Diagonal Method. Find the area."
@@ -224,7 +232,7 @@ function Kite() {
                                 step3="Step 3 : " step3heading={<> kite calc: find p, q=n/a, a=n/a - <br/>Find the perimeter of a kite with the given length 2 and breadth 3.</>}
                                 step3value={<> Find the perimeter<br /> Perimeter = 2(a + b) = 2(2 + 3) = 2(5) = 10<br />
                                     It is also known as kite angle calculator.<br />You can also meaures kite dimensions using this solver.</>} />
-                        }</div>
+                      </div>  }</div>
 
                 </div>
 

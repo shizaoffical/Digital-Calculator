@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState ,useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 
 function Trapezium() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Trapezium');
@@ -57,10 +56,13 @@ function Trapezium() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
-
-
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -193,26 +195,26 @@ function Trapezium() {
                             textShow &&
                             <>
                                 {selectCondition === "Area of Trapezium" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of Trapezium"
                                         title="step by step solution"
                                         step1="Data : " step1heading="Area = ? , a = 4 , b = 6 , h = 12"
                                         step2="Formula" step2heading="Area  = a + b /2 * h"
                                         step3="Solution: " step3heading={<> Now we have to put values in above formula: <br />
                                             A = ((4) + (6) / 2 ) * 12<br />A = (10 / 2 ) * 12</>}
-                                        step4="Area of trapezium = 60" />
+                                        step4="Area of trapezium = 60" /></div>
                                 }
                                 {selectCondition === "Perimeter OF Trapezium " &&
+                                <div ref={divRef}>
                                     <Example heading="Perimeter OF Trapezium "
                                         title="step by step solution"
                                         step1="Data" step1heading="Perimeter = ? , a = 3 , b = 4 , c = 5 , d = 6"
                                         step2="Formula " step2heading="Perimeter = (a + b) + (c + d)"
                                         step3="Solution: " step3heading={<>Now we have to put values in above formula:<br />
                                             Perimeter = (3 + 4) + (5 + 6)<br />Perimeter = 7 + 11</>}
-                                        step4="Area of trapezium = 18.000000 " />
+                                        step4="Area of trapezium = 18.000000 " /></div>
                                 }
-
                             </>
-
                         }</div>
 
                 </div>
