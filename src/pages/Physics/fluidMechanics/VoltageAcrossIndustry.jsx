@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function VoltageAcrossIndustry() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
 
@@ -28,7 +29,13 @@ function VoltageAcrossIndustry() {
             onafterprint: () => alert("print success"),
         })
         
-    
+        useEffect(() => {
+            if (textShow) {
+              divRef.current.scrollIntoView({ behavior: "smooth" });
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -78,6 +85,7 @@ function VoltageAcrossIndustry() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading="Example" title={<>Calculate the voltage across inductor for the given details and apply the Ohms law formula for an inductor.<br />
                             Inductance (L) = 5<br />
                             Rate of change of current = 15<br />
@@ -87,7 +95,7 @@ function VoltageAcrossIndustry() {
                                 V = 5(15/20)<br/>
                                 V = 5*0.75<br/></>}
                             step1value="V = 3.75"
-                            step2="Voltage across Inductor = 3.75" />
+                            step2="Voltage across Inductor = 3.75" /></div>
                     }
 
                 </div>

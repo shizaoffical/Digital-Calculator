@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,6 +8,7 @@ import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 
 function AntennaGain() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -47,6 +48,13 @@ function AntennaGain() {
         onAfterPrint: () => alert("print success"),
     })
 
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
 
         <div>
@@ -100,6 +108,7 @@ function AntennaGain() {
                         </center>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading=" Example"
                                 title={<>
                                     <br />
@@ -112,7 +121,7 @@ function AntennaGain() {
                                 step1={<>Solution:<br />Apply Formula</>}
                                 step1heading=" GdBi = 10 LOG10 ( η4πA / λ2)"
                                 step1value=" GdBi = 9.74271"
-                                step2=" Antenna Gain (GdBi) = 9.74271" />
+                                step2=" Antenna Gain (GdBi) = 9.74271" /></div>
                         }
 
                     </div>

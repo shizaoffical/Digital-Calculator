@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function LevisNumber() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Lewis Number');
@@ -58,7 +58,13 @@ function LevisNumber() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
 
     return (
         <div>
@@ -184,27 +190,32 @@ function LevisNumber() {
                         <div>
                             {textShow && <>
                                 {selectCondition === "Lewis Number" &&
+                                <div ref={divRef}>
                                     <Example heading="Lewis Number"
                                         title="step by step solution"
                                         step1="Data : " step1heading="Le = ? , α = 12 , Dc = 16"
                                         step2="Formula" step2heading="Lewis Number (Le) = α / Dc "
                                         step3="Solution:" step3heading={<>By putting Values in the above formula:
-                                        <br/>Lewis Number (Le) = 12 / 16</>} step4="Lewis Number (Le) = 0.75 gpm"/>
+                                        <br/>Lewis Number (Le) = 12 / 16</>} step4="Lewis Number (Le) = 0.75 gpm"/></div>
                                 }
                                 {selectCondition === "Work Horsepower" &&
+                                <div ref={divRef}>
                                        <Example heading="Lewis Number"
                                        title="step by step solution"
                                        step1="Data : " step1heading="α = ? , Le = 21 , Dc = 16"
                                        step2="Formula" step2heading="Thermal Diffusivity (α) = Le * Dc"
                                        step3="Solution:" step3heading={<>By putting Values in the above formula:
-                                       <br/>Thermal Diffusivity (α) = 21 * 16</>} step4="Thermal Diffusivity (α) = 336 ms-2"/>
+                                       <br/>Thermal Diffusivity (α) = 21 * 16</>} step4="Thermal Diffusivity (α) = 336 ms-2"
+                                       /></div>
                                 }
                                 {selectCondition === "Total Head" &&
+                                <div ref={divRef}>
                                     <Example heading="Total Head"
                                         title="step by step solution"
                                         step1="Data : " step1heading="wh = 10 , pe = 10 , frd = 10 , th = ?"
                                         step2="Formula" step2heading="th = (((3960*wh*pe)/(frd*100))*100)/100 "
-                                        step3="396" />
+                                        step3="396" 
+                                       /></div>
                                 } </>}
                         </div>
 

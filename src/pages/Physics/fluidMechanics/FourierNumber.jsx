@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function FourierNumber() {
-
+  const divRef = useRef(null);
   const [show, setShow] = useState(false);
   const [textShow, settextShow] = useState(false);
   const [selectCondition, setSelectCondition] = useState('Fourier Number(Fo)');
@@ -76,8 +76,13 @@ function FourierNumber() {
     documentTitle: 'calculator',
     onafterprint: () => alert("print success"),
   })
-
-
+  useEffect(() => {
+    if (textShow) {
+      divRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [textShow]);
   return (
     <div>
       <Container className='home-page '>
@@ -272,36 +277,44 @@ function FourierNumber() {
                 textShow &&
                 <>
                   {selectCondition === "Fourier Number(Fo)" &&
+                  <div ref={divRef}>
                     <Example heading="Fourier Number(Fo)"
                       title="step by step solution"
                       step1="Solution:" step1heading="Fo = ? , L = 3 , α = 5 , t = 6.5"
                       step2="Formula" step2heading="Fo = at / L²"
                       step3="Steps: Putting values" step3heading={<>
-                        = 5 x 6.5 / (3)²<br />= 32.5 / 9<br />= 3.611</>} />
+                        = 5 x 6.5 / (3)²<br />= 32.5 / 9<br />= 3.611</>}
+                         /></div>
                   }
                   {selectCondition === "Thermal Diffusivity(a)" &&
+                  <div ref={divRef}>
                     <Example heading="Thermal Diffusivity(a)"
                       title="step by step solution"
                       step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
                       step2="Formula" step2heading="a = fo * L² / a"
                       step3="Steps: Putting values" step3heading={<>
-                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} />
+                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} 
+                         /></div>
                   }
                   {selectCondition === "Character Time(t)" &&
+                  <div ref={divRef}>
                     <Example heading="Character Time(t)"
                       title="step by step solution"
                       step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
                       step2="Formula" step2heading="a = fo * L² / a"
                       step3="Steps: Putting values" step3heading={<>
-                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} />
+                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} 
+                         /></div>
                   }
                   {selectCondition === "Character Length(l)" &&
+                  <div ref={divRef}>
                     <Example heading="Character Length(l)"
                       title="step by step solution"
                       step1="Solution:" step1heading="Fo = 3.611 , L = ? , α = 5 , t = 6.5"
                       step2="Formula" step2heading="L =αt / Fo"
                       step3="Steps: Putting values" step3heading={<>
-                        =(5 * 6.5 / 11 ) <br /> (32.5 / 3.611 ) <br />=  9.0002769315979<br />=3</>} />
+                        =(5 * 6.5 / 11 ) <br /> (32.5 / 3.611 ) <br />=  9.0002769315979<br />=3</>} 
+                         /></div>
                   }
 
                 </>

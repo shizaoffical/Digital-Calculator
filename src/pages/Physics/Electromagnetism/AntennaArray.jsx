@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,6 +8,7 @@ import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 
 function AntennaArray() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -56,6 +57,13 @@ function AntennaArray() {
         onAfterPrint: () => alert("print success"),
     })
 
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
 
         <div>
@@ -123,6 +131,7 @@ function AntennaArray() {
                         </center>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading=" Example" 
                             title={<>
                                 Calculate the antenna array factor for the given details.<br />
@@ -147,7 +156,7 @@ function AntennaArray() {
                                 AF = [ ( Sin (N×φ / 2 )) / ( Sin (φ / 2 )) ]<br/>
                                 AF = [(sin(2*18.554/2)) /(sin(18.554/2))]</>}
                                 step1value="AF = 0.7379222793164559"
-                                step2="Array Factor (AF) = 0.737922279316455"  /> }
+                                step2="Array Factor (AF) = 0.737922279316455"  /></div> }
 
                     </div>
                     <div className='mt-2'>

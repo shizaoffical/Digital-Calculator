@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function Renold() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('renolds number');
@@ -27,7 +26,7 @@ function Renold() {
 
     // REYNOLD NUMBER
     const RNcalculator = () => {
-        const RN = Math.round(((D*V*CL)/VS)*100)/100;
+        const RN = Math.round(((D * V * CL) / VS) * 100) / 100;
         setRNvalue(RN.toPrecision(6));
     }
     function RNcalculatorReset() {
@@ -35,11 +34,11 @@ function Renold() {
         setV(0);
         setD(0);
         setCL(0);
-       setVS(0)
+        setVS(0)
     }
     // VELOCITY
     const Vcalculator = () => {
-        const V = Math.round(((RN*VS)/(D*CL))*100)/100;
+        const V = Math.round(((RN * VS) / (D * CL)) * 100) / 100;
         setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
@@ -51,7 +50,7 @@ function Renold() {
     }
     // DENSITY
     const Dcalculator = () => {
-        const D = Math.round(((RN*VS)/(V*CL))*100)/100;
+        const D = Math.round(((RN * VS) / (V * CL)) * 100) / 100;
         setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
@@ -63,7 +62,7 @@ function Renold() {
     }
     // VISCIOCITY
     const VScalculator = () => {
-        const VS = (((D*V*CL)/RN)*100)/100;
+        const VS = (((D * V * CL) / RN) * 100) / 100;
         setVSvalue(VS.toPrecision(6));
     }
     function VScalculatorReset() {
@@ -75,7 +74,7 @@ function Renold() {
     }
     // CHARACTER LENGTH
     const CLcalculator = () => {
-        const CL = Math.round(((RN*VS)/(D*V))*100)/100;
+        const CL = Math.round(((RN * VS) / (D * V)) * 100) / 100;
         setCLvalue(CL);
     }
     function CLcalculatorReset() {
@@ -85,7 +84,7 @@ function Renold() {
         setVS(0);
         setD(0);
     }
- 
+
 
     // handle change
     const handleSelectChange = (event) => {
@@ -99,7 +98,13 @@ function Renold() {
         onafterprint: () => alert("print success"),
     })
 
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
 
 
     return (
@@ -161,7 +166,7 @@ function Renold() {
                                         <input type="number" className='ms-3 me-2' value={CL}
                                             onChange={(e) => setCL(e.target.value)} />m
                                     </Col>
-                                </Row> 
+                                </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Renolds Number</dt></Col>
@@ -235,7 +240,7 @@ function Renold() {
                                             onChange={(e) => setV(e.target.value)} />m/s
                                     </Col>
                                 </Row>
-                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -287,7 +292,7 @@ function Renold() {
                                             onChange={(e) => setD(e.target.value)} />kg/m3
                                     </Col>
                                 </Row>
-                                  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity (μ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -332,7 +337,7 @@ function Renold() {
                                             onChange={(e) => setD(e.target.value)} />kg/m3
                                     </Col>
                                 </Row>
-                                  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Character Length(L) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -359,23 +364,23 @@ function Renold() {
                         </center>
                         <div>
                             {textShow &&
-
-                                <Example heading="Example"
-                                    title={<>If a fluid is flowing with a velocity of <dt>5.2 m,</dt>  having viscosity of
-                                        <dt>0.2 Ns/m2, </dt> density of  <dt>500 kg/m3,</dt>  in a pipe with a diameter of
-                                        <dt>6 m,</dt> find the Reynolds number for the fluid?<br /></>}
-                                    step1={<>Solution : <br /> step 1 :</>} step1heading="Identify and write down the values."
-                                    step1value={<>
-                                        μ = 0.2 Ns/m2<br />
-                                        u = 5.2 m<br />
-                                        ρ = 500 kg/m3<br />
-                                        L = 6 m</>}
-                                    step2="Step 2: "
-                                    step2heading="Place the values in equation of Reynolds number and solve the equation."
-                                    step2value={<>
-                                        Re = ρ u L / μ<br />
-                                        Re = (500 × 5.2 × 6) / 0.2<br />
-                                        Re = 78,000</>} />
+                                <div ref={divRef}>
+                                    <Example heading="Example"
+                                        title={<>If a fluid is flowing with a velocity of <dt>5.2 m,</dt>  having viscosity of
+                                            <dt>0.2 Ns/m2, </dt> density of  <dt>500 kg/m3,</dt>  in a pipe with a diameter of
+                                            <dt>6 m,</dt> find the Reynolds number for the fluid?<br /></>}
+                                        step1={<>Solution : <br /> step 1 :</>} step1heading="Identify and write down the values."
+                                        step1value={<>
+                                            μ = 0.2 Ns/m2<br />
+                                            u = 5.2 m<br />
+                                            ρ = 500 kg/m3<br />
+                                            L = 6 m</>}
+                                        step2="Step 2: "
+                                        step2heading="Place the values in equation of Reynolds number and solve the equation."
+                                        step2value={<>
+                                            Re = ρ u L / μ<br />
+                                            Re = (500 × 5.2 × 6) / 0.2<br />
+                                            Re = 78,000</>} /></div>
                             }
                         </div>
 

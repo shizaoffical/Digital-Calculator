@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function PoiseuilleEquation() {
-
-
+    const divRef = useRef(null);
     const [show, setShow]= useState(false);
     const [textShow, settextShow] = useState(false);
     // main states
@@ -35,6 +34,13 @@ function PoiseuilleEquation() {
         setFlowRate('');
         setViscosity('');
     }
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
 
     return (
         <div>     <Container className='home-page '>
@@ -91,11 +97,12 @@ function PoiseuilleEquation() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading="Calculate the density of the fluid by using the kinematic formula."
                             title={<>Dynamic viscosity: 25 Nsm-2<br />Kinematic viscosity: 20 m2s-1</>}
                             step1={<>Solution <br />Apply Formula</>} step1heading={<>v = m/p<br />v= 25/20</>}
                             step1value="v = 1.25 kgm-3"
-                            step2="Density: 1.25 kgm-3" />
+                            step2="Density: 1.25 kgm-3" /></div>
 
                     }
 

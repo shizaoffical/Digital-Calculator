@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function PrandantNumber() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Prandtl Number (Pr)');
@@ -61,6 +60,13 @@ function PrandantNumber() {
     })
 
 
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
 
     return (
         <div>
@@ -185,31 +191,38 @@ function PrandantNumber() {
                         <div>
                             {textShow && <>
                                 {selectCondition === "Prandtl Number (Pr)" &&
+                                <div ref={divRef}>
                                     <Example heading="Prandtl Number (Pr)"
                                         title="step by step solution"
                                         step1="Data : "
                                          step1heading="Prandtl Number (Pr) = ? , Kinematic Viscosity (v) = 12 , Thermal Diffusivity (a) = 15"
                                         step2="Formula" step2heading="pr=v/a"
                                         step3="Solution:" step3heading={<>By putting Values in the above formula:
-                                            <br />pr = 12 / 5</>} step4="Pr = 0.80000" />
+                                            <br />pr = 12 / 5</>} step4="Pr = 0.80000" 
+                                            /></div>
                                 }
                                 {selectCondition === "Kinematic Viscosity (v)" &&
+                                <div ref={divRef}>
                                     <Example heading="Kinematic Viscosity (v)"
                                         title="step by step solution"
                                         step1="Data : "
                                          step1heading="Kinematic Viscosity (v) = ? , Prandtl Number (Pr) = 18 , Thermal Diffusivity (a) = 15"
                                         step2="Formula" step2heading="v = Pr * a"
                                         step3="Solution:" step3heading={<>By putting Values in the above formula:
-                                            <br />v = 18 * 15</>} step4="v = 270m2/s" />
+                                            <br />v = 18 * 15</>} step4="v = 270m2/s" 
+                                            /></div>
+
                                 }
                                 {selectCondition === "Thermal Diffusivity (a)" &&
+                                <div ref={divRef}>
                                     <Example heading="Thermal Diffusivity (a)"
                                         title="step by step solution"
                                         step1="Data : " 
                                         step1heading="Thermal Diffusivity (a) = ? , Kinematic Viscosity (v) = 12 , Prandtl Number (Pr) = 18"
                                         step2="Formula" step2heading="a =  12 / 18 "
                                         step3="Solution:" step3heading={<>By putting Values in the above formula:
-                                            <br />a = 12 / 18 </>} step4="a = 0.66667m2/s" />
+                                            <br />a = 12 / 18 </>} step4="a = 0.66667m2/s" 
+                                            /></div>
                                 } </>}
                         </div>
 

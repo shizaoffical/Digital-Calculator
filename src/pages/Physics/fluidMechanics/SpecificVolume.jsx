@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,6 +8,7 @@ import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
 
 function SpecificVolume() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Specific Volume(v)');
@@ -44,6 +45,13 @@ function SpecificVolume() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -120,12 +128,13 @@ function SpecificVolume() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the specific volume for the given details.<br />
                                         Density (ρ) = 25 kg/m3</>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="V = 1/ ρ"
                                     step1value="V = 1/25 kg/m3"
-                                    step2="Specific Volume (v) = 0.04 m3/kg" />
+                                    step2="Specific Volume (v) = 0.04 m3/kg" /></div>
                             }</div>
 
                     </div>

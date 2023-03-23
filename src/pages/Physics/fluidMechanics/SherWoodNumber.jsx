@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function SherWoodNumber() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('sherwood number');
@@ -66,6 +67,14 @@ function DCcalculatorReset() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
 
 
     return (
@@ -253,6 +262,7 @@ function DCcalculatorReset() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="step by step solution"
                                     title={<>Calculate the Sherwood Numbers for the given details.<br />
                                         Mass Transfer Coefficient (k) = 5 m/s<br />
@@ -260,7 +270,7 @@ function DCcalculatorReset() {
                                         Diffusion Coefficient (D) = 10 m2/s<br /></>}
                                     step1={<>Solution <br /> Apply Formula : </>} step1heading={<>Sh = kl/D<br />
                                         Sh = 5*15/10</>} step1value="Sh = 7.5"
-                                    step2="Sherwood Number (Sh) = 7.5" />
+                                    step2="Sherwood Number (Sh) = 7.5" /></div>
                             }</div>
 
                     </div>

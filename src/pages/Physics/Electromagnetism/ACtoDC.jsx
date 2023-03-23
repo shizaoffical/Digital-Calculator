@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -12,6 +12,8 @@ import Reference from '../../../components/Reference';
 import ACtoDC2 from "../../../images/Ac-Dc2.png";
 
 function ACtoDC() {
+    const divRef = useRef(null);
+
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Enter AC Current:');
@@ -86,6 +88,13 @@ const ACcalculate = () => {
         documentTitle: <div> <img src={logo} alt="" /></div>,
         onAfterPrint: () => alert("print success"),
     })
+      useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
 
     return (
 
@@ -165,6 +174,7 @@ const ACcalculate = () => {
                         </center>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading=" Example"
                                 title={<>
                                     how to convert ac to dc using this formula<br />
@@ -174,7 +184,7 @@ const ACcalculate = () => {
                                 step1={<>Solution : Apply Formula</>}
                                 step1heading={<>AC = DC / 0.636<br />
                                     AC = 15/0.636</>} step1value="AC = 23.584 volts"
-                                step2="AC Current = 23.584 volt" />
+                                step2="AC Current = 23.584 volt" /></div>
                         }
 
                     </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,8 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function BroadCrustedWeir() {
+    const divRef = useRef(null);
+
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     // main state
@@ -29,6 +31,13 @@ function wfrvalueReset() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -97,6 +106,7 @@ function wfrvalueReset() {
                     <div>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading="Step by step solution"
                                 title={<>
                                     Calculate the Broad Crested Weir for the given details.<br />
@@ -105,7 +115,7 @@ function wfrvalueReset() {
                                     <span> Head 2 on the Weir (h2) = 1 m</span><br />
                                     <span> Discharge Constant (Cd) = 10"</span></>}
                                 step1={<>Solution : <br /> Apply Formula</>} step1heading="q = Cd × b × h2 × (2g (h1 - h2)) 1/2"
-                                step2="Water Flow Rate (q) = 313.20919526731655 m3/s" />
+                                step2="Water Flow Rate (q) = 313.20919526731655 m3/s" /></div>
                         }
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function BreakHorsePower() {
-
+  const divRef = useRef(null);
   const [show, setShow] = useState(false);
   const [textShow, settextShow] = useState(false);
   const [selectCondition, setSelectCondition] = useState('Flow Rate or Discharge');
@@ -77,6 +77,13 @@ function BreakHorsePower() {
     onafterprint: () => alert("print success"),
   })
 
+  useEffect(() => {
+    if (textShow) {
+      divRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [textShow]);
 
   return (
 
@@ -278,32 +285,40 @@ function BreakHorsePower() {
           <div>
             {textShow &&<>
                 {selectCondition === "Flow Rate or Discharge" &&
+                <div ref={divRef}>
                   <Example heading="Flow Rate or Discharge"
                     title="step by step solution"
                     step1="Data : " step1heading="wh = 10 , pe = 10 , th = 10 , frd = ?"
                     step2="Formula" step2heading="frd = (((3960*wh*pe)/(th*100))*100)/100 "
-                    step3="360"  />
+                    step3="360"  
+                    /></div>
                 }
                  {selectCondition === "Work Horsepower" &&
+                <div ref={divRef}>
                   <Example heading="Work Horsepower"
                     title="step by step solution"
                     step1="Data : " step1heading="frd = 10 , pe = 10 , th = 10 , wh = ?"
                     step2="Formula" step2heading="wh = (((100*frd*th)/(3960*pe))*100)/100 "
-                    step3="0.25"  />
+                    step3="0.25"  
+                    /></div>
                 } 
                 {selectCondition === "Total Head" &&
+                <div ref={divRef}>
                   <Example heading="Total Head"
                     title="step by step solution"
                     step1="Data : " step1heading="wh = 10 , pe = 10 , frd = 10 , th = ?"
                     step2="Formula" step2heading="th = (((3960*wh*pe)/(frd*100))*100)/100 "
-                    step3="396"  />
+                    step3="396"  
+                    /></div>
                 }
                 {selectCondition === "Pump Efficiency" &&
+                <div ref={divRef}>
                 <Example heading="Pump Efficiency"
                   title="step by step solution"
                   step1="Data : " step1heading="wh = 10 , frd = 10 , th = 10 , pe = ?"
                   step2="Formula" step2heading="pe = (((100*frd*th)/(3960*wh))*100)/100 "
-                  step3="360"  />
+                  step3="360"  
+                  /></div>
               }  </> }</div>
 
         </div>

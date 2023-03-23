@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function WaterHoroscope() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Water Horsepower (WHP)');
@@ -52,6 +53,13 @@ function WaterHoroscope() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -188,13 +196,14 @@ function WaterHoroscope() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the Water Horsepower for the given details on water pumping.<br />
                                         Flow Rate or Discharge (Q) = 25 gpm<br />
                                         Total Head (H) = 15 ft<br /></>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="WHP = QH/3960"
                                     step1value="WHP = 25*15/3960"
-                                    step2="WHP = 0.09 HP" />
+                                    step2="WHP = 0.09 HP" /></div>
                             }</div>
 
                     </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function StockLaw() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Acceleration of Gravity (g):');
@@ -87,10 +86,13 @@ function StockLaw() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
-
-
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -449,6 +451,7 @@ function StockLaw() {
                         </center>
                         <div>
                             {textShow &&
+                            <div ref={divRef}>
                                 <Example heading={<>Calculate the fall or settling velocity (Vt) for the given details through Stoke's Law formula.<br/>
                                 Acceleration of Gravity (g) = 25 m/s2<br/>
                                 Particle Diameter (d) = 15 m<br/>
@@ -458,7 +461,7 @@ function StockLaw() {
                                     title="Viscosity of Medium (μ) = 20 kg/m-s"
                                     step1={<>Solution:<br/>  Apply formula: </>}
                                     step1heading={<>Vt = gd2 (ρp - ρm)/18μ<br/>  V t= 25*15 (10-5)/18*20</>}
-                                    step2="Fall or Settling Velocity (Vt) = 78.13 m/s"  />}</div>
+                                    step2="Fall or Settling Velocity (Vt) = 78.13 m/s"  /></div>}</div>
 
                     </div>
                     <div className='mt-2'>

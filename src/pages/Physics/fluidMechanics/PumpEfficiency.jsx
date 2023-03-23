@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -7,8 +7,7 @@ import ButtonA from '../../../components/ButtonA';
 
 
 function PumpEfficiency() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('pump efficency');
@@ -62,7 +61,13 @@ function PumpEfficiency() {
     })
 
 
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -183,6 +188,7 @@ function PumpEfficiency() {
                         </center>
                         <div>
                             {textShow &&
+                            <div ref={divRef}>
                                 <Example heading="Example"
                                     title={<>Calculate the Pump efficiency for the given details of horsepower.
                                         <br />Water Horsepower (WHP) = 25 HP<br />Brake Horsepower (BHP) = 20 HP</>}
@@ -190,7 +196,7 @@ function PumpEfficiency() {
                                     step1heading={<>n= WHP / BHP<br />
                                         n = 25/20<br />
                                         n = 1.25<br /></>}
-                                    step2="Pump Efficiency (n) = 1.25" />
+                                    step2="Pump Efficiency (n) = 1.25" /></div>
                             }
                         </div>
 

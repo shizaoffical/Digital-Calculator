@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,6 +8,7 @@ import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
 
 function SpecificGasConstant() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Specific Gas Constant');
@@ -45,6 +46,15 @@ function SpecificGasConstant() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
+
     return (
         <div>
             <Container className='home-page '>
@@ -125,12 +135,14 @@ function SpecificGasConstant() {
                         <div>
                             {
                                 textShow &&
+
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the Specific gas Constant for the given details.<br />
                                         Molecular Weight (MW) = 25 kg/kmol</>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="S = R / MW "
                                     step1value="R = Universal Gas Constant = 8314 J/kmol-kelvin."
-                                    step2="Specific Gas Constant(S) = 332.56 J/kg-K" />
+                                    step2="Specific Gas Constant(S) = 332.56 J/kg-K" /></div>
                             }</div>
 
                     </div>

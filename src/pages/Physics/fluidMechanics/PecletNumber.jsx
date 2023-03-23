@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function PecletNumber() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('peclet number');
@@ -52,9 +52,9 @@ function PecletNumber() {
         setK(0);
         setHC(0);
     }
-     // DENSITY
-     const Dcalculator = () => {
-        const D= PN *K / V * HC* CL ;
+    // DENSITY
+    const Dcalculator = () => {
+        const D = PN * K / V * HC * CL;
         setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
@@ -66,9 +66,9 @@ function PecletNumber() {
         setHC(0);
     }
     // heat capacity
-     // DENSITY
-     const HCcalculator = () => {
-        const HC= PN *K / V *D * CL ;
+    // DENSITY
+    const HCcalculator = () => {
+        const HC = PN * K / V * D * CL;
         setHCvalue(HC.toPrecision(6));
     }
     function HCcalculatorReset() {
@@ -79,9 +79,9 @@ function PecletNumber() {
         setK(0);
         setD(0);
     }
-      // CHARACTER LENGTH
-      const CLcalculator = () => {
-        const CL= PN *K / V *D * HC;
+    // CHARACTER LENGTH
+    const CLcalculator = () => {
+        const CL = PN * K / V * D * HC;
         setCLvalue(CL.toPrecision(6));
     }
     function CLcalculatorReset() {
@@ -92,9 +92,9 @@ function PecletNumber() {
         setK(0);
         setD(0);
     }
-      // CHARACTER LENGTH
-      const kcalculator = () => {
-        const K=V *D * HC * CL / PN;
+    // CHARACTER LENGTH
+    const kcalculator = () => {
+        const K = V * D * HC * CL / PN;
         setKvalue(K.toPrecision(6));
     }
     function kcalculatorReset() {
@@ -105,7 +105,7 @@ function PecletNumber() {
         setCL(0);
         setD(0);
     }
-   
+
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -118,7 +118,13 @@ function PecletNumber() {
         onafterprint: () => alert("print success"),
     })
 
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -461,13 +467,13 @@ function PecletNumber() {
                         </center>
                         <div>
                             {textShow &&
-
-                                <Example heading="Example"
-                                    title={<>Calculate the Peclet Number for the given details.<br />
-                                        Velocity (v) = 5 m/s<br />Density (ρ) = 5 kg/m3<br />Heat Capacity (cp) = 10 J/kg-K
-                                        <br />Characteristic Length (D) = 25 m<br />Thermal Conductivity (k) = 20 W/m-K</>}
-                                    step1={<>Solution : <br /> Apply Formula</>} step1heading="Pe = vρcp D/k"
-                                    step2="Peclet Number (Pe) = 937.5" />
+                                <div ref={divRef}>
+                                    <Example heading="Example"
+                                        title={<>Calculate the Peclet Number for the given details.<br />
+                                            Velocity (v) = 5 m/s<br />Density (ρ) = 5 kg/m3<br />Heat Capacity (cp) = 10 J/kg-K
+                                            <br />Characteristic Length (D) = 25 m<br />Thermal Conductivity (k) = 20 W/m-K</>}
+                                        step1={<>Solution : <br /> Apply Formula</>} step1heading="Pe = vρcp D/k"
+                                        step2="Peclet Number (Pe) = 937.5" /></div>
                             }
                         </div>
 
@@ -487,12 +493,12 @@ function PecletNumber() {
                                 <dt>Characteristic Length :<br /> <span>D = Pek/vρcp</span> </dt>
                                 <dt>Thermal Conductivity<br /> <span>k =vρcpD/Pe</span> </dt>
                                 <dt>Where, </dt>
-                                Pe = Peclet Number,<br/>
-                                v = Velocity,<br/>
-                                ρ = Density,<br/>
-                                cp = Heat Capacity,<br/>
-                                D = Characteristic Length,<br/>
-                                k = Thermal Conductivity<br/>
+                                Pe = Peclet Number,<br />
+                                v = Velocity,<br />
+                                ρ = Density,<br />
+                                cp = Heat Capacity,<br />
+                                D = Characteristic Length,<br />
+                                k = Thermal Conductivity<br />
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}

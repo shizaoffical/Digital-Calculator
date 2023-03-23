@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function WeberNumber() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('weber number');
@@ -26,7 +26,7 @@ function WeberNumber() {
 
     // functionality
     const WNcalculator = () => {
-        const WN =Math.round(((D*V*V*CL)/ST)*100)/100;
+        const WN = Math.round(((D * V * V * CL) / ST) * 100) / 100;
         setWNvalue(WN.toPrecision(6));
     }
     function WNcalculatorReset() {
@@ -38,7 +38,7 @@ function WeberNumber() {
     }
     // VELOCITY
     const Vcalculator = () => {
-        const V = Math.round((Math.sqrt((WN*ST)/(D*CL)))*100)/100;
+        const V = Math.round((Math.sqrt((WN * ST) / (D * CL))) * 100) / 100;
         setVvalue(V.toPrecision(6));
     }
     function VcalculatorReset() {
@@ -50,7 +50,7 @@ function WeberNumber() {
     }
     // DENSITY
     const Dcalculator = () => {
-        const D = Math.round(((WN*ST)/(V*V*CL))*100)/100;
+        const D = Math.round(((WN * ST) / (V * V * CL)) * 100) / 100;
         setDvalue(D.toPrecision(6));
     }
     function DcalculatorReset() {
@@ -63,7 +63,7 @@ function WeberNumber() {
     // heat capacity
     // DENSITY
     const STcalculator = () => {
-        const ST =Math.round(((D*V*V*CL)/WN)*100)/100;
+        const ST = Math.round(((D * V * V * CL) / WN) * 100) / 100;
         setSTvalue(ST.toPrecision(6));
     }
     function STcalculatorReset() {
@@ -75,7 +75,7 @@ function WeberNumber() {
     }
     // CHARACTER LENGTH
     const CLcalculator = () => {
-        const CL = Math.round(((WN*ST)/(D*V*V))*100)/100;
+        const CL = Math.round(((WN * ST) / (D * V * V)) * 100) / 100;
         setCLvalue(CL.toPrecision(6));
     }
     function CLcalculatorReset() {
@@ -96,7 +96,13 @@ function WeberNumber() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+            divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [textShow]);
 
     return (
         <div>
@@ -143,7 +149,7 @@ function WeberNumber() {
                                             onChange={(e) => setD(e.target.value)} />kg/m3
                                     </Col>
                                 </Row>
-                        <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -187,7 +193,7 @@ function WeberNumber() {
                                             onChange={(e) => setD(e.target.value)} />kg/m3
                                     </Col>
                                 </Row>
-                                  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -289,7 +295,7 @@ function WeberNumber() {
                                         <input type="number" className='ms-3 me-2' value={CL}
                                             onChange={(e) => setCL(e.target.value)} />m
                                     </Col>
-                                </Row> 
+                                </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Surface Tension</dt></Col>
@@ -327,7 +333,7 @@ function WeberNumber() {
                                             onChange={(e) => setD(e.target.value)} />kg/m3
                                     </Col>
                                 </Row>
-                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Surface Tension (σ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
@@ -354,21 +360,21 @@ function WeberNumber() {
                         </center>
                         <div>
                             {textShow &&
-
-                                <Example heading="Example"
-                                    title={<>Calculate the Weber Number for the given details.<br/>
-                                        Density (ρ) = 5 kg/m3<br/>
-                                        Velocity (v) = 10 m/s<br/>
-                                        Characteristic Length (L) = 15 m<br/>
-                                        Surface Tension (σ) = 20 N/m<br/></>}
-                                    step1={<>Solution : <br /> Apply Formula</>} step1heading="We = ρv2L/σ"
-                                    step2="Weber Number (We) = 375" />
+                                <div ref={divRef}>
+                                    <Example heading="Example"
+                                        title={<>Calculate the Weber Number for the given details.<br />
+                                            Density (ρ) = 5 kg/m3<br />
+                                            Velocity (v) = 10 m/s<br />
+                                            Characteristic Length (L) = 15 m<br />
+                                            Surface Tension (σ) = 20 N/m<br /></>}
+                                        step1={<>Solution : <br /> Apply Formula</>} step1heading="We = ρv2L/σ"
+                                        step2="Weber Number (We) = 375" /></div>
                             }
                         </div>
 
                     </div>
                     <div className='mt-2'>
-                    The Weber Number is especially used for multiphase flows with strongly curved surfaces.
+                        The Weber Number is especially used for multiphase flows with strongly curved surfaces.
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
@@ -377,19 +383,19 @@ function WeberNumber() {
                             <div className='formula-backside'>
                                 <dt>Weber Number : </dt>
                                 We = ρv2L/σ
-                               <dt> Density : </dt>
+                                <dt> Density : </dt>
                                 ρ = Weσ/v2L
                                 <dt>Velocity : </dt>
                                 v= √Weσ/ ρL
-                                 <dt>Characteristic Length :</dt>
+                                <dt>Characteristic Length :</dt>
                                 L = Weσ/ ρv2
-                                 <dt>Surface Tension :</dt>
+                                <dt>Surface Tension :</dt>
                                 σ = ρv2L/We
                                 <dt>Where, </dt>
-                                We = Weber Number,<br/>
-                                ρ = Density,<br/>
-                                v = Velocity,<br/>
-                                L = Characteristic Length,<br/>
+                                We = Weber Number,<br />
+                                ρ = Density,<br />
+                                v = Velocity,<br />
+                                L = Characteristic Length,<br />
                                 σ = Surface Tension.
                             </div>
                             : null}

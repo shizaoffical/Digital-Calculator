@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,7 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function FroudeNumber() {
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Froude Number');
@@ -66,7 +66,13 @@ function FroudeNumber() {
         onafterprint: () => alert("print success"),
     })
 
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -255,13 +261,14 @@ function FroudeNumber() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the Froude Number for the given details.<br />
                                         Flow Velocity (V) = 20 m/s<br />Acceleration of Gravity (g) = 15 m/s2<br />
                                         Mean Depth (hm) = 10 m</>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading={<>F = V/ √ ghm<br />F = 20/√15*10
                                         <br />F = 1.63</>}
-                                    step2="Froude Number (F) = 1.63" />
+                                    step2="Froude Number (F) = 1.63" /></div>
                             }</div>
 
                     </div>

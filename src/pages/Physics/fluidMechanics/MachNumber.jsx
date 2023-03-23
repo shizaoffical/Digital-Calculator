@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function MachNumber() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Mach Number (M):');
@@ -61,7 +60,13 @@ function MachNumber() {
         onafterprint: () => alert("print success"),
     })
 
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -186,12 +191,14 @@ function MachNumber() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the Match Number for the given details.<br />
                                         Object Speed (v) = 25 m/s<br />Speed of Sound (a) = 20 m/s<br /></>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="Q = A*v"
                                     step1value={<>M = v/a<br />M = 25/20<br />M = 1.25</>}
-                                    step2="Mach Number (M) = 1.25" />
+                                    step2="Mach Number (M) = 1.25" 
+                                    /></div>
                             }</div>
 
                     </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -7,8 +7,7 @@ import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 
 function Schmidt() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [showPopup] = useState(false);
@@ -59,6 +58,14 @@ function Schmidt() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
 
     return (
 
@@ -187,6 +194,7 @@ function Schmidt() {
                     <div>
                         {
                             textShow &&
+                            <div ref={divRef}>
                             <Example heading="Example"
                                 title={<>Calculate the Schmidt number for the given details.<br />
                                     Kinematic Viscosity (v) = 15 m2/s<br />
@@ -194,7 +202,7 @@ function Schmidt() {
                                 step1={<>Solution : Apply Formula</>} step1heading={<>Sc = v/ Dc<br />
                                     Sc = 15/10<br />
                                     Sc = 1.5<br /></>}
-                                step2="Schmidt Number (Sc) = 1.5 " />
+                                step2="Schmidt Number (Sc) = 1.5 " /></div>
                         }</div>
                 </div>
                 <div className='my-2'>

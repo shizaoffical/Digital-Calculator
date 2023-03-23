@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,8 +8,7 @@ import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
 
 function NussletNumber() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Nusselt Number');
@@ -79,9 +78,13 @@ function NussletNumber() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
-
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow])
 
     return (
         <div>
@@ -284,36 +287,44 @@ function NussletNumber() {
                         <div>
                             {textShow && <>
                                 {selectCondition === "Nusselt Number" &&
+                                <div ref={divRef}>
                                     <Example heading="Nusselt Number"
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = 70 , L = 32 , k = 5.65 , Nu = ?"
                                         step2="Formula" step2heading="nu = h * l / k"
                                         step3="Putting Vales" step3heading=" 70 * 32 / 5.65"
-                                        step4="396.46" />
+                                        step4="396.46" 
+                                        /></div>
                                 }
                                 {selectCondition === "Convection Heat Transfer Coefficient" &&
+                                <div ref={divRef}>
                                     <Example heading="Convection Heat Transfer Coefficient"
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = ? , L = 32 , k = 5.65 , Nu = 396.4600"
                                         step2="Formula" step2heading="h = Nu * k * L"
                                         step3="Putting Value" step3heading="396.4600 * 5.65 * 32"
-                                        step4="71679.968" />
+                                        step4="71679.968" 
+                                        /></div>
                                 }
                                 {selectCondition === "Characteristic Length" &&
+                                <div ref={divRef}>
                                     <Example heading="Characteristic Length"
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = 71679.9680 , L = ? , k = 5.65 , Nu = 396.4600"
                                         step2="Formula" step2heading="nu * k / h"
                                         step3="Putting value" step3heading="396.4600 * 5.65 / 71679.9680"
-                                        step4="0.0312" />
+                                        step4="0.0312" 
+                                        /></div>
                                 }
                                 {selectCondition === "Thermal Conductivity of Fluidy" &&
+                                <div ref={divRef}>
                                     <Example heading="Thermal Conductivity of Fluid"
                                         title="step by step solution"
                                         step1="Data : " step1heading="h = 71679.9680 , L = 0.0312 , k = ? , Nu = 396.4600"
                                         step2="Formula" step2heading="e = h * l / nu"
                                         step3="Putting value" step3hrading="71679.9680 * 0.0312 /  396.4600"
-                                        step4="5.641" />
+                                        step4="5.641" 
+                                        /></div>
                                 }  </>}</div>
 
                     </div>

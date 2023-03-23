@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function MeanDepth() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Mean Depth');
@@ -61,7 +60,13 @@ function MeanDepth() {
     })
 
 
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -187,26 +192,32 @@ function MeanDepth() {
                         <div>
                             {textShow && <>
                                 {selectCondition === "Mean Depth" &&
+                                <div ref={divRef}>
                                     <Example heading="Mean Depth"
                                         title="step by step solution"
                                         step1="Data : " step1heading="hm = ? , A = 5 , T = 6"
                                         step2="Formula" step2heading="hm  = A / t "
                                         step3="Putting Value :" step3heading="5 / 6 "
-                                        step4="0.8333" />
+                                        step4="0.8333"
+                                         /></div>
                                 }
                                 {selectCondition === "Area of section flow" &&
+                                <div ref={divRef}>
                                     <Example heading="Area of section flow"
                                         title="step by step solution"
                                         step1="Data : " step1heading="hm = 0.8333 , A = ? , T = 6"
                                         step2="Formula" step2heading="A = hm x T"
-                                        step3="Putting value" step3heading="= 0.8333 x 6"step4="5" />
+                                        step3="Putting value" step3heading="= 0.8333 x 6"step4="5" 
+                                        /></div>
                                 }
                                 {selectCondition === "top water surfacw width" &&
+                                <div ref={divRef}>
                                     <Example heading="top water surfacw width"
                                         title="step by step solution"
                                         step1="Data : " step1heading="hm = 0.8333 , A = 5 , T = ?"
                                         step2="Formula" step2heading="t = a / hm"
-                                        step3="5 / 0.8333"  step4="6"/>
+                                        step3="5 / 0.8333"  step4="6"
+                                        /></div>
                                 } </>}
                         </div>
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import Reference from '../../../components/Reference';
 
 function BernoullliNumbers() {
+    const divRef = useRef(null);
+
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [n, setn] = useState(10);
@@ -28,7 +30,13 @@ function BernoullliNumbers() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>     <Container className='home-page '>
             <div className=' col-xs-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 '>
@@ -69,12 +77,13 @@ function BernoullliNumbers() {
                     </center>
                     {
                         textShow &&
+                        <div ref={divRef}>
                         <Example heading="Example" title={<>Calculate the Bernoulli Number B(n) for the given details.<br />
                             Large Number (n): 5</>}
                             step1={<>Solution : <br />Apply Formula:</>}
                             step1heading={<>B(n)≈ 4 * (n / π e)2n * √ n π<br />B(n)≈ 4*(5/3.14*2.718281828459)2*5√5*3.14</>}
                             step2={<>B(n)≈ 0.07505444661992206<br />If you need further explanation watch this video below:
-                            </>} />
+                            </>} /></div>
                     }</div>
 
                 <div className='mt-2'>

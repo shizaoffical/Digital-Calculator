@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,8 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function EulerNumbers() {
-
-
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Euler Number');
@@ -81,7 +80,13 @@ function EulerNumbers() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -278,12 +283,13 @@ function EulerNumbers() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the Euler Number for the given details.<br />
                                         Pressure Change (Δp) = 25 P<br />Density (ρ) = 15 kg/m3<br />
                                         Characteristic Velocity (V) = 5 m/s</>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="Eu = Δp/ρV2"
-                                    step2="Euler Number (Eu) = 0.07" />
+                                    step2="Euler Number (Eu) = 0.07" /></div>
                             }</div>
 
                     </div>

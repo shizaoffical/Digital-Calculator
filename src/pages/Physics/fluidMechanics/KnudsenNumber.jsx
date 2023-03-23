@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function KnudsenNumber() {
+    const divRef = useRef(null);
 
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
@@ -61,7 +62,13 @@ function KnudsenNumber() {
         onafterprint: () => alert("print success"),
     })
 
-
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -187,12 +194,13 @@ function KnudsenNumber() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="step by step solution"
                                     title={<>Calculate the Knudsen Number for the given details.<br />
                                         Mean Free Path (λ) = 25 m<br />Representative Physical Length Scale (L) = 20 m<br /></>}
                                     step1={<>Solution <br /> Apply Formula : </>} step1heading="Rh = A/Pw"
                                     step1value="Kn = λ/L"
-                                    step2="Kn = 1.25" />
+                                    step2="Kn = 1.25" /></div>
                             }</div>
 
                     </div>

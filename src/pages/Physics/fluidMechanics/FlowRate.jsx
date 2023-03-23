@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
@@ -6,6 +6,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 
 function FlowRate() {
+    const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Flow Rate');
@@ -56,6 +57,13 @@ function FlowRate() {
         documentTitle: 'calculator',
         onafterprint: () => alert("print success"),
     })
+    useEffect(() => {
+        if (textShow) {
+          divRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -185,12 +193,13 @@ function FlowRate() {
                         <div>
                             {
                                 textShow &&
+                                <div ref={divRef}>
                                 <Example heading="Flow Rate or Discharge"
                                     title={<>Calculate the Flow Rate for the given details.<br />
                                         Flow Area (A) = 25 m2<br />Flow Velocity (v) = 15 m/s<br /></>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="Q = A*v"
                                     step1value="Q = 25 /15"
-                                    step2="Q = 375 m3/s" />
+                                    step2="Q = 375 m3/s" /></div>
                             }</div>
 
                     </div>
