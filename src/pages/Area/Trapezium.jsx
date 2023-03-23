@@ -26,7 +26,7 @@ function Trapezium() {
     // Area of Trapezium
     const areaTrapezium = () => {
         const TrapeziumArea = 1 / 2 * (Psidea + Psideb) * PsideDistance;
-        setAreaTrapezium(TrapeziumArea)
+        setAreaTrapezium(TrapeziumArea.toPrecision(6))
     }
     function areaTrapeziumReset() {
         setPsidea(0);
@@ -37,7 +37,7 @@ function Trapezium() {
 
     const perimeterTrapezium = () => {
         const perimeter = A + B + C + D;
-        setPerimeterTrapezium(perimeter);
+        setPerimeterTrapezium(perimeter.toPrecision(6));
     }
     function perimeterTrapeziumReset() {
         setA(0);

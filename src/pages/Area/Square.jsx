@@ -17,11 +17,11 @@ function Square() {
 
     const calculate = () => {
         const areaOFSquare = [(length) * length];
-        setAreaOFSquare(areaOFSquare);
+        setAreaOFSquare(areaOFSquare.toPrecision(6));
         const perimeterOfSquare = 4 * length;
-        setPerimeterOfSquare(perimeterOfSquare);
+        setPerimeterOfSquare(perimeterOfSquare.toPrecision(6));
         const diagonalOfSquare =[(length) * (Math.sqrt(2))];
-        setDiagonalOfSquare(diagonalOfSquare);
+        setDiagonalOfSquare(diagonalOfSquare.toPrecision(6));
     }
     function reset() {
         setLength(0)

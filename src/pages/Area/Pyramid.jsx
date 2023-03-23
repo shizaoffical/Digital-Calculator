@@ -32,7 +32,7 @@ function Pyramid() {
     const [BaseArea, setBaseArea] = useState(0);
     const baseVolume = () => {
         const bvolume = (length * width * Height) / 3;
-        setBaseVolume(bvolume);
+        setBaseVolume(bvolume.toPrecision(6));
     }
     function VolumeReset() {
         setBaseVolume("")
@@ -43,7 +43,7 @@ function Pyramid() {
     // base length 
     const BaseLength = () => {
         const baselength = 3 * volume / (Height * width)
-        setBaseLength(baselength)
+        setBaseLength(baselength.toPrecision(6))
     }
     function BaseLengthReset() {
         setBaseLength("")
@@ -54,7 +54,7 @@ function Pyramid() {
     // BaseWidth
     const basewidth = () => {
         const bwidth = 3 * volume / (Height * length);
-        setBaseWidth(bwidth);
+        setBaseWidth(bwidth.toPrecision(6));
     }
     function basewidthReset() {
         setBaseVolume("");
@@ -65,7 +65,7 @@ function Pyramid() {
     //  Pyramid Height
     const pyramidheight = () => {
         const pheight = 3 * volume / (length * width);
-        setPyramidHeight(pheight);
+        setPyramidHeight(pheight.toPrecision(6));
     }
     function pyramidheightReset() {
         setVolume(0);
@@ -76,7 +76,7 @@ function Pyramid() {
     const surfaceArea = () => {
         const SArea = length * width + length * (Math.sqrt((width / 2)*(width / 2))) + Height*Height + width *
            (Math.sqrt((length / 2)*(length / 2))) + Height*Height;
-            setSurfaceArea(SArea);
+            setSurfaceArea(SArea.toPrecision(6));
     }
     function surfaceAreaReset() {
         setSurfaceArea("")
@@ -87,7 +87,7 @@ function Pyramid() {
     const Lsurfacearea =() => {
         const Lsarea = length * (Math.sqrt((width / 2)*(width / 2))) + Height*Height + width *
         (Math.sqrt((length / 2)*(length / 2))) +  Height*Height;
-        setLSurfaceArea(Lsarea);
+        setLSurfaceArea(Lsarea.toPrecision(6));
     }
     function LsurfaceareaReset() {
         setLSurfaceArea("");
@@ -97,7 +97,7 @@ function Pyramid() {
     }
      const basearea = () => {
         const Barea = length* width;
-        setBaseArea(Barea);
+        setBaseArea(Barea.toPrecision(6));
      } 
      function BaseAreaReset() {
         setBaseArea("");

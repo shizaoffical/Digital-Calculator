@@ -21,13 +21,13 @@ function Cone() {
     const calculate = () => {
         
     const Slantheight = Math.sqrt(radius * radius + height * height);
-    setSlantheight(Slantheight);
+    setSlantheight(Slantheight.toPrecision(6));
     const csa = 3.14 * radius * Slantheight;
-    setCsa(csa);
+    setCsa(csa.toPrecision(6));
     const volume = (1 / 3) * Math.PI * radius * radius * height;
-    setVolume(volume);
+    setVolume(volume.toPrecision(6));
     const tsa = Math.PI* radius * (Slantheight + radius);
-    settsa(tsa);
+    settsa(tsa.toPrecision(6));
     
     }
            

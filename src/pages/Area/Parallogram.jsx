@@ -19,7 +19,7 @@ function Parallogram() {
 //   Rectangular arae
    const RectangularArea =() => {
     const rectangularArea = base * height ;
-    setRectangularArea(rectangularArea);
+    setRectangularArea(rectangularArea.toPrecision(6));
    }
     function RectangularAreaReset() {
         setBase(0);
@@ -30,7 +30,7 @@ function Parallogram() {
     //  perimeter Rectangular
      const perimeterRectangular =() => {
         const perimeterRectangular = 2 * (side1 + side2);
-        setPerimeterOfTriangle(perimeterRectangular)
+        setPerimeterOfTriangle(perimeterRectangular.toPrecision(6))
      }
       function perimeterRectangularReset() {
         setSide1(0);
@@ -39,7 +39,7 @@ function Parallogram() {
       }
     // handle change
     const handleSelectChange = (event) => {
-        setSelectCondition(event.target.value);
+        setSelectCondition(event.target.value.toPrecision(6));
     }
   
     const componentsRef = useRef();

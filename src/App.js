@@ -15,6 +15,7 @@ function App() {
       <ScrollToTop/>
       <AnimatedPath/>
       </BrowserRouter>
+      
     </div>
   )
 }

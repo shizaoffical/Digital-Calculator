@@ -26,7 +26,7 @@ function ACtoDC() {
     const calculate = () => {
         if (AC !== null) {
             const DC = AC * 0.636;
-            setDCvalue(DC);
+            setDCvalue(DC.toPrecision(6));
             console.log("dcvalue enter")
         }
         else {
@@ -49,7 +49,7 @@ function ACtoDC() {
 const ACcalculate = () => {
         if (DC !== null) {
             const AC = DC * 0.636;
-            setACvalue(AC);
+            setACvalue(AC.toPrecision(6));
             console.log("acvalue enter pop")
 
         }

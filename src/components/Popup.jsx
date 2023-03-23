@@ -10,10 +10,9 @@ function Popup(props) {
                         <h1>Error</h1>
                         <ButtonA onClick={props.onClick} text={<i class="fa-solid fa-xmark"></i>} />
                     </div>
- Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident repellat aperiam at odio sapiente corrupti, molestias sunt id omnis ab dolore eaque consectetur, a tempora qui esse ipsam libero cumque!
-                    {props.title1 && <p>1</p>}
-                    {props.title2 && <p >2</p>}
 
+                    <h5>Please fill the required input</h5>
+                    <p>Having input? please contact us</p>
                 </div>
             </div>
         </>

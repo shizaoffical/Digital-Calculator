@@ -24,7 +24,7 @@ function Kite() {
     // Area Of Kite
     const AreaOfKite = () => {
         const KiteArea = p * q / 2;
-        setAreaOFKite(KiteArea);
+        setAreaOFKite(KiteArea.toPrecision(6));
     }
     function AreaOfKiteReset() {
         setP(0);
@@ -34,7 +34,7 @@ function Kite() {
     //  Area of Kite Using Tripographt'
     const AreaKiteTrignometery = () => {
         const kiteTrignometery = lengtha * lengthb * Math.sin(angle);
-        setKiteTrignometery(kiteTrignometery);
+        setKiteTrignometery(kiteTrignometery.toPrecision(6));
     }
     function AreaKiteTrignometeryReset() {
         setlengtha(0);
@@ -46,7 +46,7 @@ function Kite() {
     // Perimeter Of Kite
     const KiteofPerimeter = () => {
         const Perimeterkite = 2 *(p + q);
-        setKitePerimeter(Perimeterkite);
+        setKitePerimeter(Perimeterkite.toPrecision(6));
     }
     function kitePerimeterReset() {
         setlengtha(0);

@@ -16,11 +16,11 @@ function Hemisphere() {
 
     const calculate = () =>  {
      const volumeOfHemisphere = (2/3)*3.14*radius*radius*radius;
-     setVolumeOfHemisphere(volumeOfHemisphere);
+     setVolumeOfHemisphere(volumeOfHemisphere.toPrecision(6));
      const curvedSurfaceArea =2 *3.14 *radius*radius;
-     setCurvedSurfaceArea(curvedSurfaceArea);
+     setCurvedSurfaceArea(curvedSurfaceArea.toPrecision(6));
      const totalSurfaceArea = 3 * Math.PI *radius *radius;
-     setTotalSurfaceArea(totalSurfaceArea);
+     setTotalSurfaceArea(totalSurfaceArea.toPrecision(6));
     }
 
     function reset() {

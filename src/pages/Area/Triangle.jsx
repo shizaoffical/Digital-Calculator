@@ -31,7 +31,7 @@ function Triangle() {
     // area of triangle 
     const calculate = () => {
         const areaOfCalculator = length * breadth / 2;
-        setAreaOfCalculator(areaOfCalculator)
+        setAreaOfCalculator(areaOfCalculator.toPrecision(6))
     }
     function reset() {
         setLength(0);
@@ -41,7 +41,7 @@ function Triangle() {
     // perimeter of triangle 
     const perimeter = () => {
         const perimeter = sidea + sideb + sidec;
-        setPerimeterOfTriangle(perimeter);
+        setPerimeterOfTriangle(perimeter.toPrecision(6));
     }
     function perimeterReset() {
         setSidea(0);
@@ -52,7 +52,7 @@ function Triangle() {
     //   area of equilant triangle
     const areaofequatri = () => {
         const value = Math.sqrt(3) / 4 * equilateralTriangle * equilateralTriangle;
-        setAreaOfEquilateralTriangle(value);
+        setAreaOfEquilateralTriangle(value.toPrecision(6));
 
     }
     function equilateralTriangleReset() {
@@ -62,7 +62,7 @@ function Triangle() {
     // SAS Triangle
     const SASangletriangle = () => {
         const SASAngletriangle = SASlength * SASBreath * Math.sin(SASangleC) / 2;
-        setSAStriangle(SASAngletriangle);
+        setSAStriangle(SASAngletriangle.toPrecision(6));
     }
     function SAStriangleReset() {
         setSASLength(0);

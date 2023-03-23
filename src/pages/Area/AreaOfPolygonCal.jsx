@@ -20,13 +20,13 @@ function AreaOfPolygonCal() {
 
     function calculatePolygon() {
         const perimeter = numberOfSides * sideLength; 
-        setPerimeter(perimeter);
+        setPerimeter(perimeter.toPrecision(6));
         const apothem = sideLength / (2 * Math.tan(Math.PI / numberOfSides));
-        setApothem(apothem);
+        setApothem(apothem.toPrecision(6));
         const area = (1 / 2) * apothem * numberOfSides * sideLength;
-        setArea(area);
+        setArea(area.toPrecision(6));
         const radius = 0.5 * Math.sin(2 * Math.PI / secondnumberOfSides);
-        setRadius(radius)
+        setRadius(radius.toPrecision(6))
       
     }
     function reset() {

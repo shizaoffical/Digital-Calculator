@@ -27,9 +27,9 @@ function Elipse() {
     // Ellipse (Area & Perimeter) functionality
     const Ellipse = () => {
         const ellipseArea = Math.PI * r1 * r2;
-        setEllipseArea(ellipseArea);
+        setEllipseArea(ellipseArea.toPrecision(6));
         const elipsePerimeter = 2 * 3.14 * (Math.sqrt((r1 * r1 + r2 * r2) / 2));
-        setEllipsePerimeter(elipsePerimeter);
+        setEllipsePerimeter(elipsePerimeter.toPrecision(6));
     }
     function EllipseReset() {
         setR1(0);
@@ -41,7 +41,7 @@ function Elipse() {
     // volume of ellipse 
     const Volume = () => {
         const volumeOfEllipse = 4 / 3 * Math.PI * r1 * r2 * r3;
-        setVolumeOfEllipse(volumeOfEllipse);
+        setVolumeOfEllipse(volumeOfEllipse.toPrecision(6));
     }
     function VolumeReset() {
         setR1(0);

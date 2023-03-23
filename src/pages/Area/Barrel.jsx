@@ -18,7 +18,7 @@ function Barrel() {
         const mr = parseFloat(middleRadius);
         const h = parseFloat(height);
         const v = (Math.PI * h) * (tr * tr + 2 * mr * mr) / 3;
-        setVolume(v);
+        setVolume(v.toPrecision(6));
     };
     function reset() {
         setMiddleRadius(15);
@@ -61,7 +61,8 @@ function Barrel() {
                                         <Col md={6} sm={12} xs={12} >
                                             <input type="number" value={topRadius} onChange={(e) => setTopRadius(e.target.value)} />
                                         </Col>
-                                    </Row> <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
+                                    </Row>
+                                     <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
                                         <Col md={6} sm={12} xs={12} >middle radius (r): </Col>
                                         <Col md={6} sm={12} xs={12} >
                                             <input type="number" value={middleRadius} onChange={(e) => setMiddleRadius(e.target.value)} />
@@ -75,8 +76,10 @@ function Barrel() {
                                     </Row>
                               
                                 <center className='d-flex justify-content-center py-3'>
-                                    <dt className='pe-2'>Volume: </dt>
-                                    <button className='formula-value-btn'>{volume.toString().substring(0, 5)}</button>
+                                <Col md={6} sm={12} xs={12} ><dt className='pe-2'>Volume: </dt></Col>
+                                <Col md={6} sm={12} xs={12} >
+                                     <button className='formula-value-btn'>{volume.toString().substring(0, 5)}</button>
+                                </Col>
                                 </center>  </div>
                                 <div className='text-center'>
                                     <ButtonA onClick={calculateVolume} text="Calculate"/>

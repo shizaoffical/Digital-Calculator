@@ -16,11 +16,11 @@ function Cube() {
 
     const calculate = () => {
         const volume = length * length* length;
-        setVolume(volume);
+        setVolume(volume.toPrecision(6));
         const setAreaOfCube = 6 * ( length * length );
-        setSetAreaOfCube(setAreaOfCube);
+        setSetAreaOfCube(setAreaOfCube.toPrecision(6));
         const DiameterOfCube = Math.sqrt(3) * length;
-        setDiameterOfCube(DiameterOfCube);
+        setDiameterOfCube(DiameterOfCube.toPrecision(6));
 
     }
 

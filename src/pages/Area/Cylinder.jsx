@@ -17,11 +17,11 @@ function Cylinder() {
 
     const calculate = () => {
         const curverSurfaceArea = 2 * Math.PI * radius * height;
-        setcurverSurfaceArea(curverSurfaceArea)
+        setcurverSurfaceArea(curverSurfaceArea.toPrecision(6))
         const volumeOfSylinder = Math.PI * radius * radius * height;
-        setvolumeOfSylinder(volumeOfSylinder);
+        setvolumeOfSylinder(volumeOfSylinder.toPrecision(6));
         const totalSurfaceArea = 2 * Math.PI * radius * (height + radius);
-        setTotalSurfaceArea(totalSurfaceArea);
+        setTotalSurfaceArea(totalSurfaceArea.toPrecision(6));
     }
 
     function reset() {

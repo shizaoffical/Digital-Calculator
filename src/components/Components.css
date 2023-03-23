@@ -1,7 +1,6 @@
-
 /* ************************   navbar *********************** */
 .navbar {
-  background:  var(--main-color);
+  background: var(--main-color);
   position: sticky !important;
   z-index: 1;
 }
@@ -9,7 +8,7 @@
 .nav-search-btn-div {
   height: 6rem;
   width: 100%;
-  background-color:var(--main-color);
+  background-color: var(--main-color);
   display: flex;
   align-items: center;
   animation: serch 1s linear;
@@ -25,6 +24,7 @@
     height: 6rem;
   }
 }
+
 .nav-link {
   position: relative;
 }
@@ -95,13 +95,15 @@
   border-right: 4px solid var(--primary-color);
   /* background-color: var(--light-bg-color); */
 }
-.new-calculator-list  a{
+
+.new-calculator-list a {
   color: #5B5046;
- text-decoration: none;
+  text-decoration: none;
 }
-.new-calculator-list  a:hover{
+
+.new-calculator-list a:hover {
   color: var(--dark-primary-color);
- text-decoration: none;
+  text-decoration: none;
 }
 
 /* ************************   tool main *********************** */
@@ -128,13 +130,16 @@
   color: var(--language-color);
   text-transform: capitalize;
 }
-.tool-text{
+
+.tool-text {
   text-decoration: none;
   color: var(--dark-primary-color);
 }
-.tool-text:hover{
+
+.tool-text:hover {
   color: var(--main-color);
 }
+
 /* ************************  blod-post page   *********************** */
 .blog-post-date {
   color: var(--dark-primary-color);
@@ -168,12 +173,13 @@
   width: 7rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
-  border:1px solid  rgba(128, 128, 128, 0.271);
+  border: 1px solid rgba(128, 128, 128, 0.271);
 }
 
 .category-card-title {
   color: #000;
 }
+
 .category-card-link {
   text-decoration: none;
 }
@@ -190,30 +196,34 @@
 .category-card-image:hover {
   opacity: 1;
 }
+
 /* ************************** heading  ***************************** */
-.heading{
-  border:1px solid  rgba(128, 128, 128, 0.271);
+.heading {
+  border: 1px solid rgba(128, 128, 128, 0.271);
   font-weight: 600;
-  padding: 0.4rem ;
+  padding: 0.4rem;
   margin: 1.4rem 0 0.8rem 0;
-  background-color:var(--heading-color);
+  background-color: var(--heading-color);
   border-left: 0.2rem solid var(--dark-primary-color);
-  transition:  0.2s;
+  transition: 0.2s;
 }
-.heading:hover{
+
+.heading:hover {
   border-left: 0.7rem solid var(--dark-primary-color);
 }
-.heading a{
+
+.heading a {
   text-decoration: none;
   color: #000;
 }
-.heading a:hover{
+
+.heading a:hover {
   text-decoration: none;
   color: #000;
 }
 
 /**************************** ANIMATINO IMAGE star ******************************/
-.animate{
+.animate {
   position: relative;
   display: flex;
   align-items: center;
@@ -221,43 +231,49 @@
   overflow: hidden !important;
   margin: 2rem 0 0 0;
 }
-.slidercontent{
+
+.slidercontent {
   overflow: hidden;
   width: calc(80px *18);
-  animation: scroll 5s linear  infinite ;
+  animation: scroll 5s linear infinite;
 }
-@keyframes scroll{
-  0%{
-    transform:  translateX(0);
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(80px * 9));
+  }
 }
-100%{
-    transform:  translateX(calc(80px * 9));
-}
-}
-.slidercontent h3{
+
+.slidercontent h3 {
   overflow: hidden;
- color: #000;
+  color: #000;
 }
+
 /* ***************************** Calculator Name   ******************************** */
-.calculator-name{
-  border:1px solid  rgba(128, 128, 128, 0.271);
-  padding: 0.5rem  ;
+.calculator-name {
+  border: 1px solid rgba(128, 128, 128, 0.271);
+  padding: 0.5rem;
   text-transform: capitalize;
   transition: 0.3s ease-in;
 }
-.calculator-name:hover{
+
+.calculator-name:hover {
   color: var(--dark-primary-color);
-  border-left:0.5rem solid var(--dark-primary-color) ;
+  border-left: 0.5rem solid var(--dark-primary-color);
   border-right: 0.5rem solid var(--dark-primary-color);
 }
 
 /* **********************  loding ********************** */
-.loding{
+.loding {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
- align-items: center;
+  align-items: center;
 }
 
 
@@ -277,9 +293,8 @@
 
 .popup {
   background-color: var(--main-color);
- z-index: 99999 !important;
+  z-index: 9999 !important;
   color: white;
-  /* position:-webkit-sticky; */
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -296,15 +311,17 @@
   margin-bottom: 20px;
 }
 /* reference */
-.referenec-bg-color{
+.referenec-bg-color {
   font-size: 14px;
-  background-color:var(--heading-color)
-}.Reference-link{
+  background-color: var(--heading-color)
+}
+
+.Reference-link {
   color: var(--dark-primary-color);
   padding: 0 5px;
 }
-.Reference-link:hover{
-  color: var(--dark-primary-color);
-  
-}
 
+.Reference-link:hover {
+  color: var(--dark-primary-color);
+
+}

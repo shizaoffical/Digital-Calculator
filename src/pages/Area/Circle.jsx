@@ -20,9 +20,9 @@ function Circle() {
     const calculate = () => {
         if(radius!==null){
             const r = parseFloat(radius);
-            setDiameter(2 * r);
-            setCircumference(2 * Math.PI * r);
-            setArea(Math.PI * r * r); 
+            setDiameter(2 * r.toPrecision(6));
+            setCircumference(2 * Math.PI * r.toPrecision(6));
+            setArea(Math.PI * r * r.toPrecision(6)); 
         }
         else{
             setShowPopup(true);
@@ -39,6 +39,11 @@ function Circle() {
             setShowPopup(true);
         }
       };
+
+      
+     const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -88,8 +93,7 @@ function Circle() {
                         <div className='text-center'>
                             <ButtonA onClick={calculate} text="Calaulate" />
                             <ButtonA onClick={handleResetClick} text="Reset" />
-                            {showPopup && <Popup />}
-
+                            {showPopup &&<Popup onClick={togglePopup} /> }
                         </div>
                         <center>
                             <button type='button'

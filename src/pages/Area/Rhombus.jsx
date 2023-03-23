@@ -26,7 +26,7 @@ function Rhombus() {
     // Area of Rombus(Base Time Height Method)
     const BTHMCalculate = () => {
         const BTHMCalculate = base * height;
-        setBTHM(BTHMCalculate);
+        setBTHM(BTHMCalculate.toPrecision(6));
     }
     function BTHMCalculateReset() {
         setBase(0);
@@ -36,7 +36,7 @@ function Rhombus() {
     // Area of Rombus(Diagonal Method)
     const DMmethodCalculation = () => {
       const DMMethod = base* height / 2;
-      setDMmethod(DMMethod);
+      setDMmethod(DMMethod.toPrecision(6));
     }
     function DMmethodCalculationReset() {
         setBase(0);
@@ -47,7 +47,7 @@ function Rhombus() {
     // Area of Rombus Using Trigonometry
  const TrigonometryCalculator = () => {
     const Trigonometry  = length * length * Math.sin(angle);
-    setTrigonometry(Trigonometry);
+    setTrigonometry(Trigonometry.toPrecision(6));
  }
  function TrigonometryCalculatorReset() {
     setLength(0);
@@ -57,7 +57,7 @@ function Rhombus() {
 //  'Perimeter of Rhombus
  const perimeterRCalculate = () => {
     const perimeter = 4 * length;
-    setperimeterR(perimeter);
+    setperimeterR(perimeter.toPrecision(6));
  }
   function perimeterRCalculateReset() {
     setperimeterR("")

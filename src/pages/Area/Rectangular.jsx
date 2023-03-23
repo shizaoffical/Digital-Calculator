@@ -17,9 +17,9 @@ function Rectangular() {
 
     const calculate = () => {
         const r =Math.sqrt(x * x  + y * y);
-        setR(r) ;
+        setR(r.toPrecision(6)) ;
         const angle =Math.atan(y/x);
-        setangle(angle);
+        setangle(angle.toPrecision(6));
     }
 
     function reset() {

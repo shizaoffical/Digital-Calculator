@@ -14,7 +14,7 @@ function VolumeOfHemisphere() {
     
         const calculate = () => {
             const volume = Math.PI * (radius *radius) * length + (4/3) * Math.PI * (radius* radius* radius);
-            setVolume(volume);
+            setVolume(volume.toPrecision(6));
         }
         function reset() {
             setVolume("")

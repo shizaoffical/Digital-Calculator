@@ -62,6 +62,9 @@ import VoltageAcrossIndustry from './pages/Physics/fluidMechanics/VoltageAcrossI
 import WaterHoroscope from './pages/Physics/fluidMechanics/WaterHoroscope';
 import WeberNumber from './pages/Physics/fluidMechanics/WeberNumber';
 import ACtoDC from './pages/Physics/Electromagnetism/ACtoDC';
+import AntennaArray from './pages/Physics/Electromagnetism/AntennaArray';
+import AntennaGain from './pages/Physics/Electromagnetism/AntennaGain';
+import AperatureAntenna from './pages/Physics/Electromagnetism/ApertureAntenna';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -128,7 +131,10 @@ function AnimatedPath() {
           <Route path="/physics/fluid-machine/water-horoscope" element={<WaterHoroscope/>} />
           <Route path="/physics/fluid-machine/weber-number" element={<WeberNumber/>} />
           <Route path="/physics/fluid-machine/AC-to-DC" element={<ACtoDC/>} />
-
+          <Route path="/physics/fluid-machine/antenna-array" element={<AntennaArray/>} />
+          <Route path="/physics/fluid-machine/antenna-gain" element={<AntennaGain/>} />
+          <Route path="/physics/fluid-machine/aperature-antenna" element={<AperatureAntenna/>} />
+       
 
           <Route path="/Health" element={<Health />} />
           <Route path="/Weather" element={<Weather />} />

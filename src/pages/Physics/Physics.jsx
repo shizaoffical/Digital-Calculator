@@ -97,10 +97,13 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="AC to DC  calculator" 
                          path="/physics/fluid-machine/AC-to-DC"/></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="antenna array" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="antenna array"
+                        path="/physics/fluid-machine/antenna-array" /></Col>
                     </Row> <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="antenna gain" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="aperature antenna" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="antenna gain" 
+                        path="/physics/fluid-machine/antenna-gain"/></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="aperature antenna"
+                        path="/physics/fluid-machine/aperature-antenna" /></Col>
                     </Row> <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="capacitance calculator" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="capacitive reactance" /></Col>
