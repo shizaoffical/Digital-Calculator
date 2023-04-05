@@ -105,8 +105,10 @@ function Physics() {
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="aperature antenna"
                         path="/physics/fluid-machine/aperature-antenna" /></Col>
                     </Row> <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="capacitance calculator" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="capacitive reactance" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="capacitance calculator"
+                        path="/physics/fluid-machine/capitance-calculator" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="capacitive reactance"
+                         path="/physics/fluid-machine/capacitive-calculator" /></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylindrical capacitor" /></Col>

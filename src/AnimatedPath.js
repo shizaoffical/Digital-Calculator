@@ -65,6 +65,8 @@ import ACtoDC from './pages/Physics/Electromagnetism/ACtoDC';
 import AntennaArray from './pages/Physics/Electromagnetism/AntennaArray';
 import AntennaGain from './pages/Physics/Electromagnetism/AntennaGain';
 import AperatureAntenna from './pages/Physics/Electromagnetism/ApertureAntenna';
+import CapitanceCalculator from './pages/Physics/Electromagnetism/CapacitanceCalculator';
+import CapacitiveCalculator from './pages/Physics/Electromagnetism/CapacitiveCalculator';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -134,6 +136,8 @@ function AnimatedPath() {
           <Route path="/physics/fluid-machine/antenna-array" element={<AntennaArray/>} />
           <Route path="/physics/fluid-machine/antenna-gain" element={<AntennaGain/>} />
           <Route path="/physics/fluid-machine/aperature-antenna" element={<AperatureAntenna/>} />
+          <Route path="/physics/fluid-machine/capitance-calculator" element={<CapitanceCalculator/>} />
+          <Route path="/physics/fluid-machine/capacitive-calculator" element={<CapacitiveCalculator/>} />
        
 
           <Route path="/Health" element={<Health />} />

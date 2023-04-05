@@ -7,7 +7,7 @@ function Popup(props) {
             <div className="popupContainer">
                 <div className="popup">
                     <div className='d-flex justify-content-between '>
-                        <h1>Error</h1>
+                        <h3>Error</h3>
                         <ButtonA onClick={props.onClick} text={<i class="fa-solid fa-xmark"></i>} />
                     </div>
 

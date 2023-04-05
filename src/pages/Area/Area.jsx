@@ -14,7 +14,7 @@ function Area() {
                     title1="Square Calculator" title2="Triangle Calculator"/>
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                <h2 className='text-center fw-bold'>Cube Calculator</h2>
+                <h2 className='text-center fw-bold'>Area</h2>
                 <p>An Area can be termed as a surface or size of a surface, especially an open, unoccupied piece of ground or any shape. The superficial contents of any figure; the surface included within any given lines; superficial extent; as, the area of a square or a triangle.</p>
                 <Row className='mb-2'>
                 <Col sm={6} xs={12}><CalculatorName CalculatorName="Area of Polygon Calculator"  path="/area/polygoncalculator" /></Col> 

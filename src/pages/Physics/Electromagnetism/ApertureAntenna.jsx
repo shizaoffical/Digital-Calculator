@@ -76,7 +76,7 @@ function AperatureAntenna() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'>Antenna Aperature calculate</h2>
+                    <h2 className='text-center fw-bold'>Aperture Antenna Calculator</h2>
                     <p>Aperture Antenna refers to a receiver of the radio waves. It is the measure of the antenna's efficiency at its transmitting and receiving radio waves. Aperture is defined as the area that is oriented perpendicular to the direction of an incoming radio wave. The aperture would cut off the same amount of power from that wave as is produced by the antenna receiving it.</p>
                     <div className='polygon-calculator-div '>
                         <ButtonA onClick={handlePrint} text="Print" />
@@ -124,22 +124,22 @@ function AperatureAntenna() {
                                         onChange={(event) => setCA(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                <Col xl={8} lg={8} md={6} sm={12} xs={12}><dt>Dipole Current:</dt> </Col>
-                                <Col xl={4} g={4} md={6} sm={12} xs={12}>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Dipole Current:</dt> </Col>
+                                <Col xl={6} g={6} md={6} sm={12} xs={12}>
                                     <button className='formula-value-btn'>{DC.toString().substring(0, 9)}</button></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                <Col xl={8} lg={8} md={6} sm={12} xs={12}><dt>Electric Wave:</dt> </Col>
-                                <Col xl={4} lg={4} md={6} sm={12} xs={12}>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Electric Wave:</dt> </Col>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <button className='formula-value-btn'>{EW.toString().substring(0, 9)}</button></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                <Col xl={8} lg={8} md={6} sm={12} xs={12}><dt>Magnetic Wave:</dt> </Col>
-                                <Col xl={4} lg={4} md={6} sm={12} xs={12}>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Magnetic Wave:</dt> </Col>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <button className='formula-value-btn'>{MV.toString().substring(0, 10)}</button></Col>
                             </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                <Col xl={8} lg={8} md={6} sm={12} xs={12}><dt>Average radiated power density:</dt> </Col>
-                                <Col xl={4} lg={4} md={6} sm={12} xs={12}>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Average radiated power density:</dt> </Col>
+                                <Col xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <button className='formula-value-btn'>{PD.toString().substring(0, 9)}</button></Col>
                             </Row>
                         </div>
