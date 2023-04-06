@@ -29,22 +29,17 @@ function ACtoDC() {
         if (AC !== null) {
             const DC = AC * 0.636;
             setDCvalue(DC.toPrecision(6));
-            console.log("dcvalue enter")
         }
         else {
             setShowPopup(true);
-            console.log("dcvalue enter pop")
-
         }
     }
     const handleResetClick = () => {
         if (DCvalue !== 0) {
             setDCvalue(0);
-            console.log("dc value reset enter ")
         }
         else {
             setShowPopup(true);
-            console.log("dc value enter reset pop")
         }
     };
 
@@ -52,24 +47,17 @@ const ACcalculate = () => {
         if (DC !== null) {
             const AC = DC * 0.636;
             setACvalue(AC.toPrecision(6));
-            console.log("acvalue enter pop")
 
         }
-        else {
-            setShowPopup(true);
-            console.log("acvalue enter pop")
-
-        }
+        else { setShowPopup(true);}
     }
     const AChandleResetClick = () => {
         if (ACvalue !== 0) {
             setACvalue(0);
-            console.log("ac value reset enter ")
 
         }
         else {
             setShowPopup(true);
-            console.log("ac value enter reset pop")
 
         }
     };

@@ -7,80 +7,79 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 
-function CapacitiveCalculator() {
+function EnergyStorage() {
 
     const divRef = useRef(null);
-    const [selectCondition, setSelectCondition] = useState('Capacitance Reactance');
+    const [selectCondition, setSelectCondition] = useState('Potential Difference (V):');
     const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     // Electrical Change
-    const [f, setf] = useState(null);
-    const [ca, setca] = useState(null);
-    const [cr, setcr] = useState(null);
-    const [F, setF] = useState(0);
-    const [CA, setCA] = useState(0);
-    const [CR, setCR] = useState(0);
-
+    const [V, setV] = useState(null);
+    const [Q, setQ] = useState(null);
+    const [U, setU] = useState(null);
+    const [PD, setPD] = useState(0);
+    const [EC, setEC] = useState(0);
+    const [ES, setES] = useState(0);
 
     // ECcalculate
-    const CRcalculate = () => {
-        if (ca && f !== null) {
-            const cr =(Math.round((1/(6.28*f*ca))*100)/100).toPrecision(6);
-            setCR(cr);
+    const PDcalculate = () => {
+        if (U && Q !== null) {
+            const pd = (Math.round(((2*U)/Q)*100)/100).toPrecision(6);
+            setPD(pd);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const CRreset = () => {
-        if (CR !== 0) {
-            setf(0);
-            setca(0);
-            setCR(0);
+    const PDreset = () => {
+        if (PD !== 0) {
+            setU(0);
+            setQ(0);
+            setPD(0)
         }
         else {
             setShowPopup(true);
         }
     }
     // PDcalculate
-    const Fcalculate = () => {
-        if (cr && ca !== null) {
-            const f =(Math.round((1/(6.28*cr*ca))*100)/100).toPrecision(6);
-            setF(f);
+    const ECalculate = () => {
+        if (V && U !== null) {
+            const ec = (Math.round(((2*U)/V)*100)/100).toPrecision(6);
+            setEC(ec);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const Freset = () => {
-        if (F !== 0) {
-            setca(0);
-            setcr(0);
-            setF(0);
+    const ECeset = () => {
+        if (EC !== 0) {
+            setV(0);
+            setU(0);
+            setEC(0);
         }
         else {
             setShowPopup(true);
         }
     }
     // CAcalculate
-    const CAcalculate = () => {
-        if (cr && f !== null) {
-            const C = (Math.round((1/(6.28*f*cr))*100)/100).toPrecision(6);
-            setCA(C);
+    const EScalculate = () => {
+        if (V && Q !== null) {
+            const es = (Math.round(((V*Q)/2)*100)/100).toPrecision(6);
+            setES(es);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const CAreset = () => {
-        if (CA !== 0) {
-            setf(0);
-            setcr(0);
-            setCA(0)
+    const ESreset = () => {
+        if (ES !== 0) {
+            setV(0);
+            setQ(0);
+            setES(0);
         }
         else {
             setShowPopup(true);
@@ -126,9 +125,9 @@ function CapacitiveCalculator() {
                         {/* dropdown */}
                         <Row className='text-center my-3'>
                             <Col md={12} sm={12} xs={12} >
-                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >      <option value='Capacitance Reactance' className='value-dropdown' >Capacitance Reactance</option>
-                                    <option value="Frequency" className='value-dropdown'>Frequency</option>
-                                    <option value='Capacitance' className='value-dropdown' >Capacitance</option>
+                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >      <option value='Potential Difference (V):' className='value-dropdown' >Potential Difference</option>
+                                    <option value="Electrical Charge (Q):" className='value-dropdown'>Electrical Charge </option>
+                                    <option value='Energy Storage (U:)' className='value-dropdown' >Energy Storage </option>
                                 </select>
                             </Col>
                         </Row>
@@ -137,86 +136,92 @@ function CapacitiveCalculator() {
                         <ButtonA onClick={handlePrint} text="Print" />
                         <div className="polygon-calculator px-2" ref={componentsRef}>
                             {
-                                selectCondition === "Capacitance Reactance" && <>
+                                selectCondition === "Potential Difference (V):" && <>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
-                                            <label>Frequency </label> </Col>
+                                            <label>Energy Storage (U:) </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={f}
-                                                onChange={(event) => setf(parseFloat(event.target.value))} /> </Col>
+                                            <input type="number" value={U}
+                                                onChange={(event) => setU(parseFloat(event.target.value))} /> 
+                                                <span className="ps-2 ">j</span> </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
-                                            <label>Capacitance (C):</label> </Col>
+                                            <label>Electrical Charge (Q):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={ca}
-                                                onChange={(event) => setca(parseFloat(event.target.value))} /> </Col>
+                                            <input type="number" value={Q}
+                                                onChange={(event) => setQ(parseFloat(event.target.value))} /> 
+                                                <span className="ps-2 ">c</span></Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                        <Col md={6} sm={12} xs={12}><dt>Capacitance Reactance</dt> </Col>
+                                        <Col md={6} sm={12} xs={12}><dt>Potential Difference (V):</dt> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <button className='formula-value-btn'>{CR.toString().substring(0, 7)}ohm</button></Col>
+                                            <button className='formula-value-btn'>{PD.toString().substring(0, 7)}f</button></Col>
                                     </Row>
 
                                     <div className='text-center'>
-                                        <ButtonA onClick={CRcalculate} text="Calaulate" />
-                                        <ButtonA onClick={CRreset} text="Reset" />
+                                        <ButtonA onClick={PDcalculate} text="Calaulate" />
+                                        <ButtonA onClick={PDreset} text="Reset" />
                                         {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
 
                                 </>
                             }
-                            {selectCondition === "Frequency" && <>
+                            {selectCondition === "Electrical Charge (Q):" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitive Reactance</label> </Col>
+                                        <label>Potential Difference (V):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={cr}
-                                            onChange={(event) => setcr(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={V}
+                                            onChange={(event) => setV(parseFloat(event.target.value))} />
+                                              <span className="ps-2 ">f</span> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitance (C):</label> </Col>
+                                        <label>Energy Storage (U:)</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={U}
+                                            onChange={(event) => setU(parseFloat(event.target.value))} /> 
+                                              <span className="ps-2 ">j</span></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Frequency</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Electrical Charge (Q):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{F.toString().substring(0, 7)}Hz</button></Col>
+                                        <button className='formula-value-btn'>{EC.toString().substring(0, 7)}c</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={Fcalculate} text="Calaulate" />
-                                    <ButtonA onClick={Freset} text="Reset" />
+                                    <ButtonA onClick={ECalculate} text="Calaulate" />
+                                    <ButtonA onClick={ECeset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
-                            {selectCondition === "Capacitance" && <>
+                            {selectCondition === "Energy Storage (U:)" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitive Reactance</label> </Col>
+                                        <label>Potential Difference (V):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={cr}
-                                            onChange={(event) => setcr(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={V}
+                                            onChange={(event) => setV(parseFloat(event.target.value))} /> 
+                                              <span className="ps-2 ">f</span></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Frequency</label> </Col>
+                                        <label>Electrical Charge (Q):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={f}
-                                            onChange={(event) => setf(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={Q}
+                                            onChange={(event) => setQ(parseFloat(event.target.value))} /> 
+                                             <span className="ps-2 ">j</span></Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Capacitance (C):</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Energy Storage (U:)</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{CA.toString().substring(0, 7)}h</button></Col>
+                                        <button className='formula-value-btn'>{ES.toString().substring(0, 7)}j</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={CAcalculate} text="Calaulate" />
-                                    <ButtonA onClick={CAreset} text="Reset" />
+                                    <ButtonA onClick={EScalculate} text="Calaulate" />
+                                    <ButtonA onClick={ESreset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
@@ -230,36 +235,38 @@ function CapacitiveCalculator() {
                             <div ref={divRef}>
                                 <Example heading="Example"
                                     title={<>
-                                        Calculate the Capacitive Reactance for the given details.
-                                        Frequency (f) = 100 Hz<br />
-                                        Capacitance(C) = 50 H<br />
+                                        Calculate the Energy Storage for the given details.<br />
+                                        Potential Difference (V) = 5 F<br />
+                                        Electrical Charge (Q) = 10 C<br />
                                     </>}
                                     step1={<>Solution:<br />Apply Formula</>}
-                                    step1heading={<>  Xc = 1/2πfC<br />
-                                        Xc = 1/6.28*5000<br />
-                                        Xc = 1/31400<br /></>}
-                                    step1value="  Xc = 3.1847 ohm"
-                                    step2="  Capacitive Reactance Xc = 3.1847 ohm" />
+                                    step1heading={<>    U = QV/2<br />
+                                        U = 10*5 /2<br />
+                                        U = 50/2<br /></>}
+                                    step1value=" U =25"
+                                    step2="   Energy Storage (U) = 25 J " />
                             </div>
                         }
 
                     </div>
                     <div className='mt-2'>
-                        Capacitive Reactance refers to the opposition of capacitance to alternating current which is equal to the reciprocal of the product of the angular frequency of the current times of the capacitance. The Capacitive Reactance is denoted by the symbol 'Xc'. The relationship of capacitive reactance to resistance is because capacitive reactance is the resistance of the capacitor.
-
-                        Current passing through any two parallel transmission line due to the dielectric property of conductor then the capacitance effect is generated between them is called as capacitance
+                        This advanced online Energy Storage Calculator is used to calculate energy that is stored. The energy storage can be calculated by applying the formulas and putting the respective values.
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
                         <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                         {show ?
                             <div className='formula-backside'>
-                               <dt> Capacitive Reactance: </dt>
-                                Xc = 1/2π fC
-                                <dt> Where,</dt> 
-                                XC = Capacitive Reactance,
-                                f = Frequency,
-                                C = Capacitance.
+                               <dt> Energy Storage : </dt>
+                                U = QV/2
+                                 <dt>Potential Difference :</dt>
+                                V = QU/2
+                                 <dt>Electrical Charge :</dt>
+                                Q = 2U/V
+                                Where,
+                                U = Energy Storage,
+                                V = Potential Difference,
+                                Q = Electrical Charge.
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}
@@ -271,4 +278,4 @@ function CapacitiveCalculator() {
     )
 }
 
-export default CapacitiveCalculator;
+export default EnergyStorage;

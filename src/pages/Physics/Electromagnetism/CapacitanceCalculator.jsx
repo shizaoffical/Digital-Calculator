@@ -38,8 +38,9 @@ function CapacitanceCalculator() {
     // ECreset
     const ECreset = () => {
         if(EC !== 0){
-            setC(null);
-            setV(null);
+            setC(0);
+            setV(0);
+            setEC(0)
         }
         else{
             setShowPopup(true);
@@ -58,8 +59,9 @@ function CapacitanceCalculator() {
     // ECreset
     const PDreset = () => {
         if(EC !== 0){
-            setC(null);
-            setQ(null);
+            setC(0);
+            setQ(0);
+            setPD(0);
         }
         else{
             setShowPopup(true);
@@ -78,8 +80,9 @@ function CapacitanceCalculator() {
     // ECreset
     const CAreset = () => {
         if(CA !== 0){
-            setV(null);
-            setQ(null);
+            setV(0);
+            setQ(0);
+            setCA(0);
         }
         else{
             setShowPopup(true);

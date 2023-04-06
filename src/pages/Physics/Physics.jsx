@@ -111,11 +111,14 @@ function Physics() {
                          path="/physics/fluid-machine/capacitive-calculator" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylindrical capacitor" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="dipole antenna" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylindrical capacitor" 
+                        path="/physics/fluid-machine/cylinderical-calculator"/></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="dipole antenna"
+                        path="/physics/fluid-machine/dipole-calculator" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="energy storage" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="energy storage" 
+                        path="/physics/fluid-machine/energy-storage"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="frequency calculator" /></Col>
                     </Row>
                     <Row className='mb-2'>

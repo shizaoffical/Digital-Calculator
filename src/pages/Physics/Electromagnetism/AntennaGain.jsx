@@ -31,9 +31,9 @@ function AntennaGain() {
     }
     const handleResetClick = () => {
         if (Gain !== 0) {
-            setWL(null);
-            setEF(null);
-            setAA(null);
+            setWL(0);
+            setEF(0);
+            setAA(0);
             setGain(0)
         }
         else { setShowPopup(true);}

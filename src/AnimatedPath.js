@@ -67,6 +67,9 @@ import AntennaGain from './pages/Physics/Electromagnetism/AntennaGain';
 import AperatureAntenna from './pages/Physics/Electromagnetism/ApertureAntenna';
 import CapitanceCalculator from './pages/Physics/Electromagnetism/CapacitanceCalculator';
 import CapacitiveCalculator from './pages/Physics/Electromagnetism/CapacitiveCalculator';
+import CylindericalCalculator from './pages/Physics/Electromagnetism/CylindericialCalculator';
+import DipoleCalculator from './pages/Physics/Electromagnetism/DipoleCalculator';
+import EnergyStorage from './pages/Physics/Electromagnetism/EnergyStorage';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -138,6 +141,9 @@ function AnimatedPath() {
           <Route path="/physics/fluid-machine/aperature-antenna" element={<AperatureAntenna/>} />
           <Route path="/physics/fluid-machine/capitance-calculator" element={<CapitanceCalculator/>} />
           <Route path="/physics/fluid-machine/capacitive-calculator" element={<CapacitiveCalculator/>} />
+          <Route path="/physics/fluid-machine/cylinderical-calculator" element={<CylindericalCalculator/>} />
+          <Route path="/physics/fluid-machine/dipole-calculator" element={<DipoleCalculator/>} />
+          <Route path="/physics/fluid-machine/energy-storage" element={<EnergyStorage/>} />
        
 
           <Route path="/Health" element={<Health />} />

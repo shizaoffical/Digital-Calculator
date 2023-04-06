@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 
-function AperatureAntenna() {
+function DipoleCalculator() {
     const [show, setShow] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [MC, setMC] = useState(null);
@@ -21,18 +21,18 @@ function AperatureAntenna() {
     const [PD, setPD] = useState(0)
 
     const calculate = () => {
-        
-       const res_1=(CA*(Math.PI))/180;
-       const res_2=(2*Math.PI)/WAV;
+
+        const res_1 = (CA * (Math.PI)) / 180;
+        const res_2 = (2 * Math.PI) / WAV;
         if (MC && HA && WAV && RD && ZA && CA !== null) {
-            const dc = MC*Math.sin(res_2*(HA-ZA));
+            const dc = MC * Math.sin(res_2 * (HA - ZA));
             setDC(dc.toPrecision(6));
-            const last =((Math.cos(res_2*WAV*Math.cos(res_1)))-(Math.cos(res_2*WAV)))/(Math.sin(res_1));
-            const ew=((60*MC)/RD)*last;
+            const last = ((Math.cos(res_2 * WAV * Math.cos(res_1))) - (Math.cos(res_2 * WAV))) / (Math.sin(res_1));
+            const ew = ((60 * MC) / RD) * last;
             setEW(ew.toPrecision(6));
-            const mv =(MC/(2*Math.PI*RD))*last;
+            const mv = (MC / (2 * Math.PI * RD)) * last;
             setMV(mv.toPrecision(6));
-            const pd =((15*Math.pow(MC,2))/(Math.PI*Math.pow(RD,2)))*Math.pow(last,2)
+            const pd = ((15 * Math.pow(MC, 2)) / (Math.PI * Math.pow(RD, 2))) * Math.pow(last, 2)
             setPD(pd.toPrecision(6))
             console.log("hello");
         }
@@ -65,7 +65,7 @@ function AperatureAntenna() {
         onAfterPrint: () => alert("print success"),
     })
 
-    
+
     return (
 
         <div>
@@ -76,8 +76,8 @@ function AperatureAntenna() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'>Aperture Antenna Calculator</h2>
-                    <p>Aperture Antenna refers to a receiver of the radio waves. It is the measure of the antenna's efficiency at its transmitting and receiving radio waves. Aperture is defined as the area that is oriented perpendicular to the direction of an incoming radio wave. The aperture would cut off the same amount of power from that wave as is produced by the antenna receiving it.</p>
+                    <h2 className='text-center fw-bold'>Dipole Antenna Calculator</h2>
+                    <p>To use dipole antenna calculator, Write the values of required input boxes and hit calculate button </p>
                     <div className='polygon-calculator-div '>
                         <ButtonA onClick={handlePrint} text="Print" />
                         <div className="polygon-calculator px-2" ref={componentsRef}>
@@ -86,61 +86,67 @@ function AperatureAntenna() {
                                     <label>Magnetic Current:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <input type="number" value={MC}
-                                        onChange={(event) => setMC(parseFloat(event.target.value))} /> </Col>
+                                        onChange={(event) => setMC(parseFloat(event.target.value))} /> 
+                                        <span className="ps-2 ">lm</span> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Half antenna length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <input type="number" value={HA}
-                                        onChange={(event) => setHA(parseFloat(event.target.value))} /> </Col>
+                                        onChange={(event) => setHA(parseFloat(event.target.value))} /> 
+                                        <span className="ps-2 ">L</span></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Wave Length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <input type="number" value={WAV}
-                                        onChange={(event) => setWAV(parseFloat(event.target.value))} /> </Col>
+                                        onChange={(event) => setWAV(parseFloat(event.target.value))} />
+                                        <span className="ps-2 ">λ</span> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Radius:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <input type="number" value={RD}
-                                        onChange={(event) => setRD(parseFloat(event.target.value))} /> </Col>
+                                        onChange={(event) => setRD(parseFloat(event.target.value))} />
+                                         <span className="ps-2 ">r</span>  </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Z-axis length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <input type="number" value={ZA}
-                                        onChange={(event) => setZA(parseFloat(event.target.value))} /> </Col>
+                                        onChange={(event) => setZA(parseFloat(event.target.value))} />
+                                         <span className="ps-2 ">z</span>  </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Coordinate Angle:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <input type="number" value={CA}
-                                        onChange={(event) => setCA(parseFloat(event.target.value))} /> </Col>
+                                        onChange={(event) => setCA(parseFloat(event.target.value))} /> 
+                                         <span className="ps-2 "> θ</span> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Dipole Current:</dt> </Col>
                                 <Col xl={6} g={6} md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{DC.toString().substring(0, 9)}</button></Col>
+                                    <button className='formula-value-btn'>{DC.toString().substring(0, 9)} </button></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Electric Wave:</dt> </Col>
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{EW.toString().substring(0, 9)}</button></Col>
+                                    <button className='formula-value-btn'>{EW.toString().substring(0, 9)} Eθ </button></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Magnetic Wave:</dt> </Col>
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{MV.toString().substring(0, 10)}</button></Col>
+                                    <button className='formula-value-btn'>{MV.toString().substring(0, 10)} HΦ</button></Col>
                             </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Average radiated power density:</dt> </Col>
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{PD.toString().substring(0, 9)}</button></Col>
+                                    <button className='formula-value-btn'>{PD.toString().substring(0, 9)} Pd</button></Col>
                             </Row>
                         </div>
                         <div className='text-center'>
@@ -150,25 +156,26 @@ function AperatureAntenna() {
                         </div>
                     </div>
                     <div className='mt-2'>
-                        The advanced online Aperture Antenna Calculator is used to calculate the electric field radiated by the aperture antennas at two different angles by applying the formula for different angles.
+                        A dipole antenna is a straight electrical conductor measuring 1/2 wavelength from end to end and connected at the center to a radio-frequency (RF) feed line. A dipole antenna is a radio antenna that is made of a simple wire, with a center-fed driven element. A dipole Antenna is also called as doublet antenna; half-wave dipole.
+
+                        Dipole means "two poles". The wire or rod is split at the center with an insulator. Each end at the center is connected to the feed line. In short, a dipole is an electrical device that sends or receives radio or television signals. The advanced online Dipole Antenna Calculator is useful in calculating and finding the dipole current, Electric wave, Magnetic wave and Average radiated power density of antennas.
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
                         <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                         {show ?
                             <div className='formula-backside'>
-                                <dt> Eθ = [ ( j*k*a2*E0*e-jkr ) / r ] * Sinφ [ ( J1*k*a*Sinθ) / k*a*Sinθ ]</dt>
-                                <dt>  Eφ = [ ( j*k*a2*E0*e-jkr ) / r ] *(Cosθ*Cosφ) [(J1*k*a*Sinθ) / k*a*Sinθ]</dt>
-                                Where,
-                                k = 2π / λ
+                                <dt> Current (I) = Im Sin (β(L - |z|) )</dt>
+                                <dt>Electric Wave (Eθ) = (60 * Im / r) * [(Cos (βL Cos&theta) - Cos(βL) ) / Sinθ] </dt>
+                                <dt>Magnetic Wave (Hφ) = (Im / 2 πr ) *[ ( Cos (βL Cos&theta) - Cos(βL) ) / Sinθ ]</dt>
+                                <dt>Average radiated power density (Pd) = (15* Im2 / πr2) ×[ ( Cos (βL Cos&theta) - Cos(βL) ) / Sinθ ] 2</dt>
+                                <dt>Where,</dt>
+                                β = 2π / λ
                                 λ = Wave Length
-                                E0 = 8.8541878176 * 10-12F/m (electric constant)
-                                θ = Coordinate Angle 1
-                                φ = Coordinate Angle 2
-                                a = Radius of Circular Aperture
-                                r = Distance of the observation point from the Origin
-                                j = Electric Current Density
-                                J1 = Electric Current Density for 1st element
+                                Im = Magnetic Current
+                                L = Half Antenna Length
+                                r = radius
+                                θ = Angle
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}
@@ -181,4 +188,4 @@ function AperatureAntenna() {
     )
 }
 
-export default AperatureAntenna;
+export default DipoleCalculator;
