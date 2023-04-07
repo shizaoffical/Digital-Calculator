@@ -255,7 +255,7 @@ function InductiveReactance() {
 
                     </div>
                     <div className='mt-2'>
-                        This advanced online Inductive Reactance Calculator is used to calculate and find the Inductive Reactance when signal frequency and inductance are known.
+                        This advanced online Inductive Reactance Calculator is used to calculate and find the Inductive Reactance when signal frequency and inductance are known.<br/>
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>

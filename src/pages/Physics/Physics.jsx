@@ -125,11 +125,14 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="inductive reactance"
                         path="/physics/inductive-reactance" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="OHms law current" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="OHms law current"
+                        path="/physics/ohm-law" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="parallel plate capacitor" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="planet weight converter" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="parallel plate capacitor"
+                        path="/physics/parallel-plate-Capacitor" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="planet weight converter"
+                        path="/physics/planet-weight" /></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="transformer calculator" /></Col>

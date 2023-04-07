@@ -72,6 +72,9 @@ import DipoleCalculator from './pages/Physics/Electromagnetism/DipoleCalculator'
 import EnergyStorage from './pages/Physics/Electromagnetism/EnergyStorage';
 import Frequency from './pages/Physics/Electromagnetism/Frequency';
 import InductiveReactance from './pages/Physics/Electromagnetism/InductiveReactance';
+import OhmLaw from './pages/Physics/Electromagnetism/OhmsLaw';
+import ParallelPlateCapacitor from './pages/Physics/Electromagnetism/ParallelPlateCapacitor';
+import PlanetWeight from './pages/Physics/Electromagnetism/PlanetWeight';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -148,6 +151,9 @@ function AnimatedPath() {
           <Route path="/physics/fluid-machine/energy-storage" element={<EnergyStorage/>} />
           <Route path="/physics/fluid-machine/frequency" element={<Frequency/>} />
           <Route path="/physics/inductive-reactance" element={<InductiveReactance/>} />
+          <Route path="/physics/ohm-law" element={<OhmLaw/>} />
+          <Route path="/physics/parallel-plate-Capacitor" element={<ParallelPlateCapacitor/>} />
+          <Route path="/physics/planet-weight" element={<PlanetWeight/>} />
        
 
           <Route path="/Health" element={<Health />} />

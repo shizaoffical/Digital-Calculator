@@ -250,7 +250,7 @@ function EnergyStorage() {
 
                     </div>
                     <div className='mt-2'>
-                        This advanced online Energy Storage Calculator is used to calculate energy that is stored. The energy storage can be calculated by applying the formulas and putting the respective values.
+                        This advanced online Energy Storage Calculator is used to calculate energy that is stored. The energy storage can be calculated by applying the formulas and putting the respective values.<br/>
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>

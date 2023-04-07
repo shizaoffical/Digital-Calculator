@@ -159,16 +159,16 @@ function AperatureAntenna() {
                             <div className='formula-backside'>
                                 <dt> Eθ = [ ( j*k*a2*E0*e-jkr ) / r ] * Sinφ [ ( J1*k*a*Sinθ) / k*a*Sinθ ]</dt>
                                 <dt>  Eφ = [ ( j*k*a2*E0*e-jkr ) / r ] *(Cosθ*Cosφ) [(J1*k*a*Sinθ) / k*a*Sinθ]</dt>
-                                Where,
-                                k = 2π / λ
-                                λ = Wave Length
-                                E0 = 8.8541878176 * 10-12F/m (electric constant)
-                                θ = Coordinate Angle 1
-                                φ = Coordinate Angle 2
-                                a = Radius of Circular Aperture
-                                r = Distance of the observation point from the Origin
-                                j = Electric Current Density
-                                J1 = Electric Current Density for 1st element
+                                 <dt>Where,</dt>
+                                k = 2π / λ<br/>
+                                λ = Wave Length<br/>
+                                E0 = 8.8541878176 * 10-12F/m (electric constant)<br/>
+                                θ = Coordinate Angle 1<br/>
+                                φ = Coordinate Angle 2<br/>
+                                a = Radius of Circular Aperture<br/>
+                                r = Distance of the observation point from the Origin<br/>
+                                j = Electric Current Density<br/>
+                                J1 = Electric Current Density for 1st element<br/>
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}
