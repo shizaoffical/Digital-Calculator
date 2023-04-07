@@ -70,6 +70,8 @@ import CapacitiveCalculator from './pages/Physics/Electromagnetism/CapacitiveCal
 import CylindericalCalculator from './pages/Physics/Electromagnetism/CylindericialCalculator';
 import DipoleCalculator from './pages/Physics/Electromagnetism/DipoleCalculator';
 import EnergyStorage from './pages/Physics/Electromagnetism/EnergyStorage';
+import Frequency from './pages/Physics/Electromagnetism/Frequency';
+import InductiveReactance from './pages/Physics/Electromagnetism/InductiveReactance';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -144,6 +146,8 @@ function AnimatedPath() {
           <Route path="/physics/fluid-machine/cylinderical-calculator" element={<CylindericalCalculator/>} />
           <Route path="/physics/fluid-machine/dipole-calculator" element={<DipoleCalculator/>} />
           <Route path="/physics/fluid-machine/energy-storage" element={<EnergyStorage/>} />
+          <Route path="/physics/fluid-machine/frequency" element={<Frequency/>} />
+          <Route path="/physics/inductive-reactance" element={<InductiveReactance/>} />
        
 
           <Route path="/Health" element={<Health />} />

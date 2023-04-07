@@ -123,7 +123,7 @@ const ACcalculate = () => {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> DC Current:</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{DCvalue.toString().substring(0, 6)}volts</button></Col>
+                                        <button className='formula-value-btn'>{DCvalue.toString().substring(0, 6)} volts</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
@@ -145,7 +145,7 @@ const ACcalculate = () => {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>AC Current:</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{ACvalue.toString().substring(0, 6)}volts</button></Col>
+                                        <button className='formula-value-btn'>{ACvalue.toString().substring(0, 6)} volts</button></Col>
                                 </Row>
 
                                 <div className='text-center'>

@@ -237,7 +237,7 @@ function CylindericalCalculator() {
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Permittivity (ε):</dt> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <button className='formula-value-btn'>{PA.toString().substring(0, 7)}F/m</button></Col>
+                                            <button className='formula-value-btn'>{PA.toString().substring(0, 7)} F/m</button></Col>
                                     </Row>
 
                                     <div className='text-center'>
@@ -283,7 +283,7 @@ function CylindericalCalculator() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Length of Conductors (L):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{LC.toString().substring(0, 7)}m</button></Col>
+                                        <button className='formula-value-btn'>{LC.toString().substring(0, 7)} m</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
@@ -328,7 +328,7 @@ function CylindericalCalculator() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Outer Conductor Diameter (b):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{OUTER.toString().substring(0, 7)}h</button></Col>
+                                        <button className='formula-value-btn'>{OUTER.toString().substring(0, 7)} h</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
@@ -373,7 +373,7 @@ function CylindericalCalculator() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Inner Conductor Diameter (b):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{INNER.toString().substring(0, 7)}m</button></Col>
+                                        <button className='formula-value-btn'>{INNER.toString().substring(0, 7)} m</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
@@ -417,7 +417,7 @@ function CylindericalCalculator() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Capacitance</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{CA.toString().substring(0, 7)}F</button></Col>
+                                        <button className='formula-value-btn'>{CA.toString().substring(0, 7)} F</button></Col>
                                 </Row>
 
                                 <div className='text-center'>

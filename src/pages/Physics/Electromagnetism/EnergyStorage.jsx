@@ -156,7 +156,7 @@ function EnergyStorage() {
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Potential Difference (V):</dt> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <button className='formula-value-btn'>{PD.toString().substring(0, 7)}f</button></Col>
+                                            <button className='formula-value-btn'>{PD.toString().substring(0, 7)} F</button></Col>
                                     </Row>
 
                                     <div className='text-center'>
@@ -187,7 +187,7 @@ function EnergyStorage() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Electrical Charge (Q):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{EC.toString().substring(0, 7)}c</button></Col>
+                                        <button className='formula-value-btn'>{EC.toString().substring(0, 7)} C</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
@@ -216,7 +216,7 @@ function EnergyStorage() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Energy Storage (U:)</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{ES.toString().substring(0, 7)}j</button></Col>
+                                        <button className='formula-value-btn'>{ES.toString().substring(0, 7)} J</button></Col>
                                 </Row>
 
                                 <div className='text-center'>

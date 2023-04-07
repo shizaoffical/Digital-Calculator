@@ -158,7 +158,7 @@ function CapacitanceCalculator() {
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Electrical Charge (Q):</dt> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{EC.toString().substring(0, 7)}c</button></Col>
+                                    <button className='formula-value-btn'>{EC.toString().substring(0, 7)} q</button></Col>
                             </Row>
                         
                         <div className='text-center'>
@@ -188,7 +188,7 @@ function CapacitanceCalculator() {
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Potential Difference(v):</dt> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{PD.toString().substring(0, 7)}</button></Col>
+                                    <button className='formula-value-btn'>{PD.toString().substring(0, 7)} v</button></Col>
                             </Row>
                         
                         <div className='text-center'>
@@ -216,7 +216,7 @@ function CapacitanceCalculator() {
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Capacitance (C):</dt> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <button className='formula-value-btn'>{CA.toString().substring(0, 7)}</button></Col>
+                                    <button className='formula-value-btn'>{CA.toString().substring(0, 7)} c</button></Col>
                             </Row>
                         
                         <div className='text-center'>

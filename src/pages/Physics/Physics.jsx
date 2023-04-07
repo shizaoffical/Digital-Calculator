@@ -119,10 +119,12 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="energy storage" 
                         path="/physics/fluid-machine/energy-storage"/></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="frequency calculator" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="frequency calculator"
+                        path="/physics/fluid-machine/frequency" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="inductive reactance" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="inductive reactance"
+                        path="/physics/inductive-reactance" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="OHms law current" /></Col>
                     </Row>
                     <Row className='mb-2'>

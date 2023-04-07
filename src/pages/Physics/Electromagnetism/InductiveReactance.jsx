@@ -7,38 +7,39 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 
-function CapacitiveCalculator() {
+function InductiveReactance() {
 
     const divRef = useRef(null);
-    const [selectCondition, setSelectCondition] = useState('Capacitance Reactance');
+    const [selectCondition, setSelectCondition] = useState('Inductance (L):');
     const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     // Electrical Change
     const [f, setf] = useState(null);
-    const [ca, setca] = useState(null);
-    const [cr, setcr] = useState(null);
+    const [ir, setir] = useState(null);
+    const [ind, setind] = useState(null);
     const [F, setF] = useState(0);
-    const [CA, setCA] = useState(0);
-    const [CR, setCR] = useState(0);
+    const [IR, setIR] = useState(0);
+    const [IND, setIND] = useState(0);
 
 
     // ECcalculate
-    const CRcalculate = () => {
-        if (ca && f !== null) {
-            const cr =(Math.round((1/(6.28*f*ca))*100)/100).toPrecision(6);
-            setCR(cr);
+    const INDcalculate = () => {
+        if (ir && f !== null) {
+            const ind = (Math.round((ir/(6.28*f))*100)/100).toPrecision(6);
+            setIND(ind);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const CRreset = () => {
-        if (CR !== 0) {
+    const INDreset = () => {
+        if (IND !== 0) {
             setf(0);
-            setca(0);
-            setCR(0);
+            setir(0);
+            setind(0)
+            setIND(0);
         }
         else {
             setShowPopup(true);
@@ -46,8 +47,8 @@ function CapacitiveCalculator() {
     }
     // PDcalculate
     const Fcalculate = () => {
-        if (cr && ca !== null) {
-            const f =(Math.round((1/(6.28*cr*ca))*100)/100).toPrecision(6);
+        if (ir && ind !== null) {
+            const f = (Math.round((ir/(6.28*ind))*100)/100).toPrecision(6);
             setF(f);
         }
         else {
@@ -57,8 +58,9 @@ function CapacitiveCalculator() {
     // ECreset
     const Freset = () => {
         if (F !== 0) {
-            setca(0);
-            setcr(0);
+            setind(0);
+            setir(0);
+            setf(0)
             setF(0);
         }
         else {
@@ -66,21 +68,22 @@ function CapacitiveCalculator() {
         }
     }
     // CAcalculate
-    const CAcalculate = () => {
-        if (cr && f !== null) {
-            const C = (Math.round((1/(6.28*f*cr))*100)/100).toPrecision(6);
-            setCA(C);
+    const IRcalculate = () => {
+        if (ind && f !== null) {
+            const ir = (Math.round((6.28*f*ind)*100)/100).toPrecision(6);
+            setIR(ir);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const CAreset = () => {
-        if (CA !== 0) {
+    const IRreset = () => {
+        if (IR !== 0) {
             setf(0);
-            setcr(0);
-            setCA(0)
+            setind(0);
+            setir(0);
+            setIR(0)
         }
         else {
             setShowPopup(true);
@@ -120,15 +123,16 @@ function CapacitiveCalculator() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'>Capacitive Reactance Calculator</h2>
+                    <h2 className='text-center fw-bold'>Inductive Approach Calculator</h2>
                     <p>To find capacitive reactance, enter frequency & capacitance and hit calculate button using capacitive reactance calculator</p>
                     <div className='polygon-calculator-div '>
                         {/* dropdown */}
                         <Row className='text-center my-3'>
                             <Col md={12} sm={12} xs={12} >
-                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >      <option value='Capacitance Reactance' className='value-dropdown' >Capacitance Reactance</option>
+                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >
+                                    <option value='Inductance (L):' className='value-dropdown' >Inductance </option>
                                     <option value="Frequency" className='value-dropdown'>Frequency</option>
-                                    <option value='Capacitance' className='value-dropdown' >Capacitance</option>
+                                    <option value='Inductive Reactance (XL):' className='value-dropdown' >Inductive Reactance</option>
                                 </select>
                             </Col>
                         </Row>
@@ -137,30 +141,32 @@ function CapacitiveCalculator() {
                         <ButtonA onClick={handlePrint} text="Print" />
                         <div className="polygon-calculator px-2" ref={componentsRef}>
                             {
-                                selectCondition === "Capacitance Reactance" && <>
+                                selectCondition === "Inductance (L):" && <>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Frequency </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
                                             <input type="number" value={f}
-                                                onChange={(event) => setf(parseFloat(event.target.value))} /> </Col>
+                                                onChange={(event) => setf(parseFloat(event.target.value))} />
+                                                 <span className="ps-2 ">Hz</span>  </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
-                                            <label>Capacitance (C):</label> </Col>
+                                            <label>Inductive Reactance (XL):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={ca}
-                                                onChange={(event) => setca(parseFloat(event.target.value))} /> </Col>
+                                            <input type="number" value={ir}
+                                                onChange={(event) => setir(parseFloat(event.target.value))} />
+                                                <span className="ps-2 ">ohm</span>  </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                        <Col md={6} sm={12} xs={12}><dt>Capacitance Reactance</dt> </Col>
+                                        <Col md={6} sm={12} xs={12}><dt>Inductance (L):</dt> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <button className='formula-value-btn'>{CR.toString().substring(0, 7)} ohm</button></Col>
+                                            <button className='formula-value-btn'>{IND.toString().substring(0, 7)} H</button></Col>
                                     </Row>
 
                                     <div className='text-center'>
-                                        <ButtonA onClick={CRcalculate} text="Calaulate" />
-                                        <ButtonA onClick={CRreset} text="Reset" />
+                                        <ButtonA onClick={INDcalculate} text="Calaulate" />
+                                        <ButtonA onClick={INDreset} text="Reset" />
                                         {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
 
@@ -169,17 +175,19 @@ function CapacitiveCalculator() {
                             {selectCondition === "Frequency" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitive Reactance</label> </Col>
+                                        <label>Inductance (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={cr}
-                                            onChange={(event) => setcr(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={ind}
+                                            onChange={(event) => setind(parseFloat(event.target.value))} /> 
+                                            <span className="ps-2 ">H</span>  </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitance (C):</label> </Col>
+                                        <label>Inductive Reactance (XL):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={ir}
+                                            onChange={(event) => setir(parseFloat(event.target.value))} />
+                                            <span className="ps-2 ">ohm</span>  </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Frequency</dt> </Col>
@@ -193,30 +201,32 @@ function CapacitiveCalculator() {
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
-                            {selectCondition === "Capacitance" && <>
+                            {selectCondition === "Inductive Reactance (XL):" && <>  
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitive Reactance</label> </Col>
+                                        <label>Inductance (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={cr}
-                                            onChange={(event) => setcr(parseFloat(event.target.value))} /> </Col>
+                                        <input type="number" value={ind}
+                                            onChange={(event) => setind(parseFloat(event.target.value))} />
+                                            <span className="ps-2 ">H</span>  </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Frequency</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <input type="number" value={f}
-                                            onChange={(event) => setf(parseFloat(event.target.value))} /> </Col>
+                                            onChange={(event) => setf(parseFloat(event.target.value))} /> 
+                                            <span className="ps-2 ">Hz</span> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Capacitance (C):</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Inductive Reactance (XL):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{CA.toString().substring(0, 7)} h</button></Col>
+                                        <button className='formula-value-btn'>{IR.toString().substring(0, 7)} ohm</button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={CAcalculate} text="Calaulate" />
-                                    <ButtonA onClick={CAreset} text="Reset" />
+                                    <ButtonA onClick={IRcalculate} text="Calaulate" />
+                                    <ButtonA onClick={IRreset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
@@ -230,36 +240,38 @@ function CapacitiveCalculator() {
                             <div ref={divRef}>
                                 <Example heading="Example"
                                     title={<>
-                                        Calculate the Capacitive Reactance for the given details.<br/>
-                                        Frequency (f) = 100 Hz<br />
-                                        Capacitance(C) = 50 H<br />
+                                        Calculate the Inductive Reactance for the given details.<br />
+                                        Frequency (f) = 25 Hz<br />
+                                        Inductance (L) = 5 H<br />
                                     </>}
                                     step1={<>Solution:<br />Apply Formula</>}
-                                    step1heading={<>  Xc = 1/2πfC<br />
-                                        Xc = 1/6.28*5000<br />
-                                        Xc = 1/31400<br /></>}
-                                    step1value="  Xc = 3.1847 ohm"
-                                    step2="  Capacitive Reactance Xc = 3.1847 ohm" />
+                                    step1heading={<>  XL = 2πfL<br />
+                                        XL = 2*3.14*25*5<br />
+                                        XL = 6.28*125<br /></>}
+                                    step1value=" XL = 785 ohm"
+                                    step2="Inductive Reactance (XL) = 785 ohm" />
                             </div>
                         }
 
                     </div>
                     <div className='mt-2'>
-                        Capacitive Reactance refers to the opposition of capacitance to alternating current which is equal to the reciprocal of the product of the angular frequency of the current times of the capacitance. The Capacitive Reactance is denoted by the symbol 'Xc'. The relationship of capacitive reactance to resistance is because capacitive reactance is the resistance of the capacitor.
-
-                        Current passing through any two parallel transmission line due to the dielectric property of conductor then the capacitance effect is generated between them is called as capacitance
+                        This advanced online Inductive Reactance Calculator is used to calculate and find the Inductive Reactance when signal frequency and inductance are known.
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>
                         <ButtonA onClick={() => setShow(!show)} text={show === true ? "Close Formula" : " Formula"} />
                         {show ?
                             <div className='formula-backside'>
-                               <dt> Capacitive Reactance: </dt>
-                                Xc = 1/2π fC
-                                <dt> Where,</dt> 
-                                XC = Capacitive Reactance,
+                                 <dt>Inductive Reactance:</dt>
+                                XL = 2πfL
+                                <dt>Frequency: </dt>
+                                f = XL /2πL
+                                <dt>Inductance: </dt>
+                                L = XL /2πf
+                                 <dt>Where,</dt>
+                                XL = Inductive Reactance,
                                 f = Frequency,
-                                C = Capacitance.
+                                L = Inductance.
                             </div>
                             : null}
                         {/* ***************   formula end and example start ********** */}
@@ -271,4 +283,4 @@ function CapacitiveCalculator() {
     )
 }
 
-export default CapacitiveCalculator;
+export default InductiveReactance;
