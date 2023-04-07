@@ -4,29 +4,46 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 
 function Cube() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+    const [length, setLength] = useState(null);
     const [volume, setVolume] = useState(0);
-    const [length, setLength] = useState(75);
     const [setAreaOfCube, setSetAreaOfCube] = useState(0);
     const [DiameterOfCube, setDiameterOfCube] = useState(0);
     const calculate = () => {
+    if(length !== null){
         const volume = length * length * length;
         setVolume(volume.toPrecision(6));
         const setAreaOfCube = 6 * (length * length);
         setSetAreaOfCube(setAreaOfCube.toPrecision(6));
         const DiameterOfCube = Math.sqrt(3) * length;
         setDiameterOfCube(DiameterOfCube.toPrecision(6));
-
+    }
+       else{
+        setShowPopup(true);
+       } 
     }
 
     function reset() {
-        setLength(0);
+        if(length !== 0){
+           setLength(0); 
+           setDiameterOfCube(0)
+           setAreaOfCube(0)
+           setVolume(0) 
+        }
+        else{
+            setShowPopup(0)
+        }
     }
 
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -80,6 +97,8 @@ function Cube() {
                     <div className='text-center'>
                         <ButtonA onClick={calculate} text="Calculate" />
                         <ButtonA onClick={reset} text="Reset" />
+                        {showPopup &&<Popup onClick={togglePopup} /> }
+
                     </div>
                     <center>
                         <button type='button'

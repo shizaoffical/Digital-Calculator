@@ -135,8 +135,10 @@ function Physics() {
                         path="/physics/planet-weight" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="transformer calculator" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="wavelength calculator" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="transformer calculator"
+                        path="/physics/transformer" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="wavelength calculator"
+                        path="/physics/wave-length" /></Col>
                     </Row>
                     <dt className='text-center py-3'>Thermodynamics</dt>
                     <Row className='mb-2'>

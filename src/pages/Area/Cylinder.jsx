@@ -4,33 +4,50 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 
 function Cylinder() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [radius, setRadius] = useState(5);
-    const [height, setHeight] = useState(10);
+    const [showPopup, setShowPopup] = useState(false);
+    const [radius, setRadius] = useState(null);
+    const [height, setHeight] = useState(null);
     const [curverSurfaceArea, setcurverSurfaceArea] = useState(0);
     const [volumeOfSylinder, setvolumeOfSylinder] = useState(0);
     const [totalSurfaceArea, setTotalSurfaceArea] = useState(0);
 
     const calculate = () => {
-        const curverSurfaceArea = 2 * Math.PI * radius * height;
+        if(height && radius !== null){
+           const curverSurfaceArea = 2 * Math.PI * radius * height;
         setcurverSurfaceArea(curverSurfaceArea.toPrecision(6))
         const volumeOfSylinder = Math.PI * radius * radius * height;
         setvolumeOfSylinder(volumeOfSylinder.toPrecision(6));
         const totalSurfaceArea = 2 * Math.PI * radius * (height + radius);
-        setTotalSurfaceArea(totalSurfaceArea.toPrecision(6));
+        setTotalSurfaceArea(totalSurfaceArea.toPrecision(6)); 
+        }
+        else{
+            setShowPopup(true)
+        }
     }
 
     function reset() {
-        setRadius(0);
+    if(height && radius !== 0){
+       setRadius(0);
         setHeight(0);
-        setcurverSurfaceArea("");
-        setvolumeOfSylinder("");
-        setTotalSurfaceArea("");
+        setcurverSurfaceArea(0);
+        setvolumeOfSylinder(0);
+        setTotalSurfaceArea(0); 
     }
+    else{
+        setShowPopup(true)
+    }
+        
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -89,7 +106,7 @@ function Cylinder() {
                     <div className='text-center'>
                         <ButtonA onClick={calculate}text="Calculate"/>
                         <ButtonA onClick={reset} text="Reset"/>
-
+                        {showPopup &&<Popup onClick={togglePopup} /> }
                     </div>
                     <center>
                         <button type='button'

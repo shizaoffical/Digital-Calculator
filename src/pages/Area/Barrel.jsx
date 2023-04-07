@@ -4,30 +4,46 @@ import ButtonA from '../../components/ButtonA';
 import { useReactToPrint } from 'react-to-print';
 import logo from "../../images/header-logo.png";
 import NewCalculator from '../../components/NewCalculator'
+import Popup from '../../components/Popup';
 
 function Barrel() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [topRadius, setTopRadius] = useState(22);
-    const [middleRadius, setMiddleRadius] = useState(15);
-    const [height, setHeight] = useState(18);
+    const [showPopup, setShowPopup] = useState(false);
+    const [topRadius, setTopRadius] = useState(null);
+    const [middleRadius, setMiddleRadius] = useState(null);
+    const [height, setHeight] = useState(null);
     const [volume, setVolume] = useState(0);
 
     const calculateVolume = () => {
-        const tr = parseFloat(topRadius);
+        if(topRadius && middleRadius && height !== null){
+             const tr = parseFloat(topRadius);
         const mr = parseFloat(middleRadius);
         const h = parseFloat(height);
         const v = (Math.PI * h) * (tr * tr + 2 * mr * mr) / 3;
         setVolume(v.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
+       
     };
     function reset() {
-        setMiddleRadius(15);
-        setHeight(18);
-        setTopRadius(22);
-        setVolume(0);
+        if( volume !== 0){
+           setMiddleRadius(0);
+        setHeight(0);
+        setTopRadius(0);
+        setVolume(0); 
+        }
+        else{
+            setShowPopup(true);
+        }
     }
 
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
@@ -92,6 +108,7 @@ function Barrel() {
                                 <div className='text-center'>
                                     <ButtonA onClick={calculateVolume} text="Calculate"/>
                                     <ButtonA onClick={reset} text="Reset"/>
+                            {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             <center>
                                 <button type='button'

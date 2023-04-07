@@ -75,6 +75,8 @@ import InductiveReactance from './pages/Physics/Electromagnetism/InductiveReacta
 import OhmLaw from './pages/Physics/Electromagnetism/OhmsLaw';
 import ParallelPlateCapacitor from './pages/Physics/Electromagnetism/ParallelPlateCapacitor';
 import PlanetWeight from './pages/Physics/Electromagnetism/PlanetWeight';
+import Wavelength from './pages/Physics/Electromagnetism/Wavelength';
+import Transformer from './pages/Physics/Electromagnetism/Transformer';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -154,6 +156,9 @@ function AnimatedPath() {
           <Route path="/physics/ohm-law" element={<OhmLaw/>} />
           <Route path="/physics/parallel-plate-Capacitor" element={<ParallelPlateCapacitor/>} />
           <Route path="/physics/planet-weight" element={<PlanetWeight/>} />
+          <Route path="/physics/wave-length" element={<Wavelength/>} />
+          <Route path="/physics/transformer" element={<Transformer/>} />
+          
        
 
           <Route path="/Health" element={<Health />} />

@@ -4,16 +4,18 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 
 function Elipse() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Ellipse (Ares & Perimeter)');
     // Ellipse (Area & Perimeter)
-    const [r1, setR1] = useState(10);
-    const [r2, setR2] = useState(14);
-    const [r3, setR3] = useState(18);
+    const [r1, setR1] = useState(null);
+    const [r2, setR2] = useState(null);
+    const [r3, setR3] = useState(null);
     const [EllipseArea, setEllipseArea] = useState(0);
     const [EllipsePerimeter, setEllipsePerimeter] = useState(0);
     // volume of ellipse
@@ -21,30 +23,58 @@ function Elipse() {
 
     // Ellipse (Area & Perimeter) functionality
     const Ellipse = () => {
-        const ellipseArea = Math.PI * r1 * r2;
+        if(r1 && r2 !== null){
+           const ellipseArea = Math.PI * r1 * r2;
         setEllipseArea(ellipseArea.toPrecision(6));
         const elipsePerimeter = 2 * 3.14 * (Math.sqrt((r1 * r1 + r2 * r2) / 2));
-        setEllipsePerimeter(elipsePerimeter.toPrecision(6));
+        setEllipsePerimeter(elipsePerimeter.toPrecision(6)); 
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     function EllipseReset() {
-        setR1(0);
-        setR2(0);
-        setEllipseArea("");
-        setEllipsePerimeter("");
+        if(r1 && r2 !== 0){
+            setR1(0);
+            setR2(0);
+            setEllipseArea(0);
+            setEllipsePerimeter(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
 
     // volume of ellipse 
     const Volume = () => {
-        const volumeOfEllipse = 4 / 3 * Math.PI * r1 * r2 * r3;
-        setVolumeOfEllipse(volumeOfEllipse.toPrecision(6));
+        if(r1 && r2 && r3 !== null){
+          const volumeOfEllipse = 4 / 3 * Math.PI * r1 * r2 * r3;
+        setVolumeOfEllipse(volumeOfEllipse.toPrecision(6));  
+        }
+        else{
+            setShowPopup(true);
+        }
+        
     }
     function VolumeReset() {
-        setR1(0);
+        if(r1 && r2 && r3 !== 0){
+          setR1(0);
         setR2(0);
         setR3(0);
-        setVolumeOfEllipse("")
+        setVolumeOfEllipse(0)  
+        }
+        
+        else{
+            setShowPopup(true);
+        }
+
 
     }
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -131,7 +161,7 @@ function Elipse() {
                                 <div className='text-center'>
                                     <ButtonA onClick={Ellipse} text="Calculate" />
                                     <ButtonA onClick={EllipseReset} text="Reset" />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 
@@ -178,6 +208,7 @@ function Elipse() {
                                 <div className='text-center'>
                                     <ButtonA onClick={Volume} text="Calculate" />
                                     <ButtonA onClick={VolumeReset} text="Reset" />
+                            {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                     </div>
