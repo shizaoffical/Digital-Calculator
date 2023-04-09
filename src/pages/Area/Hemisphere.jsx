@@ -4,31 +4,48 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 
 function Hemisphere() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [radius ,setRadius] = useState(12);
+    const [radius ,setRadius] = useState(null);
     const [volumeOfHemisphere ,setVolumeOfHemisphere] = useState(0);
     const [curvedSurfaceArea ,setCurvedSurfaceArea] = useState(0);
     const [totalSurfaceArea ,setTotalSurfaceArea] = useState(0);
 
     const calculate = () =>  {
-     const volumeOfHemisphere = (2/3)*3.14*radius*radius*radius;
-     setVolumeOfHemisphere(volumeOfHemisphere.toPrecision(6));
-     const curvedSurfaceArea =2 *3.14 *radius*radius;
-     setCurvedSurfaceArea(curvedSurfaceArea.toPrecision(6));
-     const totalSurfaceArea = 3 * Math.PI *radius *radius;
-     setTotalSurfaceArea(totalSurfaceArea.toPrecision(6));
+        if(radius !== null){
+            const volumeOfHemisphere = (2/3)*3.14*radius*radius*radius;
+            setVolumeOfHemisphere(volumeOfHemisphere.toPrecision(6));
+            const curvedSurfaceArea =2 *3.14 *radius*radius;
+            setCurvedSurfaceArea(curvedSurfaceArea.toPrecision(6));
+            const totalSurfaceArea = 3 * Math.PI *radius *radius;
+            setTotalSurfaceArea(totalSurfaceArea.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
+    
     }
 
     function reset() {
-        setRadius(0);
-        setVolumeOfHemisphere("");
-        setCurvedSurfaceArea("");
-        setTotalSurfaceArea("")
+        if(radius !== 0){
+           setRadius(0);
+        setVolumeOfHemisphere(0);
+        setCurvedSurfaceArea(0);
+        setTotalSurfaceArea(0)  
+        }
+        else{
+            setShowPopup(true);
+        }
+       
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
@@ -80,6 +97,8 @@ function Hemisphere() {
             <div className='text-center'>
                 <ButtonA onClick={calculate}text="Calculate"/>
                 <ButtonA onClick={reset} text="Reset"/>
+                {showPopup &&<Popup onClick={togglePopup} /> }
+
             </div>
             <center>
                 <button type='button'

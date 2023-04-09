@@ -4,43 +4,72 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 function Parallogram() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Rectangular');
-    const [base ,setBase] = useState(12);
-    const [height,setHeight] = useState(15);
+    const [base ,setBase] = useState(null);
+    const [height,setHeight] = useState(null);
     const [rectangularArea,setRectangularArea] = useState(0);
-    const [side1 , setSide1] = useState(16);
-    const [side2 , setSide2] = useState(18);
+    const [side1 , setSide1] = useState(null);
+    const [side2 , setSide2] = useState(null);
     const [PerimeterOfTriangle , setPerimeterOfTriangle] = useState(0);
 //   Rectangular arae
    const RectangularArea =() => {
-    const rectangularArea = base * height ;
-    setRectangularArea(rectangularArea.toPrecision(6));
+    if(base && height !== null){
+        const rectangularArea = base * height ;
+        setRectangularArea(rectangularArea.toPrecision(6));
+    }
+    else{
+        setShowPopup(true);
+    }
    }
     function RectangularAreaReset() {
-        setBase(0);
-        setHeight(0);
-        setRectangularArea("")
+        if(base && height !== 0){
+            setBase(0);
+            setHeight(0);
+            setSide1(0);
+            setSide2(0);
+            setRectangularArea(0)
+        } else{
+           setShowPopup(true);
+        }    
     }
 
     //  perimeter Rectangular
      const perimeterRectangular =() => {
-        const perimeterRectangular = 2 * (side1 + side2);
-        setPerimeterOfTriangle(perimeterRectangular.toPrecision(6))
+        if(side1 && side2 !== null){
+            const perimeterRectangular = 2 * (side1 + side2);
+            setPerimeterOfTriangle(perimeterRectangular.toPrecision(6))
+        }
+        else{
+            setShowPopup(true);
+         } 
      }
       function perimeterRectangularReset() {
-        setSide1(0);
-        setSide2(0);
-        setPerimeterOfTriangle("")
+        if(side1 && side2 !== 0){
+            setSide1(0);
+            setSide2(0);
+            setBase(0);
+            setHeight(0);
+            setPerimeterOfTriangle(0)
+        }
+        else{
+            setShowPopup(true);
+         } 
       }
+
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value.toPrecision(6));
     }
-  
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -108,6 +137,7 @@ function Parallogram() {
                                 <div className='text-center'>
                                     <ButtonA onClick={RectangularArea} text="Calculate"/>
                                     <ButtonA  onClick={RectangularAreaReset} text="Reset"/>
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>
@@ -147,6 +177,7 @@ function Parallogram() {
                                 <div className='text-center'>
                                     <ButtonA onClick={perimeterRectangular} text="Calculate"/>
                                     <ButtonA onClick={perimeterRectangularReset} text="Reset"/>
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>

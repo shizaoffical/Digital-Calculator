@@ -4,52 +4,85 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
-
+import Popup from '../../components/Popup';
 function Trapezium() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Trapezium');
     // Area of Trapezium
-    const [Psidea, setPsidea] = useState(4);
-    const [Psideb, setPsideb] = useState(6);
-    const [PsideDistance, setPsideDistance] = useState(12);
+    const [Psidea, setPsidea] = useState(null);
+    const [Psideb, setPsideb] = useState(null);
+    const [PsideDistance, setPsideDistance] = useState(null);
     const [AreaTrapezium, setAreaTrapezium] = useState(0);
     // Perimeter OF Tapezium 
-    const [A, setA] = useState(3);
-    const [B, setB] = useState(4);
-    const [C, setC] = useState(5);
-    const [D, setD] = useState(6);
+    const [A, setA] = useState(null);
+    const [B, setB] = useState(null);
+    const [C, setC] = useState(null);
+    const [D, setD] = useState(null);
     const [PerimeterTrapezium, setPerimeterTrapezium] = useState(0)
 
     // Area of Trapezium
     const areaTrapezium = () => {
-        const TrapeziumArea = 1 / 2 * (Psidea + Psideb) * PsideDistance;
+if(Psidea && Psideb && PsideDistance !== null){
+    const TrapeziumArea = 1 / 2 * (Psidea + Psideb) * PsideDistance;
         setAreaTrapezium(TrapeziumArea.toPrecision(6))
+}
+else{
+    setShowPopup(true)
+}
+        
     }
     function areaTrapeziumReset() {
-        setPsidea(0);
+        if(Psidea && Psideb !== 0){
+            setPsidea(0);
         setPsideb(0);
         setPsideDistance(0);
-        setAreaTrapezium("")
-    }
-
-    const perimeterTrapezium = () => {
-        const perimeter = A + B + C + D;
-        setPerimeterTrapezium(perimeter.toPrecision(6));
-    }
-    function perimeterTrapeziumReset() {
+        setAreaTrapezium(0)
         setA(0);
         setB(0);
         setC(0);
         setD(0);
-        setPerimeterTrapezium("")
+        setPerimeterTrapezium(0)
+        }
+        else{
+            setShowPopup(true)
+        }
+    }
+
+    const perimeterTrapezium = () => {
+        if(A && B && C && D !== null){
+const perimeter = A + B + C + D;
+        setPerimeterTrapezium(perimeter.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    function perimeterTrapeziumReset() {
+        if(A && B && C && D !== 0){
+            setPsidea(0);
+        setPsideb(0);
+        setPsideDistance(0);
+        setAreaTrapezium(0)
+        setA(0);
+        setB(0);
+        setC(0);
+        setD(0);
+        setPerimeterTrapezium(0)
+        }
+        else{
+            setShowPopup(true)
+        }
     }
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
     }
-
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -114,8 +147,6 @@ function Trapezium() {
                                                 onChange={(e) => setPsideDistance(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area of Trapezium: </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
@@ -124,6 +155,7 @@ function Trapezium() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={areaTrapezium} />
                                     <ButtonA text="Reset" onClick={areaTrapeziumReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>
@@ -170,8 +202,6 @@ function Trapezium() {
                                                 onChange={(e) => setD(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> Perimeter of Trapezium: </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
@@ -181,6 +211,7 @@ function Trapezium() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={perimeterTrapezium} />
                                     <ButtonA text="Reset" onClick={perimeterTrapeziumReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>

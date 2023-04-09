@@ -4,29 +4,44 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
-
+import Popup from '../../components/Popup';
 function Rectangular() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [x , setX] = useState(5);
-    const [y , setY] = useState(3);
+    const [x , setX] = useState(null);
+    const [y , setY] = useState(null);
     const [r , setR] = useState(0);
     const [angle , setangle] = useState(0);
 
     const calculate = () => {
-        const r =Math.sqrt(x * x  + y * y);
+        if(x && y  !== null){
+            const r =Math.sqrt(x * x  + y * y);
         setR(r.toPrecision(6)) ;
-        const angle =Math.atan(y/x);
-        setangle(angle.toPrecision(6));
+        const angle =Math.tan(y/x);
+        setangle(angle.toPrecision(6)); 
+        }
+       else{
+        setShowPopup(true);
+       }
     }
 
     function reset() {
-        setX(0);
+        if(x && y  !== 0){
+            setX(0);
         setY(0);
-        setR("");
-        setangle("");
+        setR(0);
+        setangle(0); 
+        }
+        else{
+            setShowPopup(true);
+           }
     }
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -86,7 +101,7 @@ function Rectangular() {
                     <div className='text-center'>
                         <ButtonA onClick={calculate} text="Calculate"/>
                         <ButtonA onClick={reset} text="Reset"/>
-
+                        {showPopup &&<Popup onClick={togglePopup} /> }
                     </div>
                     <center>
                         <button type='button'

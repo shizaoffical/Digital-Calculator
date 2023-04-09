@@ -4,72 +4,152 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
-
+import Popup from '../../components/Popup';
 function Triangle() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area-of-triangle');
     // area  triangle
-    const [length, setLength] = useState(8);
-    const [breadth, setBreadth] = useState(10);
+    const [length, setLength] = useState(null);
+    const [breadth, setBreadth] = useState(null);
     const [areaOfCalculator, setAreaOfCalculator] = useState(0);
     // perimetertriangle
-    const [sidea, setSidea] = useState(10);
-    const [sideb, setSideb] = useState(15);
-    const [sidec, setSidec] = useState(14);
+    const [sidea, setSidea] = useState(null);
+    const [sideb, setSideb] = useState(null);
+    const [sidec, setSidec] = useState(null);
     const [perimeterOfTriangle, setPerimeterOfTriangle] = useState(0);
     // equilateneral triangle
-    const [equilateralTriangle, setEquilateralTriangle] = useState(16);
+    const [equilateralTriangle, setEquilateralTriangle] = useState(null);
     const [areaOfEquilateralTriangle, setAreaOfEquilateralTriangle] = useState(0);
     // SAS triangle
-    const [SASlength, setSASLength] = useState(12);
-    const [SASBreath, setSASBreath] = useState(11);
-    const [SASangleC, setSASangleC] = useState(10);
+    const [SASlength, setSASLength] = useState(null);
+    const [SASBreath, setSASBreath] = useState(null);
+    const [SASangleC, setSASangleC] = useState(null);
     const [SAStriangle, setSAStriangle] = useState(0);
 
     // area of triangle 
     const calculate = () => {
-        const areaOfCalculator = length * breadth / 2;
-        setAreaOfCalculator(areaOfCalculator.toPrecision(6))
+        if(length && breadth !== null){
+          const areaOfCalculator = length * breadth / 2;
+        setAreaOfCalculator(areaOfCalculator.toPrecision(6))  
+        }
+        else{
+            setShowPopup(true)
+        }
     }
     function reset() {
-        setLength(0);
-        setBreadth(0)
-        setAreaOfCalculator("");
+        if(length && breadth !== 0){
+            setLength(0);
+            setBreadth(0)
+            setAreaOfCalculator(0);
+            setSidea(0);
+            setSideb(0);
+            setSidec(0);
+            setEquilateralTriangle(0);
+            setAreaOfEquilateralTriangle(0);
+            setPerimeterOfTriangle(0)
+            setSASLength(0);
+            setSASBreath(0);
+            setSASangleC(0);
+            setSAStriangle();
+        }
+       else{
+        setShowPopup(true)
+       }
     }
     // perimeter of triangle 
     const perimeter = () => {
+        if(sidea && sideb && sidec !== null){
         const perimeter = sidea + sideb + sidec;
-        setPerimeterOfTriangle(perimeter.toPrecision(6));
+        setPerimeterOfTriangle(perimeter.toPrecision(6));}
+        else{
+            setShowPopup(true)
+        }
     }
     function perimeterReset() {
-        setSidea(0);
-        setSideb(0);
-        setSidec(0);
-        setPerimeterOfTriangle("")
+        if(sidea && sideb && sidec !== 0){
+            setLength(0);
+            setBreadth(0)
+            setAreaOfCalculator(0);
+            setSidea(0);
+            setSideb(0);
+            setSidec(0);
+            setEquilateralTriangle(0);
+            setAreaOfEquilateralTriangle(0);
+            setPerimeterOfTriangle(0)
+            setSASLength(0);
+            setSASBreath(0);
+            setSASangleC(0);
+            setSAStriangle();
+        }
+       else{
+        setShowPopup(true)
+       }
     }
     //   area of equilant triangle
     const areaofequatri = () => {
+        if(equilateralTriangle !== null){
         const value = Math.sqrt(3) / 4 * equilateralTriangle * equilateralTriangle;
-        setAreaOfEquilateralTriangle(value.toPrecision(6));
-
+        setAreaOfEquilateralTriangle(value.toPrecision(6));}
+        else{
+            setShowPopup(true)
+        }
     }
     function equilateralTriangleReset() {
-        setEquilateralTriangle(0);
-        setAreaOfEquilateralTriangle(0);
+        if(equilateralTriangle  !== 0){
+            setLength(0);
+            setBreadth(0)
+            setAreaOfCalculator(0);
+            setSidea(0);
+            setSideb(0);
+            setSidec(0);
+            setEquilateralTriangle(0);
+            setAreaOfEquilateralTriangle(0);
+            setPerimeterOfTriangle(0)
+            setSASLength(0);
+            setSASBreath(0);
+            setSASangleC(0);
+            setSAStriangle();
+        }
+       else{
+        setShowPopup(true)
+       }
     }
     // SAS Triangle
     const SASangletriangle = () => {
-        const SASAngletriangle = SASlength * SASBreath * Math.sin(SASangleC) / 2;
-        setSAStriangle(SASAngletriangle.toPrecision(6));
+        if(SASlength && SASBreath !== null){
+          const SASAngletriangle = SASlength * SASBreath * Math.sin(SASangleC) / 2;
+        setSAStriangle(SASAngletriangle.toPrecision(6));  
+        }
+        else{
+            setShowPopup(true);
+     }        
     }
     function SAStriangleReset() {
-        setSASLength(0);
-        setSASBreath(0);
-        setSASangleC(0);
-        setSAStriangle("");
+        if(SASBreath && SASlength  !== 0){
+            setLength(0);
+            setBreadth(0)
+            setAreaOfCalculator(0);
+            setSidea(0);
+            setSideb(0);
+            setSidec(0);
+            setEquilateralTriangle(0);
+            setAreaOfEquilateralTriangle(0);
+            setPerimeterOfTriangle(0)
+            setSASLength(0);
+            setSASBreath(0);
+            setSASangleC(0);
+            setSAStriangle();
+        }
+       else{
+        setShowPopup(true)
+       }
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     // handle change
     const handleSelectChange = (event) => {
@@ -136,8 +216,6 @@ function Triangle() {
                                                 onChange={(e) => setBreadth(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
@@ -146,7 +224,7 @@ function Triangle() {
                                 <div className='text-center'>
                                     <ButtonA onClick={calculate} text="Calculate"/>
                                     <ButtonA onClick={reset} text="Reset"/>
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 
@@ -181,8 +259,6 @@ function Triangle() {
                                                 onChange={(e) => setSidec(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Perimeter of triangle : </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
@@ -192,7 +268,7 @@ function Triangle() {
                                 <div className='text-center'>
                                     <ButtonA onClick={perimeter} text="Calculate"/>
                                     <ButtonA onClick={perimeterReset} text="Reset"/>
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 
@@ -220,7 +296,7 @@ function Triangle() {
                                 <div className='text-center'>
                                     <ButtonA onClick={areaofequatri} text="Calculate"/>
                                     <ButtonA onClick={equilateralTriangleReset}  text="Reset"/>
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 
@@ -253,8 +329,6 @@ function Triangle() {
                                                 onChange={(e) => setSASangleC(e.target.value)} />
                                        </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
-
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
                                     <Col md={6} sm={12} xs={12}>
@@ -264,7 +338,7 @@ function Triangle() {
                                 <div className='text-center'>
                                     <ButtonA onClick={SASangletriangle} text="Calculate"/>
                                     <ButtonA onClick={SAStriangleReset} text="Reset"/>
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 

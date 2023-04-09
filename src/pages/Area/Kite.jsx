@@ -4,61 +4,113 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
+import Popup from '../../components/Popup';
 
 function Kite() {
     const divRef = useRef(null);
+    const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Area of Kite');
     // Area OF Kite
-    const [p, setP] = useState(16.24);
-    const [q, setQ] = useState(30.12);
+    const [p, setP] = useState(null);
+    const [q, setQ] = useState(null);
     const [areaOfKite, setAreaOFKite] = useState(0);
 
     // Area of  Kite usingTrignometery
-    const [lengtha, setlengtha] = useState(16.24);
-    const [lengthb, setlengthb] = useState(30.12);
-    const [angle, setAnglec] = useState(33);
+    const [lengtha, setlengtha] = useState(null);
+    const [lengthb, setlengthb] = useState(null);
+    const [angle, setAnglec] = useState(null);
     const [KiteTrignometery, setKiteTrignometery] = useState(0);
     //  perimeter of kite
     const [KitePerimeter, setKitePerimeter] = useState(0);
     // Area Of Kite
     const AreaOfKite = () => {
-        const KiteArea = p * q / 2;
-        setAreaOFKite(KiteArea.toPrecision(6));
+        if(p && q !== null){
+            const KiteArea = p * q / 2;
+            setAreaOFKite(KiteArea.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
+        
     }
     function AreaOfKiteReset() {
-        setP(0);
-        setQ(0)
-        setAreaOFKite("");
+        if(p && q !==0){
+            setP(0);
+            setQ(0)
+            setlengtha(0);
+            setlengthb(0);
+            setAnglec(0);
+            setAreaOFKite(0);
+            setKitePerimeter(0)
+            setKitePerimeter(0)
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     //  Area of Kite Using Tripographt'
     const AreaKiteTrignometery = () => {
-        const kiteTrignometery = lengtha * lengthb * Math.sin(angle);
-        setKiteTrignometery(kiteTrignometery.toPrecision(6));
+        if(lengtha && lengthb !== null){
+            const kiteTrignometery = lengtha * lengthb * Math.sin(angle);
+            setKiteTrignometery(kiteTrignometery.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     function AreaKiteTrignometeryReset() {
-        setlengtha(0);
-        setlengthb(0);
-        setAnglec(0);
-        setKiteTrignometery("")
+        if(lengtha && lengthb !== 0){
+            setlengtha(0);
+            setP(0);
+            setQ(0)
+            setlengthb(0);
+            setAnglec(0);
+            setAreaOFKite(0);
+            setKitePerimeter(0)
+            setKiteTrignometery(0)
+        }
+        else{
+            setShowPopup(true);
+        }
     }
 
     // Perimeter Of Kite
     const KiteofPerimeter = () => {
-        const Perimeterkite = 2 *(p + q);
-        setKitePerimeter(Perimeterkite.toPrecision(6));
+        if(p && q!== null){
+            const Perimeterkite = 2 *(p + q);
+            setKitePerimeter(Perimeterkite.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     function kitePerimeterReset() {
-        setlengtha(0);
-        setlengthb(0)
-        setKitePerimeter("")
+        if(p & q!== 0){
+            setP(0);
+            setQ(0)
+            setlengtha(0);
+            setlengthb(0)
+            setAnglec(0);
+            setAreaOFKite(0);
+            setKiteTrignometery(0)
+            setKitePerimeter(0)
+        }
+        else{
+            setShowPopup(true);
+        }
     }
 
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
     }
+    // popup
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
 
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
@@ -128,7 +180,7 @@ function Kite() {
                                 <div className='text-center'>
                                     <ButtonA onClick={AreaOfKite}text="Calculate"/>
                                     <ButtonA onClick={AreaOfKiteReset} text="Reset"/>
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 
@@ -174,7 +226,7 @@ function Kite() {
                                 <div className='text-center'>
                                     <ButtonA onClick={AreaKiteTrignometery} text="Calculate"/>
                                     <ButtonA  onClick={AreaKiteTrignometeryReset} text="Reset"/>
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>
 
@@ -212,6 +264,7 @@ function Kite() {
                                 <div className='text-center'>
                                     <ButtonA onClick={KiteofPerimeter} text="Calculate"/>
                                     <ButtonA onClick={kitePerimeterReset}  text="Reset"/>
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}</div>

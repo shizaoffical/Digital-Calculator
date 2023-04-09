@@ -4,29 +4,42 @@ import NewCalculator from '../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
-
+import Popup from '../../components/Popup';
 function Sphere() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [x, setX] = useState(5);
-    const [y, setY] = useState(3);
-    const [r, setR] = useState(0);
-    const [angle, setangle] = useState(0);
+    const [radius, setradius] = useState(null)
+    const [VS, setVS] = useState(0);
+    const [CSA, setCSA] = useState(0);
 
     const calculate = () => {
-        const r = Math.sqrt(x * x + y * y);
-        setR(r.toPrecision(6));
-        const angle = Math.atan(y / x);
-        setangle(angle.toPrecision(6));
+        if(radius !== null){
+           const vs = (Math.round((4 / 3) * 3.14 * radius * radius * radius * 1000) / 1000);
+        setVS(vs.toPrecision(6));
+        const csa =(Math.round(4 * 3.14 * radius * radius * 1000) / 1000);
+        setCSA(csa.toPrecision(6)); 
+        }
+        else{
+            setShowPopup(true);
+           }
     }
 
     function reset() {
-        setX(0);
-        setY(0);
-        setR("");
-        setangle("");
+        if(radius !== 0){
+        setradius(0)
+        setVS(0)
+        setCSA(0);
+        }
+        else{
+            setShowPopup(true);
+           }
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -57,26 +70,24 @@ function Sphere() {
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                             <Col md={12} sm={12} xs={12} >
-                                <label> Volume of Sphere[ (4/3)πr³ ] <input type="number" className='ms-3' value={x}
-                                    onChange={(e) => setX(e.target.value)} /> </label></Col>
+                                <label> Volume of Sphere[ (4/3)πr³ ] <input type="number" className='ms-3' value={radius}
+                                    onChange={(e) => setradius(e.target.value)} /> </label></Col>
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
-
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>r</dt></Col>
                             <Col md={6} sm={12} xs={12}>
-                                  <button className='formula-value-btn'>{r.toString().substring(0, 6)}</button></Col>
+                                  <button className='formula-value-btn'>{VS.toString().substring(0, 6)}</button></Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>θ</dt></Col>
                             <Col md={6} sm={12} xs={12}>
-                                <button className='formula-value-btn'>{angle.toString().substring(0, 6)}</button></Col>
+                                <button className='formula-value-btn'>{CSA.toString().substring(0, 6)}</button></Col>
                         </Row>
                     </div>
                     <div className='text-center'>
                         <ButtonA onClick={calculate} text="Calculate"/>
                         <ButtonA onClick={reset}  text="Reset"/>
-
+                        {showPopup &&<Popup onClick={togglePopup} /> }
                     </div>
                     <center>
                         <button type='button'
@@ -89,9 +100,11 @@ function Sphere() {
                             title={<>Find the volume and curved surface area of a Sphere (tsa of sphere) with the given radius 2.<br />
                                 How to find the volume of a sphere?</>}
                             step1="Solution : " step1heading=" Find the volume of a sphere.e"
-                            step1value="Volume = (4/3) πr³ = (4/3) * 3.14 * 4³ = 1.33 * 3.14 * 27 = 33.40 "
-                            step2="Solution : " step2heading=" Find the curved surface area (CSA)."
-                            step2value="Curved Surface Area (CSA) = 4πr² = 4 * 3.14 * 2² = 12.56 * 4= 50.24 " />
+                            step1value={<>Volume = (4/3) πr³<br/> = (4/3) * 3.14 * 4³ <br/>= 1.33 * 3.14 * 27<br/> = 33.40 </>}
+                            step2={<>Solution </>}
+                            step2heading={<>Find the curved surface area (CSA)</>}
+                            step2value={<>Curved Surface Area (CSA) = 4πr²<br/> = 4 * 3.14 * 2² <br/>= 12.56 * 4<br/>= 50.24 </>}
+                            />
                    </div> }
 
                 </div>
