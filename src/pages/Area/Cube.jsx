@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 
 function Cube() {
     const divRef = useRef(null);
@@ -74,7 +75,7 @@ function Cube() {
 
                         <Row style={{ alignItems: "center", textAlign: "center" }}>
                             <Col md={12} sm={12} xs={12} >
-                                <label>  Radius:<input type="number" className='ms-3' value={length}
+                                <label>  Radius:<Input value={length}
                                     onChange={(e) => setLength(e.target.value)} /> </label></Col>
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>

@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 function Trapezium() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -127,7 +128,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Parallel side 1 (a):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={Psidea}
+                                            <Input value={Psidea}
                                                 onChange={(e) => setPsidea(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -135,7 +136,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Parallel side 1 (b):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={Psideb}
+                                            <Input value={Psideb}
                                                 onChange={(e) => setPsideb(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -143,7 +144,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Distance between parallel sides: (h):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={PsideDistance}
+                                            <Input value={PsideDistance}
                                                 onChange={(e) => setPsideDistance(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -174,7 +175,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label> a: </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={A}
+                                            <Input value={A}
                                                 onChange={(e) => setA(e.target.value)} />
                                        </Col>
                                 </Row>
@@ -182,7 +183,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label>b:</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={B}
+                                            <Input value={B}
                                                 onChange={(e) => setB(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -190,7 +191,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label> c:</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={C}
+                                            <Input value={C}
                                                 onChange={(e) => setC(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -198,7 +199,7 @@ const perimeter = A + B + C + D;
                                     <Col md={6} sm={12} xs={12} >
                                         <label> d:</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={D}
+                                            <Input value={D}
                                                 onChange={(e) => setD(e.target.value)} />
                                         </Col>
                                 </Row>

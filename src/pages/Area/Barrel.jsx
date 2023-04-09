@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import logo from "../../images/header-logo.png";
 import NewCalculator from '../../components/NewCalculator'
 import Popup from '../../components/Popup';
+import Input from "../../components/Input"
 
 function Barrel() {
     const divRef = useRef(null);
@@ -83,19 +84,19 @@ function Barrel() {
                                         <Col md={6} sm={12} xs={12} >top radius (R) :
                                         </Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={topRadius} onChange={(e) => setTopRadius(e.target.value)} />
+                                            <Input value={topRadius} onChange={(e) => setTopRadius(e.target.value)} />
                                         </Col>
                                     </Row>
                                      <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
                                         <Col md={6} sm={12} xs={12} >middle radius (r): </Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={middleRadius} onChange={(e) => setMiddleRadius(e.target.value)} />
+                                            <Input value={middleRadius} onChange={(e) => setMiddleRadius(e.target.value)} />
                                         </Col>
                                     </Row>
                                     <Row className='mt-2' style={{ alignItems: "center", textAlign: "center" }}>
                                         <Col md={6} sm={12} xs={12} >Height (H):</Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
+                                            <Input value={height} onChange={(e) => setHeight(e.target.value)} />
                                         </Col>
                                     </Row>
                               

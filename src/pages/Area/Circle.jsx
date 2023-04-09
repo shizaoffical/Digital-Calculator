@@ -6,6 +6,7 @@ import logo from "../../images/header-logo.png";
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 
 function Circle() {
     
@@ -77,7 +78,7 @@ function Circle() {
 
                             <Row style={{ alignItems: "center", textAlign: "center" }}>
                                 <Col md={12} sm={12} xs={12} >
-                                    <label>  Number of Sides:<br /><input type="number" value={radius}
+                                    <label>  Number of Sides:<br />< Input value={radius}
                                         onChange={(event) => setRadius(event.target.value)} /> </label></Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

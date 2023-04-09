@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 
 function Elipse() {
     const divRef = useRef(null);
@@ -133,7 +134,7 @@ function Elipse() {
                                         <label> Length(l) : </label></Col>
                                     <Col md={6} sm={12} xs={12} >
                                         
-                                            <input type="number" className='ms-3 ' value={r1}
+                                            <Input value={r1}
                                             onChange={(e) => setR1(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -142,7 +143,7 @@ function Elipse() {
                                         <label> Breadth(b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" className='ms-3' value={r2}
+                                            <Input value={r2}
                                                 onChange={(e) => setR2(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -177,7 +178,7 @@ function Elipse() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Radius(r1):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={r1}
+                                            <Input value={r1}
                                                 onChange={(e) => setR1(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -185,7 +186,7 @@ function Elipse() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Radius(r2):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={r2}
+                                            <Input value={r2}
                                                 onChange={(e) => setR2(e.target.value)} />
                                         </Col>
                                 </Row>

@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 
 function Kite() {
     const divRef = useRef(null);
@@ -159,14 +160,14 @@ function Kite() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Diagonal Length(p) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={p} className='ms-3' onChange={(e) => setP(e.target.value)} />
+                                            <Input value={p} onChange={(e) => setP(e.target.value)} />
                                             </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Diagonal Length(q) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={q}
+                                        <Input value={q}
                                                 onChange={(e) => setQ(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -195,7 +196,7 @@ function Kite() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> side(a) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={lengtha} className='ms-3'
+                                            <Input value={lengtha} 
                                                 onChange={(e) => setlengtha(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -203,7 +204,7 @@ function Kite() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Side(b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={lengthb}
+                                            <Input  value={lengthb}
                                                 onChange={(e) => setlengthb(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -241,7 +242,7 @@ function Kite() {
                                         <label> length (a) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" value={p} className='ms-3'
+                                            <Input value={p}
                                                 onChange={(e) => setP(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -249,7 +250,7 @@ function Kite() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> length (a) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={q} className='ms-3'
+                                            <Input value={q} 
                                                 onChange={(e) => setQ(e.target.value)} />
                                         </Col>
                                 </Row>

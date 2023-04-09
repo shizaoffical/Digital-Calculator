@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 function Square() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -67,7 +68,7 @@ function Square() {
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                             <Col md={12} sm={12} xs={12} >
-                                <label> Enter the length <input type="number" className='ms-3' value={length}
+                                <label> Enter the length <Input value={length}
                                     onChange={(e) => setLength(e.target.value)} /> </label></Col>
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>

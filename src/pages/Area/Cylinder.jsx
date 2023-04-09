@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 
 function Cylinder() {
     const divRef = useRef(null);
@@ -78,12 +79,12 @@ function Cylinder() {
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                             <Col md={12} sm={12} xs={12} >
-                                <label>  Radius:<input type="number" className='ms-3' value={radius}
+                                <label>  Radius:<Input value={radius}
                                     onChange={(e) => setRadius(e.target.value)} /> </label></Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }}>
                             <Col md={12} sm={12} xs={12} >
-                                <label>  Height:<input type="number" className='ms-3' value={height}
+                                <label>  Height:<Input value={height}
                                     onChange={(e) => setHeight(e.target.value)} /> </label></Col>
                         </Row>
                         <h5 className='text-center py-2'>Result</h5>

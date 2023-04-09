@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 function Sphere() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -70,7 +71,8 @@ function Sphere() {
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                             <Col md={12} sm={12} xs={12} >
-                                <label> Volume of Sphere[ (4/3)πr³ ] <input type="number" className='ms-3' value={radius}
+                                <label> Volume of Sphere[ (4/3)πr³ ] 
+                                    <Input value={radius}
                                     onChange={(e) => setradius(e.target.value)} /> </label></Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

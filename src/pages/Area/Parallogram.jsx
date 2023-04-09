@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 function Parallogram() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -114,7 +115,7 @@ function Parallogram() {
                                         <label> Base (b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" className='ms-3' value={base} 
+                                            <Input value={base} 
                                             onChange={(e) => setBase(e.target.value)}/>
                                         </Col>
                                 </Row>
@@ -122,7 +123,7 @@ function Parallogram() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Height (h) : </label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={height}
+                                            <Input value={height}
                                           onChange={(e) => setHeight(e.target.value)}/>
                                     
                                         </Col>
@@ -153,7 +154,7 @@ function Parallogram() {
                                         <label> side(a) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" className='ms-3' value={side1}
+                                            <Input value={side1}
                                             onChange={(e) => setSide1(e.target.value)}/>
                                         </Col>
                                 </Row>
@@ -162,7 +163,7 @@ function Parallogram() {
                                         <label> Side(b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" className='ms-3' value={side2}
+                                            <Input value={side2}
                                             onChange={(e) => setSide2(e.target.value)}/>
                                         </Col>
                                 </Row>

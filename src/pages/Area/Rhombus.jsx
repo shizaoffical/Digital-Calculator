@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 function Rhombus() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -183,7 +184,7 @@ if(base && height !== null){
                                         <label> Base (b):  </label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                        <input type="number" className='ms-3 ' value={base}
+                                        <Input value={base}
                                             onChange={(e) => setBase(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -192,7 +193,7 @@ if(base && height !== null){
                                         <label> Height (h): </label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                        <input type="number" className='ms-3' value={height}
+                                        <Input value={height}
                                             onChange={(e) => setHeight(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -216,7 +217,7 @@ if(base && height !== null){
                                     <label> Diagonal length (p):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
 
-                                    <input type="number" className='ms-3' value={base}
+                                    <Input value={base}
                                         onChange={(e) => setBase(e.target.value)} />
                                 </Col>
                             </Row>
@@ -224,7 +225,7 @@ if(base && height !== null){
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Diagonal length: (q):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={height}
+                                    <Input value={height}
                                         onChange={(e) => setHeight(e.target.value)} />
                                 </Col>
                             </Row>
@@ -250,7 +251,7 @@ if(base && height !== null){
                                 <Col md={6} sm={12} xs={12} >
                                     <label> Lenght(l):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={length}
+                                    <Input value={length}
                                         onChange={(e) => setLength(e.target.value)} />
                                 </Col>
                             </Row>
@@ -258,7 +259,7 @@ if(base && height !== null){
                                 <Col md={6} sm={12} xs={12} >
                                     <label> Angle(a):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={angle}
+                                    <Input value={angle}
                                         onChange={(e) => setAngle(e.target.value)} />
                                 </Col>
                             </Row>
@@ -282,7 +283,7 @@ if(base && height !== null){
                                 <Col md={6} sm={12} xs={12} >
                                     <label> Length(l):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={length}
+                                    <Input value={length}
                                         onChange={(e) => setLength(e.target.value)} />
                                 </Col>
                             </Row>

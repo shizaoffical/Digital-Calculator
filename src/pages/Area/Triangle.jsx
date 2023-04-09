@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../components/Example';
 import ButtonA from '../../components/ButtonA';
 import Popup from '../../components/Popup';
+import Input from '../../components/Input';
 function Triangle() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -205,14 +206,14 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Length(l) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={length} className='ms-3' onChange={(e) => setLength(e.target.value)} />
+                                            <Input value={length}  onChange={(e) => setLength(e.target.value)} />
                                             </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Breadth(b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={breadth}
+                                            <Input value={breadth}
                                                 onChange={(e) => setBreadth(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -238,7 +239,7 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> side(a) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={sidea} className='ms-3'
+                                            <Input value={sidea} 
                                                 onChange={(e) => setSidea(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -246,7 +247,7 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Side(b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={sideb}
+                                            <Input value={sideb}
                                                 onChange={(e) => setSideb(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -255,7 +256,7 @@ function Triangle() {
                                         <label> Side(c):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" className='ms-3' value={sidec}
+                                            <Input value={sidec}
                                                 onChange={(e) => setSidec(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -281,11 +282,10 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> length (a) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={equilateralTriangle} className='ms-3'
+                                            <Input value={equilateralTriangle} 
                                                 onChange={(e) => setEquilateralTriangle(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> Area of an equilateral triangle : </dt></Col>
@@ -309,7 +309,7 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Length(l) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" value={SASlength} className='ms-3'
+                                            <Input value={SASlength} 
                                                 onChange={(e) => setSASLength(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -317,7 +317,7 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Breadth(b) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={SASBreath}
+                                            <Input value={SASBreath}
                                                 onChange={(e) => setSASBreath(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -325,7 +325,7 @@ function Triangle() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Angle(c) : </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={SASangleC}
+                                            <Input value={SASangleC}
                                                 onChange={(e) => setSASangleC(e.target.value)} />
                                        </Col>
                                 </Row>
