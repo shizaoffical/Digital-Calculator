@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function CylindericalCalculator() {
 
     const divRef = useRef(null);
@@ -41,6 +41,11 @@ function CylindericalCalculator() {
     // ECreset
     const PAreset = () => {
         if (PA !== 0) {
+            setpa(0);
+            setLC(0);
+            setINNER(0);
+            setOUTER(0);
+            setCA(0);
             setinner(0);
             setca(0);
             setlc(0);
@@ -64,11 +69,16 @@ function CylindericalCalculator() {
     // ECreset
     const LCreset = () => {
         if (LC !== 0) {
+            setpa(0);
+            setLC(0);
+            setINNER(0);
+            setOUTER(0);
+            setCA(0);
             setinner(0);
             setca(0);
-            setpa(0);
+            setlc(0);
             setouter(0);
-            setLC(0)
+            setPA(0);
         }
         else {
             setShowPopup(true);
@@ -87,11 +97,16 @@ function CylindericalCalculator() {
     // ECreset
     const OUTERreset = () => {
         if (OUTER !== 0) {
+            setpa(0);
+            setLC(0);
+            setINNER(0);
+            setOUTER(0);
+            setCA(0);
             setinner(0);
             setca(0);
-            setpa(0);
             setlc(0);
-            setOUTER(0)
+            setouter(0);
+            setPA(0);
         }
         else {
             setShowPopup(true);
@@ -110,11 +125,16 @@ function CylindericalCalculator() {
     // ECreset
     const INNERreset = () => {
         if (INNER !== 0) {
-            setouter(0);
-            setca(0);
             setpa(0);
+            setLC(0);
+            setINNER(0);
+            setOUTER(0);
+            setCA(0);
+            setinner(0);
+            setca(0);
             setlc(0);
-            setINNER(0)
+            setouter(0);
+            setPA(0);
         }
         else {
             setShowPopup(true);
@@ -133,11 +153,16 @@ function CylindericalCalculator() {
     // ECreset
     const CAreset = () => {
         if (CA !== 0) {
-            setouter(0);
-            setinner(0);
             setpa(0);
+            setLC(0);
+            setINNER(0);
+            setOUTER(0);
+            setCA(0);
+            setinner(0);
+            setca(0);
             setlc(0);
-            setCA(0)
+            setouter(0);
+            setPA(0);
         }
         else {
             setShowPopup(true);
@@ -205,7 +230,7 @@ function CylindericalCalculator() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Length of Conductors (L): </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={lc}
+                                            <Input value={lc}
                                                 onChange={(event) => setlc(parseFloat(event.target.value))} />
                                                 <span className="ps-2 ">m</span> </Col>
                                     </Row>
@@ -213,7 +238,7 @@ function CylindericalCalculator() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Outer Conductor Diameter (b):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={outer}
+                                            <Input value={outer}
                                                 onChange={(event) => setouter(parseFloat(event.target.value))} />
                                                 <span className="ps-2 ">m</span> </Col>
                                     </Row>
@@ -221,7 +246,7 @@ function CylindericalCalculator() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Inner Conductor Diameter (a):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={inner}
+                                            <Input value={inner}
                                                 onChange={(event) => setinner(parseFloat(event.target.value))} />
                                                 <span className="ps-2 ">m</span>  </Col>
                                     </Row>
@@ -230,7 +255,7 @@ function CylindericalCalculator() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Capacitance (C):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={ca}
+                                            <Input value={ca}
                                                 onChange={(event) => setca(parseFloat(event.target.value))} />
                                                 <span className="ps-2 ">F</span>  </Col>
                                     </Row>
@@ -253,7 +278,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε)</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={pa}
+                                        <Input value={pa}
                                             onChange={(event) => setpa(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">F/m</span>  </Col>
                                 </Row>
@@ -261,7 +286,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Outer Conductor Diameter (b):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={outer}
+                                        <Input value={outer}
                                             onChange={(event) => setouter(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row>
@@ -269,14 +294,14 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inner Conductor Diameter (a):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={inner}
+                                        <Input value={inner}
                                             onChange={(event) => setinner(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">F</span> </Col>
                                 </Row>
@@ -298,7 +323,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}  >
-                                        <input type="number" value={pa} 
+                                        <Input value={pa} 
                                             onChange={(event) => setpa(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">F/m</span> </Col>
                                 </Row>
@@ -306,7 +331,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Length of Conductors (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={lc}
+                                        <Input value={lc}
                                             onChange={(event) => setlc(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row>
@@ -314,14 +339,14 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inner Conductor Diameter (a):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={inner}
+                                        <Input value={inner}
                                             onChange={(event) => setinner(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} /> 
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row>
@@ -342,7 +367,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={pa}
+                                        <Input value={pa}
                                             onChange={(event) => setpa(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">F/m</span>  </Col>
                                 </Row>
@@ -350,7 +375,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Length of Conductors (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={lc}
+                                        <Input value={lc}
                                             onChange={(event) => setlc(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row>
@@ -358,7 +383,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Outer Conductor Diameter (a):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={outer}
+                                        <Input value={outer}
                                             onChange={(event) => setouter(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row> 
@@ -366,7 +391,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span>  </Col>
                                 </Row>
@@ -387,7 +412,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={pa}
+                                        <Input value={pa}
                                             onChange={(event) => setpa(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">F/m</span>  </Col>
                                 </Row>
@@ -395,7 +420,7 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Length of Conductors (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={lc}
+                                        <Input value={lc}
                                             onChange={(event) => setlc(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row>
@@ -403,14 +428,14 @@ function CylindericalCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Outer Conductor Diameter (b):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={outer}
+                                        <Input value={outer}
                                             onChange={(event) => setouter(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">m</span>  </Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inner Conductor Diameter (b):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={inner}
+                                        <Input value={inner}
                                             onChange={(event) => setinner(parseFloat(event.target.value))} /> 
                                             <span className="ps-2 ">m</span> </Col>
                                 </Row>

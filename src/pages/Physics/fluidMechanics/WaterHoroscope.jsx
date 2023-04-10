@@ -4,44 +4,94 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+ import Input from '../../../components/Input';
 function WaterHoroscope() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Water Horsepower (WHP)');
     // main
-    const [WHP, setWHP] = useState(23);
-    const [Q, setQ] = useState(15);
-    const [H, setH] = useState(14);
+    const [WHP, setWHP] = useState(null);
+    const [Q, setQ] = useState(null);
+    const [H, setH] = useState(null);
     // main states
-    const [WHPvalue, setWHPvalue] = useState(23);
-    const [Qvalue, setQvalue] = useState(15);
-    const [Hvalue, setHvalue] = useState(14);
+    const [WHPvalue, setWHPvalue] = useState(0);
+    const [Qvalue, setQvalue] = useState(0);
+    const [Hvalue, setHvalue] = useState(0);
     // ScalculatorReset
     const WHPcalculator = () => {
+        if(Q && H !== null){
         const WH = Q * H / 3960;
         setWHPvalue(WH.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function WHPcalculatorReset() {
+        if(Q && H !== 0){
+        setH(0);
+        setQ(0);
+        setWHP(0);
+        setQvalue(0);
+        setHvalue(0);
         setWHPvalue(0)
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // HcalculatorReset
     const Hcalculator = () => {
+        if(Q && WHP !== null){
         const H = 3960 * WHP /Q;
         setHvalue(H.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function HcalculatorReset() {
-        setHvalue(0);
+        if(Q && WHP !== 0){
+            setH(0);
+            setQ(0);
+            setWHP(0);
+            setQvalue(0);
+            setHvalue(0);
+            setWHPvalue(0)
+        }
+        else{
+            setShowPopup(true);
+        }
     }
      // QcalculatorReset
      const Qcalculator = () => {
+        if(WHP && H !== null){
         const Q = 3960 * WHP /H;
         setQvalue(Q.toPrecision(6));
     }
-    function QcalculatorReset() {
-        setQvalue(0);
+    else{
+        setShowPopup(true);
     }
+    }
+    function QcalculatorReset() {
+        if(WHP && H !== 0){
+            setH(0);
+            setQ(0);
+            setWHP(0);
+            setQvalue(0);
+            setHvalue(0);
+            setWHPvalue(0)
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -100,28 +150,28 @@ function WaterHoroscope() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Water Horsepower (WHP):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={Q}
-                                            onChange={(e) => setQ(e.target.value)} />HP
+                                        <Input value={Q}
+                                            onChange={(e) => setQ(e.target.value)} text="HP"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Total Head (H):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={H}
-                                            onChange={(e) => setH(e.target.value)} />ft
+                                        <Input value={H}
+                                            onChange={(e) => setH(e.target.value)} text="ft"/>
                                     </Col>
                                 </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> Flow Rate or Discharge (Q)</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{Qvalue.toString().substring(0, 9)}gmp</button></Col>
+                                        <button className='formula-value-btn'>{Qvalue.toString().substring(0, 9)} gmp</button></Col>
                                 </Row>
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Qcalculator} />
                                     <ButtonA text="Reset" onClick={QcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ///////////////////// Water Horsepower (WHP) ////////////////////// */}
@@ -131,28 +181,28 @@ function WaterHoroscope() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Flow Rate or Discharge (Q):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={Q}
-                                            onChange={(e) => setQ(e.target.value)} />gpm
+                                        <Input value={Q}
+                                            onChange={(e) => setQ(e.target.value)} text="gpm"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Total Head (H):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={H}
-                                            onChange={(e) => setH(e.target.value)} />ft
+                                        <Input value={H}
+                                            onChange={(e) => setH(e.target.value)} text="ft"/>
                                     </Col>
                                 </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Water Horsepower (WHP):</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{WHPvalue.toString().substring(0, 9)}HP</button></Col>
+                                        <button className='formula-value-btn'>{WHPvalue.toString().substring(0, 9)} HP</button></Col>
                                 </Row>
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={WHPcalculator} />
                                     <ButtonA text="Reset" onClick={WHPcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ///////////////////// Total Head (H) ////////////////////// */}
@@ -162,28 +212,28 @@ function WaterHoroscope() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Flow Rate or Discharge (Q):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={Q}
-                                            onChange={(e) => setQ(e.target.value)} />gpm
+                                        <Input value={Q}
+                                            onChange={(e) => setQ(e.target.value)} text="gpm"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Water Horsepower (WHP):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WHP}
-                                            onChange={(e) => setWHP(e.target.value)} />HP
+                                        <Input value={WHP}
+                                            onChange={(e) => setWHP(e.target.value)} text="HP" />
                                     </Col>
                                 </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Total Head (H):</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{Hvalue.toString().substring(0, 9)}H</button></Col>
+                                        <button className='formula-value-btn'>{Hvalue.toString().substring(0, 9)} H</button></Col>
                                 </Row>
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Hcalculator} />
                                     <ButtonA text="Reset" onClick={HcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 

@@ -1,21 +1,23 @@
-import React, { useRef, useState , useEffect} from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function FourierNumber() {
   const divRef = useRef(null);
+  const [showPopup, setShowPopup] = useState(false);
   const [show, setShow] = useState(false);
   const [textShow, settextShow] = useState(false);
   const [selectCondition, setSelectCondition] = useState('Fourier Number(Fo)');
 
   // main startest 
-  const [FO, setFO] = useState(16);
-  const [A, setA] = useState(5);
-  const [L, setL] = useState(3);
-  const [T, setT] = useState(6.5);
+  const [FO, setFO] = useState(null);
+  const [A, setA] = useState(null);
+  const [L, setL] = useState(null);
+  const [T, setT] = useState(null);
   // values tate
   const [CLvalue, setCLvalue] = useState(0);
   const [FOvalue, setFOvalue] = useState(0);
@@ -23,52 +25,112 @@ function FourierNumber() {
   const [CTvalue, setCTvalue] = useState(0);
   // FOcalculator
   const FOcalculator = () => {
+    if (A && T && L !== null) {
     const fo = (A * T) / (L * L)
     setFOvalue(fo.toPrecision(6));
   }
+  else {
+    setShowPopup(true);
+  }
+  }
   function FOcalculatorReset() {
-    setFOvalue(0);
-    setA(0);
-    setL(0);
-    setT(0);
+    if (A && T && L !== 0) {
+      setFOvalue(0);
+      setA(0);
+      setL(0);
+      setT(0);
+      setCTvalue(0);
+      setFO(0);
+      setCTvalue(0);
+      setTDvalue(0);
+    }
+    else {
+      setShowPopup(true);
+    }
   }
   // TDcalculator
   const TDcalculator = () => {
+    if (FO && T && L !== null) {
     const a = FO * (L * L) / T;
     setTDvalue(a.toPrecision(6));
   }
+  else{
+    setShowPopup(true);
+   }
+  }
   function TDcalculatorReset() {
-    setTDvalue(0);
-    setFO(0);
-    setL(0);
-    setT(0);
+    if (FO && T && L !== 0) {
+      setFOvalue(0);
+      setA(0);
+      setL(0);
+      setT(0);
+      setCTvalue(0);
+      setFO(0);
+      setCTvalue(0);
+      setTDvalue(0);
+    }
+    else {
+      setShowPopup(true);
+    }
   }
   // CTcalculator
   const CTcalculator = () => {
+    if (A && FO && L !== null) {
     const t = FO * (L * L) / A;
     setCTvalue(t.toPrecision(6));
   }
+  else{
+    setShowPopup(true);
+   }
+  }
   function CTcalculatorReset() {
-    setCTvalue(0);
-    setA(0);
-    setL(0);
-    setFO(0);
+    if (A && FO && L !== 0) {
+      setFOvalue(0);
+      setA(0);
+      setL(0);
+      setT(0);
+      setCTvalue(0);
+      setFO(0);
+      setCTvalue(0);
+      setTDvalue(0);
+    }
+    else {
+      setShowPopup(true);
+    }
   }
   // CTcalculator
   const CLcalculator = () => {
+    if (A && T && FO !== null) {
     const l = Math.sqrt((A * T) / FO)
     setCLvalue(l.toPrecision(6));
+    }
+    else{
+      setShowPopup(true);
+     }
   }
   function CLcalculatorReset() {
-    setCLvalue(0);
-    setA(0);
-    setT(0);
-    setFO(0);
+    if (A && T && FO !== 0) {
+      setFOvalue(0);
+      setA(0);
+      setL(0);
+      setT(0);
+      setCTvalue(0);
+      setFO(0);
+      setCTvalue(0);
+      setTDvalue(0);
+    }
+    else {
+      setShowPopup(true);
+    }
   }
   // handle change
   const handleSelectChange = (event) => {
     setSelectCondition(event.target.value);
   }
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
   const componentsRef = useRef();
   const handlePrint = useReactToPrint({
@@ -117,7 +179,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Thermal Diffusivity(a):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={A}
+                    <Input value={A}
                       onChange={(e) => setA(e.target.value)} />
                   </Col>
 
@@ -126,7 +188,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Time(t):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={T}
+                    <Input value={T}
                       onChange={(e) => setT(e.target.value)} />
                   </Col>
                 </Row>
@@ -134,7 +196,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Length(l):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={L}
+                    <Input value={L}
                       onChange={(e) => setL(e.target.value)} /></Col>
 
                 </Row>
@@ -147,7 +209,7 @@ function FourierNumber() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={FOcalculator} />
                   <ButtonA text="Reset" onClick={FOcalculatorReset} />
-
+                  {showPopup && <Popup onClick={togglePopup} />}
                 </div>
               </>}
               {/* ////////////////////////////////////  Thermal Diffusivity(a) /////////////////////////////// */}
@@ -157,7 +219,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Fourier Number (Fo):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={FO}
+                    <Input value={FO}
                       onChange={(e) => setFO(e.target.value)} /></Col>
 
                 </Row>
@@ -165,14 +227,14 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Time(t):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={T}
+                    <Input value={T}
                       onChange={(e) => setT(e.target.value)} /></Col>
                 </Row>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Length(l):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={L}
+                    <Input value={L}
                       onChange={(e) => setL(e.target.value)} />
                   </Col>
                 </Row>
@@ -184,6 +246,7 @@ function FourierNumber() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={TDcalculator} />
                   <ButtonA text="Reset" onClick={TDcalculatorReset} />
+                  {showPopup && <Popup onClick={togglePopup} />}
                 </div>
               </>}
               {/* ////////////////////////////////////  Character Time(t) /////////////////////////////// */}
@@ -193,7 +256,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Thermal Diffusivity(a): </label></Col>
                   <Col md={6} sm={12} xs={12}>
-                    <input type="number" className='ms-3 me-2' value={A}
+                    <Input value={A}
                       onChange={(e) => setA(e.target.value)} /></Col>
 
                 </Row>
@@ -201,15 +264,15 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Fourier Number (Fo):</label></Col>
                   <Col md={6} sm={12} xs={12}>
-                    <input type="number" className='ms-3 me-2' value={FO}
+                    <Input value={FO}
                       onChange={(e) => setFO(e.target.value)} />
                   </Col>
                 </Row>
-                <Row style={{ alignItems: "center", textAlign: "center" }}className="my-2 " >
+                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 " >
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Length(l):</label></Col>
                   <Col md={6} sm={12} xs={12}>
-                    <input type="number" className='ms-3 me-2' value={L}
+                    <Input value={L}
                       onChange={(e) => setL(e.target.value)} /></Col>
 
                 </Row>
@@ -222,6 +285,7 @@ function FourierNumber() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={CTcalculator} />
                   <ButtonA text="Reset" onClick={CTcalculatorReset} />
+                  {showPopup && <Popup onClick={togglePopup} />}
 
                 </div>
               </>}
@@ -232,7 +296,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Thermal Diffusivity(a):</label></Col>
                   <Col md={6} sm={12} xs={12}>
-                    <input type="number" className='ms-3 me-2' value={A}
+                    <Input value={A}
                       onChange={(e) => setA(e.target.value)} /></Col>
 
                 </Row>
@@ -240,7 +304,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Character Time(t):</label></Col>
                   <Col md={6} sm={12} xs={12}>
-                    <input type="number" className='ms-3 me-2' value={T}
+                    <Input value={T}
                       onChange={(e) => setT(e.target.value)} /></Col>
 
                 </Row>
@@ -248,7 +312,7 @@ function FourierNumber() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Fourier Number (Fo):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                    <input type="number" className='ms-3 me-2' value={FO}
+                    <Input value={FO}
                       onChange={(e) => setFO(e.target.value)} />
                   </Col>
                 </Row>
@@ -261,7 +325,7 @@ function FourierNumber() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={CLcalculator} />
                   <ButtonA text="Reset" onClick={CLcalculatorReset} />
-
+                  {showPopup && <Popup onClick={togglePopup} />}
                 </div>
               </>}
 
@@ -277,44 +341,44 @@ function FourierNumber() {
                 textShow &&
                 <>
                   {selectCondition === "Fourier Number(Fo)" &&
-                  <div ref={divRef}>
-                    <Example heading="Fourier Number(Fo)"
-                      title="step by step solution"
-                      step1="Solution:" step1heading="Fo = ? , L = 3 , α = 5 , t = 6.5"
-                      step2="Formula" step2heading="Fo = at / L²"
-                      step3="Steps: Putting values" step3heading={<>
-                        = 5 x 6.5 / (3)²<br />= 32.5 / 9<br />= 3.611</>}
-                         /></div>
+                    <div ref={divRef}>
+                      <Example heading="Fourier Number(Fo)"
+                        title="step by step solution"
+                        step1="Solution:" step1heading="Fo = ? , L = 3 , α = 5 , t = 6.5"
+                        step2="Formula" step2heading="Fo = at / L²"
+                        step3="Steps: Putting values" step3heading={<>
+                          = 5 x 6.5 / (3)²<br />= 32.5 / 9<br />= 3.611</>}
+                      /></div>
                   }
                   {selectCondition === "Thermal Diffusivity(a)" &&
-                  <div ref={divRef}>
-                    <Example heading="Thermal Diffusivity(a)"
-                      title="step by step solution"
-                      step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
-                      step2="Formula" step2heading="a = fo * L² / a"
-                      step3="Steps: Putting values" step3heading={<>
-                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} 
-                         /></div>
+                    <div ref={divRef}>
+                      <Example heading="Thermal Diffusivity(a)"
+                        title="step by step solution"
+                        step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
+                        step2="Formula" step2heading="a = fo * L² / a"
+                        step3="Steps: Putting values" step3heading={<>
+                          =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>}
+                      /></div>
                   }
                   {selectCondition === "Character Time(t)" &&
-                  <div ref={divRef}>
-                    <Example heading="Character Time(t)"
-                      title="step by step solution"
-                      step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
-                      step2="Formula" step2heading="a = fo * L² / a"
-                      step3="Steps: Putting values" step3heading={<>
-                        =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>} 
-                         /></div>
+                    <div ref={divRef}>
+                      <Example heading="Character Time(t)"
+                        title="step by step solution"
+                        step1="Solution:" step1heading="Fo = 3.611 , L = 3 , α = 5 , t = ?"
+                        step2="Formula" step2heading="a = fo * L² / a"
+                        step3="Steps: Putting values" step3heading={<>
+                          =3.611 x (3)² / 5 <br /> 3.611 x 9 / 5 <br />= 32.499 / 6.5 <br />=65</>}
+                      /></div>
                   }
                   {selectCondition === "Character Length(l)" &&
-                  <div ref={divRef}>
-                    <Example heading="Character Length(l)"
-                      title="step by step solution"
-                      step1="Solution:" step1heading="Fo = 3.611 , L = ? , α = 5 , t = 6.5"
-                      step2="Formula" step2heading="L =αt / Fo"
-                      step3="Steps: Putting values" step3heading={<>
-                        =(5 * 6.5 / 11 ) <br /> (32.5 / 3.611 ) <br />=  9.0002769315979<br />=3</>} 
-                         /></div>
+                    <div ref={divRef}>
+                      <Example heading="Character Length(l)"
+                        title="step by step solution"
+                        step1="Solution:" step1heading="Fo = 3.611 , L = ? , α = 5 , t = 6.5"
+                        step2="Formula" step2heading="L =αt / Fo"
+                        step3="Steps: Putting values" step3heading={<>
+                          =(5 * 6.5 / 11 ) <br /> (32.5 / 3.611 ) <br />=  9.0002769315979<br />=3</>}
+                      /></div>
                   }
 
                 </>

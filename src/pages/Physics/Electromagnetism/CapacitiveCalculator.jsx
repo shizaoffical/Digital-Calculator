@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function CapacitiveCalculator() {
 
     const divRef = useRef(null);
@@ -39,6 +39,9 @@ function CapacitiveCalculator() {
             setf(0);
             setca(0);
             setCR(0);
+            setcr(0);
+            setF(0);
+            setCA(0);
         }
         else {
             setShowPopup(true);
@@ -57,9 +60,12 @@ function CapacitiveCalculator() {
     // ECreset
     const Freset = () => {
         if (F !== 0) {
+            setf(0);
             setca(0);
+            setCR(0);
             setcr(0);
             setF(0);
+            setCA(0);
         }
         else {
             setShowPopup(true);
@@ -79,8 +85,11 @@ function CapacitiveCalculator() {
     const CAreset = () => {
         if (CA !== 0) {
             setf(0);
+            setca(0);
+            setCR(0);
             setcr(0);
-            setCA(0)
+            setF(0);
+            setCA(0);
         }
         else {
             setShowPopup(true);
@@ -142,14 +151,14 @@ function CapacitiveCalculator() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Frequency </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={f}
+                                            <Input value={f}
                                                 onChange={(event) => setf(parseFloat(event.target.value))} /> </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Capacitance (C):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={ca}
+                                            <Input value={ca}
                                                 onChange={(event) => setca(parseFloat(event.target.value))} /> </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
@@ -171,14 +180,14 @@ function CapacitiveCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitive Reactance</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={cr}
+                                        <Input value={cr}
                                             onChange={(event) => setcr(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
@@ -198,14 +207,14 @@ function CapacitiveCalculator() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitive Reactance</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={cr}
+                                        <Input value={cr}
                                             onChange={(event) => setcr(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Frequency</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={f}
+                                        <Input value={f}
                                             onChange={(event) => setf(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

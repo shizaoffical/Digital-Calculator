@@ -4,23 +4,44 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function PoiseuilleEquation() {
     const divRef = useRef(null);
     const [show, setShow]= useState(false);
     const [textShow, settextShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+
     // main states
-    const [pressure, setPressure] = useState('');
-    const [radius, setRadius] = useState('');
-    const [viscosity, setViscosity] = useState('');
-    const [flowRate, setFlowRate] = useState('');
+    const [pressure, setPressure] = useState(null);
+    const [radius, setRadius] = useState(null);
+    const [viscosity, setViscosity] = useState(null);
+    const [flowRate, setFlowRate] = useState(0);
   
     function calculateFlowRate(e) {
+        if(pressure && radius && viscosity  !== null ){
       e.preventDefault();
       const flowRate = ((Math.PI * Math.pow(radius, 4)) / (8 * viscosity)) * pressure;
       setFlowRate(flowRate.toFixed(2).toPrecision(6));
     }
-  
+    else{
+        setShowPopup(true);
+    }
+    }
+   function reset(){
+    if(pressure && radius && viscosity  !== null ){
+        setPressure(0);
+        setPressure(0);
+        setFlowRate(0);
+        setViscosity(0);
+    }
+    else{
+        setShowPopup(true);
+    }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
      
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
@@ -28,12 +49,7 @@ function PoiseuilleEquation() {
         documentTitle:"hello",
         onAfterPrint: () => alert("print success"),
     })
-    function reset(){
-        setPressure('');
-        setPressure('');
-        setFlowRate('');
-        setViscosity('');
-    }
+   
     useEffect(() => {
         if (textShow) {
           divRef.current.scrollIntoView({ behavior: "smooth" });
@@ -61,7 +77,7 @@ function PoiseuilleEquation() {
                             <Col md={6} sm={12} xs={12} >
                                 <label> Pressure Difference Between The Two Ends:</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={pressure}
+                                <Input value={pressure}
                                  onChange={(e) => setPressure(e.target.value)}/>
                             </Col>
                         </Row>
@@ -69,7 +85,7 @@ function PoiseuilleEquation() {
                             <Col md={6} sm={12} xs={12} >
                                 <label>Internal Radius of the Tube:</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={radius} 
+                                <Input value={radius} 
                                 onChange={(e) => setRadius(e.target.value)} />
                             </Col>
                         </Row>
@@ -77,7 +93,7 @@ function PoiseuilleEquation() {
                             <Col md={6} sm={12} xs={12} >
                                 <label>Absolute Viscosity: </label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={viscosity} 
+                                <Input value={viscosity} 
                                 onChange={(e) => setViscosity(e.target.value)} />
                             </Col>
                         </Row>
@@ -90,6 +106,7 @@ function PoiseuilleEquation() {
                     <div className='text-center'>
                         <ButtonA onClick={calculateFlowRate} text="Calculate" />
                         <ButtonA onClick={reset} text="Reset" />
+                        {showPopup &&<Popup onClick={togglePopup} /> }
                     </div>
                     <center>
                         <button type='button'

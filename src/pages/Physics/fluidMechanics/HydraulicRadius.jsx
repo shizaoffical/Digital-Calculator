@@ -1,55 +1,99 @@
-import React, { useRef, useState ,useEffect} from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function HydraulicRadius() {
     const divRef = useRef(null);
+    const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Hydraulic Radius');
 
     // main states 
-    const [HR, setHR] = useState(4);
-    const [A , setA] =useState(4);
-    const [WP, setWP] = useState(5);
-// VALUE STATES
-const [HRvalue,setHRvalue] = useState(0);
-const [Avalue,setAvalue] = useState(0);
-const [WPvalue,setWPvalue] = useState(0);
-//   HRvalue functionalty
-const HRcalculator =() => {
-  const hr = A / WP;
-  setHRvalue(hr.toPrecision(6));
-}
-function HRcalculatorReset() {
- setA(0)
- setWP(0)
- setHRvalue(0)
-}
-//   avalue functionalty
-const Acalculator =() => {
-    const a = HR * WP;
-    setAvalue(a.toPrecision(6));
-  }
-  function AcalculatorReset() {
-   setHR(0)
-   setWP(0)
-   setAvalue(0)
-  }
-  //   HRvalue functionalty
-const WPcalculator =() => {
-    const wp = A / HR;
-    setWPvalue(wp.toPrecision(6));
-  }
-  function WPcalculatorReset() {
-   setA(0)
-   setHR(0)
-   setWPvalue(0)
-  }
+    const [HR, setHR] = useState(null);
+    const [A, setA] = useState(null);
+    const [WP, setWP] = useState(null);
+    // VALUE STATES
+    const [HRvalue, setHRvalue] = useState(0);
+    const [Avalue, setAvalue] = useState(0);
+    const [WPvalue, setWPvalue] = useState(0);
+    //   HRvalue functionalty
+    const HRcalculator = () => {
+        if (A && WP !== null) {
+        const hr = A / WP;
+        setHRvalue(hr.toPrecision(6));
+    }
+    else{
+        setShowPopup(true);
+    }
+    }
+    function HRcalculatorReset() {
+        if (A && WP !== 0) {
+            setA(0)
+            setWP(0)
+            setHRvalue(0)
+            setHR(0);
+            setAvalue(0);
+            setWPvalue(0);
+        }
+        else {
+            setShowPopup(true);
+        }
+    }
+    //   avalue functionalty
+    const Acalculator = () => {
+        if (HR && WP !== null) {
+        const a = HR * WP;
+        setAvalue(a.toPrecision(6));
+    }
+    else{
+        setShowPopup(true);
+    }
+    }
+    function AcalculatorReset() {
+        if (HR && WP !== 0) {
+            setA(0)
+            setWP(0)
+            setHRvalue(0)
+            setHR(0);
+            setAvalue(0);
+            setWPvalue(0);
+        }
+        else {
+            setShowPopup(true);
+        }
+    }
+    //   HRvalue functionalty
+    const WPcalculator = () => {
+        if (A && HR !== null) {
+        const wp = A / HR;
+        setWPvalue(wp.toPrecision(6));
+    }
+    else{
+        setShowPopup(true);
+    }
+    }
+    function WPcalculatorReset() {
+        if (A && HR !== 0) {
+            setA(0)
+            setWP(0)
+            setHRvalue(0)
+            setHR(0);
+            setAvalue(0);
+            setWPvalue(0);
+        }
+        else {
+            setShowPopup(true);
+        }
+    }
 
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -64,11 +108,11 @@ const WPcalculator =() => {
 
     useEffect(() => {
         if (textShow) {
-          divRef.current.scrollIntoView({ behavior: "smooth" });
+            divRef.current.scrollIntoView({ behavior: "smooth" });
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
-      }, [textShow]);
+    }, [textShow]);
     return (
         <div>
             <Container className='home-page '>
@@ -101,89 +145,89 @@ const WPcalculator =() => {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area of Section Flow (A):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
-                                        onChange={(e) => setA(e.target.value)} />
+                                        <Input value={A}
+                                            onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Wetted Perimeter (Pw):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WP}
-                                        onChange={(e) => setWP(e.target.value)}/>
+                                        <Input value={WP}
+                                            onChange={(e) => setWP(e.target.value)} />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Hydraulic Radius (Rh)</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{HRvalue.toString().substring(0,6)}</button></Col>
+                                        <button className='formula-value-btn'>{HRvalue.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <ButtonA text="Calculate" onClick={HRcalculator}/>
-                                    <ButtonA text="Reset"  onClick={HRcalculatorReset}/>
-
+                                    <ButtonA text="Calculate" onClick={HRcalculator} />
+                                    <ButtonA text="Reset" onClick={HRcalculatorReset} />
+                                    {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
-                                  {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
-                                  {selectCondition === "Area Of Section Flow" && <>
+                            {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
+                            {selectCondition === "Area Of Section Flow" && <>
                                 <div className='text-center'> <dt>Formula</dt> <span>Q = A * V</span></div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Hydraulic Radius (Rh):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HR}
-                                        onChange={(e) => setHR(e.target.value)} />
+                                        <Input value={HR}
+                                            onChange={(e) => setHR(e.target.value)} />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} >
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Wetted Perimeter (Pw):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WP}
-                                        onChange={(e) => setWP(e.target.value)}/>
+                                        <Input value={WP}
+                                            onChange={(e) => setWP(e.target.value)} />
                                     </Col>
                                 </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area Of Section Flow</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{Avalue.toString().substring(0,6)}</button></Col>
+                                        <button className='formula-value-btn'>{Avalue.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <ButtonA text="Calculate" onClick={Acalculator}/>
-                                    <ButtonA text="Reset"  onClick={AcalculatorReset}/>
-
+                                    <ButtonA text="Calculate" onClick={Acalculator} />
+                                    <ButtonA text="Reset" onClick={AcalculatorReset} />
+                                    {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
-                                  {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
-                                  {selectCondition === "Wetted Perimeter" && <>
+                            {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
+                            {selectCondition === "Wetted Perimeter" && <>
                                 <div className='text-center'> <dt>Formula</dt> <span>Q = A * V</span></div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area of Section Flow (A):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
-                                        onChange={(e) => setA(e.target.value)} />
+                                        <Input value={A}
+                                            onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Hydraulic Radius (Rh):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HR}
-                                        onChange={(e) => setHR(e.target.value)}/>
+                                        <Input value={HR}
+                                            onChange={(e) => setHR(e.target.value)} />
                                     </Col>
                                 </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Wetted Perimeter</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{WPvalue.toString().substring(0,6)}</button></Col>
+                                        <button className='formula-value-btn'>{WPvalue.toString().substring(0, 6)}</button></Col>
                                 </Row>
                                 <div className='text-center'>
-                                    <ButtonA text="Calculate" onClick={WPcalculator}/>
-                                    <ButtonA text="Reset"  onClick={WPcalculatorReset}/>
-
+                                    <ButtonA text="Calculate" onClick={WPcalculator} />
+                                    <ButtonA text="Reset" onClick={WPcalculatorReset} />
+                                    {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
 
@@ -197,17 +241,17 @@ const WPcalculator =() => {
                             {
                                 textShow &&
                                 <div ref={divRef}>
-                                <Example heading="step by step solution"
-                                    title={<>Calculate the hydraulic radius for the given details.<br />
-                                        Area of Section Flow (A) = 25 m2<br />Wetted Perimeter (Pw) = 20 m<br /></>}
-                                    step1={<>Solution <br /> Apply Formula : </>} step1heading="Rh = A/Pw"
-                                    step1value="Rh = 25/20"
-                                    step2="Hydraulic Radius (Rh) = 1.25 m" /></div>
+                                    <Example heading="step by step solution"
+                                        title={<>Calculate the hydraulic radius for the given details.<br />
+                                            Area of Section Flow (A) = 25 m2<br />Wetted Perimeter (Pw) = 20 m<br /></>}
+                                        step1={<>Solution <br /> Apply Formula : </>} step1heading="Rh = A/Pw"
+                                        step1value="Rh = 25/20"
+                                        step2="Hydraulic Radius (Rh) = 1.25 m" /></div>
                             }</div>
 
                     </div>
                     <div className='mt-3'>
-                        Hydraulic radius refers to the ratio of the cross-sectional area of a conduit or a stream channel in which a fluid is flowing to the inner perimeter of the conduit or stream channel. Hydraulic Radius is based on the principle that higher the ratio, the more efficient is the channel in transmitting water.<br/>
+                        Hydraulic radius refers to the ratio of the cross-sectional area of a conduit or a stream channel in which a fluid is flowing to the inner perimeter of the conduit or stream channel. Hydraulic Radius is based on the principle that higher the ratio, the more efficient is the channel in transmitting water.<br />
 
                         Hydraulic radius is the measure of channel efficiency. This online advanced Hydraulic Radius Calculator is useful in calculating the hydraulic radius by putting the values Area of Section Flow (A) and Wetted Perimeter (Pw) in respective boxes.
                     </div>

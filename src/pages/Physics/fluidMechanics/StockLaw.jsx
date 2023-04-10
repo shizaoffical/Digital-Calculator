@@ -4,19 +4,21 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function StockLaw() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Acceleration of Gravity (g):');
     // main states
-    const [SV, setSV] = useState(19);
-    const [AG, setAG] = useState(0.65);
-    const [DM, setDM] = useState(73);
-    const [VM, setVM] = useState(23);
-    const [PD, setPD] = useState(23);
-    const [PA, setPA] = useState(23);
+    const [SV, setSV] = useState(null);
+    const [AG, setAG] = useState(null);
+    const [DM, setDM] = useState(null);
+    const [VM, setVM] = useState(null);
+    const [PD, setPD] = useState(null);
+    const [PA, setPA] = useState(null);
     // work states
     const [SVvalue, setSVvalue] = useState(0);
     const [AGvalue, setAGvalue] = useState(0);
@@ -27,53 +29,181 @@ function StockLaw() {
     );
     // sv VALUE
     const SVcalculator = () => {
+        if(AG && PA && PD && DM && VM !== null){
         const SV = Math.round(((AG * PA * PA * (PD - DM)) / (18 * VM)) * 100) / 100;
         setSVvalue(SV.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function SVcalculatorReset() {
-        setSVvalue(0)
+        if(AG && PA && PD && DM && VM !== 0){
+        setAG(0)
+       setSV(0)
+       setPD(0);
+       setPA(0);
+       setDM(0);
+       setVM(0);
+       setAGvalue(0)
+       setSVvalue(0)
+       setPDvalue(0);
+       setPAvalue(0);
+       setDMvalue(0);
+       setVMvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // AG VALUE
     const AGcalculator = () => {
+        if(SV && PA && PD && DM && VM !== null){
         const AG = Math.round(((18 * VM * SV) / (PA * PA * (PD - DM))) * 100) / 100;
         setAGvalue(AG.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function AGcalculatorReset() {
-        setAGvalue(0)
+        if(SV && PA && PD && DM && VM !== 0){
+            setAG(0)
+           setSV(0)
+           setPD(0);
+           setPA(0);
+           setDM(0);
+           setVM(0);
+           setAGvalue(0)
+           setSVvalue(0)
+           setPDvalue(0);
+           setPAvalue(0);
+           setDMvalue(0);
+           setVMvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // PA VALUE
     const PAcalculator = () => {
+        if(AG && SV && PD && DM && VM !== null){
         const PA = Math.round((Math.sqrt((18 * VM * SV) / (AG * (PD - DM)))) * 100) / 100;
         setAGvalue(PA.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function PAcalculatorReset() {
-        setPAvalue(0)
+        if(AG && SV && PD && DM && VM !== 0){
+            setAG(0)
+           setSV(0)
+           setPD(0);
+           setPA(0);
+           setDM(0);
+           setVM(0);
+           setAGvalue(0)
+           setSVvalue(0)
+           setPDvalue(0);
+           setPAvalue(0);
+           setDMvalue(0);
+           setVMvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // DM VALUE
     const DMcalculator = () => {
+        if(AG && PA && PD && SV && VM !== 0){
         const DM = Math.round((PD - ((18 * VM * SV) / (AG * PA * PA))) * 100) / 100;
         setDMvalue(DM.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function DMcalculatorReset() {
-        setDMvalue(0)
+        if(AG && PA && PD && SV && VM !== 0){
+            setAG(0)
+           setSV(0)
+           setPD(0);
+           setPA(0);
+           setDM(0);
+           setVM(0);
+           setAGvalue(0)
+           setSVvalue(0)
+           setPDvalue(0);
+           setPAvalue(0);
+           setDMvalue(0);
+           setVMvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // PD VALUE
     const PDcalculator = () => {
+        if(AG && PA && SV && DM && VM !== null){
         const PD = Math.round((((18 * VM * SV) / (AG * PA * PA)) + (DM)) * 100) / 100;
         setPDvalue(PD.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function PDcalculatorReset() {
-        setPDvalue(0)
+        if(AG && PA && SV && DM && VM !== 0){
+            setAG(0)
+           setSV(0)
+           setPD(0);
+           setPA(0);
+           setDM(0);
+           setVM(0);
+           setAGvalue(0)
+           setSVvalue(0)
+           setPDvalue(0);
+           setPAvalue(0);
+           setDMvalue(0);
+           setVMvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // VM VALUE
     const VMcalculator = () => {
+        if(AG && PA && PD && DM && SV !== null){
         const VM = Math.round(((AG * PA * PA * (PD - DM)) / (18 * SV)) * 100) / 100;
         setVMvalue(VM.toPrecision(6));
     }
-    function VMcalculatorReset() {
-        setVMvalue(0)
+    else{
+        setShowPopup(true);
     }
-
+    }
+    function VMcalculatorReset() {
+        if(AG && PA && PD && DM && SV !== 0){
+            setAG(0)
+           setSV(0)
+           setPD(0);
+           setPA(0);
+           setDM(0);
+           setVM(0);
+           setAGvalue(0)
+           setSVvalue(0)
+           setPDvalue(0);
+           setPAvalue(0);
+           setDMvalue(0);
+           setVMvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     // handle change
     const handleSelectChange = (event) => {
@@ -102,7 +232,7 @@ function StockLaw() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'> Stock LAW Calculator</h2>
+                    <h2 className='text-center fw-bold'> Stock Law Calculator</h2>
                     <span>To calculate nusselt number enter values in given input box by using this nusselt number calculator.</span>
                     <div className='polygon-calculator-div '>
 
@@ -129,7 +259,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Particle Diameter (d):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PA}
+                                        <Input value={PA}
                                             onChange={(e) => setPA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -137,7 +267,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density of Medium (ρm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={DM}
+                                        <Input value={DM}
                                             onChange={(e) => setDM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -145,7 +275,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Particle Density (ρp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PD}
+                                        <Input value={PD}
                                             onChange={(e) => setPD(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -153,14 +283,14 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity of Medium (µ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={VM}
+                                        <Input value={VM}
                                             onChange={(e) => setVM(e.target.value)} />
                                     </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Fall or Settling Velocity (Vt):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={SV}
+                                        <Input value={SV}
                                             onChange={(e) => setSV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -172,6 +302,7 @@ function StockLaw() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={AGcalculator} />
                                     <ButtonA text="Reset" onClick={AGcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}
@@ -182,7 +313,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Acceleration of Gravity (g):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={AG}
+                                        <Input value={AG}
                                             onChange={(e) => setAG(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -190,7 +321,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density of Medium (ρm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={DM}
+                                        <Input value={DM}
                                             onChange={(e) => setDM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -198,7 +329,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Particle Density (ρp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PD}
+                                        <Input value={PD}
                                             onChange={(e) => setPD(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -206,14 +337,14 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity of Medium (µ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={VM}
+                                        <Input value={VM}
                                             onChange={(e) => setVM(e.target.value)} />
                                     </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Fall or Settling Velocity (Vt):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={SV}
+                                        <Input value={SV}
                                             onChange={(e) => setSV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -225,6 +356,7 @@ function StockLaw() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={PAcalculator} />
                                     <ButtonA text="Reset" onClick={PAcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}
@@ -235,7 +367,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Acceleration of Gravity (g):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={AG}
+                                        <Input value={AG}
                                             onChange={(e) => setAG(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -243,7 +375,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Particle Diameter (d):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PA}
+                                        <Input value={PA}
                                             onChange={(e) => setPA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -251,7 +383,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Particle Density (ρp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PD}
+                                        <Input value={PD}
                                             onChange={(e) => setPD(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -259,14 +391,14 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity of Medium (µ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={VM}
+                                        <Input value={VM}
                                             onChange={(e) => setVM(e.target.value)} />
                                     </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Fall or Settling Velocity (Vt):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={SV}
+                                        <Input value={SV}
                                             onChange={(e) => setSV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -278,6 +410,7 @@ function StockLaw() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={DMcalculator} />
                                     <ButtonA text="Reset" onClick={DMcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}
@@ -288,7 +421,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Acceleration of Gravity (g):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={AG}
+                                        <Input value={AG}
                                             onChange={(e) => setAG(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -296,7 +429,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Particle Diameter (d):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PA}
+                                        <Input value={PA}
                                             onChange={(e) => setPA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -304,7 +437,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density of Medium (ρm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={DM}
+                                        <Input value={DM}
                                             onChange={(e) => setDM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -312,14 +445,14 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity of Medium (µ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={VM}
+                                        <Input value={VM}
                                             onChange={(e) => setVM(e.target.value)} />
                                     </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Fall or Settling Velocity (Vt):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={SV}
+                                        <Input value={SV}
                                             onChange={(e) => setSV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -331,6 +464,7 @@ function StockLaw() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={PDcalculator} />
                                     <ButtonA text="Reset" onClick={PDcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}
@@ -341,7 +475,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Acceleration of Gravity (g):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={AG}
+                                        <Input value={AG}
                                             onChange={(e) => setAG(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -349,7 +483,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Particle Diameter (d):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PA}
+                                        <Input value={PA}
                                             onChange={(e) => setPA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -357,7 +491,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density of Medium (ρm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={DM}
+                                        <Input value={DM}
                                             onChange={(e) => setDM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -365,14 +499,14 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Particle Density (ρp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PD}
+                                        <Input value={PD}
                                             onChange={(e) => setPD(e.target.value)} />
                                     </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Fall or Settling Velocity (Vt):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={SV}
+                                        <Input value={SV}
                                             onChange={(e) => setSV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -384,7 +518,7 @@ function StockLaw() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={VMcalculator} />
                                     <ButtonA text="Reset" onClick={VMcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////// Fall or Settling Velocity (Vt): ///////////////////////// */}
@@ -394,7 +528,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Acceleration of Gravity (g):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={AG}
+                                        <Input value={AG}
                                             onChange={(e) => setAG(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -402,7 +536,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Particle Diameter (d):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PA}
+                                        <Input value={PA}
                                             onChange={(e) => setPA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -410,7 +544,7 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density of Medium (ρm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={DM}
+                                        <Input value={DM}
                                             onChange={(e) => setDM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -418,14 +552,14 @@ function StockLaw() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Particle Density (ρp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={PD}
+                                        <Input value={PD}
                                             onChange={(e) => setPD(e.target.value)} />
                                     </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity of Medium (µ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3' value={VM}
+                                        <Input value={VM}
                                             onChange={(e) => setVM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -437,7 +571,7 @@ function StockLaw() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={SVcalculator} />
                                     <ButtonA text="Reset" onClick={SVcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 

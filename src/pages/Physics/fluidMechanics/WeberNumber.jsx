@@ -4,18 +4,20 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function WeberNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('weber number');
 
-    const [WN, setWN] = useState(23);
-    const [V, setV] = useState(15);
-    const [D, setD] = useState(35);
-    const [CL, setCL] = useState(26);
-    const [ST, setST] = useState(14);
+    const [WN, setWN] = useState(null);
+    const [V, setV] = useState(null);
+    const [D, setD] = useState(null);
+    const [CL, setCL] = useState(null);
+    const [ST, setST] = useState(null);
 
     // main states
     const [WNvalue, setWNvalue] = useState(0)
@@ -26,65 +28,143 @@ function WeberNumber() {
 
     // functionality
     const WNcalculator = () => {
+        if(D && V && CL && ST !== null){
         const WN = Math.round(((D * V * V * CL) / ST) * 100) / 100;
         setWNvalue(WN.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function WNcalculatorReset() {
+        if(D && V && CL && ST !== 0){
         setWNvalue(0);
         setV(0);
         setD(0);
         setCL(0);
         setST(0);
+        setWN(0);
+        setCLvalue(0);
+        setDvalue(0);
+        setSTvalue(0);
+        setVvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // VELOCITY
     const Vcalculator = () => {
+        if(D && WN && CL && ST !== null){
         const V = Math.round((Math.sqrt((WN * ST) / (D * CL))) * 100) / 100;
         setVvalue(V.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
-        setVvalue(0);
-        setWN(0);
-        setD(0);
-        setCL(0);
-        setST(0);
+        if(D && WN && CL && ST !== 0){
+            setWNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setST(0);
+            setWN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setSTvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // DENSITY
     const Dcalculator = () => {
+        if(WN && V && CL && ST !== null){
         const D = Math.round(((WN * ST) / (V * V * CL)) * 100) / 100;
         setDvalue(D.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function DcalculatorReset() {
-        setDvalue(0);
-        setWN(0);
-        setV(0);
-        setCL(0);
-        setST(0);
+        if(WN && V && CL && ST !== 0){
+            setWNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setST(0);
+            setWN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setSTvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // heat capacity
     // DENSITY
     const STcalculator = () => {
+        if(D && V && CL && WN !== null){
         const ST = Math.round(((D * V * V * CL) / WN) * 100) / 100;
         setSTvalue(ST.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function STcalculatorReset() {
-        setSTvalue("");
-        setWN(0);
-        setV(0);
-        setCL(0);
-        setD(0);
+        if(D && V && CL && WN !== 0){
+            setWNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setST(0);
+            setWN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setSTvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // CHARACTER LENGTH
     const CLcalculator = () => {
+        if(D && V && WN && ST !== 0){
         const CL = Math.round(((WN * ST) / (D * V * V)) * 100) / 100;
         setCLvalue(CL.toPrecision(6));
     }
-    function CLcalculatorReset() {
-        setCLvalue("");
-        setWN(0);
-        setV(0);
-        setST(0);
-        setD(0);
+    else{
+        setShowPopup(true);
     }
+    }
+    function CLcalculatorReset() {
+        if(D && V && WN && ST !== 0){
+            setWNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setST(0);
+            setWN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setSTvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -137,31 +217,31 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity (v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density (p):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Surface Tension (σ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={ST}
-                                            onChange={(e) => setST(e.target.value)} />N/m
+                                        <Input value={ST}
+                                            onChange={(e) => setST(e.target.value)} text="N/m"/>
                                     </Col>
                                 </Row>
 
@@ -173,6 +253,7 @@ function WeberNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={WNcalculator} />
                                     <ButtonA text="Reset" onClick={WNcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* /////////////////////////////////// VELOCITY  /////////////////////// */}
@@ -181,7 +262,7 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Weber Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WN}
+                                        <Input value={WN}
                                             onChange={(e) => setWN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -189,23 +270,23 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density (p):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Surface Tension (σ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={ST}
-                                            onChange={(e) => setST(e.target.value)} />N/m
+                                        <Input value={ST}
+                                            onChange={(e) => setST(e.target.value)} text="N/m"/>
                                     </Col>
                                 </Row>
 
@@ -217,6 +298,7 @@ function WeberNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Vcalculator} />
                                     <ButtonA text="Reset" onClick={VcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////  Density   /////////////////// */}
@@ -225,7 +307,7 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Weber Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WN}
+                                        <Input value={WN}
                                             onChange={(e) => setWN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -233,23 +315,23 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Surface Tension (σ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={ST}
-                                            onChange={(e) => setST(e.target.value)} />N/m
+                                        <Input value={ST}
+                                            onChange={(e) => setST(e.target.value)} text="N/m"/>
                                     </Col>
                                 </Row>
 
@@ -261,6 +343,7 @@ function WeberNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Dcalculator} />
                                     <ButtonA text="Reset" onClick={DcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////  heat capacity //////////////// */}
@@ -269,7 +352,7 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Weber Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WN}
+                                        <Input value={WN}
                                             onChange={(e) => setWN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -277,23 +360,23 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>
 
@@ -305,6 +388,7 @@ function WeberNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={STcalculator} />
                                     <ButtonA text="Reset" onClick={STcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////  CHARACTER LENGTH //////////////// */}
@@ -313,7 +397,7 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Weber Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WN}
+                                        <Input value={WN}
                                             onChange={(e) => setWN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -321,24 +405,24 @@ function WeberNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s" />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Surface Tension (σ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={ST}
-                                            onChange={(e) => setST(e.target.value)} />W/m-K
+                                        <Input value={ST}
+                                            onChange={(e) => setST(e.target.value)} text="W/m-K"/>
                                     </Col>
                                 </Row>
 
@@ -350,6 +434,7 @@ function WeberNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={CLcalculator} />
                                     <ButtonA text="Reset" onClick={CLcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

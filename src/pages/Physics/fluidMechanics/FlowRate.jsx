@@ -4,52 +4,101 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function FlowRate() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Flow Rate');
 
     // main
-    const [V, setV] = useState(23);
-    const [A, setA] = useState(15);
-    const [R, setR] = useState(25);
-
+    const [V, setV] = useState(null);
+    const [A, setA] = useState(null);
+    const [R, setR] = useState(null);
     // main states
     const [FV, setFV] = useState(0)
     const [FA, setFA] = useState(0)
     const [FR, setFR] = useState(0)
     // flowrate
     const flowRate = () => {
+        if(A && V !== null){
         const flowrate = Math.round(A * V)
         setFR(flowrate.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+           }
     }
     function flowRateReset() {
-        setFR("")
+        if(A && V !== 0){
+         setA(0);
+       setFV(0);
+       setFA(0);
+       setR(0);
+       setV(0);
+       setFR(0);   
+        }
+       else{
+        setShowPopup(true);
+       }
     }
 
     // flowrate
     const flowArea = () => {
+        if(R && V !== null){
         const flowarea = Math.round(R / V)
         setFA(flowarea.toPrecision(6));
     }
+    else{
+     setShowPopup(true);
+    }
+    }
     function flowAreaReset() {
-        setFA("")
+        if(R && V !== 0){
+            setA(0);
+          setFV(0);
+          setFA(0);
+          setR(0);
+          setV(0);
+          setFR(0);   
+           }
+          else{
+           setShowPopup(true);
+          }
     }
     
     // flowrate
     const flowVelocity = () => {
+        if(A && R !== null){
         const flowvelocity = Math.round(R / A)
         setFV(flowvelocity.toPrecision(6));
     }
+    else{
+     setShowPopup(true);
+    }
+    }
     function flowVelocityReset() {
-        setFV("")
+        if(A && R !== 0){
+            setA(0);
+          setFV(0);
+          setFA(0);
+          setR(0);
+          setV(0);
+          setFR(0);   
+           }
+          else{
+           setShowPopup(true);
+          }
     }
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
@@ -117,6 +166,7 @@ function FlowRate() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={flowRate} />
                                     <ButtonA text="Reset" onClick={flowRateReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}
@@ -128,7 +178,7 @@ function FlowRate() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Flow Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={V}
+                                            <Input value={V}
                                                 onChange={(e) => setV(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -137,7 +187,7 @@ function FlowRate() {
                                         <label>Flow Rate (R):  </label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                            <input type="number" className='ms-3 me-2' value={R}
+                                            <Input value={R}
                                                 onChange={(e) => setR(e.target.value)} />
                                       </Col>
                                 </Row>
@@ -150,6 +200,7 @@ function FlowRate() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={flowArea} />
                                     <ButtonA text="Reset" onClick={flowAreaReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
 
                                 </div>
                             </>}
@@ -160,7 +211,7 @@ function FlowRate() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Flow Area (A): </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={A}
+                                            <Input value={A}
                                                 onChange={(e) => setA(e.target.value)} />
                                        </Col>
                                 </Row>
@@ -168,7 +219,7 @@ function FlowRate() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Flow Rate(R):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={R}
+                                            <Input value={R}
                                                 onChange={(e) => setR(e.target.value)} />
                                         </Col>
                                 </Row>
@@ -181,7 +232,7 @@ function FlowRate() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={flowVelocity} />
                                     <ButtonA text="Reset" onClick={flowVelocityReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

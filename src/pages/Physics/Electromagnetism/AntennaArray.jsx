@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function AntennaArray() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
@@ -83,35 +83,35 @@ function AntennaArray() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>  Polar Angle:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={PA}
+                                        <Input value={PA}
                                             onChange={(event) => setPA(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Wave Length:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={WL}
+                                        <Input value={WL}
                                             onChange={(event) => setWL(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Difference Phase of two Elements:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={PTWOE}
+                                        <Input value={PTWOE}
                                             onChange={(event) => setPTWOE(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>  Distance between each two Elements:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={DTWOE} 
+                                        <Input value={DTWOE} 
                                             onChange={(event) => setDTWOE(parseFloat(event.target.value) )} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Number of Elements in Array:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={NE}
+                                        <Input value={NE}
                                             onChange={(event) => setNE(parseFloat(event.target.value))} /> </Col>
                                 </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

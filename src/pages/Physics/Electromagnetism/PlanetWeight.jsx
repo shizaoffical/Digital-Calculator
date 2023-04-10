@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Example from '../../../components/Example';
-
+import Input from '../../../components/Input';
 
 function PlanetWeight() {
     const divRef = useRef(null);
@@ -86,7 +86,7 @@ function PlanetWeight() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Magnetic Current:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={Weigth}
+                                    <Input value={Weigth}
                                         onChange={(event) => setWeight(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

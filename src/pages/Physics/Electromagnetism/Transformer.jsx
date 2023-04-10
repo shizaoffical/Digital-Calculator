@@ -7,7 +7,7 @@ import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Example from '../../../components/Example';
 import Image from "../../../images/Transformer.jpg"
-
+import Input from '../../../components/Input';
 function Transformer() {
     const divRef = useRef(null);
     const [textShow, settextShow] = useState(false);
@@ -96,7 +96,7 @@ function Transformer() {
                                     <label htmlFor="amps">Amperes:</label>
                                 </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" id="amps" name="amps" value={amps}
+                                    <Input id="amps" name="amps" value={amps}
                                         onChange={(e) => setAmps(e.target.value)} />
                                 </Col>
                             </Row>
@@ -106,7 +106,7 @@ function Transformer() {
                                 </Col>
 
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" id="volts" name="volts" value={volts}
+                                    <Input id="volts" name="volts" value={volts}
                                         onChange={(e) => setVolts(e.target.value)} />
                                 </Col>
                             </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
@@ -114,7 +114,7 @@ function Transformer() {
                                     <label htmlFor="kva">kVA:</label>
                                 </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" id="kva" name="kva" value={kva}
+                                    <Input id="kva" name="kva" value={kva}
                                         onChange={(e) => setKva(e.target.value)} />
                                 </Col>
                             </Row>

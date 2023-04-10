@@ -7,7 +7,7 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Span from '../../../components/Span';
-
+import Input from '../../../components/Input';
 function ParallelPlateCapacitor() {
 
     const divRef = useRef(null);
@@ -41,6 +41,10 @@ function ParallelPlateCapacitor() {
     const PRreset = () => {
         if (PR !== 0) {
             setPR(0);
+            setSD(0);
+            setCA(0);
+            setAR(0);
+            setpr(0)
             setca(0);
             setsd(0);
             setar(0);
@@ -62,10 +66,14 @@ function ParallelPlateCapacitor() {
     // ECreset
     const ARreset = () => {
         if (AR !== 0) {
+            setPR(0);
+            setSD(0);
+            setCA(0);
+            setAR(0);
+            setpr(0)
             setca(0);
             setsd(0);
-            setpr(0);
-            setAR(0);
+            setar(0);
         }
         else {
             setShowPopup(true);
@@ -84,10 +92,14 @@ function ParallelPlateCapacitor() {
     // ECreset
     const SDreset = () => {
         if (SD !== 0) {
+            setPR(0);
+            setSD(0);
+            setCA(0);
+            setAR(0);
+            setpr(0)
             setca(0);
-            setpr(0);
+            setsd(0);
             setar(0);
-            setSD(0)
         }
         else {
             setShowPopup(true);
@@ -106,10 +118,14 @@ function ParallelPlateCapacitor() {
     // ECreset
     const CAreset = () => {
         if (CA !== 0) {
+            setPR(0);
+            setSD(0);
+            setCA(0);
+            setAR(0);
+            setpr(0)
             setca(0);
+            setsd(0);
             setar(0);
-            setpr(0);
-            setCA(0)
         }
         else {
             setShowPopup(true);
@@ -175,7 +191,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ar}
+                                        <Input value={ar}
                                             onChange={(event) => setar(parseFloat(event.target.value))} />
                                         <Span text="m2" />  </Col>
                                 </Row>
@@ -183,7 +199,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Separation Distance:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={sd}
+                                        <Input value={sd}
                                             onChange={(event) => setsd(parseFloat(event.target.value))} />
                                         <Span text="m" />  </Col>
                                 </Row>
@@ -191,7 +207,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} />
                                         <Span text="F" />  </Col>
                                 </Row>
@@ -213,7 +229,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}  >
-                                        <input type="number" value={pr}
+                                        <Input value={pr}
                                             onChange={(event) => setpr(parseFloat(event.target.value))} />
                                         <Span text="F/m" /> </Col>
                                 </Row>
@@ -221,7 +237,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Separation Distance:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={sd}
+                                        <Input value={sd}
                                             onChange={(event) => setsd(parseFloat(event.target.value))} />
                                         <Span text="m" />  </Col>
                                 </Row>
@@ -229,7 +245,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} />
                                         <Span text="F" /> </Col>
                                 </Row>
@@ -250,7 +266,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={pr}
+                                        <Input value={pr}
                                             onChange={(event) => setpr(parseFloat(event.target.value))} />
                                         <Span text="F/m"/> </Col>
                                 </Row>
@@ -258,7 +274,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ar}
+                                        <Input value={ar}
                                             onChange={(event) => setar(parseFloat(event.target.value))} />
                                         <Span text="m2"/> </Col>
                                 </Row>
@@ -266,7 +282,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ca}
+                                        <Input value={ca}
                                             onChange={(event) => setca(parseFloat(event.target.value))} />
                                        <Span text="F"/> </Col>
                                 </Row>
@@ -287,7 +303,7 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={pr}
+                                        <Input value={pr}
                                             onChange={(event) => setpr(parseFloat(event.target.value))} />
                                         <span className="ps-2 ">F/m</span>  </Col>
                                 </Row>
@@ -295,14 +311,14 @@ function ParallelPlateCapacitor() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Separation Distance:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={sd}
+                                        <Input value={sd}
                                             onChange={(event) => setsd(parseFloat(event.target.value))} />
                                         <Span text="m"/>  </Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ar}
+                                        <Input value={ar}
                                             onChange={(event) => setar(parseFloat(event.target.value))} />
                                         <span className="ps-2 ">m</span> </Col>
                                 </Row>

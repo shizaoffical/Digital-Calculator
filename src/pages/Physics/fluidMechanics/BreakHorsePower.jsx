@@ -4,17 +4,19 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function BreakHorsePower() {
   const divRef = useRef(null);
   const [show, setShow] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [textShow, settextShow] = useState(false);
   const [selectCondition, setSelectCondition] = useState('Flow Rate or Discharge');
   // main states
-  const [FRD ,setFRD] = useState(19);
-  const [WH, setWH] = useState(0.65);
-  const [TH, setTH] = useState(73);
-  const [PE, setPE] = useState(23);
+  const [FRD ,setFRD] = useState(null);
+  const [WH, setWH] = useState(null);
+  const [TH, setTH] = useState(null);
+  const [PE, setPE] = useState(null);
   // work states
   const [frdvalue, setfrdvalue] = useState(0)
   const [whvalue, setwhvalue] = useState(0)
@@ -22,53 +24,112 @@ function BreakHorsePower() {
   const [pevalue, setpevalue] = useState(0)
   // frdvalue functionalty
   const frdcalculator = () => {
-    const Frdvalue = Math.round(((3960 * WH * PE) / (TH * 100)) * 100) / 100
+    if(WH && PE && TH !== null){
+      const Frdvalue = Math.round(((3960 * WH * PE) / (TH * 100)) * 100) / 100
     setfrdvalue(Frdvalue.toPrecision(6));
+    }
+    else{
+      setShowPopup(true);
+    }
   }
   function frdcalculatorReset() {
-    setTH(0);
-    setPE(0);
-    setWH(0)
-    setfrdvalue(0                                                              )
+    if(WH && PE && TH !== 0 ){
+      setTH(0);
+      setPE(0);
+      setWH(0);
+      setFRD(0)
+      setwhvalue(0)
+      setfrdvalue(0)
+      setthvalue(0) 
+      setpevalue(0) 
+    }
+    else{
+      setShowPopup(true);
+    }
   }
   // whvalue
   const whcalculator = () => {
-    const whvalue = Math.round(((100 * FRD * TH) / ( 3960* PE)) * 100) / 100
+    if(FRD && PE && TH !== null){
+       const whvalue = Math.round(((100 * FRD * TH) / ( 3960* PE)) * 100) / 100
     setwhvalue(whvalue.toPrecision(6));
+    }
+    else{
+      setShowPopup(true);
+    }
   }
    function whcalculatorReset() {
-    setTH(0);
-    setPE(0);
-    setFRD(0)
-    setwhvalue(0)
+    if(FRD && PE && TH !== 0 ){
+      setTH(0);
+      setPE(0);
+      setWH(0);
+      setFRD(0)
+      setwhvalue(0)
+      setfrdvalue(0)
+      setthvalue(0) 
+      setpevalue(0) 
+    }
+    else{
+      setShowPopup(true);
+    }
   }
   // thvalue
   const thcalculator = () => {
+    if(FRD && PE && FRD !== null ){
     const thvalue = Math.round(((3960 * WH * PE) / ( FRD*  100)) * 100) / 100
     setthvalue(thvalue.toPrecision(6));
   }
+  else{
+    setShowPopup(true);
+  }
+  }
    function thcalculatorReset() {
-    setWH(0);
-    setPE(0);
-    setFRD(0)
-    setthvalue(0)
+    if(FRD && PE && FRD !== 0 ){
+      setTH(0);
+      setPE(0);
+      setWH(0);
+      setFRD(0)
+      setwhvalue(0)
+      setfrdvalue(0)
+      setthvalue(0) 
+      setpevalue(0) 
+    }
+    else{
+      setShowPopup(true);
+    }
   }
   //pecalculator
    const pecalculator = () => {
+    if(FRD && FRD && FRD !== null ){
     const pevalue = Math.round(((100 * FRD * TH) / (3960*  WH)) * 100) / 100 
     setpevalue(pevalue.toPrecision(6));
+  }
+  else{
+    setShowPopup(true);
+  }
   }  
   function pecalculatorReset() {
-    setWH(0);
-    setTH(0);
-    setFRD(0)
-    setpevalue(0)
+    if(FRD && FRD && FRD !== 0 ){
+      setTH(0);
+      setPE(0);
+      setWH(0);
+      setFRD(0)
+      setwhvalue(0)
+      setfrdvalue(0)
+      setthvalue(0) 
+      setpevalue(0) 
+    }
+    else{
+      setShowPopup(true);
+    }
   }
   
   // handle change
   const handleSelectChange = (event) => {
     setSelectCondition(event.target.value);
   }
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+};
 
   const componentsRef = useRef();
   const handlePrint = useReactToPrint({
@@ -121,7 +182,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Total Head (th):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={TH}
+                      <Input value={TH}
                         onChange={(e) => setTH(e.target.value)} />
                     </Col>
                 </Row>
@@ -129,7 +190,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Pump Efficiency (pe): </label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={PE}
+                      <Input value={PE}
                         onChange={(e) => setPE(e.target.value)} />
                    </Col>
                 </Row>
@@ -137,7 +198,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Water Horsepower (wh):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={WH}
+                      <Input value={WH}
                         onChange={(e) => setWH(e.target.value)} />
                     </Col>
                 </Row>
@@ -150,7 +211,7 @@ function BreakHorsePower() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={frdcalculator} />
                   <ButtonA text="Reset" onClick={frdcalculatorReset} />
-              
+                  {showPopup &&<Popup onClick={togglePopup} /> }
                 </div>
               </>}
 
@@ -163,7 +224,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Total Head (th):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={TH}
+                      <Input value={TH}
                         onChange={(e) => setTH(e.target.value)} />
                     </Col>
                 </Row>
@@ -171,7 +232,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Pump Efficiency (pe): </label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={PE}
+                      <Input value={PE}
                         onChange={(e) => setPE(e.target.value)} />
                    </Col>
                 </Row>
@@ -179,7 +240,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Flow Rate or Discharge (frd):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={FRD}
+                      <Input value={FRD}
                         onChange={(e) => setFRD(e.target.value)} />
                     </Col>
                 </Row>
@@ -191,7 +252,7 @@ function BreakHorsePower() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={whcalculator} />
                   <ButtonA text="Reset"  onClick={whcalculatorReset} />
-              
+                  {showPopup &&<Popup onClick={togglePopup} /> }
                 </div>
               </>}
                {/* ////////////////////////////////////Total Head  /////////////////////////////// */}
@@ -202,7 +263,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label> Water Horsepower:</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={WH}
+                      <Input value={WH}
                         onChange={(e) => setWH(e.target.value)} />
                     </Col>
                 </Row>
@@ -210,7 +271,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Pump Efficiency (pe):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={PE}
+                      <Input value={PE}
                         onChange={(e) => setPE(e.target.value)} />
                     </Col>
                 </Row>
@@ -218,7 +279,7 @@ function BreakHorsePower() {
                   <Col md={6} sm={12} xs={12} >
                     <label>Flow Rate or Discharge (frd):</label></Col>
                   <Col md={6} sm={12} xs={12} >
-                      <input type="number" className='ms-3' value={FRD}
+                      <Input value={FRD}
                         onChange={(e) => setFRD(e.target.value)} />
                     </Col>
                 </Row>
@@ -231,7 +292,7 @@ function BreakHorsePower() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={thcalculator} />
                   <ButtonA text="Reset" onClick={thcalculatorReset} />
-              
+                  {showPopup &&<Popup onClick={togglePopup} /> }
                 </div>
               </>}
 
@@ -272,7 +333,7 @@ function BreakHorsePower() {
                 <div className='text-center'>
                   <ButtonA text="Calculate" onClick={pecalculator} />
                   <ButtonA text="Reset" onClick={pecalculatorReset} />
-              
+                  {showPopup &&<Popup onClick={togglePopup} /> }
                 </div>
               </>}
 

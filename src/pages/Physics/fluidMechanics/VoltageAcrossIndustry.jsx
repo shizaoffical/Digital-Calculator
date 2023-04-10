@@ -4,24 +4,41 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function VoltageAcrossIndustry() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-
-   const [IND,setIND]= useState(23);
-   const [CC, setCC] = useState(54);
-   const [TM, setTM] = useState(76);
+    const [showPopup, setShowPopup] = useState(false);
+   const [IND,setIND]= useState(null);
+   const [CC, setCC] = useState(null);
+   const [TM, setTM] = useState(null);
    const [VAI, setVAI] = useState(0);
     const calculate = () => {
+    if(CC && TM && IND !== null){
         const VAI = CC * TM / IND;
         setVAI(VAI.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
 
  function Reset() {
+    if(CC && TM && IND !== 0){
+    setCC(0);
+    setIND(0);
+    setTM(0);
     setVAI(0)
+}
+else{
+    setShowPopup(true);
+}
  }
+ const togglePopup = () => {
+    setShowPopup(!showPopup);
+};
     const componentsRef = useRef();
         const handlePrint = useReactToPrint({
             content: () => componentsRef.current,
@@ -53,19 +70,19 @@ function VoltageAcrossIndustry() {
                         <Row style={{ alignItems: "center", textAlign: "center" }}>
                             <Col md={6} sm={12} xs={12} ><label>  Inductance:</label></Col>
                             <Col md={6} sm={12} xs={12}>
-                                <input type="number" className='ms-3' value={IND}
+                                <Input value={IND}
                                     onChange={(e) => setIND(e.target.value)} /> </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                             <Col md={6} sm={12} xs={12} ><label>Rate of change of current:</label></Col>
                             <Col md={6} sm={12} xs={12}>
-                                <input type="number" className='ms-3' value={CC}
+                                <Input value={CC}
                                     onChange={(e) => setCC(e.target.value)} /> </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                             <Col md={6} sm={12} xs={12} > <label>  Time: </label></Col>
                             <Col md={6} sm={12} xs={12}>
-                                <input type="number" className='ms-3' value={TM}
+                                <Input value={TM}
                                     onChange={(e) => setTM(e.target.value)} /> </Col>
                         </Row>
                         
@@ -78,6 +95,7 @@ function VoltageAcrossIndustry() {
                     <div className='text-center'>
                         <ButtonA onClick={calculate} text="Calculate" />
                         <ButtonA onClick={Reset} text="Reset" />
+                        {showPopup &&<Popup onClick={togglePopup} /> }
                     </div>
                     <center>
                         <button type='button'

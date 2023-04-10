@@ -4,16 +4,18 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function MeanDepth() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Mean Depth');
 
-    const [HM, setHM] = useState(23);
-    const [A, setA] = useState(15);
-    const [T, setT] = useState(25);
+    const [HM, setHM] = useState(null);
+    const [A, setA] = useState(null);
+    const [T, setT] = useState(null);
 
     // main states
     const [HMvalue, setHMvalue] = useState(0)
@@ -21,32 +23,74 @@ function MeanDepth() {
     const [Tvalue, setTvalue] = useState(0)
     // functionality
     const HMcalculator = () => {
+        if(T && A !== null){
         const HM = A / T;
         setHMvalue(HM.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function HMcalculatorReset() {
+        if(T && A !== 0){
         setHMvalue(0);
         setA(0);
         setT(0);
+        setHM(0);
+        setAvalue(0);
+        setTvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     const Acalculator = () => {
+        if(T && HM !== null){
         const a = HM * T;
         setAvalue(a.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function AcalculatorReset() {
-        setAvalue(0);
-        setT(0);
-        setHM(0);
+        if(T && HM !== 0){
+            setHMvalue(0);
+            setA(0);
+            setT(0);
+            setHM(0);
+            setAvalue(0);
+            setTvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     const Tcalculator = () => {
+        if(HM && A !== null){
         const dc = A / HM;
         setTvalue(dc.toPrecision(6));
     }
-    function TcalculatorReset() {
-        setTvalue(0);
-        setHM(0);
-        setA(0);
+    else{
+        setShowPopup(true);
     }
+    }
+    function TcalculatorReset() {
+        if(HM && A !== 0){
+            setHMvalue(0);
+            setA(0);
+            setT(0);
+            setHM(0);
+            setAvalue(0);
+            setTvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -99,16 +143,16 @@ function MeanDepth() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area of Section Flow (A):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
-                                            onChange={(e) => setA(e.target.value)} />m/s2
+                                        <Input value={A}
+                                            onChange={(e) => setA(e.target.value)} text="m/s2"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Top Water Surface Width (T):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={T}
-                                            onChange={(e) => setT(e.target.value)} />m/s2
+                                        <Input value={T}
+                                            onChange={(e) => setT(e.target.value)} text="m/s2"/>
                                     </Col>
                                 </Row>
 
@@ -120,6 +164,7 @@ function MeanDepth() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={HMcalculator} />
                                     <ButtonA text="Reset" onClick={HMcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 
@@ -130,27 +175,28 @@ function MeanDepth() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Top Water Surface Width (T):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={T}
-                                            onChange={(e) => setT(e.target.value)} />m
+                                        <Input value={T}
+                                            onChange={(e) => setT(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mean Depth (hm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number me-2" className='ms-3 me-2' value={HM}
-                                            onChange={(e) => setHM(e.target.value)} /> m
+                                        <Input value={HM}
+                                            onChange={(e) => setHM(e.target.value)} text="m"/> 
                                     </Col>
                                 </Row>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area of Section Flow</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{Avalue.toString().substring(0, 6)}m2</button></Col>
+                                        <button className='formula-value-btn'>{Avalue.toString().substring(0, 6)} m2</button></Col>
                                 </Row>
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Acalculator} />
                                     <ButtonA text="Reset" onClick={AcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////////  FLOW Velocity /////////////////////////////// */}
@@ -160,16 +206,16 @@ function MeanDepth() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Area of Section Flow (A): </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
-                                            onChange={(e) => setA(e.target.value)} />m2
+                                        <Input value={A}
+                                            onChange={(e) => setA(e.target.value)} text="m2"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mean Depth (hm):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HM}
-                                            onChange={(e) => setHM(e.target.value)} />m
+                                        <Input value={HM}
+                                            onChange={(e) => setHM(e.target.value)}text="m2" />
                                     </Col>
                                 </Row>
 
@@ -181,6 +227,7 @@ function MeanDepth() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Tcalculator} />
                                     <ButtonA text="Reset" onClick={TcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

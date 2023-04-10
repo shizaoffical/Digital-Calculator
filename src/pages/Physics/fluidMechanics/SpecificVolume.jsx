@@ -6,34 +6,65 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function SpecificVolume() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Specific Volume(v)');
     // main
-    const [V, setV] = useState(23);
-    const [D, setD] = useState(15);
+    const [V, setV] = useState(null);
+    const [D, setD] = useState(null);
 
     const [Dvalue, setDvalue] = useState(0);
     const [Vvalue, setVvalue] = useState(0);
     // VcalculatorReset
     const Vcalculator=() => {
+        if(D !== null){
         const V = 1 / D;
         setVvalue(V.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
+        if(D !== 0){
+        setV(0)
+        setD(0);
+        setDvalue(0)
         setVvalue(0)
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // DcalculatorReset
     const Dcalculator=() => {
+        if(V !== null){
         const D= 1 / V;
         setDvalue(D.toPrecision(6));
     }
-    function DcalculatorReset() {
-        setDvalue(0)
+    else{
+        setShowPopup(true);
     }
+    }
+    function DcalculatorReset() {
+        if(V !== 0){
+            setV(0)
+            setD(0);
+            setDvalue(0)
+            setVvalue(0)
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -81,7 +112,7 @@ function SpecificVolume() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density(ρ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
+                                        <Input value={D}
                                             onChange={(e) => setD(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -93,7 +124,7 @@ function SpecificVolume() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Vcalculator} />
                                     <ButtonA text="Reset" onClick={VcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 
@@ -104,7 +135,7 @@ function SpecificVolume() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Specific Volume(v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
+                                        <Input value={V}
                                             onChange={(e) => setV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -116,7 +147,7 @@ function SpecificVolume() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Dcalculator} />
                                     <ButtonA text="Reset" onClick={DcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

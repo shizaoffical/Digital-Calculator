@@ -6,6 +6,7 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 
 function AntennaGain() {
     const divRef = useRef(null);
@@ -74,21 +75,21 @@ function AntennaGain() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Effiency:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={EF}
+                                    <Input value={EF}
                                         onChange={(event) => setEF(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Wave Length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={WL}
+                                    <Input value={WL}
                                         onChange={(event) => setWL(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Physical Aperature Angle:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={AA}
+                                    <Input value={AA}
                                         onChange={(event) => setAA(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

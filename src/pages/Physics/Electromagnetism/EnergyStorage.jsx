@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function EnergyStorage() {
 
     const divRef = useRef(null);
@@ -37,6 +37,9 @@ function EnergyStorage() {
         if (PD !== 0) {
             setU(0);
             setQ(0);
+            setV(0)
+            setES(0)
+            setEC(0)
             setPD(0)
         }
         else {
@@ -56,9 +59,12 @@ function EnergyStorage() {
     // ECreset
     const ECeset = () => {
         if (EC !== 0) {
-            setV(0);
             setU(0);
-            setEC(0);
+            setQ(0);
+            setV(0)
+            setES(0)
+            setEC(0)
+            setPD(0)
         }
         else {
             setShowPopup(true);
@@ -77,9 +83,12 @@ function EnergyStorage() {
     // ECreset
     const ESreset = () => {
         if (ES !== 0) {
-            setV(0);
+            setU(0);
             setQ(0);
-            setES(0);
+            setV(0)
+            setES(0)
+            setEC(0)
+            setPD(0)
         }
         else {
             setShowPopup(true);
@@ -141,7 +150,7 @@ function EnergyStorage() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Energy Storage (U:) </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={U}
+                                            <Input value={U}
                                                 onChange={(event) => setU(parseFloat(event.target.value))} /> 
                                                 <span className="ps-2 ">j</span> </Col>
                                     </Row>
@@ -149,7 +158,7 @@ function EnergyStorage() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Electrical Charge (Q):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={Q}
+                                            <Input value={Q}
                                                 onChange={(event) => setQ(parseFloat(event.target.value))} /> 
                                                 <span className="ps-2 ">c</span></Col>
                                     </Row>
@@ -172,7 +181,7 @@ function EnergyStorage() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Potential Difference (V):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={V}
+                                        <Input value={V}
                                             onChange={(event) => setV(parseFloat(event.target.value))} />
                                               <span className="ps-2 ">f</span> </Col>
                                 </Row>
@@ -180,7 +189,7 @@ function EnergyStorage() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Energy Storage (U:)</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={U}
+                                        <Input value={U}
                                             onChange={(event) => setU(parseFloat(event.target.value))} /> 
                                               <span className="ps-2 ">j</span></Col>
                                 </Row>
@@ -201,7 +210,7 @@ function EnergyStorage() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Potential Difference (V):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={V}
+                                        <Input value={V}
                                             onChange={(event) => setV(parseFloat(event.target.value))} /> 
                                               <span className="ps-2 ">f</span></Col>
                                 </Row>
@@ -209,7 +218,7 @@ function EnergyStorage() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Electrical Charge (Q):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={Q}
+                                        <Input value={Q}
                                             onChange={(event) => setQ(parseFloat(event.target.value))} /> 
                                              <span className="ps-2 ">j</span></Col>
                                 </Row>

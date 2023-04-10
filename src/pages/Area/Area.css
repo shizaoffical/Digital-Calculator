@@ -13,16 +13,6 @@
     flex-direction: column;
     justify-content: center;
 }
-.polygon-calculator-btn{
-    border: none;
-    margin-top: 10px;
-    padding:5px 17px ;
-    margin-left: 10px;
-    background-color: var(--dark-primary-color);
-    color: white;
-   /* width: 7rem; */
-    border-radius: 4px;
-}
 .formula-value-btn{
     border: none;
     background-color:var(--main-color);

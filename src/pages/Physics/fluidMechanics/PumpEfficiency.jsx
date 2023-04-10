@@ -4,17 +4,19 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 
 function PumpEfficiency() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('pump efficency');
 
-    const [PE, setPE] = useState(23);
-    const [WH, setWH] = useState(15);
-    const [BH, setBH] = useState(25);
+    const [PE, setPE] = useState(null);
+    const [WH, setWH] = useState(null);
+    const [BH, setBH] = useState(null);
 
     // main states
     const [PEvalue, setPEvalue] = useState(0)
@@ -22,32 +24,74 @@ function PumpEfficiency() {
     const [BHvalue, setBHvalue] = useState(0)
     // functionality
     const PEcalculator = () => {
+        if( WH && BH !== null){
         const PE = WH / BH;
         setPEvalue(PE.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function PEcalculatorReset() {
+        if( WH && BH !== 0){
         setPEvalue(0);
         setWH(0);
         setBH(0);
+        setPE(0);
+        setBHvalue(0);
+        setWHvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     const WHcalculator = () => {
+        if( PE && BH !== null){
         const WH = PE * BH;
         setWHvalue(WH.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function WHcalculatorReset() {
-        setWHvalue(0);
-        setBH(0);
-        setPE(0);
+        if( PE && BH !== 0){
+            setPEvalue(0);
+            setWH(0);
+            setBH(0);
+            setPE(0);
+            setBHvalue(0);
+            setWHvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     const BHcalculator = () => {
+        if( WH && PE !== null){
         const BH = WH / PE;
         setBHvalue(BH.toPrecision(6));
     }
-    function BHcalculatorReset() {
-        setBHvalue(0);
-        setWH(0);
-        setPE(0);
+    else{
+        setShowPopup(true);
     }
+    }
+    function BHcalculatorReset() {
+        if( WH && PE !== 0){
+            setPEvalue(0);
+            setWH(0);
+            setBH(0);
+            setPE(0);
+            setBHvalue(0);
+            setWHvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -98,7 +142,7 @@ function PumpEfficiency() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>water Horsepower (BHP):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WH}
+                                        <Input value={WH}
                                             onChange={(e) => setWH(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -106,8 +150,8 @@ function PumpEfficiency() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Brake Horsepower (BHP):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={BH}
-                                            onChange={(e) => setBH(e.target.value)} />HP
+                                        <Input value={BH}
+                                            onChange={(e) => setBH(e.target.value)} text="HP"/>
                                     </Col>
                                 </Row>
 
@@ -119,6 +163,7 @@ function PumpEfficiency() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={PEcalculator} />
                                     <ButtonA text="Reset" onClick={PEcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 
@@ -128,7 +173,7 @@ function PumpEfficiency() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Pump Efficiency : </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PE}
+                                        <Input value={PE}
                                         onChange={(e) => setPE(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -136,7 +181,7 @@ function PumpEfficiency() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Brake Horoscope </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number me-2" className='ms-3 me-2' value={BH}
+                                        <inputInput value={BH}
                                             onChange={(e) => setBH(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -149,6 +194,7 @@ function PumpEfficiency() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={WHcalculator} />
                                     <ButtonA text="Reset" onClick={WHcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////////  FLOW Velocity /////////////////////////////// */}
@@ -157,7 +203,7 @@ function PumpEfficiency() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Pump Effficiency : </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PE}
+                                        <Input value={PE}
                                             onChange={(e) => setPE(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -165,7 +211,7 @@ function PumpEfficiency() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Water Horoscope : </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={WH}
+                                        <Input value={WH}
                                             onChange={(e) => setWH(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -178,6 +224,7 @@ function PumpEfficiency() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={BHcalculator} />
                                     <ButtonA text="Reset" onClick={BHcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

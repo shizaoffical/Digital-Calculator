@@ -6,17 +6,20 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 
 function NussletNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Nusselt Number');
     // main states
-    const [NU, setNU] = useState(19);
-    const [H, setH] = useState(0.65);
-    const [L, setL] = useState(73);
-    const [K, setK] = useState(23);
+    const [NU, setNU] = useState(null);
+    const [H, setH] = useState(null);
+    const [L, setL] = useState(null);
+    const [K, setK] = useState(null);
     // work states
     const [NUvalue, setNUvalue] = useState(0)
     const [Hvalue, setHvalue] = useState(0)
@@ -24,49 +27,108 @@ function NussletNumber() {
     const [Kvalue, setKvalue] = useState(0)
     // NU VALUE
     const NUcalculator = () => {
+        if (H && K && L !== null) {
         const nu = (H * L) / K;
         setNUvalue(nu.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function NUcalculatorReset() {
-        setH(0);
-        setL(0);
-        setK(0)
-        setNUvalue(0)
+        if (H && K && L !== 0) {
+            setNU(0);
+            setH(0);
+            setL(0);
+            setK(0)
+            setHvalue(0);
+            setLvalue(0);
+            setKvalue(0);
+            setNUvalue(0)
+        }
+        else {
+            setShowPopup(true);
+        }
     }
     // hvalue
     const Hcalculator = () => {
+        if (NU && K && L !== null) {
         const H = (NU * K) / L;
         setHvalue(H.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function HcalculatorReset() {
-        setK(0);
-        setL(0);
-        setNU(0)
-        setHvalue(0)
+        if (NU && K && L !== 0) {
+            setNU(0);
+            setH(0);
+            setL(0);
+            setK(0)
+            setHvalue(0);
+            setLvalue(0);
+            setKvalue(0);
+            setNUvalue(0)
+        }
+        else {
+            setShowPopup(true);
+        }
     }
     // Lvalue
     const Lcalculator = () => {
+        if (H && K && NU !== null) {
         const L = (NU * K) / H
         setLvalue(L.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function LcalculatorReset() {
-        setH(0);
-        setK(0);
-        setNU(0)
-        setLvalue(0)
+        if (H && K && NU !== 0) {
+            setNU(0);
+            setH(0);
+            setL(0);
+            setK(0)
+            setHvalue(0);
+            setLvalue(0);
+            setKvalue(0);
+            setNUvalue(0)
+        }
+        else {
+            setShowPopup(true);
+        }
     }
     //pecalculator
     const Kcalculator = () => {
+        if (H && NU && L !== null) {
         const K = (H * L) / NU;
         setKvalue(K.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function KcalculatorReset() {
-        setL(0);
-        setH(0);
-        setNU(0)
-        setKvalue(0)
+        if (H && NU && L !== 0) {
+            setNU(0);
+            setH(0);
+            setL(0);
+            setK(0)
+            setHvalue(0);
+            setLvalue(0);
+            setKvalue(0);
+            setNUvalue(0)
+        }
+        else {
+            setShowPopup(true);
+        }
     }
 
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -80,11 +142,11 @@ function NussletNumber() {
     })
     useEffect(() => {
         if (textShow) {
-          divRef.current.scrollIntoView({ behavior: "smooth" });
+            divRef.current.scrollIntoView({ behavior: "smooth" });
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
-      }, [textShow])
+    }, [textShow])
 
     return (
         <div>
@@ -123,7 +185,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Convection Heat Transfer Coefficient (h):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={H}
+                                            <Input value={H}
                                                 onChange={(e) => setH(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -131,7 +193,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Characteristic Length (L): </label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={L}
+                                            <Input value={L}
                                                 onChange={(e) => setL(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -139,7 +201,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Thermal Conductivity of the Fluid (k):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={K}
+                                            <Input value={K}
                                                 onChange={(e) => setK(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -152,7 +214,7 @@ function NussletNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={NUcalculator} />
                                         <ButtonA text="Reset" onClick={NUcalculatorReset} />
-
+                                        {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
                                 </>}
 
@@ -165,7 +227,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Characteristic Length (L):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={L}
+                                            <Input value={L}
                                                 onChange={(e) => setL(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -173,7 +235,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Thermal Conductivity of the Fluid (k):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={K}
+                                            <Input value={K}
                                                 onChange={(e) => setK(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -181,7 +243,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Nusselt Number (Nu):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={NU}
+                                            <Input value={NU}
                                                 onChange={(e) => setNU(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -194,7 +256,7 @@ function NussletNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={Hcalculator} />
                                         <ButtonA text="Reset" onClick={HcalculatorReset} />
-
+                                        {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
                                 </>}
                             {/* //////////////////////////////////// Characteristic Length  /////////////////////////////// */}
@@ -205,7 +267,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Convection Heat Transfer Coefficient (h):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={H}
+                                            <Input value={H}
                                                 onChange={(e) => setH(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -213,7 +275,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Thermal Conductivity of the Fluid (k):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={K}
+                                            <Input value={K}
                                                 onChange={(e) => setK(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -221,7 +283,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Nusselt Number (Nu):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={NU}
+                                            <Input value={NU}
                                                 onChange={(e) => setNU(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -233,7 +295,7 @@ function NussletNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={Lcalculator} />
                                         <ButtonA text="Reset" onClick={LcalculatorReset} />
-
+                                        {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
                                 </>}
 
@@ -245,7 +307,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Convection Heat Transfer Coefficient (h):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={K}
+                                            <Input value={K}
                                                 onChange={(e) => setK(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -253,7 +315,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Characteristic Length (L):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={L}
+                                            <Input value={L}
                                                 onChange={(e) => setL(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -261,7 +323,7 @@ function NussletNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Nusselt Number (Nu):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3' value={NU}
+                                            <Input value={NU}
                                                 onChange={(e) => setNU(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -274,7 +336,7 @@ function NussletNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={Kcalculator} />
                                         <ButtonA text="Reset" onClick={KcalculatorReset} />
-
+                                        {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
                                 </>}
 
@@ -287,43 +349,43 @@ function NussletNumber() {
                         <div>
                             {textShow && <>
                                 {selectCondition === "Nusselt Number" &&
-                                <div ref={divRef}>
-                                    <Example heading="Nusselt Number"
-                                        title="step by step solution"
-                                        step1="Data : " step1heading="h = 70 , L = 32 , k = 5.65 , Nu = ?"
-                                        step2="Formula" step2heading="nu = h * l / k"
-                                        step3="Putting Vales" step3heading=" 70 * 32 / 5.65"
-                                        step4="396.46" 
+                                    <div ref={divRef}>
+                                        <Example heading="Nusselt Number"
+                                            title="step by step solution"
+                                            step1="Data : " step1heading="h = 70 , L = 32 , k = 5.65 , Nu = ?"
+                                            step2="Formula" step2heading="nu = h * l / k"
+                                            step3="Putting Vales" step3heading=" 70 * 32 / 5.65"
+                                            step4="396.46"
                                         /></div>
                                 }
                                 {selectCondition === "Convection Heat Transfer Coefficient" &&
-                                <div ref={divRef}>
-                                    <Example heading="Convection Heat Transfer Coefficient"
-                                        title="step by step solution"
-                                        step1="Data : " step1heading="h = ? , L = 32 , k = 5.65 , Nu = 396.4600"
-                                        step2="Formula" step2heading="h = Nu * k * L"
-                                        step3="Putting Value" step3heading="396.4600 * 5.65 * 32"
-                                        step4="71679.968" 
+                                    <div ref={divRef}>
+                                        <Example heading="Convection Heat Transfer Coefficient"
+                                            title="step by step solution"
+                                            step1="Data : " step1heading="h = ? , L = 32 , k = 5.65 , Nu = 396.4600"
+                                            step2="Formula" step2heading="h = Nu * k * L"
+                                            step3="Putting Value" step3heading="396.4600 * 5.65 * 32"
+                                            step4="71679.968"
                                         /></div>
                                 }
                                 {selectCondition === "Characteristic Length" &&
-                                <div ref={divRef}>
-                                    <Example heading="Characteristic Length"
-                                        title="step by step solution"
-                                        step1="Data : " step1heading="h = 71679.9680 , L = ? , k = 5.65 , Nu = 396.4600"
-                                        step2="Formula" step2heading="nu * k / h"
-                                        step3="Putting value" step3heading="396.4600 * 5.65 / 71679.9680"
-                                        step4="0.0312" 
+                                    <div ref={divRef}>
+                                        <Example heading="Characteristic Length"
+                                            title="step by step solution"
+                                            step1="Data : " step1heading="h = 71679.9680 , L = ? , k = 5.65 , Nu = 396.4600"
+                                            step2="Formula" step2heading="nu * k / h"
+                                            step3="Putting value" step3heading="396.4600 * 5.65 / 71679.9680"
+                                            step4="0.0312"
                                         /></div>
                                 }
                                 {selectCondition === "Thermal Conductivity of Fluidy" &&
-                                <div ref={divRef}>
-                                    <Example heading="Thermal Conductivity of Fluid"
-                                        title="step by step solution"
-                                        step1="Data : " step1heading="h = 71679.9680 , L = 0.0312 , k = ? , Nu = 396.4600"
-                                        step2="Formula" step2heading="e = h * l / nu"
-                                        step3="Putting value" step3hrading="71679.9680 * 0.0312 /  396.4600"
-                                        step4="5.641" 
+                                    <div ref={divRef}>
+                                        <Example heading="Thermal Conductivity of Fluid"
+                                            title="step by step solution"
+                                            step1="Data : " step1heading="h = 71679.9680 , L = 0.0312 , k = ? , Nu = 396.4600"
+                                            step2="Formula" step2heading="e = h * l / nu"
+                                            step3="Putting value" step3hrading="71679.9680 * 0.0312 /  396.4600"
+                                            step4="5.641"
                                         /></div>
                                 }  </>}</div>
 

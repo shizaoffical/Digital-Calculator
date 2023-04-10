@@ -4,18 +4,20 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function SherWoodNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('sherwood number');
 
     // main states 
-    const [SH, setSH] = useState(4);
-    const [TC, setTC] = useState(4);
-    const [CL, setCL] = useState(5);
-    const [DC, setDC] = useState(5);
+    const [SH, setSH] = useState(null);
+    const [TC, setTC] = useState(null);
+    const [CL, setCL] = useState(null);
+    const [DC, setDC] = useState(null);
     // VALUE STATES
     const [SHvalue, setSHvalue] = useState(0);
     const [TCvalue, setTCvalue] = useState(0);
@@ -25,37 +27,107 @@ function SherWoodNumber() {
     
 //   SHcalculator
 const SHcalculator =() => {
+    if(TC && CL && DC !== null){
      const SH = (((TC*CL)/DC)*100)/100;
      setSHvalue(SH.toPrecision(6));
+    }
+    else{
+        setShowPopup(true);
+    }
 }
 function SHcalculatorReset() {
- setSHvalue(0)
+    if(TC && CL && DC !== 0){
+    setSH(0);
+    setTC(0);
+    setDC(0);
+    setCL(0);
+ setSHvalue(0);
+ setDCvalue(0);
+ setTCvalue(0);
+ setCLvalue(0);
+}
+else{
+    setShowPopup(true);
+}
 }
 // TCcalculator
 const TCcalculator =() => {
-    const TC =(((SH*DC)/DC)*100)/100;
+    if(SH && DC && CL!== 0){
+    const TC =(((SH*DC)/CL)*100)/100;
     setTCvalue(TC.toPrecision(6));
 }
+else{
+    setShowPopup(true);
+}
+}
 function TCcalculatorReset(){
-    setTCvalue();
+    if(SH && DC && CL !== 0){
+        setSH(0);
+        setTC(0);
+        setDC(0);
+        setCL(0);
+     setSHvalue(0);
+     setDCvalue(0);
+     setTCvalue(0);
+     setCLvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
 }
 // CLcalculator
 const CLcalculator =() => {
+    if(TC && SH && DC !== null){
     const CL =(((SH*DC)/TC)*100)/100;
     setCLvalue(CL.toPrecision(6));
 }
+else{
+    setShowPopup(true);
+}
+}
 function CLcalculatorReset(){
- setCLvalue(0)    
+    if(TC && SH && DC !== 0){
+        setSH(0);
+        setTC(0);
+        setDC(0);
+        setCL(0);
+     setSHvalue(0);
+     setDCvalue(0);
+     setTCvalue(0);
+     setCLvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }   
 }
 // DCcalculatorReset
 const DCcalculator = () => {
+    if(TC && CL && SH !== 0){
   const DC = (((TC*CL)/SH)*100)/100;
   setDCvalue(DC.toPrecision(6));
 }
-function DCcalculatorReset() {
-  setDCvalue(0)
+else{
+    setShowPopup(true);
 }
-
+}
+function DCcalculatorReset() {
+    if(TC && CL && SH !== 0){
+        setSH(0);
+        setTC(0);
+        setDC(0);
+        setCL(0);
+     setSHvalue(0);
+     setDCvalue(0);
+     setTCvalue(0);
+     setCLvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
+}
+const togglePopup = () => {
+    setShowPopup(!showPopup);
+};
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -109,7 +181,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mass Transfer Coefficient (K):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={TC}
+                                        <Input value={TC}
                                             onChange={(e) => setTC(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -117,7 +189,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (L):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
+                                        <Input value={CL}
                                             onChange={(e) => setCL(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -125,7 +197,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Diffusion Coefficient (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={DC}
+                                        <Input value={DC}
                                             onChange={(e) => setDC(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -138,6 +210,7 @@ function DCcalculatorReset() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={SHcalculator} />
                                     <ButtonA text="Reset" onClick={SHcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                              {/* ////////////////////////////////////  sherwood number /////////////////////////////// */}
@@ -146,7 +219,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Sherwood Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={SH}
+                                        <Input value={SH}
                                             onChange={(e) => setSH(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -154,7 +227,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (L):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
+                                        <Input value={CL}
                                             onChange={(e) => setCL(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -162,7 +235,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Diffusion Coefficient (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={DC}
+                                        <Input value={DC}
                                             onChange={(e) => setDC(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -174,6 +247,7 @@ function DCcalculatorReset() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={TCcalculator} />
                                     <ButtonA text="Reset" onClick={TCcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                              {/* ////////////////////////////////////  sherwood number /////////////////////////////// */}
@@ -182,7 +256,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Sherwood Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={SH}
+                                        <Input value={SH}
                                             onChange={(e) => setSH(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -190,7 +264,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mass Transfer Coefficient</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={TC}
+                                        <Input value={TC}
                                             onChange={(e) => setTC(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -198,7 +272,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Diffusion Coefficient (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={DC}
+                                        <Input value={DC}
                                             onChange={(e) => setDC(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -211,6 +285,7 @@ function DCcalculatorReset() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={CLcalculator} />
                                     <ButtonA text="Reset" onClick={CLcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                              {/* ////////////////////////////////////  sherwood number /////////////////////////////// */}
@@ -219,7 +294,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Sherwood Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={SH}
+                                        <Input value={SH}
                                             onChange={(e) => setSH(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -227,7 +302,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mass Transfer Coefficient</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={TC}
+                                        <Input value={TC}
                                             onChange={(e) => setTC(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -235,7 +310,7 @@ function DCcalculatorReset() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
+                                        <Input value={CL}
                                             onChange={(e) => setCL(e.target.value)} />
                                     </Col>
                                 </Row>

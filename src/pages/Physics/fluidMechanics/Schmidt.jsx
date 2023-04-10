@@ -5,49 +5,92 @@ import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function Schmidt() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [showPopup] = useState(false);
     const [selectCondition, setSelectCondition] = useState('schmidt Number');
-    const [SN, setSN] = useState(0);
-    const [KV, setKV] = useState(0);
-    const [MD, setMD] = useState(0);
+    const [SN, setSN] = useState(null);
+    const [KV, setKV] = useState(null);
+    const [MD, setMD] = useState(null);
     const [SNvalue, setSNvalue] = useState(0);
     const [KVvalue, setKVvalue] = useState(0);
     const [MDvalue, setMDvalue] = useState(0);
 
     // SNcalculator
     const SNcalculator = () => {
+        if(KV && MD !== null){
          const SN = Math.round((KV / MD) * 100) / 100;
          setSNvalue(SN.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     function SNcalculatorReset() {
+        if(KV && MD !== 0){
             setKV(0);
             setMD(0);
+            setSN(0);
+            setKVvalue(0);
+            setMDvalue(0);
             setSNvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // KVcalculatorReset
-    const KVcalculator = () => {  
+    const KVcalculator = () => { 
+        if(SN && MD !== null){
              const KV = Math.round((SN * MD) * 100) / 100; 
-             setKVvalue(KV.toPrecision(6)); 
+             setKVvalue(KV.toPrecision(6));
+            }
+            else{
+                setShowPopup(true);
+            } 
     }
     function KVcalculatorReset() {
-       setKVvalue(0); 
-       setMD(0);
-        setSN(0) 
-        
+        if(SN && MD !== 0){
+            setKV(0);
+            setMD(0);
+            setSN(0);
+            setKVvalue(0);
+            setMDvalue(0);
+            setSNvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // MDcalculatorReset
     const MDcalculator = () => {
+        if(KV && SN !== null){
          const MD = Math.round((KV / SN) * 100) / 100;
           setMDvalue(MD.toPrecision(6)); 
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     function MDcalculatorReset() {
-        setKV(0); setMDvalue(0); setSN(0) 
+        if(KV && SN !== 0){
+            setKV(0);
+            setMD(0);
+            setSN(0);
+            setKVvalue(0);
+            setMDvalue(0);
+            setSNvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -100,7 +143,7 @@ function Schmidt() {
                                     <label>Kinematic Viscosity (Sc):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
 
-                                    <input type="number" className='ms-3' value={KV}
+                                    <Input value={KV}
                                         onChange={(e) => setKV(e.target.value)} />
                                 </Col>
                             </Row>
@@ -108,7 +151,7 @@ function Schmidt() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Mass Diffusivity (v):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={MD}
+                                    <Input value={MD}
                                         onChange={(e) => setMD(e.target.value)} />
 
                                 </Col>
@@ -122,7 +165,7 @@ function Schmidt() {
                             <div className='text-center'>
                                 <ButtonA onClick={SNcalculator} text="Calculate" />
                                 <ButtonA onClick={SNcalculatorReset} text="Reset" />
-                                {showPopup && <Popup />}
+                                {showPopup &&<Popup onClick={togglePopup} /> }
                             </div>
                         </>}
                         {/* ////////////////////////////// kinematics viscosity ////////////////////////// */}
@@ -131,7 +174,7 @@ function Schmidt() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>schmidt Number</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={SN}
+                                    <Input value={SN}
                                         onChange={(e) => setSN(e.target.value)} />
                                 </Col>
                             </Row>
@@ -139,7 +182,7 @@ function Schmidt() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Mass Diffusivity (v):</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={MD}
+                                    <Input value={MD}
                                         onChange={(e) => setMD(e.target.value)} />
 
                                 </Col>
@@ -152,7 +195,7 @@ function Schmidt() {
                             <div className='text-center'>
                                 <ButtonA onClick={KVcalculator} text="Calculate" />
                                 <ButtonA onClick={KVcalculatorReset} text="Reset" />
-                                {showPopup && <Popup />}
+                                {showPopup &&<Popup onClick={togglePopup} /> }
                             </div>
                         </>}
                         {/* ////////////////////////////// kinematics viscosity ////////////////////////// */}
@@ -161,7 +204,7 @@ function Schmidt() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>schmidt Number</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={SN}
+                                    <Input value={SN}
                                         onChange={(e) => setSN(e.target.value)} />
                                 </Col>
                             </Row>
@@ -169,7 +212,7 @@ function Schmidt() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>kinematics viscosity</label></Col>
                                 <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3' value={KV}
+                                    <Input value={KV}
                                         onChange={(e) => setKV(e.target.value)} />
 
                                 </Col>
@@ -183,7 +226,7 @@ function Schmidt() {
                             <div className='text-center'>
                                 <ButtonA onClick={MDcalculator} text="Calculate" />
                                 <ButtonA onClick={MDcalculatorReset} text="Reset" />
-                                {showPopup && <Popup />}
+                                {showPopup &&<Popup onClick={togglePopup} /> }
                             </div>
                         </>}
                     </div>

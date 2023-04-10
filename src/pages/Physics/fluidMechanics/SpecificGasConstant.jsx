@@ -6,35 +6,66 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function SpecificGasConstant() {
     const divRef = useRef(null);
+    const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Specific Gas Constant');
     // main
-    const [MV, setMV] = useState(23);
-    const [S, setS] = useState(15);
-    const [R] = useState(8314);
+    const [MV, setMV] = useState(null);
+    const [S, setS] = useState(null);
+    const [R] = useState(null);
 
     const [Svalue, setSvalue] = useState(0);
     const [MVvalue, setMVvalue] = useState(0);
     // ScalculatorReset
     const Scalculator = () => {
+        if(R && MV !== null){
         const S = R / MV;
         setSvalue(S.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function ScalculatorReset() {
-        setSvalue(0)
+        if(R && MV !== 0){
+       setS(0);
+       setMVvalue(0);
+       setMV(0);
+       setSvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // MVcalculatorReset
     const MVcalculator = () => {
+        if(R && S !== null){
            const MV = R /S ;
            setMVvalue(MV.toPrecision(6));
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     function MVcalculatorReset() {
-      setMVvalue(0);
+        if(R && S !== 0){
+            setS(0);
+            setMVvalue(0);
+            setMV(0);
+            setSvalue(0);
+         }
+         else{
+             setShowPopup(true);
+         }
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -86,7 +117,7 @@ function SpecificGasConstant() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Molecular Weight (MW):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={MV}
+                                        <Input value={MV}
                                             onChange={(e) => setMV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -99,7 +130,7 @@ function SpecificGasConstant() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Scalculator} />
                                     <ButtonA text="Reset" onClick={ScalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 
@@ -110,7 +141,7 @@ function SpecificGasConstant() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Specific Gas Constant</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={S}
+                                        <Input value={S}
                                             onChange={(e) => setS(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -123,7 +154,7 @@ function SpecificGasConstant() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={MVcalculator} />
                                     <ButtonA text="Reset" onClick={MVcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

@@ -4,17 +4,19 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function EulerNumbers() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Euler Number');
     // main states 
-    const [EN, setEN] = useState(2);
-    const [PC, setPC] = useState(2);
-    const [D, setD] = useState(5);
-    const [CV, setCV] = useState(23);
+    const [EN, setEN] = useState(null);
+    const [PC, setPC] = useState(null);
+    const [D, setD] = useState(null);
+    const [CV, setCV] = useState(null);
     // states
     const [ENvalue, setENvalue] = useState(0);
     const [Dvalue, setDvalue] = useState(0);
@@ -23,52 +25,113 @@ function EulerNumbers() {
 
     // ENcalculator 
  const ENcalculator =() => {
-    const encalculate = PC / (D *(CV*CV));
+    if(PC && CV && D !== null){
+    const encalculate = Math.round((PC / (D * CV * CV)) * 100) / 100;
     setENvalue(encalculate.toPrecision(6));
+}
+else{
+  setShowPopup(true);
+} 
  }
  function ENcalculatorReset() {
-    setENvalue(0);
+    if(PC && CV && D !== 0){
+        setENvalue(0);
     setCV(0)
     setD(0)
     setPC(0)
+    setEN(0);
+    setPCvalue(0);
+    setCVvalue(0);
+    setDvalue(0); 
+    }
+  else{
+    setShowPopup(true);
+  } 
 
  }
     // PCcalculator 
     const PCcalculator =() => {
-        const pccalculate = EN / (D *(CV*CV)) ;
+        if(EN && CV && D !== 0){
+
+        const pccalculate = Math.round(EN * D * CV * CV * 100) / 100 ;
         setPCvalue(pccalculate.toPrecision(6));
         console.log("helo")
+    }
+    else{
+      setShowPopup(true);
+    } 
      }
      function PCcalculatorReset() {
-        setPCvalue(0);
+        if(EN && CV && D !== 0){
+            setENvalue(0);
         setCV(0)
         setD(0)
-        setEN(0)
+        setPC(0)
+        setEN(0);
+        setPCvalue(0);
+        setCVvalue(0);
+        setDvalue(0); 
+        }
+      else{
+        setShowPopup(true);
+      } 
+    
      }
        // PCcalculator 
     const Dcalculator =() => {
-        const Dcalculate = PC / (EN *(CV*CV));
+        if(PC && EN && CV !== null){
+        const Dcalculate =Math.round((PC / (EN * CV * CV)) * 100) / 100;
         setDvalue(Dcalculate.toPrecision(6));
+    }
+    else{
+      setShowPopup(true);
+    }
      }
      function DcalculatorReset() {
-        setDvalue("");
+        if(PC && EN && CV !== 0){
+            setENvalue(0);
         setCV(0)
+        setD(0)
         setPC(0)
-        setEN(0)
-    
+        setEN(0);
+        setPCvalue(0);
+        setCVvalue(0);
+        setDvalue(0); 
+        }
+      else{
+        setShowPopup(true);
+      } 
      }
        // PCcalculator 
     const CVcalculator =() => {
-        const cvcalculate =Math.sqrt(PC / (EN*CV)) ;
+        if(PC && EN && D !== null){
+        const cvcalculate = Math.round(Math.sqrt(PC / (EN * D)) * 100) / 100 ;
         setCVvalue(cvcalculate.toPrecision(6));
+    }
+    else{
+      setShowPopup(true);
+    } 
      }
      function CVcalculatorReset() {
-        setCVvalue("");
-        setEN(0)
-        setPC(0)
+        if(PC && EN && D !== 0){
+            setENvalue(0);
+        setCV(0)
         setD(0)
+        setPC(0)
+        setEN(0);
+        setPCvalue(0);
+        setCVvalue(0);
+        setDvalue(0); 
+        }
+      else{
+        setShowPopup(true);
+      } 
     
      }
+
+     const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -122,24 +185,24 @@ function EulerNumbers() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Pressure Change (Δp):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3 me-2' value={PC}
-                                                onChange={(e) => setPC(e.target.value) } />p
+                                                <Input value={PC}
+                                                onChange={(e) => setPC(e.target.value) } text="p"/>
                                                 </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Density (ρ):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3 me-2' value={D}
-                                                onChange={(e) => setD(e.target.value)}/>kg/m3
+                                                <Input value={D}
+                                                onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                             </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Character Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3 me-2' value={CV}
-                                               onChange={(e) => setCV(e.target.value)}  />m/s
+                                                <Input value={CV}
+                                               onChange={(e) => setCV(e.target.value)}  text="m/s"/>
                                             </Col>
                                     </Row>
 
@@ -151,7 +214,7 @@ function EulerNumbers() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={ENcalculator} />
                                         <ButtonA text="Reset" onClick={ENcalculatorReset}/>
-
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}
             {/* //////////////////////////////////// Pressure Change  /////////////////////////////// */}
@@ -162,24 +225,24 @@ function EulerNumbers() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Density (p) : </label></Col>   
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3 me-2' value={D}
-                                                onChange={(e) => setD(e.target.value)} />kg/m3
+                                                <Input value={D}
+                                                onChange={(e) => setD(e.target.value)} text="kg/m3" />
                                             </Col> 
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Characteristic Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3 me-2' value={CV}
-                                                onChange={(e) => setCV(e.target.value)} />m/s
+                                                <Input value={CV}
+                                                onChange={(e) => setCV(e.target.value)} text="m/s"/>
                                             </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Euler Number (Eu):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3' value={EN}
-                                                onChange={(e) => setEN(e.target.value)} />
+                                                <Input value={EN}
+                                                onChange={(e) => setEN(e.target.value)}  />
                                             </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
@@ -190,7 +253,7 @@ function EulerNumbers() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={PCcalculator} />
                                         <ButtonA text="Reset" onClick={PCcalculatorReset} />
-
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}
                             {/* //////////////////////////////////// Density /////////////////////////////// */}
@@ -202,23 +265,23 @@ function EulerNumbers() {
                                             <label> Pressure Change (Δp): </label></Col> 
                                         <Col md={6} sm={12} xs={12} >
 
-                                                <input type="number" className='ms-3 me-2' value={PC}
-                                                onChange={(e) => setPC(e.target.value)} />p
+                                                <Input value={PC}
+                                                onChange={(e) => setPC(e.target.value)} text="p"/>
                                             </Col> 
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Characteristic Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3 me-2' value={CV}
-                                                onChange={(e) => setCV(e.target.value)} />m/s
+                                                <Input value={CV}
+                                                onChange={(e) => setCV(e.target.value)} tetx="m/s"/>
                                             </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Euler Number (Eu):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                                <input type="number" className='ms-3' value={EN}
+                                                <Input value={EN}
                                                 onChange={(e) => setEN(e.target.value)} />
                                             </Col>
                                     </Row>
@@ -231,7 +294,7 @@ function EulerNumbers() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={Dcalculator}/>
                                         <ButtonA text="Reset" onClick={DcalculatorReset} />
-
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}    
                             {/* ////////////////////////////////////Character Velocity /////////////////////////////// */}
@@ -270,7 +333,7 @@ function EulerNumbers() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={CVcalculator} />
                                         <ButtonA text="Reset" onClick={CVcalculatorReset}/>
-
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}
 

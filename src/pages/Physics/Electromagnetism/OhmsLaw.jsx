@@ -7,7 +7,7 @@ import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Example from '../../../components/Example';
 import Span from '../../../components/Span';
-
+import Input from '../../../components/Input';
 function OhmLaw() {
     const [show, setShow] = useState(false);
     const divRef = useRef(null);
@@ -86,7 +86,7 @@ function OhmLaw() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Power:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={PA}
+                                    <Input value={PA}
                                         onChange={(event) => setPA(parseFloat(event.target.value))} /> 
                                         <Span text="w"/> </Col>
                             </Row>
@@ -94,7 +94,7 @@ function OhmLaw() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Voltage:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={VA}
+                                    <Input value={VA}
                                         onChange={(event) => setVA(parseFloat(event.target.value))} />
                                          <Span text="v"/>  </Col>
                             </Row>
@@ -108,7 +108,7 @@ function OhmLaw() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Power:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={PB}
+                                    <Input value={PB}
                                         onChange={(event) => setPB(parseFloat(event.target.value))} />
                                          <Span text="w"/>  </Col>
                             </Row>
@@ -116,7 +116,7 @@ function OhmLaw() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Resisance:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={RA}
+                                    <Input value={RA}
                                         onChange={(event) => setRA(parseFloat(event.target.value))} />
                                          <Span text="ohm"/>  </Col>
                             </Row>
@@ -130,7 +130,7 @@ function OhmLaw() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Voltage:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={VB}
+                                    <Input value={VB}
                                         onChange={(event) => setVB(parseFloat(event.target.value))} /> 
                                          <Span text="v"/>  </Col>
                             </Row>
@@ -138,7 +138,7 @@ function OhmLaw() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Resisance:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={RB}
+                                    <Input value={RB}
                                         onChange={(event) => setRB(parseFloat(event.target.value))} /> 
                                          <Span text="ohm"/>  </Col>
                             </Row>

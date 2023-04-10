@@ -4,17 +4,20 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function FroudeNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    
+    const [showPopup, setShowPopup] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Froude Number');
     // main states 
-    const [F, setF] = useState(12);
-    const [V, setV] = useState(43);
-    const [G, setG] = useState(22);
-    const [HM, setHM] = useState(18);
+    const [F, setF] = useState(null);
+    const [V, setV] = useState(null);
+    const [G, setG] = useState(null);
+    const [HM, setHM] = useState(null);
     // states 
     const [FNvalue, setFNvalue] = useState(0);
     const [Vvalue, setVvalue] = useState(0);
@@ -22,37 +25,107 @@ function FroudeNumber() {
     const [AGvalue,setAGvalue] = useState(0)
     // FNcalculator
     const FNcalculator = () => {
+        if(V && G && HM !== null){
         const FN = V / Math.sqrt(G * HM);
         setFNvalue(FN.toPrecision(6));
     }
+    else {
+      setShowPopup(true);
+    }
+    }
     function FNcalculatorReset() {
-        setFNvalue(0)
+        if(V && G && HM !== 0){
+           setF(0);
+        setV(0);
+        setG(0);
+        setHM(0);
+        setVvalue(0);
+        setMDvalue(0);
+        setAGvalue(0);
+        setFNvalue(0) 
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // FNcalculator
     const Vcalculator = () => {
+        if(F && G && HM !== null){
         const V = F * (Math.sqrt(G * HM));
         setVvalue(V.toPrecision(6));
     }
+    else {
+      setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
-        setVvalue(0)
+        if(F && G && HM !== 0){
+            setF(0);
+         setV(0);
+         setG(0);
+         setHM(0);
+         setVvalue(0);
+         setMDvalue(0);
+         setAGvalue(0);
+         setFNvalue(0) 
+         }
+         else{
+             setShowPopup(true);
+         }
     }
      // FNcalculator
      const MDcalculator = () => {
+        if(V && G && F !== null){
         const MD= (V * V)/ (G * (F* F));
         setMDvalue(MD.toPrecision(6));
     }
+    else {
+      setShowPopup(true);
+    }
+    }
     function MDcalculatorReset() {
-        setMDvalue(0)
+        if(V && G && F !== 0){
+            setF(0);
+         setV(0);
+         setG(0);
+         setHM(0);
+         setVvalue(0);
+         setMDvalue(0);
+         setAGvalue(0);
+         setFNvalue(0) 
+         }
+         else{
+             setShowPopup(true);
+         }
     }
      // FNcalculator
      const AGcalculator = () => {
+        if(V && F && HM !== null){
         const AG= (V * V)/ (HM * (F* F));
         setAGvalue(AG.toPrecision(6));
     }
-    function AGcalculatorReset() {
-        setAGvalue(0)
+    else{
+        setShowPopup(true);
     }
-
+    }
+    function AGcalculatorReset() {
+        if(V && F && HM !== 0){
+            setF(0);
+         setV(0);
+         setG(0);
+         setHM(0);
+         setVvalue(0);
+         setMDvalue(0);
+         setAGvalue(0);
+         setFNvalue(0) 
+         }
+         else{
+             setShowPopup(true);
+         }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     // handle change
     const handleSelectChange = (event) => {
@@ -106,24 +179,24 @@ function FroudeNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Flow Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={V}
-                                                onChange={(e) => setV(e.target.value)} />m/s
+                                            <Input value={V}
+                                                onChange={(e) => setV(e.target.value)} text="m/s"/>
                                         </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Acceleration of Gravity (g):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={G}
-                                                onChange={(e) => setG(e.target.value)} />m/s2
+                                            <Input value={G}
+                                                onChange={(e) => setG(e.target.value)} text="m/s2"/>
                                         </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Mean Depth (hm):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={HM}
-                                                onChange={(e) => setHM(e.target.value)} />ft
+                                            <Input value={HM}
+                                                onChange={(e) => setHM(e.target.value)} text="ft"/>
                                         </Col>
                                     </Row>
 
@@ -135,6 +208,8 @@ function FroudeNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={FNcalculator} />
                                         <ButtonA text="Reset" onClick={FNcalculatorReset} />
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
+
                                     </div>
                                 </>}
 
@@ -145,7 +220,7 @@ function FroudeNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Acceleration of Gravity (g):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={G}
+                                            <Input value={G}
                                                 onChange={(e) => setG(e.target.value)} />m/s
                                         </Col>
                                     </Row>
@@ -153,7 +228,7 @@ function FroudeNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Mean Depth (hm):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={HM}
+                                            <Input value={HM}
                                                 onChange={(e) => setHM(e.target.value)} />
                                         </Col>
                                     </Row>
@@ -161,7 +236,7 @@ function FroudeNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Froude Number (F):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={F}
+                                            <Input value={F}
                                                 onChange={(e) => setF(e.target.value)} />m
                                         </Col>
                                     </Row>
@@ -174,6 +249,7 @@ function FroudeNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={Vcalculator} />
                                         <ButtonA text="Reset" onClick={VcalculatorReset} />
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}
                             {/* //////////////////////////////////// Mean Depth /////////////////////////////// */}
@@ -183,24 +259,24 @@ function FroudeNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Flow Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={V}
-                                             onChange={(e) => setV(e.target.value)}/>m/s
+                                            <Input value={V}
+                                             onChange={(e) => setV(e.target.value)} text="m/s"/>
                                         </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Acceleration of Gravity (g):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={G}
-                                            onChange={(e) => setG(e.target.value)} />m/s2
+                                            <Input value={G}
+                                            onChange={(e) => setG(e.target.value)}  text="m/s2"/>
                                         </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Froude Number (F):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={F}
-                                           onChange={(e) => setF(e.target.value) }  />ft
+                                            <Input value={F}
+                                           onChange={(e) => setF(e.target.value) }  text="ft" />
                                         </Col>
                                     </Row>
 
@@ -212,6 +288,7 @@ function FroudeNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={MDcalculator} />
                                         <ButtonA text="Reset" onClick={MDcalculatorReset} />
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}
                             {/* ////////////////////////////////////  Froude Number /////////////////////////////// */}
@@ -221,24 +298,24 @@ function FroudeNumber() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label> Flow Velocity (V):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)}  />m/s
+                                            <Input value={V}
+                                            onChange={(e) => setV(e.target.value)}  text="m/s"/>
                                         </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Mean Depth (hm):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={HM}
-                                            onChange={(e) => setHM(e.target.value) } />ft
+                                            <Input value={HM}
+                                            onChange={(e) => setHM(e.target.value) } text="ft"/>
                                         </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Froude Number (F):</label></Col>
                                         <Col md={6} sm={12} xs={12} >
-                                            <input type="number" className='ms-3 me-2' value={F}
-                                             onChange={(e) => setF(e.target.value)} />m
+                                            <Input value={F}
+                                             onChange={(e) => setF(e.target.value)} text="m"/>
                                         </Col>
                                     </Row>
 
@@ -250,6 +327,7 @@ function FroudeNumber() {
                                     <div className='text-center'>
                                         <ButtonA text="Calculate" onClick={AGcalculator} />
                                         <ButtonA text="Reset" onClick={AGcalculatorReset} />
+                                        {showPopup &&<Popup onClick={togglePopup} /> }
                                     </div>
                                 </>}
                         </div>

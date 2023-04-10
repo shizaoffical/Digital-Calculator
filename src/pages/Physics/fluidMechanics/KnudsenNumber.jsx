@@ -4,57 +4,99 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function KnudsenNumber() {
     const divRef = useRef(null);
-
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Mean Free Path (λ)');
 
     // main states 
-    const [FP, setFP] = useState(34);
-    const [KN, setKN] = useState(13);
-    const [RPL, setRPL] = useState(17);
+    const [FP, setFP] = useState(null);
+    const [KN, setKN] = useState(null);
+    const [RPL, setRPL] = useState(null);
     // VALUE STATES
     const [FPvalue, setFPvalue] = useState(0);
     const [KNvalue, setKNvalue] = useState(0);
     const [PRLvalue, setPRLvalue] = useState(0);
 
     const PRLcalculator = () => {
+        if (KN && FP !== null) {
         const prl = FP / KN;
         setPRLvalue(prl.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function PRLcalculatorReset() {
+        if (KN && FP !== 0) {
         setPRLvalue(0);
         setFP(0);
         setKN(0)
+        setRPL(0);
+        setKNvalue(0);
+        setFPvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // fpvalue
     const FPcalculator = () => {
+        if (KN && RPL !== null) {
         const fp = KN * RPL;
         setFPvalue(fp.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function FPcalculatorReset() {
-        setFPvalue(0);
-        setRPL(0);
-        setKN(0)
+        if (KN && RPL !== 0) {
+            setPRLvalue(0);
+            setFP(0);
+            setKN(0)
+            setRPL(0);
+            setKNvalue(0);
+            setFPvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // fpvalue
     const KNcalculator = () => {
+        if (RPL && FP !== null) {
         const kn = FP / RPL;
         setKNvalue(kn.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function KNcalculatorReset() {
-        setKNvalue(0);
-        setRPL(0);
-        setFP(0)
+        if (RPL && FP !== 0) {
+            setPRLvalue(0);
+            setFP(0);
+            setKN(0)
+            setRPL(0);
+            setKNvalue(0);
+            setFPvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
     }
-
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -101,7 +143,7 @@ function KnudsenNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Representative Physical Length Scale (L):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={RPL}
+                                        <Input value={RPL}
                                             onChange={(e) => setRPL(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -109,7 +151,7 @@ function KnudsenNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Knudsen Number (Kn):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={KN}
+                                        <Input value={KN}
                                             onChange={(e) => setKN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -122,7 +164,7 @@ function KnudsenNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={FPcalculator} />
                                     <ButtonA text="Reset" onClick={FPcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////////  Representative Physical Length Scale (L) /////////////////////////////// */}
@@ -131,7 +173,7 @@ function KnudsenNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mean Free Path (λ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={FP}
+                                        <Input value={FP}
                                             onChange={(e) => setFP(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -139,7 +181,7 @@ function KnudsenNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Knudsen Number (Kn):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={KN}
+                                        <Input value={KN}
                                             onChange={(e) => setKN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -152,7 +194,7 @@ function KnudsenNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={PRLcalculator} />
                                     <ButtonA text="Reset" onClick={PRLcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////////  FLOW RATE /////////////////////////////// */}
@@ -161,7 +203,7 @@ function KnudsenNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mean Free Path (λ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={FP}
+                                        <Input value={FP}
                                             onChange={(e) => setFP(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -169,7 +211,7 @@ function KnudsenNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Representative Physical Length Scale (L):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={RPL}
+                                        <Input value={RPL}
                                             onChange={(e) => setRPL(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -181,7 +223,7 @@ function KnudsenNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={KNcalculator} />
                                     <ButtonA text="Reset" onClick={KNcalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 

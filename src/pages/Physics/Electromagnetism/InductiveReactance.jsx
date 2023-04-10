@@ -6,7 +6,7 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function InductiveReactance() {
 
     const divRef = useRef(null);
@@ -39,6 +39,8 @@ function InductiveReactance() {
             setf(0);
             setir(0);
             setind(0)
+            setF(0);
+            setIR(0);
             setIND(0);
         }
         else {
@@ -58,10 +60,12 @@ function InductiveReactance() {
     // ECreset
     const Freset = () => {
         if (F !== 0) {
-            setind(0);
+            setf(0);
             setir(0);
-            setf(0)
+            setind(0)
             setF(0);
+            setIR(0);
+            setIND(0);
         }
         else {
             setShowPopup(true);
@@ -81,9 +85,11 @@ function InductiveReactance() {
     const IRreset = () => {
         if (IR !== 0) {
             setf(0);
-            setind(0);
             setir(0);
-            setIR(0)
+            setind(0)
+            setF(0);
+            setIR(0);
+            setIND(0);
         }
         else {
             setShowPopup(true);
@@ -146,7 +152,7 @@ function InductiveReactance() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Frequency </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={f}
+                                            <Input value={f}
                                                 onChange={(event) => setf(parseFloat(event.target.value))} />
                                                  <span className="ps-2 ">Hz</span>  </Col>
                                     </Row>
@@ -154,7 +160,7 @@ function InductiveReactance() {
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Inductive Reactance (XL):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <input type="number" value={ir}
+                                            <Input value={ir}
                                                 onChange={(event) => setir(parseFloat(event.target.value))} />
                                                 <span className="ps-2 ">ohm</span>  </Col>
                                     </Row>
@@ -177,7 +183,7 @@ function InductiveReactance() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inductance (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ind}
+                                        <Input value={ind}
                                             onChange={(event) => setind(parseFloat(event.target.value))} /> 
                                             <span className="ps-2 ">H</span>  </Col>
                                 </Row>
@@ -185,7 +191,7 @@ function InductiveReactance() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inductive Reactance (XL):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ir}
+                                        <Input value={ir}
                                             onChange={(event) => setir(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">ohm</span>  </Col>
                                 </Row>
@@ -206,7 +212,7 @@ function InductiveReactance() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inductance (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={ind}
+                                        <Input value={ind}
                                             onChange={(event) => setind(parseFloat(event.target.value))} />
                                             <span className="ps-2 ">H</span>  </Col>
                                 </Row>
@@ -214,7 +220,7 @@ function InductiveReactance() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Frequency</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={f}
+                                        <Input value={f}
                                             onChange={(event) => setf(parseFloat(event.target.value))} /> 
                                             <span className="ps-2 ">Hz</span> </Col>
                                 </Row>

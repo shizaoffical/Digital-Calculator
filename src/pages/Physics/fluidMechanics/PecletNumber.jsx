@@ -4,19 +4,21 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function PecletNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('peclet number');
 
-    const [PN, setPN] = useState(23);
-    const [V, setV] = useState(15);
-    const [D, setD] = useState(35);
-    const [CL, setCL] = useState(26);
-    const [K, setK] = useState(16);
-    const [HC, setHC] = useState(14);
+    const [PN, setPN] = useState(null);
+    const [V, setV] = useState(null);
+    const [D, setD] = useState(null);
+    const [CL, setCL] = useState(null);
+    const [K, setK] = useState(null);
+    const [HC, setHC] = useState(null);
 
     // main states
     const [PNvalue, setPNvalue] = useState(0)
@@ -28,84 +30,183 @@ function PecletNumber() {
 
     // functionality
     const PNcalculator = () => {
+        if( V && D && HC && CL && K !== null ){
         const PN = V * D * HC * CL / K;
         setPNvalue(PN.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function PNcalculatorReset() {
+        if( V && D && HC && CL && K !== 0 ){
         setPNvalue(0);
         setV(0);
         setD(0);
         setCL(0);
         setK(0);
         setHC(0);
+        setPN(0);
+        setCLvalue(0);
+        setDvalue(0);
+        setHCvalue(0);
+        setVvalue(0);
+        setKvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // VELOCITY
     const Vcalculator = () => {
+        if( PN&& D && HC && CL && K !== null ){
         const V = PN * K / D * HC / CL;
         setVvalue(V.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
-        setVvalue(0);
-        setPN(0);
-        setD(0);
-        setCL(0);
-        setK(0);
-        setHC(0);
+        if( PN && D && HC && CL && K !== 0 ){
+            setPNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setK(0);
+            setHC(0);
+            setPN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setHCvalue(0);
+            setVvalue(0);
+            setKvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
+       
     }
     // DENSITY
     const Dcalculator = () => {
+        if( V && PN && HC && CL && K !== null ){
         const D = PN * K / V * HC * CL;
         setDvalue(D.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function DcalculatorReset() {
-        setDvalue(0);
-        setPN(0);
-        setV(0);
-        setCL(0);
-        setK(0);
-        setHC(0);
+        if( V && PN && HC && CL && K !== 0 ){
+            setPNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setK(0);
+            setHC(0);
+            setPN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setHCvalue(0);
+            setVvalue(0);
+            setKvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // heat capacity
     // DENSITY
     const HCcalculator = () => {
+        if( V && D && PN && CL && K !== null ){
         const HC = PN * K / V * D * CL;
         setHCvalue(HC.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function HCcalculatorReset() {
-        setHCvalue("");
-        setPN(0);
-        setV(0);
-        setCL(0);
-        setK(0);
-        setD(0);
+        if( V && D && PN && CL && K !== 0 ){
+            setPNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setK(0);
+            setHC(0);
+            setPN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setHCvalue(0);
+            setVvalue(0);
+            setKvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // CHARACTER LENGTH
     const CLcalculator = () => {
+        if( V && D && HC && PN && K !== null){
         const CL = PN * K / V * D * HC;
         setCLvalue(CL.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function CLcalculatorReset() {
-        setCLvalue("");
-        setPN(0);
-        setV(0);
-        setHC(0);
-        setK(0);
-        setD(0);
+        if( V && D && HC && PN && K !== 0 ){
+            setPNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setK(0);
+            setHC(0);
+            setPN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setHCvalue(0);
+            setVvalue(0);
+            setKvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // CHARACTER LENGTH
     const kcalculator = () => {
+        if( V && D && HC && CL && PN !== null ){
         const K = V * D * HC * CL / PN;
         setKvalue(K.toPrecision(6));
     }
-    function kcalculatorReset() {
-        setKvalue("");
-        setPN(0);
-        setV(0);
-        setHC(0);
-        setCL(0);
-        setD(0);
+    else{
+        setShowPopup(true);
     }
-
+    }
+    function kcalculatorReset() {
+        if( V && D && HC && CL && PN !== 0 ){
+            setPNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setK(0);
+            setHC(0);
+            setPN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setHCvalue(0);
+            setVvalue(0);
+            setKvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
+    }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -159,38 +260,38 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity (v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density (p):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3" />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Heat Capacity (Cp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HC}
-                                            onChange={(e) => setHC(e.target.value)} />J/kg-K
+                                        <Input value={HC}
+                                            onChange={(e) => setHC(e.target.value)} text="J/kg-K"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Thermal Conductivity (k):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={K}
-                                            onChange={(e) => setK(e.target.value)} />W/m-K
+                                        <Input value={K}
+                                            onChange={(e) => setK(e.target.value)} text="W/m-K"/>
                                     </Col>
                                 </Row>
 
@@ -202,6 +303,7 @@ function PecletNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={PNcalculator} />
                                     <ButtonA text="Reset" onClick={PNcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* /////////////////////////////////// VELOCITY  /////////////////////// */}
@@ -210,7 +312,7 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Peclet Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PN}
+                                        <Input value={PN}
                                             onChange={(e) => setPN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -218,30 +320,30 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density (p):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Heat Capacity (Cp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HC}
-                                            onChange={(e) => setHC(e.target.value)} />J/kg-K
+                                        <Input value={HC}
+                                            onChange={(e) => setHC(e.target.value)} text="J/kg-K"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Thermal Conductivity (k):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={K}
-                                            onChange={(e) => setK(e.target.value)} />W/m-K
+                                        <Input value={K}
+                                            onChange={(e) => setK(e.target.value)} text="W/m-K"/>
                                     </Col>
                                 </Row>
 
@@ -253,6 +355,7 @@ function PecletNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Vcalculator} />
                                     <ButtonA text="Reset" onClick={VcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////  Density   /////////////////// */}
@@ -261,7 +364,7 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Peclet Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PN}
+                                        <Input value={PN}
                                             onChange={(e) => setPN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -269,30 +372,30 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="mm/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Heat Capacity (Cp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HC}
-                                            onChange={(e) => setHC(e.target.value)} />J/kg-K
+                                        <Input value={HC}
+                                            onChange={(e) => setHC(e.target.value)} text="J/kg-K"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Thermal Conductivity (k):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={K}
-                                            onChange={(e) => setK(e.target.value)} />W/m-K
+                                        <Input value={K}
+                                            onChange={(e) => setK(e.target.value)} text="W/m-K"/>
                                     </Col>
                                 </Row>
 
@@ -304,6 +407,7 @@ function PecletNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Dcalculator} />
                                     <ButtonA text="Reset" onClick={DcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////  heat capacity //////////////// */}
@@ -312,38 +416,38 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Peclet Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PN}
-                                            onChange={(e) => setPN(e.target.value)} />
+                                        <Input value={PN}
+                                            onChange={(e) => setPN(e.target.value)}  />
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)}  text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)}  text="kg/m3"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m" />
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Thermal Conductivity (k):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={K}
-                                            onChange={(e) => setK(e.target.value)} />W/m-K
+                                        <Input value={K}
+                                            onChange={(e) => setK(e.target.value)}  text="W/m-K"/>
                                     </Col>
                                 </Row>
 
@@ -355,6 +459,7 @@ function PecletNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={HCcalculator} />
                                     <ButtonA text="Reset" onClick={HCcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////  CHARACTER LENGTH //////////////// */}
@@ -363,7 +468,7 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Peclet Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PN}
+                                        <Input value={PN}
                                             onChange={(e) => setPN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -371,30 +476,30 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Heat Capacity (Cp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HC}
-                                            onChange={(e) => setHC(e.target.value)} />J/kg-K
+                                        <Input value={HC}
+                                            onChange={(e) => setHC(e.target.value)} text="J/kg-K"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Thermal Conductivity (k):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={K}
-                                            onChange={(e) => setK(e.target.value)} />W/m-K
+                                        <Input value={K}
+                                            onChange={(e) => setK(e.target.value)} text="W/m-K"/>
                                     </Col>
                                 </Row>
 
@@ -406,6 +511,7 @@ function PecletNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={CLcalculator} />
                                     <ButtonA text="Reset" onClick={CLcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////  THERMAL CONDUVTIVITY //////////////// */}
@@ -414,38 +520,38 @@ function PecletNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Peclet Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PN}
-                                            onChange={(e) => setPN(e.target.value)} />
+                                        <Input value={PN}
+                                            onChange={(e) => setPN(e.target.value)}/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)}  text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setHC(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3" />
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Heat Capacity (Cp):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={HC}
-                                            onChange={(e) => setHC(e.target.value)} />J/kg-K
+                                        <Input value={HC}
+                                            onChange={(e) => setHC(e.target.value)} text="J/kg-K" />
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={K}
-                                            onChange={(e) => setK(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)}  text="m"/>
                                     </Col>
                                 </Row>
 

@@ -221,7 +221,17 @@
   text-decoration: none;
   color: #000;
 }
-
+/* button */
+.polygon-calculator-btn{
+  border: none;
+  margin-top: 10px;
+  padding:5px 17px ;
+  margin-left: 10px;
+  background: linear-gradient(to top, var(--primary-color), var(--dark-primary-color));
+  color: white;
+ /* width: 7rem; */
+  border-radius: 4px;
+}
 /**************************** ANIMATINO IMAGE star ******************************/
 .animate {
   position: relative;

@@ -4,17 +4,19 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function MachNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Mach Number (M):');
 
     // main
-    const [M, setM] = useState(23);
-    const [A, setA] = useState(15);
-    const [V, setV] = useState(25);
+    const [M, setM] = useState(null);
+    const [A, setA] = useState(null);
+    const [V, setV] = useState(null);
 
     // main states
     const [Vvalue, setVvalue] = useState(0)
@@ -22,32 +24,74 @@ function MachNumber() {
     const [Mvalue, setMvalue] = useState(0)
     // flowrate
      const Mcalculator = () => {
+        if(V && A !== null){
         const m =  V / A;
         setMvalue(m.toPrecision(6));
+    }
+    else{
+        setShowPopup(true);
+    }
      }
      function McalculatorReset() {
+        if(V && A !== 0){
         setV(0);
         setA(0);
+        setVvalue(0);
+        setAvalue(0);
         setMvalue(0)
+        setM(0);
+    }
+    else{
+        setShowPopup(true);
+    }
      }
     const Acalculator = ()=> {
+        if(V && M !== null){
         const a = V / M;
         setAvalue(a.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function AcalculatorReset() {
-        setV(0);
-        setM(0);
-        setAvalue(0)
+        if(V && M !== 0){
+            setV(0);
+            setA(0);
+            setVvalue(0);
+            setAvalue(0);
+            setMvalue(0)
+            setM(0);
+        }
+        else{
+            setShowPopup(true);
+        }
      }
      const Vcalculator = ()=> {
+        if(V && M !== null){
         const v = M * A;
         setVvalue(v.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
-        setM(0);
-        setA(0);
-        setVvalue(0)
+        if(M && A !== 0){
+            setV(0);
+            setA(0);
+            setVvalue(0);
+            setAvalue(0);
+            setMvalue(0)
+            setM(0);
+        }
+        else{
+            setShowPopup(true);
+        }
      }
+     const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -98,7 +142,7 @@ function MachNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Object Speed (v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
+                                        <Input value={V}
                                             onChange={(e) => setV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -106,7 +150,7 @@ function MachNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Speed of Sound (a):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
+                                        <Input value={A}
                                             onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -119,7 +163,7 @@ function MachNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Mcalculator} />
                                     <ButtonA text="Reset" onClick={McalculatorReset} />
-
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 
@@ -129,7 +173,7 @@ function MachNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Object Speed (v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
+                                        <Input value={V}
                                             onChange={(e) => setV(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -138,7 +182,7 @@ function MachNumber() {
                                         <label>Mach Number (M):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
 
-                                        <input type="number" className='ms-3 me-2' value={M}
+                                        <Input value={M}
                                             onChange={(e) => setM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -151,6 +195,7 @@ function MachNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Acalculator} />
                                     <ButtonA text="Reset" onClick={AcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////////  Object Speed (v): /////////////////////////////// */}
@@ -159,7 +204,7 @@ function MachNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Speed of Sound (a):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
+                                        <Input value={A}
                                             onChange={(e) => setA(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -167,7 +212,7 @@ function MachNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Mach Number (M)</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={M}
+                                        <Input value={M}
                                             onChange={(e) => setM(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -180,6 +225,7 @@ function MachNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Vcalculator} />
                                     <ButtonA text="Reset" onClick={VcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

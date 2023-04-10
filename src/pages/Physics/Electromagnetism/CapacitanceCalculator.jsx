@@ -8,6 +8,7 @@ import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Reference from '../../../components/Reference';
 import { Link } from 'react-router-dom';
+import Input from '../../../components/Input';
 
 function CapacitanceCalculator() {
 
@@ -41,6 +42,9 @@ function CapacitanceCalculator() {
             setC(0);
             setV(0);
             setEC(0)
+            setCA(0);
+            setPD(0);
+            setQ(0)
         }
         else{
             setShowPopup(true);
@@ -60,8 +64,11 @@ function CapacitanceCalculator() {
     const PDreset = () => {
         if(EC !== 0){
             setC(0);
-            setQ(0);
+            setV(0);
+            setEC(0)
+            setCA(0);
             setPD(0);
+            setQ(0)
         }
         else{
             setShowPopup(true);
@@ -80,9 +87,12 @@ function CapacitanceCalculator() {
     // ECreset
     const CAreset = () => {
         if(CA !== 0){
+            setC(0);
             setV(0);
-            setQ(0);
+            setEC(0)
             setCA(0);
+            setPD(0);
+            setQ(0)
         }
         else{
             setShowPopup(true);
@@ -145,14 +155,14 @@ function CapacitanceCalculator() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Potential Difference (V):</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={V}
+                                    <Input value={V}
                                         onChange={(event) => setV(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Capacitance (C):</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={C}
+                                    <Input value={C}
                                         onChange={(event) => setC(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
@@ -175,14 +185,14 @@ function CapacitanceCalculator() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Electrical Charge (Q):</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={Q}
+                                    <Input value={Q}
                                         onChange={(event) => setQ(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Capacitance (C):</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={C}
+                                    <Input value={C}
                                         onChange={(event) => setC(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
@@ -203,14 +213,14 @@ function CapacitanceCalculator() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Potential Difference (V):</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={V}
+                                    <Input value={V}
                                         onChange={(event) => setV(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Electrical Change</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={Q}
+                                    <Input value={Q}
                                         onChange={(event) => setQ(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

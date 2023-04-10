@@ -4,27 +4,43 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function BroadCrustedWeir() {
     const divRef = useRef(null);
-
+    const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     // main state
-    const [width, setWidth] = useState(3);
-    const [HA, setHA] = useState(2);
-    const [HB, setHB] = useState(25);
-    const [CD, setCD] = useState(13);
+    const [width, setWidth] = useState(null);
+    const [HA, setHA] = useState(null);
+    const [HB, setHB] = useState(null);
+    const [CD, setCD] = useState(null);
     //    formula 
     const [WFR, setWRF] = useState(0);
     const wfrvalue = () => {
+        if(HB && CD && width && HA !== null){
         const value = CD * width * HB * (((2*(9.81))*(HA - HB)) * 1 / 2)
         setWRF(value.toPrecision(6));
-        console.log("hello")
+    }
+    else{
+        setShowPopup(true);
+    }
     }
 function wfrvalueReset() {
-    setWRF("");
+    if(HB && CD && width && HA !== 0){
+        setCD(0);
+        setHA(0);
+        setHB(0);
+        setWidth(0);
+    }
+    else{
+        setShowPopup(true);
+    }
 }
+const togglePopup = () => {
+    setShowPopup(!showPopup);
+};
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -58,24 +74,24 @@ function wfrvalueReset() {
                                 <label> Width of the Weir:</label></Col>
                             <Col md={6} sm={12} xs={12} >
 
-                                    <input type="number" className='ms-3 me-2' value={width}
-                                        onChange={(e) => setWidth(e.target.value)} />m
+                                    <Input value={width}
+                                        onChange={(e) => setWidth(e.target.value)} text="m"/>
                                 </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                             <Col md={6} sm={12} xs={12} >
                                 <label>Head 1 on the Weir (h1):</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3 me-2 ' value={HA}
-                                        onChange={(e) => setHA(e.target.value)} />m
+                                    <Input value={HA}
+                                        onChange={(e) => setHA(e.target.value)} text="m"/>
                                 </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                             <Col md={6} sm={12} xs={12} >
                                 <label>Head 2 on the Weir (h2): </label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                    <input type="number" className='ms-3 me-2' value={HB}
-                                        onChange={(e) => setHB(e.target.value)} />m
+                                    <Input value={HB}
+                                        onChange={(e) => setHB(e.target.value)}  text="m"/>
                                </Col>
                         </Row>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
@@ -95,7 +111,7 @@ function wfrvalueReset() {
                         <div className='text-center'>
                             <ButtonA text="Calculate" onClick={wfrvalue} />
                             <ButtonA text="Reset" onClick={wfrvalueReset} />
-
+                            {showPopup &&<Popup onClick={togglePopup} /> }
                         </div>
                         {/* ////////////////////////////////  Perimeter OF Trapezium  ////////////////////////////// */}
                     </div>

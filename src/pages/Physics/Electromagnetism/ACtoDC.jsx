@@ -10,7 +10,7 @@ import ACtoDC1 from "../../../images/Ac-Dc1.png";
 import { Link } from 'react-router-dom';
 import Reference from '../../../components/Reference';
 import ACtoDC2 from "../../../images/Ac-Dc2.png";
-
+import Input from '../../../components/Input';
 function ACtoDC() {
     const divRef = useRef(null);
 
@@ -35,8 +35,11 @@ function ACtoDC() {
         }
     }
     const handleResetClick = () => {
-        if (DCvalue !== 0) {
+        if (AC !== 0) {
             setDCvalue(0);
+            setACvalue(0)
+            setAC(0)
+            setDC(0)
         }
         else {
             setShowPopup(true);
@@ -52,8 +55,11 @@ const ACcalculate = () => {
         else { setShowPopup(true);}
     }
     const AChandleResetClick = () => {
-        if (ACvalue !== 0) {
-            setACvalue(0);
+        if (DC !== 0) {
+            setDCvalue(0);
+            setACvalue(0)
+            setAC(0)
+            setDC(0)
 
         }
         else {
@@ -117,7 +123,7 @@ const ACcalculate = () => {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>  Enter AC Current:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={AC}
+                                        <Input value={AC}
                                             onChange={(event) => setAC(event.target.value)} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
@@ -139,7 +145,7 @@ const ACcalculate = () => {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>  Enter DC Current:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <input type="number" value={DC}
+                                        <Input value={DC}
                                             onChange={(event) => setDC(event.target.value)} /> </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

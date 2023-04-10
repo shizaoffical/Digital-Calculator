@@ -4,16 +4,18 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Input from '../../../components/Input';
+import Popup from '../../../components/Popup';
 function PrandantNumber() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('Prandtl Number (Pr)');
 
-    const [PR, setPR] = useState(23);
-    const [A, setA] = useState(15);
-    const [V, setV] = useState(25);
+    const [PR, setPR] = useState(null);
+    const [A, setA] = useState(null);
+    const [V, setV] = useState(null);
 
     // main states
     const [PRvalue, setPRvalue] = useState(0)
@@ -21,36 +23,78 @@ function PrandantNumber() {
     const [Vvalue, setVvalue] = useState(0)
     // functionality
     const PRcalculator = () => {
+        if( V && A !== null){
         const PR = V/A ;
         setPRvalue(PR.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function PRcalculatorReset() {
+        if( V && A !== 0){
         setPRvalue(0);
         setA(0);
         setV(0);
+        setPR(0);
+        setAvalue(0);
+        setVvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     const Acalculator = () => {
+        if( V && PR !== null){
         const a = V/PR;
         setAvalue(a.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function AcalculatorReset() {
-        setAvalue(0);
-        setPR(0);
-        setV(0);
+        if( V && PR !== 0){
+            setPRvalue(0);
+            setA(0);
+            setV(0);
+            setPR(0);
+            setAvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     const Vcalculator = () => {
+        if( PR && A !== null){
         const V= PR*A;
         setVvalue(V.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
-        setVvalue(0);
-        setPR(0);
-        setA(0);
+        if( PR && A !== 0){
+            setPRvalue(0);
+            setA(0);
+            setV(0);
+            setPR(0);
+            setAvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
 
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
@@ -100,16 +144,16 @@ function PrandantNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Kinematic Viscosity (v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m2/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m2/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Thermal Diffusivity (a):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
-                                            onChange={(e) => setA(e.target.value)} />m2/s
+                                        <Input value={A}
+                                            onChange={(e) => setA(e.target.value)} text="m2/s"/>
                                     </Col>
                                 </Row>
 
@@ -121,6 +165,7 @@ function PrandantNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={PRcalculator} />
                                     <ButtonA text="Reset" onClick={PRcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
 
@@ -130,15 +175,15 @@ function PrandantNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label> Thermal Diffusivity (a):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={A}
-                                            onChange={(e) => setA(e.target.value)} />m/s2
+                                        <Input value={A}
+                                            onChange={(e) => setA(e.target.value)} text="m/s2"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Prandtl Number (Pr): </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number me-2" className='ms-3 me-2' value={PR}
+                                        <Input value={PR}
                                             onChange={(e) => setPR(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -146,11 +191,12 @@ function PrandantNumber() {
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Kinematic Viscosity (v)</dt></Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{Vvalue.toString().substring(0, 6)}m2/s</button></Col>
+                                        <button className='formula-value-btn'>{Vvalue.toString().substring(0, 6)} m2/s</button></Col>
                                 </Row>
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Vcalculator} />
                                     <ButtonA text="Reset" onClick={VcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////////////////////  Thermal Diffusivity (a) /////////////////////////////// */}
@@ -159,15 +205,15 @@ function PrandantNumber() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Kinematic Viscosity (v): </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m2/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m2/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Prandtl Number (Pr):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={PR}
+                                        <Input value={PR}
                                             onChange={(e) => setPR(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -180,6 +226,7 @@ function PrandantNumber() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Acalculator} />
                                     <ButtonA text="Reset" onClick={AcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>

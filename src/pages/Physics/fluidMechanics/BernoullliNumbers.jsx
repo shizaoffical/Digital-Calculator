@@ -6,24 +6,38 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import { Link } from 'react-router-dom';
 import Reference from '../../../components/Reference';
-
+import Popup from '../../../components/Popup';
+import Input from "../../../components/Input"
 function BernoullliNumbers() {
     const divRef = useRef(null);
-
+    const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
-    const [n, setn] = useState(10);
+    const [n, setn] = useState(null);
     const [BN, setBN] = useState(0);
 
     const calculate = () => {
-        const value = 4 * (n / (3.14 * 2.71828)) * (2 * n) * Math.sqrt(n * 3.14);
-        setBN(value.toPrecision(6));
+        if( n !== null){
+          const value = 4 * (n / (3.14 * 2.71828)) * (2 * n) * Math.sqrt(n * 3.14);
+        setBN(value.toPrecision(6));  
+        }
+        else{
+            setShowPopup(true);
+        }
     }
 
     function reset() {
-        setn(0);
-        setBN("")
+        if(n !== 0){
+          setn(0);
+        setBN(0)  
+        }
+        else{
+            setShowPopup(true);
+        }
     }
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     const componentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentsRef.current,
@@ -57,7 +71,7 @@ function BernoullliNumbers() {
                             <Col md={6} sm={12} xs={12} >
                                 <label>Large Number (n) :</label></Col>
                             <Col md={6} sm={12} xs={12} >
-                                <input type="number" className='ms-3' value={n}
+                                <Input value={n}
                                     onChange={(e) => setn(e.target.value)} />
                             </Col>
                         </Row>
@@ -70,6 +84,7 @@ function BernoullliNumbers() {
                     <div className='text-center'>
                         <ButtonA onClick={calculate} text="Calculate" />
                         <ButtonA onClick={reset} text="Reset" />
+                        {showPopup &&<Popup onClick={togglePopup} /> }
                     </div>
                     <center>
                         <button type='button'

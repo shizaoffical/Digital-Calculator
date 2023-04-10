@@ -5,7 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import logo from "../../../images/header-logo.png";
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-
+import Input from '../../../components/Input';
 function AperatureAntenna() {
     const [show, setShow] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -85,42 +85,42 @@ function AperatureAntenna() {
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Magnetic Current:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={MC}
+                                    <Input value={MC}
                                         onChange={(event) => setMC(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Half antenna length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={HA}
+                                    <Input value={HA}
                                         onChange={(event) => setHA(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Wave Length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={WAV}
+                                    <Input value={WAV}
                                         onChange={(event) => setWAV(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Radius:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={RD}
+                                    <Input value={RD}
                                         onChange={(event) => setRD(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Z-axis length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={ZA}
+                                    <Input value={ZA}
                                         onChange={(event) => setZA(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Coordinate Angle:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
-                                    <input type="number" value={CA}
+                                    <Input value={CA}
                                         onChange={(event) => setCA(parseFloat(event.target.value))} /> </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">

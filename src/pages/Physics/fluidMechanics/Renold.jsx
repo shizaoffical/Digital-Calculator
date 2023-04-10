@@ -4,18 +4,20 @@ import NewCalculator from '../../../components/NewCalculator'
 import { useReactToPrint } from 'react-to-print';
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
-
+import Popup from '../../../components/Popup';
+import Input from '../../../components/Input';
 function Renold() {
     const divRef = useRef(null);
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [textShow, settextShow] = useState(false);
     const [selectCondition, setSelectCondition] = useState('renolds number');
 
-    const [V, setV] = useState(15);
-    const [D, setD] = useState(35);
-    const [CL, setCL] = useState(26);
-    const [VS, setVS] = useState(16);
-    const [RN, setRN] = useState(14);
+    const [V, setV] = useState(null);
+    const [D, setD] = useState(null);
+    const [CL, setCL] = useState(null);
+    const [VS, setVS] = useState(null);
+    const [RN, setRN] = useState(null);
 
     // main states
     const [RNvalue, setRNvalue] = useState(0)
@@ -26,66 +28,143 @@ function Renold() {
 
     // REYNOLD NUMBER
     const RNcalculator = () => {
+        if(D && V && CL && VS !== null){
         const RN = Math.round(((D * V * CL) / VS) * 100) / 100;
         setRNvalue(RN.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function RNcalculatorReset() {
+        if(D && V && CL && VS !== 0){
         setRNvalue(0);
         setV(0);
         setD(0);
         setCL(0);
         setVS(0)
+        setRN(0);
+        setCLvalue(0);
+        setDvalue(0);
+        setVSvalue(0);
+        setVvalue(0);
+    }
+    else{
+        setShowPopup(true);
+    }
     }
     // VELOCITY
     const Vcalculator = () => {
+        if(D && VS && RN && CL !== null){
         const V = Math.round(((RN * VS) / (D * CL)) * 100) / 100;
         setVvalue(V.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VcalculatorReset() {
-        setVvalue(0);
-        setD(0);
-        setCL(0);
-        setVS(0);
-        setRN(0);
+        if(D && VS && RN && CL !== 0){
+            setRNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setVS(0)
+            setRN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setVSvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // DENSITY
     const Dcalculator = () => {
+        if(VS && V && CL && RN !== null){
         const D = Math.round(((RN * VS) / (V * CL)) * 100) / 100;
         setDvalue(D.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function DcalculatorReset() {
-        setDvalue(0);
-        setV(0);
-        setRN(0);
-        setCL(0);
-        setVS(0);
+        if(VS && V && CL && RN !== 0){
+            setRNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setVS(0)
+            setRN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setVSvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // VISCIOCITY
     const VScalculator = () => {
+        if(D && V && CL && RN !== null){
         const VS = (((D * V * CL) / RN) * 100) / 100;
         setVSvalue(VS.toPrecision(6));
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function VScalculatorReset() {
-        setVSvalue(0);
-        setV(0);
-        setRN(0);
-        setCL(0);
-        setD(0);
+        if(D && V && CL && RN !== 0){
+            setRNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setVS(0)
+            setRN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setVSvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
     // CHARACTER LENGTH
     const CLcalculator = () => {
+        if(D && V && VS && RN !== null){
         const CL = Math.round(((RN * VS) / (D * V)) * 100) / 100;
         setCLvalue(CL);
     }
+    else{
+        setShowPopup(true);
+    }
+    }
     function CLcalculatorReset() {
-        setCLvalue("");
-        setRN(0);
-        setV(0);
-        setVS(0);
-        setD(0);
+        if(D && V && VS && RN !== 0){
+            setRNvalue(0);
+            setV(0);
+            setD(0);
+            setCL(0);
+            setVS(0)
+            setRN(0);
+            setCLvalue(0);
+            setDvalue(0);
+            setVSvalue(0);
+            setVvalue(0);
+        }
+        else{
+            setShowPopup(true);
+        }
     }
 
-
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
     // handle change
     const handleSelectChange = (event) => {
         setSelectCondition(event.target.value);
@@ -140,31 +219,31 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity (v):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density (p):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity (μ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={VS}
-                                            onChange={(e) => setVS(e.target.value)} />Ns/m2
+                                        <Input value={VS}
+                                            onChange={(e) => setVS(e.target.value)} text="Ns/m2"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>
 
@@ -176,6 +255,7 @@ function Renold() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={RNcalculator} />
                                     <ButtonA text="Reset" onClick={RNcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* /////////////////////////////////// VELOCITY  /////////////////////// */}
@@ -184,7 +264,7 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Renolds Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={RN}
+                                        <Input value={RN}
                                             onChange={(e) => setRN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -192,23 +272,23 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density (p):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity (μ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={VS}
-                                            onChange={(e) => setVS(e.target.value)} />Ns/m2
+                                        <Input value={VS}
+                                            onChange={(e) => setVS(e.target.value)} text="Ns/m2"/>
                                     </Col>
                                 </Row>
 
@@ -220,6 +300,7 @@ function Renold() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Vcalculator} />
                                     <ButtonA text="Reset" onClick={VcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////////////  Density   /////////////////// */}
@@ -228,7 +309,7 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Renolds Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={RN}
+                                        <Input value={RN}
                                             onChange={(e) => setRN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -236,23 +317,23 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Characteristic Length (D):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />m
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="m"/>
                                     </Col>
                                 </Row>  <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity (μ): </label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={VS}
-                                            onChange={(e) => setVS(e.target.value)} />Ns/m2
+                                        <Input value={VS}
+                                            onChange={(e) => setVS(e.target.value)} text="Ns/m2"/>
                                     </Col>
                                 </Row>
 
@@ -264,6 +345,7 @@ function Renold() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={Dcalculator} />
                                     <ButtonA text="Reset" onClick={DcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* ////////////  CHARACTER LENGTH //////////////// */}
@@ -272,7 +354,7 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Renolds Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={RN}
+                                        <Input value={RN}
                                             onChange={(e) => setRN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -280,24 +362,24 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Viscosity (μ):</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={VS}
-                                            onChange={(e) => setVS(e.target.value)} />Ns/m2
+                                        <Input value={VS}
+                                            onChange={(e) => setVS(e.target.value)} text="Ns/m2"/>
                                     </Col>
                                 </Row>
 
@@ -309,6 +391,7 @@ function Renold() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={CLcalculator} />
                                     <ButtonA text="Reset" onClick={CLcalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                             {/* /////////////////////// VISCOISITY ////////////// */}
@@ -317,7 +400,7 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Renolds Number :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={RN}
+                                        <Input value={RN}
                                             onChange={(e) => setRN(e.target.value)} />
                                     </Col>
                                 </Row>
@@ -325,24 +408,24 @@ function Renold() {
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Velocity :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={V}
-                                            onChange={(e) => setV(e.target.value)} />m/s
+                                        <Input value={V}
+                                            onChange={(e) => setV(e.target.value)} text="m/s"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Density :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={D}
-                                            onChange={(e) => setD(e.target.value)} />kg/m3
+                                        <Input value={D}
+                                            onChange={(e) => setD(e.target.value)} text="kg/m3"/>
                                     </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Character Length(L) :</label></Col>
                                     <Col md={6} sm={12} xs={12} >
-                                        <input type="number" className='ms-3 me-2' value={CL}
-                                            onChange={(e) => setCL(e.target.value)} />Ns/m2
+                                        <Input value={CL}
+                                            onChange={(e) => setCL(e.target.value)} text="Ns/m2"/>
                                     </Col>
                                 </Row>
 
@@ -354,6 +437,7 @@ function Renold() {
                                 <div className='text-center'>
                                     <ButtonA text="Calculate" onClick={VScalculator} />
                                     <ButtonA text="Reset" onClick={VScalculatorReset} />
+                                    {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
                             </>}
                         </div>
