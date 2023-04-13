@@ -79,6 +79,7 @@ import Wavelength from './pages/Physics/Electromagnetism/Wavelength';
 import Transformer from './pages/Physics/Electromagnetism/Transformer';
 import HeatFlow from './pages/Physics/thermodyanamics/HeatFlow';
 import SUAVT from './pages/Physics/thermodyanamics/SUVAT';
+import HeatTransferr from './pages/Physics/thermodyanamics/HeatTransferr';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -165,6 +166,7 @@ function AnimatedPath() {
           {/* thermdynamics */}
           <Route path="/physics/heatflow" element={<HeatFlow/>} />
           <Route path="/physics/suvat" element={<SUAVT/>} />
+          <Route path="/physics/heat-transferr" element={<HeatTransferr/>} />
        
 
           <Route path="/Health" element={<Health />} />

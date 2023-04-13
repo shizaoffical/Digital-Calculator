@@ -144,7 +144,8 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="heat flow"
                         path="/physics/heatflow" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="heat transfer rate" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="heat transfer rate"
+                        path="/physics/heat-transferr" /></Col>
                     </Row>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="SUVAT calculator" 

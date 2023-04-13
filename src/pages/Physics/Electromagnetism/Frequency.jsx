@@ -98,7 +98,6 @@ function Frequency() {
                                         <option value="GHz">GHz</option>
                                     </select></Col>
                             </Row>
-
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Wavelength:</dt> </Col>
                                 <Col md={6} sm={12} xs={12}>
@@ -110,14 +109,10 @@ function Frequency() {
                             <ButtonA onClick={handleResetClick} text="Reset" />
                             {showPopup && <Popup onClick={togglePopup} />}
                         </div>
-
-
                     </div>
                 </div>
             </Container>
         </div >
-
     )
 }
-
 export default Frequency;

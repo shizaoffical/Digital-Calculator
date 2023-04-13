@@ -79,7 +79,7 @@ function Transformer() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'>Waveleng calculate</h2>
+                    <h2 className='text-center fw-bold'>Transfomrer calculate</h2>
                     <p>Select the phase, choose the term you want to calculate, enter values of required input fields, and hit calculate button using transformer calculator</p>
                     <div className='polygon-calculator-div '>
                         <ButtonA onClick={handlePrint} text="Print" />
