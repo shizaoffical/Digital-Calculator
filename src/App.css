@@ -51,6 +51,8 @@ border-radius: 10px;
   option,label{
     font-size: 12px;
   }
-
+ .symbol{
+    font-size: 7px;
+ }
 
 }

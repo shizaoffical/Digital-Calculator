@@ -5,7 +5,7 @@ function Input(props) {
     <div>
         <input type="number" value={props.value}
     onChange={props.onChange} /> 
-    <span className="ps-2 ">{props.text}</span>
+    <span className="symbol ps-2 ">{props.text}</span>
     </div>
   )
 }
