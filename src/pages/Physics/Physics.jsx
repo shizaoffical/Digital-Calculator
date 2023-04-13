@@ -142,11 +142,13 @@ function Physics() {
                     </Row>
                     <dt className='text-center py-3'>Thermodynamics</dt>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="heat flow" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="heat flow"
+                        path="/physics/heatflow" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="heat transfer rate" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="SUVAT calculator" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="SUVAT calculator" 
+                        path="/physics/suvat"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="Thurmal conductivity" /></Col>
                     </Row>
                     <dt className='text-center py-3'>Classical</dt>

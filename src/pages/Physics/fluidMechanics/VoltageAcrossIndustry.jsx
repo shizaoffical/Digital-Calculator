@@ -61,7 +61,7 @@ else{
                     title3="scienthic division Calculator" title4="curl Calculator" />
             </div>
             <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                <h2 className='text-center fw-bold'>Cone calculate</h2>
+                <h2 className='text-center fw-bold'>Voltage Across Industance </h2>
                 <p>A cone is a single-vertex, three-dimensional geometric shape having a circular base. The perpendicular height is the line that runs from the centre of the base to the apex.
                 </p>
                 <div className='polygon-calculator-div '>

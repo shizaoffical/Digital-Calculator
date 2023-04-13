@@ -6,7 +6,6 @@ import logo from "../../../images/header-logo.png";
 import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
-import Span from '../../../components/Span';
 import Input from '../../../components/Input';
 function ParallelPlateCapacitor() {
 
@@ -192,24 +191,24 @@ function ParallelPlateCapacitor() {
                                         <label>Area:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ar}
-                                            onChange={(event) => setar(parseFloat(event.target.value))} />
-                                        <Span text="m2" />  </Col>
+                                            onChange={(event) => setar(parseFloat(event.target.value))} text="m2"  />
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Separation Distance:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={sd}
-                                            onChange={(event) => setsd(parseFloat(event.target.value))} />
-                                        <Span text="m" />  </Col>
+                                            onChange={(event) => setsd(parseFloat(event.target.value))} text="m"/>
+                                       </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} />
-                                        <Span text="F" />  </Col>
+                                            onChange={(event) => setca(parseFloat(event.target.value))} text="F" />
+                                         </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Permittivity:</dt> </Col>
@@ -230,24 +229,24 @@ function ParallelPlateCapacitor() {
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}  >
                                         <Input value={pr}
-                                            onChange={(event) => setpr(parseFloat(event.target.value))} />
-                                        <Span text="F/m" /> </Col>
+                                            onChange={(event) => setpr(parseFloat(event.target.value))} text="F/m" />
+                                      </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Separation Distance:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={sd}
-                                            onChange={(event) => setsd(parseFloat(event.target.value))} />
-                                        <Span text="m" />  </Col>
+                                            onChange={(event) => setsd(parseFloat(event.target.value))} text="m" />
+                                         </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} />
-                                        <Span text="F" /> </Col>
+                                            onChange={(event) => setca(parseFloat(event.target.value))} text="F"/>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Area</dt> </Col>
@@ -267,24 +266,24 @@ function ParallelPlateCapacitor() {
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={pr}
-                                            onChange={(event) => setpr(parseFloat(event.target.value))} />
-                                        <Span text="F/m"/> </Col>
+                                            onChange={(event) => setpr(parseFloat(event.target.value))} text="F/m"/>
+                                         </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ar}
-                                            onChange={(event) => setar(parseFloat(event.target.value))} />
-                                        <Span text="m2"/> </Col>
+                                            onChange={(event) => setar(parseFloat(event.target.value))} text="m2"/>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Capacitance (C):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} />
-                                       <Span text="F"/> </Col>
+                                            onChange={(event) => setca(parseFloat(event.target.value))} text="F"/>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Separation Distance</dt> </Col>
@@ -304,23 +303,23 @@ function ParallelPlateCapacitor() {
                                         <label>Permittivity (ε):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={pr}
-                                            onChange={(event) => setpr(parseFloat(event.target.value))} />
-                                        <span className="ps-2 ">F/m</span>  </Col>
+                                            onChange={(event) => setpr(parseFloat(event.target.value))} text="F/m"/>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Separation Distance:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={sd}
-                                            onChange={(event) => setsd(parseFloat(event.target.value))} />
-                                        <Span text="m"/>  </Col>
+                                            onChange={(event) => setsd(parseFloat(event.target.value))} text="m"/>
+                                        </Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Area:</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ar}
-                                            onChange={(event) => setar(parseFloat(event.target.value))} />
-                                        <span className="ps-2 ">m</span> </Col>
+                                            onChange={(event) => setar(parseFloat(event.target.value))} text="m"/>
+                                        </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Capacitance</dt> </Col>

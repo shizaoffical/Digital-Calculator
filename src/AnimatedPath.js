@@ -77,6 +77,8 @@ import ParallelPlateCapacitor from './pages/Physics/Electromagnetism/ParallelPla
 import PlanetWeight from './pages/Physics/Electromagnetism/PlanetWeight';
 import Wavelength from './pages/Physics/Electromagnetism/Wavelength';
 import Transformer from './pages/Physics/Electromagnetism/Transformer';
+import HeatFlow from './pages/Physics/thermodyanamics/HeatFlow';
+import SUAVT from './pages/Physics/thermodyanamics/SUVAT';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -114,8 +116,9 @@ function AnimatedPath() {
           <Route path="/Fun" element={<Fun />} />
           <Route path="/Love" element={<Love />} />
           <Route path="/Graphics" element={<Graphics />} />
-
+{/* ********************************** physics********************* */}
           <Route path="/physics" element={<Physics />} />
+          {/* fluid machanics */}
           <Route path="/physics/fluid-machine/bernoulli-numbers" element={<BernoullliNumbers />} />
           <Route path="/physics/fluid-machine/break-horse-power" element={<BreakHorsePower/>} />
           <Route path="/physics/fluid-machine/broad-crusted-weir" element={<BroadCrustedWeir />} />
@@ -142,6 +145,7 @@ function AnimatedPath() {
           <Route path="/physics/fluid-machine/voltage-across-industry" element={<VoltageAcrossIndustry/>} />
           <Route path="/physics/fluid-machine/water-horoscope" element={<WaterHoroscope/>} />
           <Route path="/physics/fluid-machine/weber-number" element={<WeberNumber/>} />
+          {/* electromagnitism */}
           <Route path="/physics/fluid-machine/AC-to-DC" element={<ACtoDC/>} />
           <Route path="/physics/fluid-machine/antenna-array" element={<AntennaArray/>} />
           <Route path="/physics/fluid-machine/antenna-gain" element={<AntennaGain/>} />
@@ -158,7 +162,9 @@ function AnimatedPath() {
           <Route path="/physics/planet-weight" element={<PlanetWeight/>} />
           <Route path="/physics/wave-length" element={<Wavelength/>} />
           <Route path="/physics/transformer" element={<Transformer/>} />
-          
+          {/* thermdynamics */}
+          <Route path="/physics/heatflow" element={<HeatFlow/>} />
+          <Route path="/physics/suvat" element={<SUAVT/>} />
        
 
           <Route path="/Health" element={<Health />} />

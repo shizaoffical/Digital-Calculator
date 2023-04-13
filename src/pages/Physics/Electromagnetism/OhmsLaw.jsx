@@ -6,7 +6,6 @@ import logo from "../../../images/header-logo.png";
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Example from '../../../components/Example';
-import Span from '../../../components/Span';
 import Input from '../../../components/Input';
 function OhmLaw() {
     const [show, setShow] = useState(false);
@@ -87,16 +86,16 @@ function OhmLaw() {
                                     <label>Power:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={PA}
-                                        onChange={(event) => setPA(parseFloat(event.target.value))} /> 
-                                        <Span text="w"/> </Col>
+                                        onChange={(event) => setPA(parseFloat(event.target.value))} text="w"/> 
+                                       </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Voltage:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={VA}
-                                        onChange={(event) => setVA(parseFloat(event.target.value))} />
-                                         <Span text="v"/>  </Col>
+                                        onChange={(event) => setVA(parseFloat(event.target.value))} text="v"/>
+                                         </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Current:</dt> </Col>
@@ -109,16 +108,16 @@ function OhmLaw() {
                                     <label>Power:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={PB}
-                                        onChange={(event) => setPB(parseFloat(event.target.value))} />
-                                         <Span text="w"/>  </Col>
+                                        onChange={(event) => setPB(parseFloat(event.target.value))} text="w"/>
+                                         </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Resisance:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={RA}
-                                        onChange={(event) => setRA(parseFloat(event.target.value))} />
-                                         <Span text="ohm"/>  </Col>
+                                        onChange={(event) => setRA(parseFloat(event.target.value))}text="ohm" />
+                                        </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Current:</dt> </Col>
@@ -131,16 +130,16 @@ function OhmLaw() {
                                     <label>Voltage:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={VB}
-                                        onChange={(event) => setVB(parseFloat(event.target.value))} /> 
-                                         <Span text="v"/>  </Col>
+                                        onChange={(event) => setVB(parseFloat(event.target.value))}text="v" /> 
+                                       </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Resisance:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={RB}
-                                        onChange={(event) => setRB(parseFloat(event.target.value))} /> 
-                                         <Span text="ohm"/>  </Col>
+                                        onChange={(event) => setRB(parseFloat(event.target.value))}text="ohm" /> 
+                                         </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Current:</dt> </Col>

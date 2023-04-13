@@ -7,168 +7,166 @@ import Example from '../../../components/Example';
 import ButtonA from '../../../components/ButtonA';
 import Popup from '../../../components/Popup';
 import Input from '../../../components/Input';
-function CylindericalCalculator() {
+import Formula from '../../../components/Formula';
+function SUAVT() {
 
     const divRef = useRef(null);
-    const [selectCondition, setSelectCondition] = useState('Permittivity (ε):');
+    const [selectCondition, setSelectCondition] = useState('Time');
     const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [textShow, settextShow] = useState(false);
     // Electrical Change
-    const [pa, setpa] = useState(null);
-    const [lc, setlc] = useState(null);
-    const [outer, setouter] = useState(null);
-    const [inner, setinner] = useState(null);
-    const [ca, setca] = useState(null);
-    const [PA, setPA] = useState(0);
-    const [LC, setLC] = useState(0);
-    const [OUTER, setOUTER] = useState(0);
-    const [INNER, setINNER] = useState(0);
-    const [CA, setCA] = useState(0);
-    
-
-
+    const [s, sets] = useState(null);
+    const [u, setu] = useState(null);
+    const [v, setv] = useState(null);
+    const [a, seta] = useState(null);
+    const [t, sett] = useState(null);
+    const [S, setS] = useState(0);
+    const [U, setU] = useState(0);
+    const [V, setV] = useState(0);
+    const [A, setA] = useState(0);
+    const [T, setT] = useState(0);
     // ECcalculate
-    const PAcalculate = () => {
-        if (lc && inner && outer && ca !== null) {
-            const pa = (Math.round(((ca*Math.log(outer/inner))/(6.28*lc))*100)/100).toPrecision(6);
-            setPA(pa);
+    const Tcalculate = () => {
+        if (a && u && v  !== null) {
+            const t = ( v - u / a).toPrecision(6);
+            setT(t);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const PAreset = () => {
-        if (PA !== 0) {
-            setpa(0);
-            setLC(0);
-            setINNER(0);
-            setOUTER(0);
-            setCA(0);
-            setinner(0);
-            setca(0);
-            setlc(0);
-            setouter(0);
-            setPA(0);
+    const Treset = () => {
+        if (a && u && v && s  !== 0) {
+            setA(0);
+            setS(0);
+            setv(0);
+            setT(0);
+            setU(0);
+            sets(0);
+            sett(0);
+            seta(0);
+            setU(0);
+            setv(0);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECcalculate
-    const LCcalculate = () => {
-        if (lc && inner && outer && ca !== null) {
-            const lc = (Math.round(((ca*Math.log(inner/outer))/(6.28*pa))*100)/100).toPrecision(6);
-            setLC(lc);
+    const Scalculate = () => {
+        if (a && u && v && t  !== null) {
+            const s = ( (u*t) + 0.5 * (a* Math.sqrt(t))).toPrecision(6);
+            setS(s);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const LCreset = () => {
-        if (LC !== 0) {
-            setpa(0);
-            setLC(0);
-            setINNER(0);
-            setOUTER(0);
-            setCA(0);
-            setinner(0);
-            setca(0);
-            setlc(0);
-            setouter(0);
-            setPA(0);
+    const Sreset = () => {
+        if (a && u && v && t  !== 0) {
+            setA(0);
+            setS(0);
+            setv(0);
+            setT(0);
+            setU(0);
+            sets(0);
+            sett(0);
+            seta(0);
+            setU(0);
+            setv(0);
         }
         else {
             setShowPopup(true);
         }
     }
-     // ECcalculate
-     const OUTERcalculate = () => {
-        if (lc && inner && pa && ca !== null) {
-            const outer = (Math.round((inner*(Math.pow(2.72,((6.28*pa*lc)/ca))))*100)/100).toPrecision(6);
-            setOUTER(outer);
-        }
-        else {
-            setShowPopup(true);
-        }
-    }
-    // ECreset
-    const OUTERreset = () => {
-        if (OUTER !== 0) {
-            setpa(0);
-            setLC(0);
-            setINNER(0);
-            setOUTER(0);
-            setCA(0);
-            setinner(0);
-            setca(0);
-            setlc(0);
-            setouter(0);
-            setPA(0);
-        }
-        else {
-            setShowPopup(true);
-        }
-    }
-     // ECcalculate
-     const INNERcalculate = () => {
-        if (lc && outer && pa && ca !== null) {
-            const inner = (Math.round((outer/(Math.pow(2.72,((6.28*pa*lc)/ca))))*100)/100).toPrecision(6);
-            setINNER(inner);
+    // ECcalculate
+    const Vcalculate = () => {
+        if (a && u && t && s  !== null) {
+            const v = ( (s + 0.5 * (a* Math.sqrt(t))) / t ).toPrecision(6);
+            setV(v);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const INNERreset = () => {
-        if (INNER !== 0) {
-            setpa(0);
-            setLC(0);
-            setINNER(0);
-            setOUTER(0);
-            setCA(0);
-            setinner(0);
-            setca(0);
-            setlc(0);
-            setouter(0);
-            setPA(0);
+    const Vreset = () => {
+        if (a && u && t && s !== 0) {
+            setA(0);
+            setS(0);
+            setv(0);
+            setT(0);
+            setU(0);
+            sets(0);
+            sett(0);
+            seta(0);
+            setU(0);
+            setv(0);
         }
         else {
             setShowPopup(true);
         }
     }
-     // ECcalculate
-     const CAcalculate = () => {
-        if (lc && outer && pa && inner !== null) {
-            const ca = (Math.round(((6.28*pa*lc)/(Math.log(outer/inner)))*100)).toPrecision(6);
-            setCA(ca);
+    // ECcalculate
+    const Acalculate = () => {
+        if (t && u && v && s  !== null) {
+            const a = ( Math.sqrt(v) - Math.sqrt(u)  / ( 2*s)).toPrecision(6);
+            setA(a);
         }
         else {
             setShowPopup(true);
         }
     }
     // ECreset
-    const CAreset = () => {
-        if (CA !== 0) {
-            setpa(0);
-            setLC(0);
-            setINNER(0);
-            setOUTER(0);
-            setCA(0);
-            setinner(0);
-            setca(0);
-            setlc(0);
-            setouter(0);
-            setPA(0);
+    const Areset = () => {
+        if (t && u && v && s  !== 0) {
+            setA(0);
+            setS(0);
+            setv(0);
+            setT(0);
+            setU(0);
+            sets(0);
+            sett(0);
+            seta(0);
+            setU(0);
+            setv(0);
         }
         else {
             setShowPopup(true);
         }
     }
- 
+    // ECcalculate
+    const Ucalculate = () => {
+        if (a && t && v && s  !== null) {
+            const u = ((s - 0.5 * (a* Math.sqrt(t))) / t ).toPrecision(6);
+            setU(u);
+        }
+        else {
+            setShowPopup(true);
+        }
+    }
+    // ECreset
+    const Ureset = () => {
+        if (a && t && v && s  !== 0) {
+            setA(0);
+            setS(0);
+            setv(0);
+            setT(0);
+            setU(0);
+            sets(0);
+            sett(0);
+            seta(0);
+            setU(0);
+            setv(0);
+        }
+        else {
+            setShowPopup(true);
+        }
+    }
+
     //    togglePopup
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -203,20 +201,17 @@ function CylindericalCalculator() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'>Cylindrical Capacitor Calculator</h2>
-                    <p>To use cylindrical capacitor calculator, select the option, fill the required input fields, and press the calculate button</p>
+                    <h2 className='text-center fw-bold'>SUVAT Calculator</h2>
+                    <p>Choose the unknown term and enter the required values in this SUVAT calculator.</p>
                     <div className='polygon-calculator-div '>
                         {/* dropdown */}
                         <Row className='text-center my-3'>
                             <Col md={12} sm={12} xs={12} >
-                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >      <option value='Permittivity (ε):' className='value-dropdown' >Permittivity (ε):</option>
-                                    <option value="Length of Conductors (L):" className='value-dropdown'>Length of Conductors (L):
-                                    </option>
-                                    <option value='Outer Conductor Diameter (b):' className='value-dropdown' >
-                                    Outer Conductor Diameter (b):</option>
-                                    <option value='Inner Conductor Diameter (a):' className='value-dropdown' >
-                                    Inner Conductor Diameter (a):</option>
-                                    <option value='Capacitance' className='value-dropdown' >Capacitance</option>
+                                <select className='dropdown-select' value={selectCondition} onChange={handleSelectChange} >      <option value='Time' className='value-dropdown' >Time</option>
+                                    <option value="Displacement" className='value-dropdown'>Displacement</option>
+                                    <option value='Final Velocity' className='value-dropdown' >Final Velocity</option>
+                                    <option value='Accerlation' className='value-dropdown' >Accerlation</option>
+                                    <option value='Initial Velocity' className='value-dropdown' >Initial Velocity</option>
                                 </select>
                             </Col>
                         </Row>
@@ -225,229 +220,222 @@ function CylindericalCalculator() {
                         <ButtonA onClick={handlePrint} text="Print" />
                         <div className="polygon-calculator px-2" ref={componentsRef}>
                             {
-                                selectCondition === "Permittivity (ε):" && <>
+                                selectCondition === "Time" && <>
+                                <Formula fornula="t = v - u / a"/>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
-                                            <label>Length of Conductors (L): </label> </Col>
+                                            <label>Initial velocity (u):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <Input value={lc}
-                                                onChange={(event) => setlc(parseFloat(event.target.value))} text="m"/>
-                                                 </Col>
+                                            <Input value={u}
+                                                onChange={(event) => setu(parseFloat(event.target.value))}  />
+                                        </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
-                                            <label>Outer Conductor Diameter (b):</label> </Col>
+                                            <label>Final velocity (v):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <Input value={outer}
-                                                onChange={(event) => setouter(parseFloat(event.target.value))} text="m"/>
-                                               </Col>
+                                            <Input value={v}
+                                                onChange={(event) => setv(parseFloat(event.target.value))}  />
+                                        </Col>
                                     </Row>
+
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
-                                            <label>Inner Conductor Diameter (a):</label> </Col>
+                                            <label>Acceleration (a):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <Input value={inner}
-                                                onChange={(event) => setinner(parseFloat(event.target.value))} text="m"/>
-                                                  </Col>
-                                    </Row>
-                                    
-                                    <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
-                                        <Col md={6} sm={12} xs={12} >
-                                            <label>Capacitance (C):</label> </Col>
-                                        <Col md={6} sm={12} xs={12}>
-                                            <Input value={ca}
-                                                onChange={(event) => setca(parseFloat(event.target.value))} text="f"/>
-                                                 </Col>
+                                            <Input value={a}
+                                                onChange={(event) => seta(parseFloat(event.target.value))} />
+                                        </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                        <Col md={6} sm={12} xs={12}><dt>Permittivity (ε):</dt> </Col>
+                                        <Col md={6} sm={12} xs={12}><dt>Time(t):</dt> </Col>
                                         <Col md={6} sm={12} xs={12}>
-                                            <button className='formula-value-btn'>{PA.toString().substring(0, 7)} F/m</button></Col>
+                                            <button className='formula-value-btn'>{T.toString().substring(0, 7)} </button></Col>
                                     </Row>
 
                                     <div className='text-center'>
-                                        <ButtonA onClick={PAcalculate} text="Calaulate" />
-                                        <ButtonA onClick={PAreset} text="Reset" />
+                                        <ButtonA onClick={Tcalculate} text="Calaulate" />
+                                        <ButtonA onClick={Treset} text="Reset" />
                                         {showPopup && <Popup onClick={togglePopup} />}
                                     </div>
 
                                 </>
                             }
-                            {selectCondition === "Length of Conductors (L):" && <>
+                            {selectCondition === "Displacement" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Permittivity (ε)</label> </Col>
+                                        <label>Final velocity (v):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={pa}
-                                            onChange={(event) => setpa(parseFloat(event.target.value))} text="F/m" />
-                                           </Col>
+                                        <Input value={v}
+                                            onChange={(event) => setv(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Outer Conductor Diameter (b):</label> </Col>
+                                        <label>Initial velocity (u):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={outer}
-                                            onChange={(event) => setouter(parseFloat(event.target.value))} text="m"/>
-                                            </Col>
+                                        <Input value={u}
+                                            onChange={(event) => setu(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Inner Conductor Diameter (a):</label> </Col>
+                                        <label>Acceleration (a):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={inner}
-                                            onChange={(event) => setinner(parseFloat(event.target.value))} text="m"/>
-                                            </Col>
+                                        <Input value={a}
+                                            onChange={(event) => seta(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row><Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitance (C):</label> </Col>
+                                        <label>Time (t):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} text="F"/>
-                                           </Col>
+                                        <Input value={t}
+                                            onChange={(event) => sett(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Length of Conductors (L):</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Displacement (s):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{LC.toString().substring(0, 7)} m</button></Col>
+                                        <button className='formula-value-btn'>{S.toString().substring(0, 7)} </button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={LCcalculate} text="Calaulate" />
-                                    <ButtonA onClick={LCreset} text="Reset" />
+                                    <ButtonA onClick={Scalculate} text="Calaulate" />
+                                    <ButtonA onClick={Sreset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>
                             }
-                            {selectCondition === "Outer Conductor Diameter (b):" && <>
+                            {selectCondition === "Final Velocity" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Permittivity (ε):</label> </Col>
+                                        <label>Displacement (s):</label> </Col>
                                     <Col md={6} sm={12} xs={12}  >
-                                        <Input value={pa} 
-                                            onChange={(event) => setpa(parseFloat(event.target.value))}text="F/m" />
-                                            </Col>
+                                        <Input value={s}
+                                            onChange={(event) => sets(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Length of Conductors (L):</label> </Col>
+                                        <label>Acceleration (a):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={lc}
-                                            onChange={(event) => setlc(parseFloat(event.target.value))} text="m"/>
-                                           </Col>
+                                        <Input value={a}
+                                            onChange={(event) => seta(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Inner Conductor Diameter (a):</label> </Col>
+                                        <label>Time (t):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={inner}
-                                            onChange={(event) => setinner(parseFloat(event.target.value))} text="m"/>
-                                            </Col>
+                                        <Input value={t}
+                                            onChange={(event) => sett(parseFloat(event.target.value))} />
+                                    </Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitance (C):</label> </Col>
+                                        <label>Initial velocity (u):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} text="m"/> 
-                                            </Col>
+                                        <Input value={u}
+                                            onChange={(event) => setu(parseFloat(event.target.value))} />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Outer Conductor Diameter (b):</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Final velocity (v):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{OUTER.toString().substring(0, 7)} h</button></Col>
+                                        <button className='formula-value-btn'>{V.toString().substring(0, 7)} </button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={OUTERcalculate} text="Calaulate" />
-                                    <ButtonA onClick={OUTERreset} text="Reset" />
+                                    <ButtonA onClick={Vcalculate} text="Calaulate" />
+                                    <ButtonA onClick={Vreset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
-                            {selectCondition === "Inner Conductor Diameter (a):" && <>
-                            <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
+                            {selectCondition === "Accerlation" && <>
+                                <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Permittivity (ε):</label> </Col>
+                                        <label>Final velocity (v):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={pa}
-                                            onChange={(event) => setpa(parseFloat(event.target.value))} text="F/m"/>
-                                            </Col>
+                                        <Input value={v}
+                                            onChange={(event) => setv(parseFloat(event.target.value))} />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Length of Conductors (L):</label> </Col>
+                                        <label>Initial velocity (u):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={lc}
-                                            onChange={(event) => setlc(parseFloat(event.target.value))} text="m"/>
-                                            </Col>
+                                        <Input value={u}
+                                            onChange={(event) => setu(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Outer Conductor Diameter (a):</label> </Col>
+                                        <label>Displacement (s):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={outer}
-                                            onChange={(event) => setouter(parseFloat(event.target.value))} text="m"/>
-                                          </Col>
-                                </Row> 
+                                        <Input value={s}
+                                            onChange={(event) => sets(parseFloat(event.target.value))}  />
+                                    </Col>
+                                </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Capacitance (C):</label> </Col>
+                                        <label>Time (t):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={ca}
-                                            onChange={(event) => setca(parseFloat(event.target.value))} text="m"/>
-                                             </Col>
+                                        <Input value={t}
+                                            onChange={(event) => sett(parseFloat(event.target.value))} />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Inner Conductor Diameter (b):</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Acceleration (a):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{INNER.toString().substring(0, 7)} m</button></Col>
+                                        <button className='formula-value-btn'>{A.toString().substring(0, 7)} </button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={INNERcalculate} text="Calaulate" />
-                                    <ButtonA onClick={INNERreset} text="Reset" />
+                                    <ButtonA onClick={Acalculate} text="Calaulate" />
+                                    <ButtonA onClick={Areset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
-                            {selectCondition === "Capacitance" && <>
+                            {selectCondition === "Initial Velocity" && <>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Permittivity (ε):</label> </Col>
+                                        <label>Displacement (s):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={pa}
-                                            onChange={(event) => setpa(parseFloat(event.target.value))} text="F/m"/>
-                                             </Col>
+                                        <Input value={s}
+                                            onChange={(event) => sets(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Length of Conductors (L):</label> </Col>
+                                        <label>Final velocity (v):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={lc}
-                                            onChange={(event) => setlc(parseFloat(event.target.value))} text="m"/>
-                                            </Col>
+                                        <Input value={v}
+                                            onChange={(event) => setv(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Outer Conductor Diameter (b):</label> </Col>
+                                        <label>Acceleration (a):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={outer}
-                                            onChange={(event) => setouter(parseFloat(event.target.value))} text="m"/>
-                                              </Col>
+                                        <Input value={a}
+                                            onChange={(event) => seta(parseFloat(event.target.value))} />
+                                    </Col>
                                 </Row> <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
-                                        <label>Inner Conductor Diameter (b):</label> </Col>
+                                        <label>Time (t):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <Input value={inner}
-                                            onChange={(event) => setinner(parseFloat(event.target.value))} text="m"/> 
-                                            </Col>
+                                        <Input value={t}
+                                            onChange={(event) => sett(parseFloat(event.target.value))}  />
+                                    </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
-                                    <Col md={6} sm={12} xs={12}><dt>Capacitance</dt> </Col>
+                                    <Col md={6} sm={12} xs={12}><dt>Initial velocity (u):</dt> </Col>
                                     <Col md={6} sm={12} xs={12}>
-                                        <button className='formula-value-btn'>{CA.toString().substring(0, 7)} F</button></Col>
+                                        <button className='formula-value-btn'>{U.toString().substring(0, 7)} </button></Col>
                                 </Row>
 
                                 <div className='text-center'>
-                                    <ButtonA onClick={CAcalculate} text="Calaulate" />
-                                    <ButtonA onClick={CAreset} text="Reset" />
+                                    <ButtonA onClick={Ucalculate} text="Calaulate" />
+                                    <ButtonA onClick={Ureset} text="Reset" />
                                     {showPopup && <Popup onClick={togglePopup} />}
                                 </div>
                             </>}
@@ -513,4 +501,4 @@ function CylindericalCalculator() {
     )
 }
 
-export default CylindericalCalculator;
+export default SUAVT;

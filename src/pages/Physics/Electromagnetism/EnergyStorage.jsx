@@ -128,7 +128,7 @@ function EnergyStorage() {
                         title3="scienthic division Calculator" title4="curl Calculator" />
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
-                    <h2 className='text-center fw-bold'>Capacitive Reactance Calculator</h2>
+                    <h2 className='text-center fw-bold'> Energy Storage Calculator</h2>
                     <p>To find capacitive reactance, enter frequency & capacitance and hit calculate button using capacitive reactance calculator</p>
                     <div className='polygon-calculator-div '>
                         {/* dropdown */}
@@ -151,16 +151,16 @@ function EnergyStorage() {
                                             <label>Energy Storage (U:) </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
                                             <Input value={U}
-                                                onChange={(event) => setU(parseFloat(event.target.value))} /> 
-                                                <span className="ps-2 ">j</span> </Col>
+                                                onChange={(event) => setU(parseFloat(event.target.value))} text="j"/> 
+                                              </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Electrical Charge (Q):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
                                             <Input value={Q}
-                                                onChange={(event) => setQ(parseFloat(event.target.value))} /> 
-                                                <span className="ps-2 ">c</span></Col>
+                                                onChange={(event) => setQ(parseFloat(event.target.value))} text="c"/> 
+                                              </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Potential Difference (V):</dt> </Col>
@@ -182,16 +182,16 @@ function EnergyStorage() {
                                         <label>Potential Difference (V):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={V}
-                                            onChange={(event) => setV(parseFloat(event.target.value))} />
-                                              <span className="ps-2 ">f</span> </Col>
+                                            onChange={(event) => setV(parseFloat(event.target.value))} text="f"/>
+                                               </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Energy Storage (U:)</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={U}
-                                            onChange={(event) => setU(parseFloat(event.target.value))} /> 
-                                              <span className="ps-2 ">j</span></Col>
+                                            onChange={(event) => setU(parseFloat(event.target.value))} text="j"/> 
+                                              </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Electrical Charge (Q):</dt> </Col>
@@ -211,16 +211,16 @@ function EnergyStorage() {
                                         <label>Potential Difference (V):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={V}
-                                            onChange={(event) => setV(parseFloat(event.target.value))} /> 
-                                              <span className="ps-2 ">f</span></Col>
+                                            onChange={(event) => setV(parseFloat(event.target.value))} text="f"/> 
+                                            </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Electrical Charge (Q):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={Q}
-                                            onChange={(event) => setQ(parseFloat(event.target.value))} /> 
-                                             <span className="ps-2 ">j</span></Col>
+                                            onChange={(event) => setQ(parseFloat(event.target.value))} text="j"/> 
+                                             </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Energy Storage (U:)</dt> </Col>

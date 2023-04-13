@@ -86,48 +86,48 @@ function DipoleCalculator() {
                                     <label>Magnetic Current:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={MC}
-                                        onChange={(event) => setMC(parseFloat(event.target.value))} /> 
-                                        <span className="ps-2 ">lm</span> </Col>
+                                        onChange={(event) => setMC(parseFloat(event.target.value))} text="lm"/> 
+                                         </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Half antenna length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={HA}
-                                        onChange={(event) => setHA(parseFloat(event.target.value))} /> 
-                                        <span className="ps-2 ">L</span></Col>
+                                        onChange={(event) => setHA(parseFloat(event.target.value))} text="L"/> 
+                                       </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Wave Length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={WAV}
-                                        onChange={(event) => setWAV(parseFloat(event.target.value))} />
-                                        <span className="ps-2 ">λ</span> </Col>
+                                        onChange={(event) => setWAV(parseFloat(event.target.value))}text="λ"/>
+                                        </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Radius:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={RD}
-                                        onChange={(event) => setRD(parseFloat(event.target.value))} />
-                                         <span className="ps-2 ">r</span>  </Col>
+                                        onChange={(event) => setRD(parseFloat(event.target.value))}text="r" />
+                                        </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Z-axis length:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={ZA}
-                                        onChange={(event) => setZA(parseFloat(event.target.value))} />
-                                         <span className="ps-2 ">z</span>  </Col>
+                                        onChange={(event) => setZA(parseFloat(event.target.value))} text="z" />
+                                           </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                 <Col md={6} sm={12} xs={12} >
                                     <label>Coordinate Angle:</label> </Col>
                                 <Col md={6} sm={12} xs={12}>
                                     <Input value={CA}
-                                        onChange={(event) => setCA(parseFloat(event.target.value))} /> 
-                                         <span className="ps-2 "> θ</span> </Col>
+                                        onChange={(event) => setCA(parseFloat(event.target.value))} text="θ"/> 
+                                         </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col xl={6} lg={6} md={6} sm={12} xs={12}><dt>Dipole Current:</dt> </Col>

@@ -153,16 +153,14 @@ function InductiveReactance() {
                                             <label>Frequency </label> </Col>
                                         <Col md={6} sm={12} xs={12}>
                                             <Input value={f}
-                                                onChange={(event) => setf(parseFloat(event.target.value))} />
-                                                 <span className="ps-2 ">Hz</span>  </Col>
+                                                onChange={(event) => setf(parseFloat(event.target.value))} text="HZ"/> </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                         <Col md={6} sm={12} xs={12} >
                                             <label>Inductive Reactance (XL):</label> </Col>
                                         <Col md={6} sm={12} xs={12}>
                                             <Input value={ir}
-                                                onChange={(event) => setir(parseFloat(event.target.value))} />
-                                                <span className="ps-2 ">ohm</span>  </Col>
+                                                onChange={(event) => setir(parseFloat(event.target.value))} text="ohm"/>  </Col>
                                     </Row>
                                     <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                         <Col md={6} sm={12} xs={12}><dt>Inductance (L):</dt> </Col>
@@ -184,16 +182,16 @@ function InductiveReactance() {
                                         <label>Inductance (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ind}
-                                            onChange={(event) => setind(parseFloat(event.target.value))} /> 
-                                            <span className="ps-2 ">H</span>  </Col>
+                                            onChange={(event) => setind(parseFloat(event.target.value))} text="H" /> 
+                                             </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Inductive Reactance (XL):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ir}
-                                            onChange={(event) => setir(parseFloat(event.target.value))} />
-                                            <span className="ps-2 ">ohm</span>  </Col>
+                                            onChange={(event) => setir(parseFloat(event.target.value))} text="ohm"/>
+                                 </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Frequency</dt> </Col>
@@ -213,16 +211,16 @@ function InductiveReactance() {
                                         <label>Inductance (L):</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={ind}
-                                            onChange={(event) => setind(parseFloat(event.target.value))} />
-                                            <span className="ps-2 ">H</span>  </Col>
+                                            onChange={(event) => setind(parseFloat(event.target.value))} text="H" />
+                                              </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
                                     <Col md={6} sm={12} xs={12} >
                                         <label>Frequency</label> </Col>
                                     <Col md={6} sm={12} xs={12}>
                                         <Input value={f}
-                                            onChange={(event) => setf(parseFloat(event.target.value))} /> 
-                                            <span className="ps-2 ">Hz</span> </Col>
+                                            onChange={(event) => setf(parseFloat(event.target.value))} text="HZ"/> 
+                                           </Col>
                                 </Row>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Inductive Reactance (XL):</dt> </Col>
