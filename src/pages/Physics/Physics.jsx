@@ -156,9 +156,11 @@ function Physics() {
                     <dt className='text-center py-3'>Classical</dt>
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="acceleration calculator" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="amount of substance" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="amount of substance" 
+                        path="/physics/amount-of-Substance"/></Col>
                     </Row> <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="average velocity" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="average velocity" 
+                        path="/physics/average-velocity"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="battery charge time" /></Col>
                     </Row> <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="battery life" /></Col>

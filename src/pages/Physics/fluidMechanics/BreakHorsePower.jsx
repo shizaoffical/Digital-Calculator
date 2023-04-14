@@ -380,7 +380,8 @@ function BreakHorsePower() {
                   step2="Formula" step2heading="pe = (((100*frd*th)/(3960*wh))*100)/100 "
                   step3="360"  
                   /></div>
-              }  </> }</div>
+              }  </> }
+              </div>
 
         </div>
 

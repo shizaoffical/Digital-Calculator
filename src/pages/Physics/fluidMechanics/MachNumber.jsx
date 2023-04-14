@@ -238,7 +238,7 @@ function MachNumber() {
                             {
                                 textShow &&
                                 <div ref={divRef}>
-                                <Example heading="Flow Rate or Discharge"
+                                <Example heading="step by step solution"
                                     title={<>Calculate the Match Number for the given details.<br />
                                         Object Speed (v) = 25 m/s<br />Speed of Sound (a) = 20 m/s<br /></>}
                                     step1={<>Solution <br /> Apply Formula</>} step1heading="Q = A*v"

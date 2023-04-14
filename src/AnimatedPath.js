@@ -81,6 +81,8 @@ import HeatFlow from './pages/Physics/thermodyanamics/HeatFlow';
 import SUAVT from './pages/Physics/thermodyanamics/SUVAT';
 import HeatTransferr from './pages/Physics/thermodyanamics/HeatTransferr';
 import ThermalConsductivity from './pages/Physics/thermodyanamics/ThermalConductivity';
+import AmountOfSubstance from './pages/Physics/Classical/AmountOfSubstance';
+import AverageVelocity from './pages/Physics/Classical/AverageVelocity';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -169,7 +171,9 @@ function AnimatedPath() {
           <Route path="/physics/suvat" element={<SUAVT/>} />
           <Route path="/physics/heat-transferr" element={<HeatTransferr/>} />
           <Route path="/physics/thermal-consductivity" element={<ThermalConsductivity/>} />
-       
+       {/* classical */}
+       <Route path="/physics/amount-of-Substance" element={<AmountOfSubstance/>} />
+       <Route path="/physics/average-velocity" element={<AverageVelocity/>} />
 
           <Route path="/Health" element={<Health />} />
           <Route path="/Weather" element={<Weather />} />
