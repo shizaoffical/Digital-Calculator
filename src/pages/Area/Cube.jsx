@@ -72,13 +72,13 @@ function Cube() {
                 <div className='polygon-calculator-div '>
                     <ButtonA onClick={handlePrint} text="Print" />
                     <div className="polygon-calculator px-2" ref={componentsRef}>
-
-                        <Row style={{ alignItems: "center", textAlign: "center" }}>
-                            <Col md={12} sm={12} xs={12} >
-                                <label>  Radius:<Input value={length}
-                                    onChange={(e) => setLength(e.target.value)} /> </label></Col>
+                        <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                            <Col md={6} sm={12} xs={12}><label> Radius:</label></Col>
+                            <Col md={6} sm={12} xs={12}>
+                            <Input value={length}
+                                    onChange={(e) => setLength(e.target.value)} />
+                            </Col>
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>Volume of Cube : [ a3 ] </dt></Col>
                             <Col md={6} sm={12} xs={12}>

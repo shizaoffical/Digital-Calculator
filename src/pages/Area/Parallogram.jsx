@@ -128,7 +128,6 @@ function Parallogram() {
                                     
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
@@ -167,7 +166,6 @@ function Parallogram() {
                                             onChange={(e) => setSide2(e.target.value)}/>
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> Area of Kite Using Tripographt </dt></Col>

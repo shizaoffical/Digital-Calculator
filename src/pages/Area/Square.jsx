@@ -71,7 +71,6 @@ function Square() {
                                 <label> Enter the length <Input value={length}
                                     onChange={(e) => setLength(e.target.value)} /> </label></Col>
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
 
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>Area of aquare</dt></Col>

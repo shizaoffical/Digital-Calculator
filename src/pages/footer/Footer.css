@@ -13,16 +13,6 @@
 .footer-col-div2{
     margin-top: 1rem;
 }
-.footer-btn{
-    padding: 0.4rem 1rem;
-    border-radius: 10px;
-    background: linear-gradient(to top, var(--primary-color), var(--light-primary-color));
-}
-.footer-btn a{
-   text-decoration: none;
-   color: white;
- font-weight: 600;
-}
 .footer-link{
     text-decoration: none;
     color: white;
@@ -46,4 +36,10 @@
 
   .footer-link:hover:after {
     width: 100%;
+  }
+  @media (max-width : 1000px) {
+.footer-link{
+    font-size: 13px;
+}
+   
   }

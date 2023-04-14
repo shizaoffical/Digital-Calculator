@@ -16,7 +16,9 @@ function Footer() {
             <div className='footer-col-div2'>
               <p>The webpage for the free online calculator Meracalculator. To make calculations simpler, meracalculator has created more than 100 calculators in the categories of math, physics, chemistry, and health.</p>
             </div>
-            <button className='footer-btn'><Link to="/Contact Us">Contact Us</Link></button>
+            <button className='polygon-calculator-btn '>
+              <Link to="/Contact Us" className='text-light text-decoration-none'>Contact Us</Link>
+              </button>
           </Col>
 
           <Col xl={4} lg={4} md={6} sm={12} xs={12}  className='footer-col'>

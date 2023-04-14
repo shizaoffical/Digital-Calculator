@@ -75,11 +75,12 @@ function Circle() {
                         <ButtonA onClick={handlePrint} text="Print" />
                         <div className="polygon-calculator px-2" ref={componentsRef}>
                             {/* {print && <img src={logo} alt="" /> } */}
-
-                            <Row style={{ alignItems: "center", textAlign: "center" }}>
-                                <Col md={12} sm={12} xs={12} >
-                                    <label>  Number of Sides:<br />< Input value={radius}
-                                        onChange={(event) => setRadius(event.target.value)} /> </label></Col>
+                            <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                                <Col md={6} sm={12} xs={12}><label> Number of Sides:</label></Col>
+                                <Col md={6} sm={12} xs={12}>
+                                < Input value={radius}
+                                        onChange={(event) => setRadius(event.target.value)} /> 
+                                    </Col>
                             </Row>
                             <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                 <Col md={6} sm={12} xs={12}><dt>Areaof Circle</dt></Col>

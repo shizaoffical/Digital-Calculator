@@ -78,7 +78,6 @@ function Hemisphere() {
                         <label>Enter the  radius:<Input value={radius}
                      onChange={(e) => setRadius(e.target.value)}/> </label></Col>
                 </Row>
-                <h5 className='text-center py-2'>Result</h5>
                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                     <Col md={6} sm={12} xs={12}><dt>Volume of Hemisphere : [ (2/3)πr³ ]</dt></Col>
                     <Col md={6} sm={12} xs={12}>

@@ -5,18 +5,17 @@ import logo from "../images/header-logo.png"
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
- 
-  
+  const [show1, setShow1] = useState(true)
   return (
 
     <div>
       {show ?
         <div className=' nav-search-btn-div me-auto'  >
           <form className='sumbit container nav-search-btn d-flex w-100 align-items-center ' >
-            <input type="text" className='w-100 px-2 ' style={{ outline: "none", border: "none", backgroundColor: "none" }}/>
+            <input type="text" className='w-100 px-2 ' style={{ outline: "none", border: "none", backgroundColor: "none" }} />
 
             <i className="fa-solid fa-xmark pe-3 nav-search-close-icon" onClick={() => setShow(false)}
-              style={{  fontSize: "1.6rem", color: "white", backgroundColor: "none " , }}> </i>
+              style={{ fontSize: "1.6rem", color: "white", backgroundColor: "none ", }}> </i>
           </form>
         </div>
         : null}
@@ -25,10 +24,18 @@ const Navbar = () => {
           <Link className="navbar-brand" to="/"><img src={logo} alt="" /> Digital Calculator</Link>
           {/* search btn */}
 
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i className="fa-solid fa-bars" ></i>
+          <button className="navbar-toggler"
+            onClick={() => { setShow1(!show1) }} type="button" 
+            data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation" 
+               >
+            {show1 ? <i className="fa-sharp fa-solid fa-bars-staggered"></i> :
+              <i className="fa fa-times " aria-hidden="true" ></i>}
           </button>
-          <div className="collapse navbar-collapse " id="navbarSupportedContent">
+          <div className={` nav-link-container ${show ? 'collapse navbar-collapse d-none' : 'collapse navbar-collapse  '}`} 
+                id="navbarSupportedContent"
+          >
             <ul className="navbar-nav ms-auto me-auto mb-2 mb-lg-0 ">
               <li className="nav-item"><Link className="nav-link active" aria-current="page" to="/Graphics">Graphics</Link></li>
               <li className="nav-item"><Link className="nav-link active" aria-current="page" to="/Chemistry">Chemistry</Link></li>
@@ -44,6 +51,7 @@ const Navbar = () => {
 
       </nav>
     </div>
+   
   )
 }
 

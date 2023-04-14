@@ -153,8 +153,7 @@ function Kite() {
                         {/* ////////////////////////////////////   Area of Kite  /////////////////////////////// */}
 
 
-                        {
-                            selectCondition === "Area of Kite" && <>
+                        { selectCondition === "Area of Kite" && <>
                             <div className='text-center'>  <dt>Formula</dt> A = p* q / 2</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
@@ -171,7 +170,6 @@ function Kite() {
                                                 onChange={(e) => setQ(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Length : </dt></Col>
@@ -183,14 +181,10 @@ function Kite() {
                                     <ButtonA onClick={AreaOfKiteReset} text="Reset"/>
                                     {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
-                            </>
-
-                        }
-
+                            </>}
                         {/* ////////////////////////////////  Area of Kite Using Tripographt ////////////////////////////// */}
 
-                        {
-                            selectCondition === "Area of Kite Using Tripographt" && <>
+                        {selectCondition === "Area of Kite Using Tripographt" && <>
                             <div className='text-center'>  <dt>Formula</dt> T = a * b * Sin(c)</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
@@ -216,7 +210,6 @@ function Kite() {
                                                 onChange={(e) => setAnglec(e.target.value)} />
                                       </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> Area of Kite Using Tripographt </dt></Col>
@@ -229,13 +222,9 @@ function Kite() {
                                     <ButtonA  onClick={AreaKiteTrignometeryReset} text="Reset"/>
                                     {showPopup &&<Popup onClick={togglePopup} /> }
                                 </div>
-                            </>
-
-                        }
-
+                            </>}
                         {/* //////////////////////////////// Perimeter of Kite//////////////////////////*/}
-                        {
-                            selectCondition === "Perimeter of Kite" && <>
+                        {   selectCondition === "Perimeter of Kite" && <>
                             <div className='text-center'>  <dt>Formula</dt> P  = 2(a + b)</div>
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2 ">
                                     <Col md={6} sm={12} xs={12} >
@@ -254,7 +243,6 @@ function Kite() {
                                                 onChange={(e) => setQ(e.target.value)} />
                                         </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt> Perimeter Of Kite </dt></Col>

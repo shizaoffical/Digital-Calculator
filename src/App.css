@@ -54,5 +54,24 @@ border-radius: 10px;
  .symbol{
     font-size: 9px;
  }
+ .calculator-name{
+    border: 2px solid red;
+    font-size: 10px !important;
+   }
+   p{
+    font-size: 10px;
+   }
+}
+ @media (max-width : 1200px) {
+   .calculator-name{
+    border: 2px solid red;
+    font-size: 13px !important;
+   }
+   p{
+    font-size: 13px;
+   }
+   .heading{
+    font-size: 14px;
+   }
 
 }

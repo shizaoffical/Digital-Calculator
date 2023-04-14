@@ -55,7 +55,14 @@
   box-shadow: none !important;
   background-color: transparent !important;
 }
-
+.navbar-toggler{
+  border: 2px solid rgb(144, 101, 101) !important;
+}
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: none ;
+  box-shadow:none ;
+}
 /* ************************   newcalculator main *********************** */
 .lefttcol {
   border: 1px solid rgba(128, 128, 128, 0.14);
@@ -205,7 +212,7 @@
   margin: 1.4rem 0 0.8rem 0;
   background-color: var(--heading-color);
   border-left: 0.2rem solid var(--dark-primary-color);
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .heading:hover {

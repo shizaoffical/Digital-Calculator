@@ -76,18 +76,20 @@ function Cylinder() {
                 <div className='polygon-calculator-div '>
                     <ButtonA onClick={handlePrint} text="Print"/>
                     <div className="polygon-calculator px-2" ref={componentsRef}>
-
-                        <Row style={{ alignItems: "center", textAlign: "center" }} className="my-2">
-                            <Col md={12} sm={12} xs={12} >
-                                <label>  Radius:<Input value={radius}
-                                    onChange={(e) => setRadius(e.target.value)} /> </label></Col>
+                        <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                            <Col md={6} sm={12} xs={12}><label> Radius:</label></Col>
+                            <Col md={6} sm={12} xs={12}>
+                            <Input value={radius}
+                                    onChange={(e) => setRadius(e.target.value)} />
+                            </Col>
                         </Row>
-                        <Row style={{ alignItems: "center", textAlign: "center" }}>
-                            <Col md={12} sm={12} xs={12} >
-                                <label>  Height:<Input value={height}
-                                    onChange={(e) => setHeight(e.target.value)} /> </label></Col>
+                        <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
+                            <Col md={6} sm={12} xs={12}><label> Height</label></Col>
+                            <Col md={6} sm={12} xs={12}>
+                            <Input value={height}
+                                    onChange={(e) => setHeight(e.target.value)} />
+                            </Col>
                         </Row>
-                        <h5 className='text-center py-2'>Result</h5>
                         <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                             <Col md={6} sm={12} xs={12}><dt>Curved Surface Area of Cylinder(2πrh)</dt></Col>
                             <Col md={6} sm={12} xs={12}>
