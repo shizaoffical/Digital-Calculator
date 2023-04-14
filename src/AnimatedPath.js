@@ -80,6 +80,7 @@ import Transformer from './pages/Physics/Electromagnetism/Transformer';
 import HeatFlow from './pages/Physics/thermodyanamics/HeatFlow';
 import SUAVT from './pages/Physics/thermodyanamics/SUVAT';
 import HeatTransferr from './pages/Physics/thermodyanamics/HeatTransferr';
+import ThermalConsductivity from './pages/Physics/thermodyanamics/ThermalConductivity';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -167,6 +168,7 @@ function AnimatedPath() {
           <Route path="/physics/heatflow" element={<HeatFlow/>} />
           <Route path="/physics/suvat" element={<SUAVT/>} />
           <Route path="/physics/heat-transferr" element={<HeatTransferr/>} />
+          <Route path="/physics/thermal-consductivity" element={<ThermalConsductivity/>} />
        
 
           <Route path="/Health" element={<Health />} />

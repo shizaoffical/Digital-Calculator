@@ -150,7 +150,8 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="SUVAT calculator" 
                         path="/physics/suvat"/></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="Thurmal conductivity" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="Thurmal conductivity" 
+                        path="/physics/thermal-consductivity"/></Col>
                     </Row>
                     <dt className='text-center py-3'>Classical</dt>
                     <Row className='mb-2'>
