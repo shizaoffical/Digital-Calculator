@@ -83,6 +83,14 @@ import HeatTransferr from './pages/Physics/thermodyanamics/HeatTransferr';
 import ThermalConsductivity from './pages/Physics/thermodyanamics/ThermalConductivity';
 import AmountOfSubstance from './pages/Physics/Classical/AmountOfSubstance';
 import AverageVelocity from './pages/Physics/Classical/AverageVelocity';
+import Accerlation from './pages/Physics/Classical/Accerlation';
+import BatterCharge from './pages/Physics/Classical/BatteryCharge';
+import BatterLife from './pages/Physics/Classical/BatteryLife';
+import CentrifugalForce from './pages/Physics/Classical/CentrifugalForce';
+import CentripitalAccerlation from './pages/Physics/Classical/CentripitalAccerlation';
+import CircularVelocity from './pages/Physics/Classical/CircularVelocoty';
+import ConstantAngularAccerlation from './pages/Physics/Classical/ConstantAngularAccerlation';
+import CylindericalTank from './pages/Physics/Classical/CylindericalTank';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -174,6 +182,14 @@ function AnimatedPath() {
        {/* classical */}
        <Route path="/physics/amount-of-Substance" element={<AmountOfSubstance/>} />
        <Route path="/physics/average-velocity" element={<AverageVelocity/>} />
+       <Route path="/physics/accerlation" element={<Accerlation/>} />
+       <Route path="/physics/batter-charge" element={<BatterCharge/>} />
+       <Route path="/physics/batter-life" element={<BatterLife/>} />
+       <Route path="/physics/centrifugal-force" element={<CentrifugalForce/>} />
+       <Route path="/physics/centripital-accerlation" element={<CentripitalAccerlation/>} />
+       <Route path="/physics/circular-velocity" element={<CircularVelocity/>} />
+       <Route path="/physics/constant-angular-accerlation" element={<ConstantAngularAccerlation/>} />
+       <Route path="/physics/cylinderical-tank" element={<CylindericalTank/>} />
 
           <Route path="/Health" element={<Health />} />
           <Route path="/Weather" element={<Weather />} />

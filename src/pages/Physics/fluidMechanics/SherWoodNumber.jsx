@@ -52,7 +52,7 @@ else{
 }
 // TCcalculator
 const TCcalculator =() => {
-    if(SH && DC && CL!== 0){
+    if(SH && DC && CL!== null){
     const TC =(((SH*DC)/CL)*100)/100;
     setTCvalue(TC.toPrecision(6));
 }
@@ -102,7 +102,7 @@ function CLcalculatorReset(){
 }
 // DCcalculatorReset
 const DCcalculator = () => {
-    if(TC && CL && SH !== 0){
+    if(TC && CL && SH !== null){
   const DC = (((TC*CL)/SH)*100)/100;
   setDCvalue(DC.toPrecision(6));
 }
@@ -314,7 +314,6 @@ const togglePopup = () => {
                                             onChange={(e) => setCL(e.target.value)} />
                                     </Col>
                                 </Row>
-                                <h5 className='text-center py-2'>Result</h5>
 
                                 <Row style={{ alignItems: "center", textAlign: "center" }} className="py-2">
                                     <Col md={6} sm={12} xs={12}><dt>Diffusion Coefficient</dt></Col>

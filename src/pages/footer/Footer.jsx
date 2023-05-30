@@ -44,7 +44,8 @@ function Footer() {
             </div>
 
           </Col>
-          <small className='text-center'>Copyright © 2011 - 2023 Enzipe.</small>
+          <small className='text-center pb-3'>Copyright © 2011 - 2023 Powered By 
+          <strong style={{color:"#F58648"}}> Technixus.com</strong> </small>
         </Row>
       
       </Container>

@@ -8,6 +8,7 @@ function Reference(props) {
             {props.step2 && <div >2.{props.step2}</div>}
             {props.step3 && <div >3.{props.step3}</div>}
             {props.step4 && <div >4.{props.step4}</div>}
+            {props.step5 && <div >5.{props.step5}</div>}
         </div>
     )
 }

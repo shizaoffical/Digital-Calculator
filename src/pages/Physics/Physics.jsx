@@ -155,27 +155,35 @@ function Physics() {
                     </Row>
                     <dt className='text-center py-3'>Classical</dt>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="acceleration calculator" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="acceleration calculator" 
+                        path="/physics/accerlation"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="amount of substance" 
                         path="/physics/amount-of-Substance"/></Col>
                     </Row> <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="average velocity" 
                         path="/physics/average-velocity"/></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="battery charge time" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="battery charge time" 
+                        path="/physics/batter-charge"/></Col>
                     </Row> <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="battery life" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="battery life"
+                        path="/physics/batter-life" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="centrifugal force calculator"
+                        path="/physics/centrifugal-force" /></Col>
+                    </Row>
+                    <Row className='mb-2'>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="centripital accerlation calculator" 
+                        path="/physics/centripital-accerlation"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="centripital force" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="centripital accerlation calculator" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="circular velocity calculator" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="circular velocity calculator"
+                         path="/physics/circular-velocity" /></Col>
+                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="constant angular accerlation"
+                         path="/physics/constant-angular-accerlation" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="constant angular accerlation" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="critical frequencies" /></Col>
-                    </Row>
-                    <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylinder task " /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylinder tan~~k "
+                        path="/physics/cylinderical-tank" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="density" /></Col>
                     </Row>
                     <Row className='mb-2'>

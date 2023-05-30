@@ -191,8 +191,8 @@
   text-decoration: none;
 }
 
-.category-card-title:hover {
-  color: var(--dark-primary-color);
+.category-card:hover .category-card-title{
+  color: var(--dark-primary-color) !important;
 }
 
 .category-card-image {
@@ -200,8 +200,8 @@
   opacity: 0.5;
 }
 
-.category-card-image:hover {
-  opacity: 1;
+.category-card:hover .category-card-image {
+  opacity: 1 !important;
 }
 
 /* ************************** heading  ***************************** */

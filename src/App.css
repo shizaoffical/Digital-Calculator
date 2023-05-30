@@ -25,9 +25,20 @@ a{
 select{
     text-transform: capitalize !important;
     background-color: white !important;
+    font-size: 15px;
+}
+select:focus{
+   box-shadow: -2px -4px 4px var(--language-color);
 }
 option{
+    font-size: 13px;
     text-transform: capitalize !important;
+}
+label{
+    text-transform: capitalize !important;
+}
+dt{
+    text-transform: capitalize;
 }
 input{
     outline: none;
