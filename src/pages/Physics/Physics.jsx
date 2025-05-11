@@ -173,25 +173,24 @@ function Physics() {
                     <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="centripital accerlation calculator" 
                         path="/physics/centripital-accerlation"/></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="centripital force" /></Col>
-                    </Row>
-                    <Row className='mb-2'>
                         <Col sm={6} xs={12}>  <CalculatorName CalculatorName="circular velocity calculator"
                          path="/physics/circular-velocity" /></Col>
+                    </Row>
+                    <Row className='mb-2'>
+                        
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="constant angular accerlation"
                          path="/physics/constant-angular-accerlation" /></Col>
-                    </Row>
-                    <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylinder tan~~k "
+                           <Col sm={6} xs={12}>  <CalculatorName CalculatorName="cylinder tank "
                         path="/physics/cylinderical-tank" /></Col>
-                        <Col sm={6} xs={12}> <CalculatorName CalculatorName="density" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="diiference pressure measurement" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="diiference pressure measurement" 
+                        path="/physics/classical/differential-pressure"/></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="displacement calculator" /></Col>
                     </Row>
                     <Row className='mb-2'>
-                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="einstein mass energy" /></Col>
+                        <Col sm={6} xs={12}>  <CalculatorName CalculatorName="einstein mass energy"
+                        path="/physics/classical/einstein-mass-energy" /></Col>
                         <Col sm={6} xs={12}> <CalculatorName CalculatorName="electrical harmonics" /></Col>
                     </Row>
                     <Row className='mb-2'>

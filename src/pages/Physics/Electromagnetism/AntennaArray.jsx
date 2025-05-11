@@ -75,7 +75,7 @@ function AntennaArray() {
                 </div>
                 <div className='home-page-right-content col-xs-8 col-lg-8 col-md-7 col-sm-12 col-xs-12'>
                     <h2 className='text-center fw-bold'>Antenna Array calculate</h2>
-                    
+                   
                     <div className='polygon-calculator-div '>
                         <ButtonA onClick={handlePrint} text="Print" />
                         <div className="polygon-calculator px-2" ref={componentsRef}>
@@ -164,7 +164,7 @@ function AntennaArray() {
                         The spatial relationship of the individual antennas contributes to the directivity of the antenna array. Antennas exhibit a specific radiation pattern.<br/>
                         The overall radiation pattern of an array is determined by this array factor combined with the radiation pattern of the antenna element. The array factor is denoted by the symbol "AF".<br/>
                         The advanced online Antenna Array Calculator is used to calculate the
-                         <span style={{color:"#F7941D"}}>antenna</span>  array factor by applying the formula and putting the respective values. The overall radiation pattern changes when several antenna elements are combined in an array<br/>
+                         <span style={{color:"#F7941D"}}> antenna</span>  array factor by applying the formula and putting the respective values. The overall radiation pattern changes when several antenna elements are combined in an array<br/>
                     </div>
                     {/* ***************   formula ********** */}
                     <div className='polygon-calculator-text-div'>

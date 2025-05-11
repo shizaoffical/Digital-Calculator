@@ -91,6 +91,8 @@ import CentripitalAccerlation from './pages/Physics/Classical/CentripitalAccerla
 import CircularVelocity from './pages/Physics/Classical/CircularVelocoty';
 import ConstantAngularAccerlation from './pages/Physics/Classical/ConstantAngularAccerlation';
 import CylindericalTank from './pages/Physics/Classical/CylindericalTank';
+import DifferentialPressureMeasurement from './pages/Physics/Classical/DifferentialPressureMeasurement';
+import EinsteinMassEnergy from './pages/Physics/Classical/EinsteinMassEnergy';
 
 function AnimatedPath() {
     const location = useLocation();
@@ -190,6 +192,10 @@ function AnimatedPath() {
        <Route path="/physics/circular-velocity" element={<CircularVelocity/>} />
        <Route path="/physics/constant-angular-accerlation" element={<ConstantAngularAccerlation/>} />
        <Route path="/physics/cylinderical-tank" element={<CylindericalTank/>} />
+       <Route path="/physics/classical/differential-pressure" element={<DifferentialPressureMeasurement/>} />
+       <Route path="/physics/classical/einstein-mass-energy" element={<EinsteinMassEnergy/>} />
+
+
 
           <Route path="/Health" element={<Health />} />
           <Route path="/Weather" element={<Weather />} />
